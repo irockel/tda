@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 AutoUpdate-Show-In-Client: true
 OpenIDE-Module: net.java.dev.tda.visualvm/2
 OpenIDE-Module-Localizing-Bundle: net/java/dev/tda/visualvm/Bundle.properties
-OpenIDE-Module-Specification-Version: 2.3.3
+OpenIDE-Module-Specification-Version: 2.4
 OpenIDE-Module-Install: net/java/dev/tda/visualvm/Install.class
 OpenIDE-Module-Layer: net/java/dev/tda/visualvm/layer.xml
 

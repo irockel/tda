@@ -20,12 +20,12 @@
 package net.java.dev.tda.visualvm.logfile;
 
 import com.pironet.tda.utils.PrefManager;
-import com.sun.tools.visualvm.core.ui.actions.SingleDataSourceAction;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import org.graalvm.visualvm.core.ui.actions.SingleDataSourceAction;
 import org.openide.util.NbBundle;
 import org.openide.util.Utilities;
 

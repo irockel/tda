@@ -14,8 +14,6 @@
  * You should have received a copy of the Lesser GNU General Public License
  * along with TDA; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * $Id: VisualvmOptionsPanelController.java,v 1.3 2008-04-30 09:02:49 irockel Exp $
  */
 package net.java.dev.tda.visualvm;
 
@@ -43,11 +41,13 @@ final class VisualvmOptionsPanelController extends OptionsPanelController {
     private FilterPanel filterPanel;
     private CategoriesPanel catPanel;
 
+    @Override
     public void update() {
         prefDialog.loadSettings();
         changed = false;
     }
 
+    @Override
     public void applyChanges() {
         prefDialog.saveSettings();
         filterPanel.saveSettings();
@@ -55,31 +55,38 @@ final class VisualvmOptionsPanelController extends OptionsPanelController {
         changed = false;
     }
 
+    @Override
     public void cancel() {
         // need not do anything special, if no changes have been persisted yet
     }
 
+    @Override
     public boolean isValid() {
         return true;
     }
 
+    @Override
     public boolean isChanged() {
         return changed;
     }
 
+    @Override
     public HelpCtx getHelpCtx() {
         return null; // new HelpCtx("...ID") if you have a help set
 
     }
 
+    @Override
     public JComponent getComponent(Lookup masterLookup) {
         return getPanel();
     }
 
+    @Override
     public void addPropertyChangeListener(PropertyChangeListener l) {
         pcs.addPropertyChangeListener(l);
     }
 
+    @Override
     public void removePropertyChangeListener(PropertyChangeListener l) {
         pcs.removePropertyChangeListener(l);
     }

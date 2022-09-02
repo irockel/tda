@@ -1,3 +1,11 @@
 dist
 tda/build/
 tda/builddist/
+/tda-visualvm-module/nbproject/private/
+/tda-visualvm-module/build/
+/tda-visualvm-module/tda-lib-component/build/
+/tda-visualvm-module/logfile-visualvm-module/build/
+/tda-visualvm-module/tda-visualvm-module/build/
+/tda-visualvm-module/logfile-visualvm-module/nbproject/private/
+/tda-visualvm-module/tda-lib-component/nbproject/private/
+/tda-visualvm-module/tda-visualvm-module/nbproject/private/

@@ -171,6 +171,35 @@ public class SunJDKParserTest extends TestCase {
         }
     }
     
+    public void testJava11DumpLoad() throws FileNotFoundException, IOException {
+        System.out.println("Java11DumpLoad");
+        FileInputStream fis = null;
+        DumpParser instance = null;
+        
+        try {
+            fis = new FileInputStream("test/none/java11dump.log");
+            Map dumpMap = new HashMap();
+            Vector topNodes = new Vector();
+            instance = DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
+            
+            assertTrue(instance instanceof SunJDKParser);
+
+            while (instance.hasMoreDumps()) {
+                topNodes.add(instance.parseNext());
+            }
+
+            // check if one dump was found.
+            assertEquals(1, topNodes.size());
+        } finally {
+            if(instance != null) {
+                instance.close();
+            }
+            if(fis != null) {
+                fis.close();
+            }
+        }
+    }
+    
     public void testSAPDumps()  throws FileNotFoundException, IOException {
         System.out.println("SAPDumpLoad");
         FileInputStream fis = null;

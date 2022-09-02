@@ -67,11 +67,13 @@ public class ColoredTable extends JTable {
         if (whiteRenderer == null) {
             whiteRenderer = new DefaultTableCellRenderer();
             whiteRenderer.setBackground(Color.WHITE);
+            whiteRenderer.setForeground(Color.BLACK);
         }
 
         if (grayRenderer == null) {
             grayRenderer = new DefaultTableCellRenderer();
             grayRenderer.setBackground(new Color(240, 240, 240));
+            grayRenderer.setForeground(Color.BLACK);
         }
 
         if ((row % 2) == 0) {

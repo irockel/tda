@@ -19,9 +19,9 @@
  */
 package net.java.dev.tda.visualvm.logfile;
 
-import com.sun.tools.visualvm.core.ui.DataSourceView;
-import com.sun.tools.visualvm.core.ui.PluggableDataSourceViewProvider;
 import java.util.Set;
+import org.graalvm.visualvm.core.ui.DataSourceView;
+import org.graalvm.visualvm.core.ui.PluggableDataSourceViewProvider;
 
 /**
  * datasource view provider for logfile view.

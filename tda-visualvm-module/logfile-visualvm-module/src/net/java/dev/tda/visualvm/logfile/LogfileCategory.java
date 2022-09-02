@@ -19,7 +19,7 @@
  */
 package net.java.dev.tda.visualvm.logfile;
 
-import com.sun.tools.visualvm.core.snapshot.SnapshotCategory;
+import org.graalvm.visualvm.core.snapshot.SnapshotCategory;
 import org.openide.util.NbBundle;
 
 /**

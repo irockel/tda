@@ -19,9 +19,9 @@
  */
 package net.java.dev.tda.visualvm.logfile;
 
-import com.sun.tools.visualvm.core.snapshot.SnapshotDescriptor;
 import java.awt.Image;
-import org.openide.util.Utilities;
+import org.graalvm.visualvm.core.snapshot.SnapshotDescriptor;
+import org.openide.util.*;
 
 /**
  * logfile descriptor for specified logfile

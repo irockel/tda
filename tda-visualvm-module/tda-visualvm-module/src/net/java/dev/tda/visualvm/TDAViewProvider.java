@@ -14,21 +14,18 @@
  * You should have received a copy of the Lesser GNU General Public License
  * along with TDA; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * $Id: TDAViewProvider.java,v 1.5 2008-10-05 08:26:37 irockel Exp $
  */
-
 package net.java.dev.tda.visualvm;
 
-import com.sun.tools.visualvm.core.datasource.DataSource;
-import com.sun.tools.visualvm.core.snapshot.Snapshot;
-import com.sun.tools.visualvm.core.ui.DataSourceView;
-import com.sun.tools.visualvm.core.ui.DataSourceViewProvider;
-import com.sun.tools.visualvm.core.ui.DataSourceViewsManager;
-import com.sun.tools.visualvm.threaddump.ThreadDump;
 import java.util.HashMap;
 import java.util.Map;
 import net.java.dev.tda.visualvm.logfile.Logfile;
+import org.graalvm.visualvm.core.datasource.DataSource;
+import org.graalvm.visualvm.core.snapshot.Snapshot;
+import org.graalvm.visualvm.core.ui.DataSourceView;
+import org.graalvm.visualvm.core.ui.DataSourceViewProvider;
+import org.graalvm.visualvm.core.ui.DataSourceViewsManager;
+import org.graalvm.visualvm.threaddump.ThreadDump;
 
 /**
  * provides a tda view.
@@ -39,7 +36,7 @@ public class TDAViewProvider extends DataSourceViewProvider<DataSource> {
     /*
      * FIXME: this is just a hack to add newly added thread dumps to an existing thread dump view.
      */
-    private Map<DataSource, TDAView> views = new HashMap<DataSource, TDAView>();
+    private final Map<DataSource, TDAView> views = new HashMap<>();
     
     static void initialize() {
         DataSourceViewsManager.sharedInstance().addViewProvider(new TDAViewProvider(), DataSource.class);

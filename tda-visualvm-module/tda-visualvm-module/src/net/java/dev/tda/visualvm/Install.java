@@ -14,8 +14,6 @@
  * You should have received a copy of the Lesser GNU General Public License
  * along with TDA; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * $Id: Install.java,v 1.3 2008-09-30 19:22:54 irockel Exp $
  */
 package net.java.dev.tda.visualvm;
 

@@ -24,6 +24,7 @@ package com.pironet.tda;
 
 import com.pironet.tda.utils.Browser;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Image;
@@ -74,6 +75,7 @@ public class HelpOverviewDialog extends JDialog {
         try {
             URL tutURL = HelpOverviewDialog.class.getResource(getFile());
             htmlView = new JEditorPane(tutURL);
+            htmlView.setForeground(Color.BLACK);
         } catch (MalformedURLException ex) {
             ex.printStackTrace();
         } catch (IOException ex) {

@@ -14,28 +14,24 @@
  * You should have received a copy of the Lesser GNU General Public License
  * along with TDA; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * $Id: TDAView.java,v 1.7 2008-10-05 18:47:04 irockel Exp $
  */
 
 package net.java.dev.tda.visualvm;
 
 import com.pironet.tda.TDA;
-import com.sun.tools.visualvm.core.datasource.DataSource;
-import com.sun.tools.visualvm.core.snapshot.Snapshot;
-import com.sun.tools.visualvm.core.ui.DataSourceView;
-import com.sun.tools.visualvm.core.ui.components.DataViewComponent;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import org.openide.util.NbBundle;
-import org.openide.util.Utilities;
+import org.graalvm.visualvm.core.datasource.DataSource;
+import org.graalvm.visualvm.core.snapshot.Snapshot;
+import org.graalvm.visualvm.core.ui.DataSourceView;
+import org.graalvm.visualvm.core.ui.components.DataViewComponent;
+import org.openide.util.*;
 
 /**
  * tda main display view for visualvm.
@@ -93,17 +89,13 @@ public class TDAView extends DataSourceView {
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(6, 0, 3, 0));
         
         collapseAllButton = new JButton(NbBundle.getMessage(TDAView.class, "LBL_CollapseTree"), TDA.createImageIcon("Collapsed.gif"));
-        collapseAllButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                tdaPanel.expandAllDumpNodes(false);
-            }
+        collapseAllButton.addActionListener((ActionEvent e) -> {
+            tdaPanel.expandAllDumpNodes(false);
         });
 
         expandAllButton = new JButton(NbBundle.getMessage(TDAView.class, "LBL_ExpandTree"), TDA.createImageIcon("Expanded.gif"));
-        expandAllButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                tdaPanel.expandAllDumpNodes(true);
-            }
+        expandAllButton.addActionListener((ActionEvent e) -> {
+            tdaPanel.expandAllDumpNodes(true);
         });
         
         buttonPanel.add(new JLabel("<html><body><b>Dump Actions:"));

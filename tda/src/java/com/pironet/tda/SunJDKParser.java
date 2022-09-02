@@ -289,6 +289,8 @@ public class SunJDKParser extends AbstractDumpParser {
                                 getBis().reset();
                             }
 
+                            getBis().mark(getMarkSize());
+
                             if (!checkThreadDumpStatData(overallTDI)) {
                                 // no statistical data found, set back original position.
                                 getBis().reset();
@@ -967,7 +969,7 @@ public class SunJDKParser extends AbstractDumpParser {
             ex.printStackTrace();
         }
     }
-
+    
     /**
      * generate thread info token for table view.
      * @param name the thread info.
@@ -975,7 +977,7 @@ public class SunJDKParser extends AbstractDumpParser {
      */
     public String[] getThreadTokens(String name) {
         String[] tokens = null;
-
+        
         if (name.indexOf("prio") > 0) {
             tokens = new String[7];
 
@@ -986,26 +988,27 @@ public class SunJDKParser extends AbstractDumpParser {
 
             String strippedToken = name.substring(name.lastIndexOf('"') + 1);
 
-            if (strippedToken.indexOf("tid=") >= 0) {
+            if (strippedToken.contains("tid=")) {
                 int tidIndex = strippedToken.indexOf("tid=") - 1;
                 int osPrioIndex = strippedToken.indexOf("os_prio=") - 1;
-                int endIndex = osPrioIndex > 0 ? osPrioIndex : tidIndex;
+                int cpuIndex = strippedToken.indexOf("cpu=") - 1;
+                int endIndex = osPrioIndex > 0 ? osPrioIndex : cpuIndex > 0 ? cpuIndex : tidIndex;
                 tokens[2] = strippedToken.substring(strippedToken.indexOf("prio=") + 5, endIndex);                
             } else {
                 tokens[2] = strippedToken.substring(strippedToken.indexOf("prio=") + 5);
             }
 
-            if ((strippedToken.indexOf("tid=") >= 0) && (strippedToken.indexOf("nid=") >= 0)) {
+            if ((strippedToken.contains("tid=")) && (strippedToken.contains("nid="))) {
                 tokens[3] = String.valueOf(Long.parseLong(strippedToken.substring(strippedToken.indexOf("tid=") + 6,
                         strippedToken.indexOf("nid=") - 1), 16));
-            } else if (strippedToken.indexOf("tid=") >= 0) {
+            } else if (strippedToken.contains("tid=")) {
                 tokens[3] = String.valueOf(Long.parseLong(strippedToken.substring(strippedToken.indexOf("tid=") + 6), 16));
             }
 
             // default for token 6 is:
             tokens[6] = "<no address range>";
 
-            if ((strippedToken.indexOf("nid=") >= 0) && (strippedToken.indexOf(" ", strippedToken.indexOf("nid="))) >= 0) {
+            if ((strippedToken.contains("nid=")) && (strippedToken.indexOf(" ", strippedToken.indexOf("nid="))) >= 0) {
                 if (strippedToken.indexOf("nid=0x") > 0) { // is hexadecimal
                     String nidToken = strippedToken.substring(strippedToken.indexOf("nid=") + 6,
                             strippedToken.indexOf(" ", strippedToken.indexOf("nid=")));

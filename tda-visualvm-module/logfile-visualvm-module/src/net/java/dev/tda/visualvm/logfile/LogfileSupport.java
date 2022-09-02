@@ -19,7 +19,8 @@
  */
 package net.java.dev.tda.visualvm.logfile;
 
-import com.sun.tools.visualvm.core.ui.PluggableDataSourceViewProvider;
+import org.graalvm.visualvm.core.ui.PluggableDataSourceViewProvider;
+
 
 /**
  *

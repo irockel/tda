@@ -26,7 +26,6 @@ import com.pironet.tda.utils.Browser;
 import com.pironet.tda.utils.HistogramTableModel;
 import com.pironet.tda.utils.MonitorComparator;
 import com.pironet.tda.utils.PrefManager;
-import com.pironet.tda.utils.ResourceManager;
 import com.pironet.tda.utils.StatusBar;
 import com.pironet.tda.utils.SwingWorker;
 import com.pironet.tda.utils.TableSorter;
@@ -285,6 +284,8 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
         splitPane.setTopComponent(topSplitPane);
         splitPane.setDividerSize(DIVIDER_SIZE);
         splitPane.setContinuousLayout(true);
+        
+        splitPane.setForeground(Color.red);
         
         if(this.runningAsVisualVMPlugin) {
             setOpaque(true);
@@ -1227,6 +1228,7 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
             htmlPane.setContentType("text/html");
             htmlPane.setText(text);
             htmlPane.setCaretPosition(0);
+            htmlPane.setForeground(Color.BLACK);
         } else {
             htmlPane.setText("");
         }

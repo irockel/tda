@@ -2,6 +2,8 @@
 <!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
 <filesystem>
     <folder name="OptionsDialog">
-        <file name="net-java-dev-tda-visualvm-VisualvmOptionsCategory.instance"/>
+        <file name="net-java-dev-tda-visualvm-VisualvmOptionsCategory.instance">
+            <attr name="position" intvalue="2000"/>
+        </file>
     </folder>
 </filesystem>

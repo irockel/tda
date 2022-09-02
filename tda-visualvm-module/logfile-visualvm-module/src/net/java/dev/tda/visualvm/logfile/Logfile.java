@@ -19,10 +19,10 @@
  */
 package net.java.dev.tda.visualvm.logfile;
 
-import com.sun.tools.visualvm.core.datasource.DataSource;
-import com.sun.tools.visualvm.core.snapshot.Snapshot;
 import java.io.File;
 import java.io.IOException;
+import org.graalvm.visualvm.core.datasource.DataSource;
+import org.graalvm.visualvm.core.snapshot.Snapshot;
 
 /**
  *

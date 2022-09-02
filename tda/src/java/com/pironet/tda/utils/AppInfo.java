@@ -16,8 +16,6 @@
  * You should have received a copy of the Lesser GNU General Public License
  * along with TDA; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
- *
- * $Id: AppInfo.java,v 1.11 2010-01-18 17:42:45 irockel Exp $
  */
 package com.pironet.tda.utils;
 
@@ -28,9 +26,9 @@ package com.pironet.tda.utils;
 public class AppInfo {
     private static final String APP_SHORT_NAME = "TDA";
     private static final String APP_FULL_NAME = "Thread Dump Analyzer";
-    private static final String VERSION = "2.3.4";
+    private static final String VERSION = "2.4";
     
-    private static final String COPYRIGHT = "2006-2016";
+    private static final String COPYRIGHT = "2006-2020";
     
     /**
      * get info text for status bar if no real info is displayed.

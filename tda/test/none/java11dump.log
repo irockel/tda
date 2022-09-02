@@ -1,0 +1,56 @@
+2020-04-16 02:53:41
+Full thread dump OpenJDK 64-Bit Server VM (11.0.6+10 mixed mode):
+
+"main" #1 prio=5 os_prio=0 cpu=1124.82ms elapsed=116459.50s tid=0x00007f6aec016800 nid=0xaba runnable  [0x00007f6af4245000]
+   java.lang.Thread.State: RUNNABLE
+        at java.net.PlainSocketImpl.socketAccept(java.base@11.0.6/Native Method)
+        at java.net.AbstractPlainSocketImpl.accept(java.base@11.0.6/AbstractPlainSocketImpl.java:458)
+        at java.net.ServerSocket.implAccept(java.base@11.0.6/ServerSocket.java:565)
+        at java.net.ServerSocket.accept(java.base@11.0.6/ServerSocket.java:533)
+        at org.apache.catalina.core.StandardServer.await(StandardServer.java:466)
+        at org.apache.catalina.startup.Catalina.await(Catalina.java:776)
+        at org.apache.catalina.startup.Catalina.start(Catalina.java:722)
+        at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(java.base@11.0.6/Native Method)
+        at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(java.base@11.0.6/NativeMethodAccessorImpl.java:62)
+        at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(java.base@11.0.6/DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(java.base@11.0.6/Method.java:566)
+        at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:353)
+        at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:493)
+
+   Locked ownable synchronizers:
+        - None
+
+"Reference Handler" #2 daemon prio=10 os_prio=0 cpu=74835.02ms elapsed=116459.48s tid=0x00007f6aec0a8800 nid=0xabe waiting on condition  [0x00007f6ab3af8000]
+   java.lang.Thread.State: RUNNABLE
+        at java.lang.ref.Reference.waitForReferencePendingList(java.base@11.0.6/Native Method)
+        at java.lang.ref.Reference.processPendingReferences(java.base@11.0.6/Reference.java:241)
+        at java.lang.ref.Reference$ReferenceHandler.run(java.base@11.0.6/Reference.java:213)
+
+   Locked ownable synchronizers:
+        - None
+
+"VM Thread" os_prio=0 cpu=1400820.85ms elapsed=116459.49s tid=0x00007f6aec0a0000 nid=0xabc runnable  
+
+"ParGC Thread#0" os_prio=0 cpu=531433.46ms elapsed=116459.51s tid=0x00007f6aec040000 nid=0xabb runnable  
+
+"ParGC Thread#1" os_prio=0 cpu=532378.30ms elapsed=116452.11s tid=0x00007f6aac005000 nid=0xb35 runnable  
+
+"ParGC Thread#2" os_prio=0 cpu=531378.18ms elapsed=116452.11s tid=0x00007f6aac006800 nid=0xb36 runnable  
+
+"ParGC Thread#3" os_prio=0 cpu=531444.52ms elapsed=116452.10s tid=0x00007f6aac008000 nid=0xb37 runnable  
+
+"ParGC Thread#4" os_prio=0 cpu=531319.95ms elapsed=116452.10s tid=0x00007f6aac009800 nid=0xb38 runnable  
+
+"ParGC Thread#5" os_prio=0 cpu=531506.14ms elapsed=116452.10s tid=0x00007f6aac00b000 nid=0xb39 runnable  
+
+"ParGC Thread#6" os_prio=0 cpu=531183.48ms elapsed=116452.10s tid=0x00007f6aac00c800 nid=0xb3a runnable  
+
+"ParGC Thread#7" os_prio=0 cpu=532862.62ms elapsed=116452.10s tid=0x00007f6aac00e000 nid=0xb3b runnable  
+
+"ParGC Thread#8" os_prio=0 cpu=531416.13ms elapsed=116436.06s tid=0x00007f6aac015000 nid=0xcf8 runnable  
+
+"ParGC Thread#9" os_prio=0 cpu=531990.95ms elapsed=116436.06s tid=0x00007f6aac016800 nid=0xcf9 runnable  
+
+"VM Periodic Task Thread" os_prio=0 cpu=60646.16ms elapsed=116459.40s tid=0x00007f6aec18f000 nid=0xaca waiting on condition  
+
+JNI global refs: 173, weak refs: 5
