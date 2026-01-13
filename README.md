@@ -3,8 +3,9 @@
 <img src="https://raw.githubusercontent.com/irockel/tda/master/tda-main-screen.png" width="700"/>
 
 <h2>News</h2>
-<h3>TDA 2.5 released</h3>
+<h3>2026-01-13 TDA 2.5 released</h3>
 This release adds support for Java Virtual Threads (Project Loom) introduced in Java 19+. TDA can now properly parse and analyze thread dumps containing virtual threads, providing insights into virtual thread states and their relationships with carrier threads.
+Updated VisualVM Plugin to VisualVM 2.2.
 For Downloads and Release Notes see here: https://github.com/irockel/tda/releases/tag/2.5
 
 <h3>2020-08-21 TDA 2.4 released</h3>
