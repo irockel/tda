@@ -104,6 +104,7 @@ public class SunJDKParser extends AbstractDumpParser {
             DefaultMutableTreeNode catLocking = null;
             DefaultMutableTreeNode catSleeping = null;
             DefaultMutableTreeNode catWaiting = null;
+            DefaultMutableTreeNode catVirtualThreads = null;
 
             try {
                 Map threads = new HashMap();
@@ -122,6 +123,8 @@ public class SunJDKParser extends AbstractDumpParser {
 
                 catLocking = new DefaultMutableTreeNode(new TableCategory("Threads locking Monitors", IconFactory.THREADS_LOCKING));
 
+                catVirtualThreads = new DefaultMutableTreeNode(new TableCategory("Virtual Threads", IconFactory.THREADS));
+
                 // create category for monitors with disabled filtering.
                 // NOTE:  These strings are "magic" in that the methods
                 // TDA#displayCategory and TreeCategory#getCatComponent both
@@ -135,10 +138,12 @@ public class SunJDKParser extends AbstractDumpParser {
                 boolean inLocking = false;
                 boolean inSleeping = false;
                 boolean inWaiting = false;
+                boolean isVirtualThread = false;
                 int threadCount = 0;
                 int waiting = 0;
                 int locking = 0;
                 int sleeping = 0;
+                int virtualThreads = 0;
                 boolean locked = true;
                 boolean finished = false;
                 MonitorMap mmap = new MonitorMap();
@@ -202,6 +207,13 @@ public class SunJDKParser extends AbstractDumpParser {
                                 threads.put(title, content.toString());
                                 content.append("</pre></pre>");
                                 addToCategory(catThreads, title, null, stringContent, singleLineCounter, true);
+                                
+                                // Add to virtual threads category if applicable
+                                if (isVirtualThread) {
+                                    addToCategory(catVirtualThreads, title, null, stringContent, singleLineCounter, true);
+                                    virtualThreads++;
+                                }
+                                
                                 threadCount++;
                             }
                             if (inWaiting) {
@@ -229,6 +241,10 @@ public class SunJDKParser extends AbstractDumpParser {
                             content = new StringBuffer("<body bgcolor=\"ffffff\"><pre><font size=" + TDA.getFontSizeModifier(-1) + ">");
                             content.append(line);
                             content.append("\n");
+                            
+                            // Reset and check if this is a virtual thread
+                            isVirtualThread = (line.indexOf("virtual") > 0) || (line.indexOf("Virtual Thread") > 0);
+                            
                         } else if (line.indexOf("at ") >= 0) {
                             content.append(line);
                             content.append("\n");
@@ -268,6 +284,16 @@ public class SunJDKParser extends AbstractDumpParser {
                             inLocking = true;
                             monitorStack.push(line);
                             content.append("\n");
+                        } else if (line.indexOf("Carrying virtual thread") >= 0) {
+                            // Handle virtual thread information
+                            content.append("<font color=\"#0000ff\"><b>");
+                            content.append(line);
+                            content.append("</b></font>");
+                            content.append("\n");
+                            
+                            // Mark this platform thread as carrying a virtual thread
+                            isVirtualThread = true;
+                            
                         } else if (line.indexOf("- ") >= 0) {
                             if (concurrentSyncsFlag) {
                                 content.append(linkifyMonitor(line));
@@ -309,6 +335,13 @@ public class SunJDKParser extends AbstractDumpParser {
                     threads.put(title, content.toString());
                     content.append("</pre></pre>");
                     addToCategory(catThreads, title, null, stringContent, singleLineCounter, true);
+                    
+                    // Add to virtual threads category if applicable
+                    if (isVirtualThread) {
+                        addToCategory(catVirtualThreads, title, null, stringContent, singleLineCounter, true);
+                        virtualThreads++;
+                    }
+                    
                     threadCount++;
                 }
                 if (inWaiting) {
@@ -356,6 +389,12 @@ public class SunJDKParser extends AbstractDumpParser {
                 if (locking > 0) {
                     overallTDI.setLockingThreads((Category) catLocking.getUserObject());
                     threadDump.add(catLocking);
+                }
+
+                // Add virtual threads category if there are any virtual threads
+                if (virtualThreads > 0) {
+                    ((Category) catVirtualThreads.getUserObject()).setName("Virtual Threads (" + virtualThreads + " Virtual Threads)");
+                    threadDump.add(catVirtualThreads);
                 }
 
                 if (monitorCount > 0) {
@@ -980,6 +1019,11 @@ public class SunJDKParser extends AbstractDumpParser {
         
         if (name.indexOf("prio") > 0) {
             tokens = new String[7];
+            
+            // Initialize all tokens to empty strings to prevent null values
+            for (int i = 0; i < tokens.length; i++) {
+                tokens[i] = "";
+            }
 
             tokens[0] = name.substring(1, name.lastIndexOf('"') == 0 ? 
                     name.length() - 1 : 
@@ -1002,7 +1046,24 @@ public class SunJDKParser extends AbstractDumpParser {
                 tokens[3] = String.valueOf(Long.parseLong(strippedToken.substring(strippedToken.indexOf("tid=") + 6,
                         strippedToken.indexOf("nid=") - 1), 16));
             } else if (strippedToken.contains("tid=")) {
-                tokens[3] = String.valueOf(Long.parseLong(strippedToken.substring(strippedToken.indexOf("tid=") + 6), 16));
+                // Handle virtual thread format: tid=0x0000fffef57b0000  [0x0000fffeb1eae000]
+                int tidStart = strippedToken.indexOf("tid=") + 6; // Skip "tid=0x"
+                String tidSubstring = strippedToken.substring(tidStart);
+                
+                // Find the end of the tid value (at space, bracket, or end of string)
+                int tidEnd = tidSubstring.length();
+                int spaceIndex = tidSubstring.indexOf(' ');
+                int bracketIndex = tidSubstring.indexOf('[');
+                
+                if (spaceIndex >= 0) {
+                    tidEnd = Math.min(tidEnd, spaceIndex);
+                }
+                if (bracketIndex >= 0) {
+                    tidEnd = Math.min(tidEnd, bracketIndex);
+                }
+                
+                String tidValue = tidSubstring.substring(0, tidEnd).trim();
+                tokens[3] = String.valueOf(Long.parseLong(tidValue, 16));
             }
 
             // default for token 6 is:
@@ -1042,6 +1103,12 @@ public class SunJDKParser extends AbstractDumpParser {
             }
         } else {
             tokens = new String[3];
+            
+            // Initialize all tokens to empty strings to prevent null values
+            for (int i = 0; i < tokens.length; i++) {
+                tokens[i] = "";
+            }
+            
             tokens[0] = name.substring(1, name.lastIndexOf('"') == 0 ? 
                     name.length() - 1 : 
                     name.lastIndexOf('"'));

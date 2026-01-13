@@ -9,3 +9,17 @@ tda/builddist/
 /tda-visualvm-module/logfile-visualvm-module/nbproject/private/
 /tda-visualvm-module/tda-lib-component/nbproject/private/
 /tda-visualvm-module/tda-visualvm-module/nbproject/private/
+/.idea/
+
+# Test files and temporary files created during development
+Test*.java
+TestUIFix.*
+TestVirtualThread*.*
+*.class
+
+# Downloaded libraries
+tda/lib/junit-*.jar
+tda/lib/hamcrest-*.jar
+
+# Temporary log files
+virtualthread.log

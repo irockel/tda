@@ -1,9 +1,16 @@
 <html>
 <link rel="stylesheet" type="text/css" href="stylesheet.css" title="Style">
 <body bgcolor="ffffff"><pre>
-TDA - Thread Dump Analyzer -- Version 2.4
+TDA - Thread Dump Analyzer -- Version 2.5
 
-Note: This is the 2.4 release of the software, for an usage overview see Help/Overview.
+Note: This is the 2.5 release of the software, for an usage overview see Help/Overview.
+
+Changes from 2.4 are:
+* Added support for Java Virtual Threads (Project Loom) introduced in Java 19+
+* Can parse and analyze thread dumps containing virtual threads
+* Provides insights into virtual thread states and carrier thread relationships
+* Identifies virtual thread pinning issues
+* Updated parsing to handle Java 21 thread dump format
 
 Changes from 2.3.4 are:
 * Compiled using JDK 1.8 so Source Level now is 1.8

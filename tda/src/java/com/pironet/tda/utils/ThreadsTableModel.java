@@ -78,15 +78,33 @@ public class ThreadsTableModel extends AbstractTableModel {
         //System.out.println("Info: " + ti.getInfo() + ", rowIndex"  + rowIndex + ", columnIndex: " + columnIndex);
         if(getColumnCount() > 3) {
             if (columnIndex > 1 && columnIndex < 5) {
-                return new Long(columns[columnIndex]);
+                // Handle null or empty strings safely
+                if (columns[columnIndex] != null && !columns[columnIndex].trim().isEmpty()) {
+                    try {
+                        return new Long(columns[columnIndex]);
+                    } catch (NumberFormatException e) {
+                        return 0L; // Return 0 for invalid numbers
+                    }
+                } else {
+                    return 0L; // Return 0 for null or empty values
+                }
             } else {
-                return columns[columnIndex];
+                return columns[columnIndex] != null ? columns[columnIndex] : "";
             }
         } else {
             if (columnIndex == 1) {
-                return new Long(columns[columnIndex]);
+                // Handle null or empty strings safely
+                if (columns[columnIndex] != null && !columns[columnIndex].trim().isEmpty()) {
+                    try {
+                        return new Long(columns[columnIndex]);
+                    } catch (NumberFormatException e) {
+                        return 0L; // Return 0 for invalid numbers
+                    }
+                } else {
+                    return 0L; // Return 0 for null or empty values
+                }
             } else {
-                return columns[columnIndex];
+                return columns[columnIndex] != null ? columns[columnIndex] : "";
             }
             
         }

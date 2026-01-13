@@ -315,4 +315,33 @@ public class SunJDKParserTest extends TestCase {
             }
         }
     }
+
+    public void testVirtualThreadDumps() throws FileNotFoundException, IOException {
+        System.out.println("VirtualThreadDumpLoad");
+        FileInputStream fis = null;
+        DumpParser instance = null;
+        
+        try {
+            fis = new FileInputStream("test/none/virtualthread.log");
+            Map dumpMap = new HashMap();
+            Vector topNodes = new Vector();
+            instance = DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
+            
+            assertTrue(instance instanceof SunJDKParser);
+
+            while (instance.hasMoreDumps()) {
+                topNodes.add(instance.parseNext());
+            }
+
+            // check if one dump was found.
+            assertEquals(1, topNodes.size());
+        } finally {
+            if(instance != null) {
+                instance.close();
+            }
+            if(fis != null) {
+                fis.close();
+            }
+        }
+    }
 }

@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 OpenIDE-Module: net.java.dev.tda/2
 OpenIDE-Module-Localizing-Bundle: net/java/dev/tda/Bundle.properties
-OpenIDE-Module-Specification-Version: 2.4
+OpenIDE-Module-Specification-Version: 2.5
 

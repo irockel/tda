@@ -26,7 +26,7 @@ package com.pironet.tda.utils;
 public class AppInfo {
     private static final String APP_SHORT_NAME = "TDA";
     private static final String APP_FULL_NAME = "Thread Dump Analyzer";
-    private static final String VERSION = "2.4";
+    private static final String VERSION = "2.5";
     
     private static final String COPYRIGHT = "2006-2020";
     
