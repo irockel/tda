@@ -3,23 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1"/>
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/AbstractInfo.java</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/TDA.java</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/SunJDKParser.java</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/ThreadInfo.java</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/InfoDialog.java</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/doc/README</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/locale.properties</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/HelpOverviewDialog.java</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/utils/AppInfo.java</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/utils/ThreadsTableModel.java</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/utils/Browser.java</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/utils/ColoredTable.java</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/utils/ViewScrollPane.java</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/TableCategory.java</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/test/java/com/pironet/tda/SunJDKParserTest.java</file>
-            <file>file:/home/irockel/Entwicklung/tda/tda/src/java/com/pironet/tda/AbstractCategory.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

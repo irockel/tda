@@ -1,6 +1,0 @@
-Manifest-Version: 1.0
-OpenIDE-Module: com.pironet.tda.netbeans
-OpenIDE-Module-Layer: com/pironet/tda/netbeans/layer.xml
-OpenIDE-Module-Localizing-Bundle: com/pironet/tda/netbeans/Bundle.properties
-OpenIDE-Module-Specification-Version: 1.0
-
