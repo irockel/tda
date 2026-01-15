@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>de.grimmfrost.tda</groupId>
+  <artifactId>tda</artifactId>
+  <version>2.5</version>
+  <packaging>jar</packaging>
+
+  <name>tda</name>
+  <description>Thread Dump Analysis Tool</description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.swinglabs</groupId>
+      <artifactId>swingx</artifactId>
+      <version>0.9.1</version>
+    </dependency>
+    <!-- jconsole.jar is part of the JDK, but in modern JDKs it might be different. 
+         For compatibility with the original project which used a local jar, 
+         we might need to see if it's available in central or use a system scope if necessary.
+         Actually, it's often available as part of the JDK.
+    -->
+    <dependency>
+      <groupId>com.sun</groupId>
+      <artifactId>jconsole</artifactId>
+      <version>1.8.0</version>
+      <scope>system</scope>
+      <systemPath>${project.basedir}/lib/jconsole.jar</systemPath>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest-core</artifactId>
+      <version>1.3</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M5</version>
+        <configuration>
+          <systemPropertyVariables>
+            <java.awt.headless>true</java.awt.headless>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>de.grimmfrost.tda.TDA</mainClass>
+            </manifest>
+            <manifestEntries>
+              <SplashScreen-Image>de/grimmfrost/tda/icons/splash.png</SplashScreen-Image>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
