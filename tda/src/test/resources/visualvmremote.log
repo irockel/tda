@@ -1,0 +1,1333 @@
+
+2008-11-20 09:28:02
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (11.0-b15 mixed mode):
+
+"Timer-180" - Thread t@332
+   java.lang.Thread.State: TIMED_WAITING on java.util.TaskQueue@7311acb7
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+   Locked ownable synchronizers:
+	- None
+
+"RMI TCP Connection(24)-192.18.126.254" - Thread t@254
+   java.lang.Thread.State: RUNNABLE
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+	- locked java.io.BufferedInputStream@5284339c
+	at java.io.FilterInputStream.read(FilterInputStream.java:66)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:517)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- locked java.util.concurrent.locks.ReentrantLock$NonfairSync@7a29682f
+
+"JMX server connection timeout 239" - Thread t@239
+   java.lang.Thread.State: TIMED_WAITING on [I@13e977d
+	at java.lang.Object.wait(Native Method)
+	at com.sun.jmx.remote.internal.ServerCommunicatorAdmin$Timeout.run(ServerCommunicatorAdmin.java:150)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"RMI TCP Connection(17)-192.18.126.254" - Thread t@201
+   java.lang.Thread.State: TIMED_WAITING on com.sun.jmx.remote.internal.ArrayNotificationBuffer@7aca9651
+	at java.lang.Object.wait(Native Method)
+	at com.sun.jmx.remote.internal.ArrayNotificationBuffer.fetchNotifications(ArrayNotificationBuffer.java:417)
+	at com.sun.jmx.remote.internal.ArrayNotificationBuffer$ShareBuffer.fetchNotifications(ArrayNotificationBuffer.java:209)
+	at com.sun.jmx.remote.internal.ServerNotifForwarder.fetchNotifs(ServerNotifForwarder.java:258)
+	at javax.management.remote.rmi.RMIConnectionImpl$2.run(RMIConnectionImpl.java:1227)
+	at javax.management.remote.rmi.RMIConnectionImpl$2.run(RMIConnectionImpl.java:1225)
+	at javax.management.remote.rmi.RMIConnectionImpl.fetchNotifications(RMIConnectionImpl.java:1231)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:305)
+	at sun.rmi.transport.Transport$1.run(Transport.java:159)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:155)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:535)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- locked java.util.concurrent.locks.ReentrantLock$NonfairSync@3364387c
+
+"RMI TCP Connection(20)-192.18.126.254" - Thread t@200
+   java.lang.Thread.State: RUNNABLE
+	at sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:374)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at com.sun.jmx.mbeanserver.ConvertingMethod.invokeWithOpenReturn(ConvertingMethod.java:167)
+	at com.sun.jmx.mbeanserver.MXBeanIntrospector.invokeM2(MXBeanIntrospector.java:96)
+	at com.sun.jmx.mbeanserver.MXBeanIntrospector.invokeM2(MXBeanIntrospector.java:33)
+	at com.sun.jmx.mbeanserver.MBeanIntrospector.invokeM(MBeanIntrospector.java:208)
+	at com.sun.jmx.mbeanserver.PerInterface.invoke(PerInterface.java:120)
+	at com.sun.jmx.mbeanserver.MBeanSupport.invoke(MBeanSupport.java:262)
+	at javax.management.StandardMBean.invoke(StandardMBean.java:391)
+	at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:836)
+	at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:761)
+	at com.sun.enterprise.interceptor.DynamicInterceptor.invoke(DynamicInterceptor.java:178)
+	at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1426)
+	at javax.management.remote.rmi.RMIConnectionImpl.access$200(RMIConnectionImpl.java:72)
+	at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1264)
+	at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1359)
+	at javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:788)
+	at sun.reflect.GeneratedMethodAccessor113.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:305)
+	at sun.rmi.transport.Transport$1.run(Transport.java:159)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:155)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:535)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- locked java.util.concurrent.locks.ReentrantLock$NonfairSync@78b86f3f
+
+"Timer-13" - Thread t@155
+   java.lang.Thread.State: TIMED_WAITING on java.util.TaskQueue@55ab9655
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+   Locked ownable synchronizers:
+	- None
+
+"DestroyJavaVM" - Thread t@154
+   java.lang.Thread.State: RUNNABLE
+
+   Locked ownable synchronizers:
+	- None
+
+"Timer-12" - Thread t@153
+   java.lang.Thread.State: TIMED_WAITING on java.util.TaskQueue@741ad263
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+   Locked ownable synchronizers:
+	- None
+
+"ContainerBackgroundProcessor[StandardEngine[com.sun.appserv]]" - Thread t@150
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1800)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"CometSelector" - Thread t@149
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.DevPollArrayWrapper.poll0(Native Method)
+	at sun.nio.ch.DevPollArrayWrapper.poll(DevPollArrayWrapper.java:164)
+	at sun.nio.ch.DevPollSelectorImpl.doSelect(DevPollSelectorImpl.java:68)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked sun.nio.ch.Util$1@6c8e65c4
+	- locked java.util.Collections$UnmodifiableSet@97ff3f2
+	- locked sun.nio.ch.DevPollSelectorImpl@48bd8916
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at com.sun.enterprise.web.connector.grizzly.comet.CometSelector$1.run(CometSelector.java:124)
+
+   Locked ownable synchronizers:
+	- None
+
+"Thread-33" - Thread t@147
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.DevPollArrayWrapper.poll0(Native Method)
+	at sun.nio.ch.DevPollArrayWrapper.poll(DevPollArrayWrapper.java:164)
+	at sun.nio.ch.DevPollSelectorImpl.doSelect(DevPollSelectorImpl.java:68)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked sun.nio.ch.Util$1@69413063
+	- locked java.util.Collections$UnmodifiableSet@53b7dad5
+	- locked sun.nio.ch.DevPollSelectorImpl@40ba5dce
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:84)
+	at org.netbeans.lib.collab.util.SelectWorker.run(SelectWorker.java:299)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"SelectWorker 0" - Thread t@146
+   java.lang.Thread.State: WAITING on org.netbeans.lib.collab.util.Worker@4c9692d7
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at org.netbeans.lib.collab.util.Worker.run(Worker.java:217)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"Thread-31" - Thread t@144
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at com.sun.im.gateway.http.HTTPBindSessionManager$SessionManagerCacheCleaner.run(HTTPBindSessionManager.java:972)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"RMI RenewClean-[10.5.185.104:50005]" - Thread t@143
+   java.lang.Thread.State: TIMED_WAITING on java.lang.ref.ReferenceQueue$Lock@70d1f3c3
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	at sun.rmi.transport.DGCClient$EndpointEntry$RenewCleanThread.run(DGCClient.java:516)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"RMI TCP Accept-50005" - Thread t@142
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked java.net.SocksSocketImpl@b64a095
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:369)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:341)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"LDAPConnThread-0 ldap://r54s05-zone-01.red.iplanet.com:389" - Thread t@138
+   java.lang.Thread.State: RUNNABLE
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:129)
+	at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+	at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+	- locked java.io.BufferedInputStream@669c0a95
+	at netscape.ldap.ber.stream.BERElement.getElement(BERElement.java:101)
+	at netscape.ldap.LDAPConnThread.run(LDAPConnThread.java:539)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"ContainerBackgroundProcessor[StandardEngine[com.sun.appserv].StandardHost[server].StandardContext[/__wstx-services]]" - Thread t@136
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1800)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"ContainerBackgroundProcessor[StandardEngine[com.sun.appserv].StandardHost[__asadmin].StandardContext[]]" - Thread t@135
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1800)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"ContainerBackgroundProcessor[StandardEngine[com.sun.appserv].StandardHost[server].StandardContext[/iwc]]" - Thread t@134
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1800)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"ContainerBackgroundProcessor[StandardEngine[com.sun.appserv].StandardHost[__asadmin].StandardContext[/web1]]" - Thread t@133
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1800)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"ContainerBackgroundProcessor[StandardEngine[com.sun.appserv].StandardHost[server].StandardContext[]]" - Thread t@132
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1800)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"ContainerBackgroundProcessor[StandardEngine[com.sun.appserv].StandardHost[server].StandardContext[/__JWSappclients]]" - Thread t@131
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at org.apache.catalina.core.ContainerBase$ContainerBackgroundProcessor.run(ContainerBase.java:1800)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-19" - Thread t@129
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-18" - Thread t@128
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-17" - Thread t@127
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-16" - Thread t@126
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-15" - Thread t@125
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-14" - Thread t@124
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-13" - Thread t@123
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-12" - Thread t@122
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-11" - Thread t@121
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-10" - Thread t@120
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-9" - Thread t@119
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-8" - Thread t@118
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-7" - Thread t@117
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-6" - Thread t@116
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-5" - Thread t@115
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-4" - Thread t@114
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-3" - Thread t@113
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-2" - Thread t@112
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-1" - Thread t@111
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpWorkerThread-4848-0" - Thread t@110
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.LinkedListPipeline@104c89a4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.WorkerThreadImpl.run(WorkerThreadImpl.java:114)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-19" - Thread t@108
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-18" - Thread t@107
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-17" - Thread t@106
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-16" - Thread t@105
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-15" - Thread t@104
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-14" - Thread t@103
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-13" - Thread t@102
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-12" - Thread t@101
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-11" - Thread t@100
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-10" - Thread t@99
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-9" - Thread t@98
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-8" - Thread t@97
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-7" - Thread t@96
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-6" - Thread t@95
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-5" - Thread t@94
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-4" - Thread t@93
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-3" - Thread t@92
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-2" - Thread t@91
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-1" - Thread t@90
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8181-0" - Thread t@89
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.connector.grizzly.ssl.SSLPipeline@391b1fc4
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"SelectorThread-4848" - Thread t@109
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.DevPollArrayWrapper.poll0(Native Method)
+	at sun.nio.ch.DevPollArrayWrapper.poll(DevPollArrayWrapper.java:164)
+	at sun.nio.ch.DevPollSelectorImpl.doSelect(DevPollSelectorImpl.java:68)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked sun.nio.ch.Util$1@2a382216
+	- locked java.util.Collections$UnmodifiableSet@4b45e801
+	- locked sun.nio.ch.DevPollSelectorImpl@6a3e770
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.doSelect(SelectorThread.java:1337)
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.startListener(SelectorThread.java:1284)
+	- locked [Ljava.lang.Object;@72af6d77
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.startEndpoint(SelectorThread.java:1247)
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.run(SelectorThread.java:1223)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-19" - Thread t@85
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-18" - Thread t@84
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-17" - Thread t@83
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-16" - Thread t@82
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-15" - Thread t@81
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-14" - Thread t@80
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-13" - Thread t@79
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-12" - Thread t@78
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-11" - Thread t@77
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-10" - Thread t@76
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-9" - Thread t@75
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-8" - Thread t@74
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-7" - Thread t@73
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-6" - Thread t@72
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-5" - Thread t@71
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-4" - Thread t@70
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-3" - Thread t@69
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-2" - Thread t@68
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-1" - Thread t@67
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"httpSSLWorkerThread-8080-0" - Thread t@66
+   java.lang.Thread.State: WAITING on com.sun.enterprise.web.portunif.PortUnificationPipeline@2cef15fd
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.enterprise.web.connector.grizzly.LinkedListPipeline.getTask(LinkedListPipeline.java:291)
+	at com.sun.enterprise.web.connector.grizzly.ssl.SSLWorkerThread.run(SSLWorkerThread.java:104)
+
+   Locked ownable synchronizers:
+	- None
+
+"SelectorThread-8181" - Thread t@88
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.DevPollArrayWrapper.poll0(Native Method)
+	at sun.nio.ch.DevPollArrayWrapper.poll(DevPollArrayWrapper.java:164)
+	at sun.nio.ch.DevPollSelectorImpl.doSelect(DevPollSelectorImpl.java:68)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked sun.nio.ch.Util$1@19a63e17
+	- locked java.util.Collections$UnmodifiableSet@71366528
+	- locked sun.nio.ch.DevPollSelectorImpl@68df4013
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.doSelect(SelectorThread.java:1337)
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.startListener(SelectorThread.java:1284)
+	- locked [Ljava.lang.Object;@18e7d52f
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.startEndpoint(SelectorThread.java:1247)
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.run(SelectorThread.java:1223)
+
+   Locked ownable synchronizers:
+	- None
+
+"SelectorThread-8080" - Thread t@65
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.DevPollArrayWrapper.poll0(Native Method)
+	at sun.nio.ch.DevPollArrayWrapper.poll(DevPollArrayWrapper.java:164)
+	at sun.nio.ch.DevPollSelectorImpl.doSelect(DevPollSelectorImpl.java:68)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked sun.nio.ch.Util$1@5fae7480
+	- locked java.util.Collections$UnmodifiableSet@3662b093
+	- locked sun.nio.ch.DevPollSelectorImpl@4b5880d9
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.doSelect(SelectorThread.java:1337)
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.startListener(SelectorThread.java:1284)
+	- locked [Ljava.lang.Object;@1f734d34
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.startEndpoint(SelectorThread.java:1247)
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.run(SelectorThread.java:1223)
+
+   Locked ownable synchronizers:
+	- None
+
+"SelectorReaderThread-8080" - Thread t@87
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.DevPollArrayWrapper.poll0(Native Method)
+	at sun.nio.ch.DevPollArrayWrapper.poll(DevPollArrayWrapper.java:164)
+	at sun.nio.ch.DevPollSelectorImpl.doSelect(DevPollSelectorImpl.java:68)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked sun.nio.ch.Util$1@c72d8a6
+	- locked java.util.Collections$UnmodifiableSet@44d467bd
+	- locked sun.nio.ch.DevPollSelectorImpl@9e87ae9
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.doSelect(SelectorThread.java:1337)
+	at com.sun.enterprise.web.connector.grizzly.SelectorReadThread.startEndpoint(SelectorReadThread.java:122)
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.run(SelectorThread.java:1223)
+
+   Locked ownable synchronizers:
+	- None
+
+"SelectorReaderThread-8080" - Thread t@86
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.DevPollArrayWrapper.poll0(Native Method)
+	at sun.nio.ch.DevPollArrayWrapper.poll(DevPollArrayWrapper.java:164)
+	at sun.nio.ch.DevPollSelectorImpl.doSelect(DevPollSelectorImpl.java:68)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked sun.nio.ch.Util$1@3b2f719a
+	- locked java.util.Collections$UnmodifiableSet@3e4ef791
+	- locked sun.nio.ch.DevPollSelectorImpl@6ca8538d
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.doSelect(SelectorThread.java:1337)
+	at com.sun.enterprise.web.connector.grizzly.SelectorReadThread.startEndpoint(SelectorReadThread.java:122)
+	at com.sun.enterprise.web.connector.grizzly.SelectorThread.run(SelectorThread.java:1223)
+
+   Locked ownable synchronizers:
+	- None
+
+"ClusterServiceListener" - Thread t@61
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked java.net.SocksSocketImpl@1f0585b6
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at com.sun.messaging.jmq.jmsserver.multibroker.fullyconnected.ClusterServiceListener.run(ClusterImpl.java:1786)
+
+   Locked ownable synchronizers:
+	- None
+
+"MessageBusCallbackDispatcher" - Thread t@60
+   java.lang.Thread.State: WAITING on java.util.LinkedList@3e6ea3fe
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.messaging.jmq.jmsserver.multibroker.CallbackDispatcher.run(CallbackDispatcher.java:330)
+
+   Locked ownable synchronizers:
+	- None
+
+"jms_ACCEPT" - Thread t@59
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked java.net.SocksSocketImpl@238d7fa3
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at com.sun.messaging.jmq.jmsserver.net.tcp.TcpProtocol.accept(TcpProtocol.java:281)
+	at com.sun.messaging.jmq.jmsserver.service.imq.IMQIPService.run(IMQIPService.java:574)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"admin_ACCEPT" - Thread t@58
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked java.net.SocksSocketImpl@1eb6b891
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at com.sun.messaging.jmq.jmsserver.net.tcp.TcpProtocol.accept(TcpProtocol.java:281)
+	at com.sun.messaging.jmq.jmsserver.service.imq.IMQIPService.run(IMQIPService.java:574)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"RMI RenewClean-[10.5.185.104:46090]" - Thread t@56
+   java.lang.Thread.State: TIMED_WAITING on java.lang.ref.ReferenceQueue$Lock@51d098b7
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	at sun.rmi.transport.DGCClient$EndpointEntry$RenewCleanThread.run(DGCClient.java:516)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"RMI TCP Accept-0" - Thread t@55
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked java.net.SocksSocketImpl@6e0f4757
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:369)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:341)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"ClusterDiscoveryService" - Thread t@54
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked java.net.SocksSocketImpl@1ed760aa
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at com.sun.messaging.jmq.jmsserver.service.ClusterDiscoveryService.run(ClusterDiscoveryService.java:318)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"Broker Monitor" - Thread t@53
+   java.lang.Thread.State: WAITING on java.util.Collections$SynchronizedSet@6bb63bc9
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.messaging.jmq.jmsserver.core.cluster.BrokerConsumers.run(MultibrokerRouter.java:1342)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"JMQPortMapper" - Thread t@52
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked java.net.SocksSocketImpl@4e0b48b7
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at com.sun.messaging.jmq.jmsserver.service.PortMapper.run(PortMapper.java:485)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"MQTimer-Thread" - Thread t@51
+   java.lang.Thread.State: TIMED_WAITING on java.util.TaskQueue@484adff7
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+   Locked ownable synchronizers:
+	- None
+
+"RMI RenewClean-[10.5.185.104:46084]" - Thread t@46
+   java.lang.Thread.State: TIMED_WAITING on java.lang.ref.ReferenceQueue$Lock@373727fe
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	at sun.rmi.transport.DGCClient$EndpointEntry$RenewCleanThread.run(DGCClient.java:516)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"RMI TCP Accept-0" - Thread t@44
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked java.net.SocksSocketImpl@46d30e68
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:369)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:341)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"RMI TCP Accept-8686" - Thread t@43
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked java.net.SocksSocketImpl@4a56f22b
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:369)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:341)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"Thread-12" - Thread t@40
+   java.lang.Thread.State: WAITING on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@4f9380c1
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.park(LockSupport.java:158)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1925)
+	at java.util.concurrent.ArrayBlockingQueue.take(ArrayBlockingQueue.java:317)
+	at com.sun.enterprise.management.support.LoaderRegThread.process(LoaderRegThread.java:243)
+	at com.sun.enterprise.management.support.LoaderRegThread.run(LoaderRegThread.java:154)
+
+   Locked ownable synchronizers:
+	- None
+
+"Thread-11" - Thread t@39
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at com.sun.enterprise.management.support.LoaderBase.mySleep(LoaderBase.java:241)
+	at com.sun.enterprise.management.support.Loader$DeferredRegistrationThread.run(Loader.java:389)
+
+   Locked ownable synchronizers:
+	- None
+
+"Thread-9" - Thread t@37
+   java.lang.Thread.State: WAITING on com.sun.corba.ee.impl.javax.rmi.CORBA.KeepAlive@34a1a081
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sun.corba.ee.impl.javax.rmi.CORBA.KeepAlive.run(Util.java:857)
+
+   Locked ownable synchronizers:
+	- None
+
+"p: thread-pool-1; w: 2" - Thread t@36
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked java.net.SocksSocketImpl@12350b2e
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at com.sun.net.ssl.internal.ssl.SSLServerSocketImpl.accept(SSLServerSocketImpl.java:259)
+	at com.sun.corba.ee.impl.transport.SocketOrChannelAcceptorImpl.accept(SocketOrChannelAcceptorImpl.java:250)
+	at com.sun.corba.ee.impl.transport.ListenerThreadImpl.doWork(ListenerThreadImpl.java:107)
+	at com.sun.corba.ee.impl.orbutil.threadpool.ThreadPoolImpl$WorkerThread.run(ThreadPoolImpl.java:555)
+
+   Locked ownable synchronizers:
+	- None
+
+"p: thread-pool-1; w: 1" - Thread t@35
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked java.net.SocksSocketImpl@58710258
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at com.sun.net.ssl.internal.ssl.SSLServerSocketImpl.accept(SSLServerSocketImpl.java:259)
+	at com.sun.corba.ee.impl.transport.SocketOrChannelAcceptorImpl.accept(SocketOrChannelAcceptorImpl.java:250)
+	at com.sun.corba.ee.impl.transport.ListenerThreadImpl.doWork(ListenerThreadImpl.java:107)
+	at com.sun.corba.ee.impl.orbutil.threadpool.ThreadPoolImpl$WorkerThread.run(ThreadPoolImpl.java:555)
+
+   Locked ownable synchronizers:
+	- None
+
+"SelectorThread" - Thread t@34
+   java.lang.Thread.State: RUNNABLE
+	at sun.nio.ch.DevPollArrayWrapper.poll0(Native Method)
+	at sun.nio.ch.DevPollArrayWrapper.poll(DevPollArrayWrapper.java:164)
+	at sun.nio.ch.DevPollSelectorImpl.doSelect(DevPollSelectorImpl.java:68)
+	at sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:69)
+	- locked sun.nio.ch.Util$1@f6ecfb5
+	- locked java.util.Collections$UnmodifiableSet@1df799f9
+	- locked sun.nio.ch.DevPollSelectorImpl@636d5cfd
+	at sun.nio.ch.SelectorImpl.select(SelectorImpl.java:80)
+	at com.sun.corba.ee.impl.transport.SelectorImpl.run(SelectorImpl.java:283)
+
+   Locked ownable synchronizers:
+	- None
+
+"Timer-3" - Thread t@33
+   java.lang.Thread.State: WAITING on java.util.TaskQueue@3630f72
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	at java.util.TimerThread.run(Timer.java:462)
+
+   Locked ownable synchronizers:
+	- None
+
+"Timer-2" - Thread t@32
+   java.lang.Thread.State: TIMED_WAITING on java.util.TaskQueue@5c8b071a
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+   Locked ownable synchronizers:
+	- None
+
+"Timer-1" - Thread t@31
+   java.lang.Thread.State: TIMED_WAITING on java.util.TaskQueue@3a65d76a
+	at java.lang.Object.wait(Native Method)
+	at java.util.TimerThread.mainLoop(Timer.java:509)
+	at java.util.TimerThread.run(Timer.java:462)
+
+   Locked ownable synchronizers:
+	- None
+
+"Thread-4" - Thread t@30
+   java.lang.Thread.State: TIMED_WAITING
+	at java.lang.Thread.sleep(Native Method)
+	at com.sun.enterprise.admin.server.core.channel.RMIClient.run(RMIClient.java:151)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"RMI RenewClean-[10.5.185.104:46078,com.sun.enterprise.admin.server.core.channel.LocalRMIClientSocketFactory@3600e312]" - Thread t@28
+   java.lang.Thread.State: TIMED_WAITING on java.lang.ref.ReferenceQueue$Lock@46f846df
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	at sun.rmi.transport.DGCClient$EndpointEntry$RenewCleanThread.run(DGCClient.java:516)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"Timer-0" - Thread t@27
+   java.lang.Thread.State: WAITING on java.util.TaskQueue@47890e8f
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	at java.util.TimerThread.run(Timer.java:462)
+
+   Locked ownable synchronizers:
+	- None
+
+"RMI Scheduler(0)" - Thread t@26
+   java.lang.Thread.State: TIMED_WAITING on java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject@a45f686
+	at sun.misc.Unsafe.park(Native Method)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:583)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:576)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:947)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"GC Daemon" - Thread t@24
+   java.lang.Thread.State: TIMED_WAITING on sun.misc.GC$LatencyLock@7b1560a9
+	at java.lang.Object.wait(Native Method)
+	at sun.misc.GC$Daemon.run(GC.java:100)
+
+   Locked ownable synchronizers:
+	- None
+
+"RMI Reaper" - Thread t@23
+   java.lang.Thread.State: WAITING on java.lang.ref.ReferenceQueue$Lock@7e02286
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+	at sun.rmi.transport.ObjectTable$Reaper.run(ObjectTable.java:333)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"RMI TCP Accept-0" - Thread t@22
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked java.net.SocksSocketImpl@20f4190a
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:369)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:341)
+	at java.lang.Thread.run(Thread.java:619)
+
+   Locked ownable synchronizers:
+	- None
+
+"Signal Dispatcher" - Thread t@4
+   java.lang.Thread.State: RUNNABLE
+
+   Locked ownable synchronizers:
+	- None
+
+"Finalizer" - Thread t@3
+   java.lang.Thread.State: WAITING on java.lang.ref.ReferenceQueue$Lock@14bea551
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+   Locked ownable synchronizers:
+	- None
+
+"Reference Handler" - Thread t@2
+   java.lang.Thread.State: WAITING on java.lang.ref.Reference$Lock@1ccfa5c1
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+
+   Locked ownable synchronizers:
+	- None
+

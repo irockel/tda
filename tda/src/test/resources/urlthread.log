@@ -1,0 +1,700 @@
+2008-03-24 23:12:13
+Full thread dump Java HotSpot(TM) Server VM (1.6.0_03-b05 mixed mode):
+
+"RMI TCP Connection(69241)-207.241.232.195" daemon prio=10 tid=0x08657000 nid=0x39bb in Object.wait() [0xccdad000..0xccdadfb0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at com.sun.jmx.remote.internal.ArrayNotificationBuffer.fetchNotifications(ArrayNotificationBuffer.java:341)
+	- locked <0xd5004b78> (a com.sun.jmx.remote.internal.ArrayNotificationBuffer)
+	at com.sun.jmx.remote.internal.ArrayNotificationBuffer$ShareBuffer.fetchNotifications(ArrayNotificationBuffer.java:123)
+	at com.sun.jmx.remote.internal.ServerNotifForwarder.fetchNotifs(ServerNotifForwarder.java:258)
+	at javax.management.remote.rmi.RMIConnectionImpl$2.run(RMIConnectionImpl.java:1227)
+	at javax.management.remote.rmi.RMIConnectionImpl$2.run(RMIConnectionImpl.java:1225)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at javax.management.remote.rmi.RMIConnectionImpl.fetchNotifications(RMIConnectionImpl.java:1233)
+	at sun.reflect.GeneratedMethodAccessor4.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:305)
+	at sun.rmi.transport.Transport$1.run(Transport.java:159)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at sun.rmi.transport.Transport.serviceCall(Transport.java:155)
+	at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:535)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+	at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+	at java.lang.Thread.run(Thread.java:619)
+
+"RMI TCP Connection(idle)" daemon prio=10 tid=0x083f6800 nid=0x53d9 waiting on condition [0xce963000..0xce964130]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0xd4cec668> (a java.util.concurrent.SynchronousQueue$TransferStack)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:424)
+	at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:323)
+	at java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:874)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:944)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:906)
+	at java.lang.Thread.run(Thread.java:619)
+
+"JMX server connection timeout 9791" daemon prio=10 tid=0x0851bc00 nid=0x53d5 in Object.wait() [0xcd9ff000..0xcd9ff1b0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at com.sun.jmx.remote.internal.ServerCommunicatorAdmin$Timeout.run(ServerCommunicatorAdmin.java:150)
+	- locked <0xd78f93e0> (a [I)
+	at java.lang.Thread.run(Thread.java:619)
+
+"StatLogger" daemon prio=10 tid=0x0817e000 nid=0x4f57 waiting on condition [0xcfedb000..0xcfedbeb0]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at org.archive.crawler.framework.AbstractTracker.run(AbstractTracker.java:134)
+	at java.lang.Thread.run(Thread.java:619)
+
+"ToeThread #73: http://www.underarmour.com/shop/boys/sports/football/pid1099022-UA-Demolish-Mid/11.5&uaEvent=logout&&cleanIdentity=true" daemon prio=10 tid=0x08233c00 nid=0x4f53 waiting for monitor entry [0xce21c000..0xce21d030]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #71: http://shopping.zappos.com/robots.txt" daemon prio=10 tid=0x08ad6800 nid=0x4f51 waiting for monitor entry [0xcec3c000..0xcec3cf30]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #70: https://www.amazon.com/gp/cobrandcard/marketing.html/ref=cobrand_ch_b1/104-5672093-5381562?ad=0001&pr=bus&inc=def&place=marketing&plattr=none&imp=8797748861&type=B&refplace=marketing_con" daemon prio=10 tid=0x0822bc00 nid=0x4f50 waiting for monitor entry [0xce4f5000..0xce4f5fb0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #69: https://www.bestbuy.com/robots.txt" daemon prio=10 tid=0x0822ac00 nid=0x4f4f waiting for monitor entry [0xce087000..0xce087e30]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #67: http://www.fandango.com/imnotscared_83953/writeuserreviews" daemon prio=10 tid=0x085ec800 nid=0x4f4c waiting for monitor entry [0xcd9a5000..0xcd9a6130]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at com.sleepycat.je.evictor.Evictor.doEvict(Evictor.java:235)
+	- waiting to lock <0xd5bb9a68> (a com.sleepycat.je.evictor.Evictor)
+	at com.sleepycat.je.evictor.Evictor.doCriticalEviction(Evictor.java:274)
+	at com.sleepycat.je.dbi.CursorImpl.close(CursorImpl.java:684)
+	at com.sleepycat.je.dbi.CursorImpl.close(CursorImpl.java:654)
+	at com.sleepycat.je.Cursor.endRead(Cursor.java:1820)
+	at com.sleepycat.je.Cursor.retrieveNextAllowPhantoms(Cursor.java:1616)
+	at com.sleepycat.je.Cursor.retrieveNext(Cursor.java:1397)
+	at com.sleepycat.je.Cursor.getNext(Cursor.java:456)
+	at com.sleepycat.util.keyrange.RangeCursor.doGetNext(RangeCursor.java:898)
+	at com.sleepycat.util.keyrange.RangeCursor.getNext(RangeCursor.java:450)
+	at com.sleepycat.collections.DataCursor.getNext(DataCursor.java:445)
+	at com.sleepycat.collections.BlockIterator.hasNext(BlockIterator.java:361)
+	at org.apache.commons.httpclient.cookie.CookieSpecBase.match(CookieSpecBase.java:607)
+	at org.apache.commons.httpclient.HttpMethodBase.addCookieRequestHeader(HttpMethodBase.java:1193)
+	- locked <0xd5c7d3c0> (a org.apache.commons.httpclient.HttpState)
+	at org.apache.commons.httpclient.HttpMethodBase.addRequestHeaders(HttpMethodBase.java:1327)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequestHeaders(HttpMethodBase.java:2056)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequest(HttpMethodBase.java:1939)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1000)
+	at org.archive.httpclient.HttpRecorderGetMethod.execute(HttpRecorderGetMethod.java:116)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:397)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:170)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:396)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.archive.crawler.fetcher.FetchHTTP.innerProcess(FetchHTTP.java:500)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #63: http://www.dpreview.com/reviews/canonsd850is/" daemon prio=10 tid=0x0818fc00 nid=0x4f48 waiting for monitor entry [0xcf476000..0xcf476f30]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #62: http://myfilestash.com/robots.txt" daemon prio=10 tid=0x0814a400 nid=0x4f47 waiting for monitor entry [0xcebeb000..0xcebebfb0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #61: http://www.bestbuy.com/site/olspage.jsp?id=pcat17080&type=page&qp=crootcategoryid%23%23-1%23%23-1~~q70726f63657373696e6774696d653a3e313930302d30312d3031~~cabcat0700000%23%230%23%2319r~~cabcat0712000%23%230%23%239t~~f410%7C%7C243235202d202434392e3939~~nf428%7C%7C453d45766572796f6e65&list=y&nrp=15&sc=gameToySP&ks=960&usc=abcat0700000&sp=-bestsellingsort+skuid&list=y&iht=n&st=processingtime%3A%3E1900-01-01" daemon prio=10 tid=0x08149800 nid=0x4f46 waiting for monitor entry [0xce402000..0xce402e30]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #60: http://dcresource.com/robots.txt" daemon prio=10 tid=0x0846f000 nid=0x4f45 waiting for monitor entry [0xceec4000..0xceec4eb0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #58: http://www.target.com/gp/search/ref=ref_disc_asin/601-3851373-9413728?ie=UTF8&index=target&field-keywords=streetflyers%20street%20flyers%20sport%20equipment%20sporting%20goods%20bike%20bicycle%20spiderman%20kid%27s%20bmx%20training%20wheels&discontinuedRedirect=B000A0IBW4&url=index-target" daemon prio=10 tid=0x0884ec00 nid=0x4f43 waiting for monitor entry [0xcf425000..0xcf4261b0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #57: http://www.alloy.com/mostrecent/7/61/x/2/ref/7/60/6233/1/" daemon prio=10 tid=0x08441800 nid=0x4f42 waiting for monitor entry [0xce360000..0xce361030]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #56: https://www.stubhub.com/?gSec=login&goto=%2F%3FgSec%3Dsell%26gAct%3Dsell%26event%5Fid%3D583770%26&cb=16226" daemon prio=10 tid=0x08440c00 nid=0x4f41 waiting for monitor entry [0xcec8d000..0xcec8e0b0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #55: http://img.foodnetwork.com/FOOD/2003/10/20/tm1b13_spicy_salad1_e.jpg" daemon prio=10 tid=0x091f8800 nid=0x4f40 waiting for monitor entry [0xce1cb000..0xce1cbf30]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #54: http://www.soccer.com/ViewProductImages.process?Product_Id=239607&Image=94420.DGB" daemon prio=10 tid=0x084da800 nid=0x4f3f waiting for monitor entry [0xced2f000..0xced2ffb0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #53: http://g-ecx.images-amazon.com/images/G/01/ciu/cb/86/3bd8e893e7a0948cad6e4110._AA280_.L.jpg" daemon prio=10 tid=0x084d9800 nid=0x4f3e waiting for monitor entry [0xce3b1000..0xce3b1e30]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.apache.commons.httpclient.HttpMethodBase.addCookieRequestHeader(HttpMethodBase.java:1190)
+	- waiting to lock <0xd5c7d3c0> (a org.apache.commons.httpclient.HttpState)
+	at org.apache.commons.httpclient.HttpMethodBase.addRequestHeaders(HttpMethodBase.java:1327)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequestHeaders(HttpMethodBase.java:2056)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequest(HttpMethodBase.java:1939)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1000)
+	at org.archive.httpclient.HttpRecorderGetMethod.execute(HttpRecorderGetMethod.java:116)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:397)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:170)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:396)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.archive.crawler.fetcher.FetchHTTP.innerProcess(FetchHTTP.java:500)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #51: http://www.amazon.com/gp/vote/ref=cm_cr_dp_voteyn?ie=UTF8&2115%7CR2HFIXPJBHA8OM.contentAssoc.2.id=B000Q30420&type=if&uid=2115R2HFIXPJBHA8OMHelpfulReviews1&uri=%2Fgp%2Fproduct%2FB000Q30420&2115%7CR2HFIXPJBHA8OM.contentAssoc.2=1&2115%7CR2HFIXPJBHA8OM.contentAssoc.1=1&2115%7CR2HFIXPJBHA8OM.contentAssoc.1.type=AmazonCustomer&qv=pd%5Fts%5Fc%5Fth%5F3%5Fi&contentId=2115%7CR2HFIXPJBHA8OM&label=Helpful&qk=ref%5F&2115%7CR2HFIXPJBHA8OM.contentAssoc.2.type=ProductSet&ifRes=showYesNoCommunityResponse&2115%7CR2HFIXPJBHA8OM.contentAssoc.1.id=A2DM89IUYMFETB&context=Reviews&needsSignIn=1" daemon prio=10 tid=0x086e2000 nid=0x4f3c waiting for monitor entry [0xcf6ad000..0xcf6ae130]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #49: https://www.juicycouture.com/store/catalog/prod.jhtml?itemId=prod3010001&parentId=cat1201&masterId=cat121&cmCat=cat000000cat103cat121cat1201&index=11&tid=P6" daemon prio=10 tid=0x0873b400 nid=0x4f3a waiting for monitor entry [0xcfaba000..0xcfabb030]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #44: https://shopping.zappos.com/robots.txt" daemon prio=10 tid=0x08a58c00 nid=0x4f35 waiting for monitor entry [0xcdbfe000..0xcdbfeeb0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #43: " daemon prio=10 tid=0x083fb000 nid=0x4f34 waiting for monitor entry [0xcf2e1000..0xcf2e2130]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at com.sleepycat.je.evictor.Evictor.doEvict(Evictor.java:235)
+	- waiting to lock <0xd5bb9a68> (a com.sleepycat.je.evictor.Evictor)
+	at com.sleepycat.je.evictor.Evictor.doCriticalEviction(Evictor.java:274)
+	at com.sleepycat.je.dbi.CursorImpl.cloneCursor(CursorImpl.java:330)
+	at com.sleepycat.je.dbi.CursorImpl.cloneCursor(CursorImpl.java:288)
+	at com.sleepycat.je.Cursor.beginRead(Cursor.java:1800)
+	at com.sleepycat.je.Cursor.retrieveNextAllowPhantoms(Cursor.java:1583)
+	at com.sleepycat.je.Cursor.retrieveNext(Cursor.java:1397)
+	at com.sleepycat.je.Cursor.getNext(Cursor.java:456)
+	at org.archive.crawler.frontier.BdbMultipleWorkQueues.getNextNearestItem(BdbMultipleWorkQueues.java:294)
+	at org.archive.crawler.frontier.BdbMultipleWorkQueues.get(BdbMultipleWorkQueues.java:255)
+	at org.archive.crawler.frontier.BdbWorkQueue.peekItem(BdbWorkQueue.java:107)
+	at org.archive.crawler.frontier.WorkQueue.peek(WorkQueue.java:140)
+	at org.archive.crawler.frontier.WorkQueueFrontier.next(WorkQueueFrontier.java:656)
+	- locked <0xd5d81878> (a org.archive.crawler.frontier.BdbWorkQueue)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:144)
+
+"ToeThread #42: http://web.foodnetwork.com/food/web/cachedRecipesLikeThis/0,,Vegetables_19376_00,00.html" daemon prio=10 tid=0x08938c00 nid=0x4f33 waiting for monitor entry [0xcdd5c000..0xcdd5d1b0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #41: http://www.freepeople.com/index.cfm/fuseaction/products.detail/productID/d37b3413-eacb-474e-b116-f809f45cc1ef" daemon prio=10 tid=0x08938000 nid=0x4f32 waiting for monitor entry [0xcdf94000..0xcdf95030]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #40: https://images-na.ssl-images-amazon.com/images/I/01PH5-tUHPL.swf?value1=102-1542659-3058741:1206048336" daemon prio=10 tid=0x08555800 nid=0x4f31 waiting for monitor entry [0xcf0aa000..0xcf0ab0b0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.apache.commons.httpclient.HttpMethodBase.addCookieRequestHeader(HttpMethodBase.java:1190)
+	- waiting to lock <0xd5c7d3c0> (a org.apache.commons.httpclient.HttpState)
+	at org.apache.commons.httpclient.HttpMethodBase.addRequestHeaders(HttpMethodBase.java:1327)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequestHeaders(HttpMethodBase.java:2056)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequest(HttpMethodBase.java:1939)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1000)
+	at org.archive.httpclient.HttpRecorderGetMethod.execute(HttpRecorderGetMethod.java:116)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:397)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:170)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:396)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.archive.crawler.fetcher.FetchHTTP.innerProcess(FetchHTTP.java:500)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #38: http://www.eastbay.com/catalog/XYPromotion/model_nbr--73144/sku--1088404/xyMessage--none/www.eastbay.com" daemon prio=10 tid=0x08841c00 nid=0x4f2f waiting for monitor entry [0xcf332000..0xcf332fb0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #36: http://www.foodnetwork.com/cr/cda/email/recipe/1,1249,FOOD_9936_19376,00.html" daemon prio=10 tid=0x08148000 nid=0x4f2d waiting for monitor entry [0xcfb0b000..0xcfb0beb0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #35: http://www.stubhub.com/?gSec=login&goto=%2F%3FgSec%3Dsell%26gAct%3Dsell%26event%5Fid%3D583810%26" daemon prio=10 tid=0x0851d400 nid=0x4f2c waiting for monitor entry [0xcf008000..0xcf009130]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.apache.commons.httpclient.HttpMethodBase.addCookieRequestHeader(HttpMethodBase.java:1190)
+	- waiting to lock <0xd5c7d3c0> (a org.apache.commons.httpclient.HttpState)
+	at org.apache.commons.httpclient.HttpMethodBase.addRequestHeaders(HttpMethodBase.java:1327)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequestHeaders(HttpMethodBase.java:2056)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequest(HttpMethodBase.java:1939)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1000)
+	at org.archive.httpclient.HttpRecorderGetMethod.execute(HttpRecorderGetMethod.java:116)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:397)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:170)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:396)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.archive.crawler.fetcher.FetchHTTP.innerProcess(FetchHTTP.java:500)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #33: dns:imhhdfghfdages.apple.com" daemon prio=10 tid=0x08553800 nid=0x4f2a waiting for monitor entry [0xcf5ba000..0xcf5bb030]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #32: http://www.jcrew.com/catalog/multiProduct.jhtml?ids=prod86009231*1,prod86162231*0,prod86034231*1,prod86013231,prod89483231&ids=prod86009231*1,prod86162231,prod86034231*1,prod86013231,prod89483231&loc=MISP" daemon prio=10 tid=0x085a5c00 nid=0x4f29 waiting for monitor entry [0xce72c000..0xce72d0b0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.apache.commons.httpclient.HttpMethodBase.addCookieRequestHeader(HttpMethodBase.java:1190)
+	- waiting to lock <0xd5c7d3c0> (a org.apache.commons.httpclient.HttpState)
+	at org.apache.commons.httpclient.HttpMethodBase.addRequestHeaders(HttpMethodBase.java:1327)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequestHeaders(HttpMethodBase.java:2056)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequest(HttpMethodBase.java:1939)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1000)
+	at org.archive.httpclient.HttpRecorderGetMethod.execute(HttpRecorderGetMethod.java:116)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:397)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:170)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:396)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.archive.crawler.fetcher.FetchHTTP.innerProcess(FetchHTTP.java:500)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #26: dns:cards.pokecharms.com" daemon prio=10 tid=0x087d3c00 nid=0x4f23 waiting for monitor entry [0xce0d8000..0xce0d91b0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #25: http://www.zappos.com/bin/notifyme?p=7422949&size_id=&width_id=&color_id=3" daemon prio=10 tid=0x08923400 nid=0x4f22 waiting for monitor entry [0xcddad000..0xcddae030]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #23: http://www.imaging-resource.com/PRODS/SD850IS/images/sd8-back.jpg" daemon prio=10 tid=0x08656400 nid=0x4f20 waiting for monitor entry [0xce8c1000..0xce8c1f30]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #21: http://images.apple.com/euro/finalcutstudio/0407/finalcutpro/images/livetype_customeffect20070414.png" daemon prio=10 tid=0x084e0800 nid=0x4f1e waiting for monitor entry [0xcf1ee000..0xcf1eee30]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.apache.commons.httpclient.HttpMethodBase.addCookieRequestHeader(HttpMethodBase.java:1190)
+	- waiting to lock <0xd5c7d3c0> (a org.apache.commons.httpclient.HttpState)
+	at org.apache.commons.httpclient.HttpMethodBase.addRequestHeaders(HttpMethodBase.java:1327)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequestHeaders(HttpMethodBase.java:2056)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequest(HttpMethodBase.java:1939)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1000)
+	at org.archive.httpclient.HttpRecorderGetMethod.execute(HttpRecorderGetMethod.java:116)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:397)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:170)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:396)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.archive.crawler.fetcher.FetchHTTP.innerProcess(FetchHTTP.java:500)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #20: http://www.juicycouture.com/store/catalog/catalogPage.jhtml?itemId=cat9601&parentId=cat103&masterId=cat000000&cmCat=cat000000cat123cat6504&size=&sort=&tid=P9" daemon prio=10 tid=0x08226c00 nid=0x4f1d waiting for monitor entry [0xcf290000..0xcf290eb0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #18: http://www.urbanoutfitters.com/urban/catalog/category.jsp?popId=WOMENS&navAction=poppushpush&isSortBy=true&navCount=15477&pushId=WOMENS_APPAREL&id=W_APP_SWIMWEAR" daemon prio=10 tid=0x08597000 nid=0x4f1b runnable [0xcf0fb000..0xcf0fc1b0]
+   java.lang.Thread.State: RUNNABLE
+	at java.io.RandomAccessFile.seek(Native Method)
+	at com.sleepycat.je.log.FileManager.readFromFile(FileManager.java:1108)
+	- locked <0xe726e780> (a java.io.RandomAccessFile)
+	at com.sleepycat.je.log.FileSource.getBytes(FileSource.java:51)
+	at com.sleepycat.je.log.LogManager.getLogEntryFromLogSource(LogManager.java:626)
+	at com.sleepycat.je.log.LogManager.getLogEntry(LogManager.java:597)
+	at com.sleepycat.je.log.LogManager.get(LogManager.java:735)
+	at com.sleepycat.je.tree.IN.fetchTarget(IN.java:955)
+	at com.sleepycat.je.tree.IN.findParent(IN.java:2214)
+	at com.sleepycat.je.tree.Tree.getParentINForChildIN(Tree.java:945)
+	at com.sleepycat.je.tree.Tree.getParentINForChildIN(Tree.java:872)
+	at com.sleepycat.je.tree.Tree.getParentINForChildIN(Tree.java:822)
+	at com.sleepycat.je.evictor.Evictor.evict(Evictor.java:782)
+	at com.sleepycat.je.evictor.Evictor.evictBatch(Evictor.java:364)
+	at com.sleepycat.je.evictor.Evictor.doEvict(Evictor.java:249)
+	- locked <0xd5bb9a68> (a com.sleepycat.je.evictor.Evictor)
+	at com.sleepycat.je.evictor.Evictor.doCriticalEviction(Evictor.java:274)
+	at com.sleepycat.je.dbi.CursorImpl.close(CursorImpl.java:684)
+	at com.sleepycat.je.Cursor.close(Cursor.java:262)
+	- locked <0xe726fe90> (a com.sleepycat.je.Cursor)
+	at com.sleepycat.je.Cursor.close(Cursor.java:250)
+	at com.sleepycat.je.Database.putInternal(Database.java:667)
+	at com.sleepycat.je.Database.putNoOverwrite(Database.java:625)
+	at org.archive.crawler.util.BdbUriUniqFilter.setAdd(BdbUriUniqFilter.java:257)
+	at org.archive.crawler.util.SetBasedUriUniqFilter.add(SetBasedUriUniqFilter.java:89)
+	at org.archive.crawler.frontier.WorkQueueFrontier.schedule(WorkQueueFrontier.java:432)
+	at org.archive.crawler.postprocessor.FrontierScheduler.schedule(FrontierScheduler.java:92)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:78)
+	- locked <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #15: http://media.threadless.com/subs/small/50x35/108680t.jpg" daemon prio=10 tid=0x091fa400 nid=0x4f18 waiting for monitor entry [0xce77d000..0xce77df30]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.apache.commons.httpclient.HttpMethodBase.addCookieRequestHeader(HttpMethodBase.java:1190)
+	- waiting to lock <0xd5c7d3c0> (a org.apache.commons.httpclient.HttpState)
+	at org.apache.commons.httpclient.HttpMethodBase.addRequestHeaders(HttpMethodBase.java:1327)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequestHeaders(HttpMethodBase.java:2056)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequest(HttpMethodBase.java:1939)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1000)
+	at org.archive.httpclient.HttpRecorderGetMethod.execute(HttpRecorderGetMethod.java:116)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:397)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:170)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:396)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.archive.crawler.fetcher.FetchHTTP.innerProcess(FetchHTTP.java:500)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #14: http://threadless.com/profile/512773/text/javascript" daemon prio=10 tid=0x082a6c00 nid=0x4f17 waiting for monitor entry [0xce597000..0xce597fb0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #13: https://www.soccer.com/IWCatProductPage.process?Merchant_Id=1&Section_Id=1894&pcount=&Product_Id=299922" daemon prio=10 tid=0x08502400 nid=0x4f16 waiting for monitor entry [0xceaf8000..0xceaf8e30]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #12: " daemon prio=10 tid=0x0881a000 nid=0x4f15 waiting for monitor entry [0xcdfe5000..0xcdfe5eb0]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at com.sleepycat.je.evictor.Evictor.doEvict(Evictor.java:235)
+	- waiting to lock <0xd5bb9a68> (a com.sleepycat.je.evictor.Evictor)
+	at com.sleepycat.je.evictor.Evictor.doCriticalEviction(Evictor.java:274)
+	at com.sleepycat.je.dbi.CursorImpl.cloneCursor(CursorImpl.java:330)
+	at com.sleepycat.je.dbi.CursorImpl.cloneCursor(CursorImpl.java:288)
+	at com.sleepycat.je.Cursor.beginRead(Cursor.java:1800)
+	at com.sleepycat.je.Cursor.retrieveNextAllowPhantoms(Cursor.java:1583)
+	at com.sleepycat.je.Cursor.retrieveNext(Cursor.java:1397)
+	at com.sleepycat.je.Cursor.getNext(Cursor.java:456)
+	at org.archive.crawler.frontier.BdbMultipleWorkQueues.getNextNearestItem(BdbMultipleWorkQueues.java:294)
+	at org.archive.crawler.frontier.BdbMultipleWorkQueues.get(BdbMultipleWorkQueues.java:255)
+	at org.archive.crawler.frontier.BdbWorkQueue.peekItem(BdbWorkQueue.java:107)
+	at org.archive.crawler.frontier.WorkQueue.peek(WorkQueue.java:140)
+	at org.archive.crawler.frontier.WorkQueueFrontier.next(WorkQueueFrontier.java:656)
+	- locked <0xd5ba8278> (a org.archive.crawler.frontier.BdbWorkQueue)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:144)
+
+"ToeThread #11: " daemon prio=10 tid=0x0892f000 nid=0x4f14 waiting for monitor entry [0xce26d000..0xce26e130]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at com.sleepycat.je.evictor.Evictor.doEvict(Evictor.java:235)
+	- waiting to lock <0xd5bb9a68> (a com.sleepycat.je.evictor.Evictor)
+	at com.sleepycat.je.evictor.Evictor.doCriticalEviction(Evictor.java:274)
+	at com.sleepycat.je.dbi.CursorImpl.cloneCursor(CursorImpl.java:330)
+	at com.sleepycat.je.dbi.CursorImpl.cloneCursor(CursorImpl.java:288)
+	at com.sleepycat.je.Cursor.beginRead(Cursor.java:1800)
+	at com.sleepycat.je.Cursor.retrieveNextAllowPhantoms(Cursor.java:1583)
+	at com.sleepycat.je.Cursor.retrieveNext(Cursor.java:1397)
+	at com.sleepycat.je.Cursor.getNext(Cursor.java:456)
+	at org.archive.crawler.frontier.BdbMultipleWorkQueues.getNextNearestItem(BdbMultipleWorkQueues.java:294)
+	at org.archive.crawler.frontier.BdbMultipleWorkQueues.get(BdbMultipleWorkQueues.java:255)
+	at org.archive.crawler.frontier.BdbWorkQueue.peekItem(BdbWorkQueue.java:107)
+	at org.archive.crawler.frontier.WorkQueue.peek(WorkQueue.java:140)
+	at org.archive.crawler.frontier.WorkQueueFrontier.next(WorkQueueFrontier.java:656)
+	- locked <0xdb662420> (a org.archive.crawler.frontier.BdbWorkQueue)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:144)
+
+"ToeThread #9: http://www.dcviews.com/press/Canon-S5-IS.htm" daemon prio=10 tid=0x08552c00 nid=0x4f12 waiting for monitor entry [0xcd954000..0xcd955030]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.apache.commons.httpclient.HttpMethodBase.addCookieRequestHeader(HttpMethodBase.java:1190)
+	- waiting to lock <0xd5c7d3c0> (a org.apache.commons.httpclient.HttpState)
+	at org.apache.commons.httpclient.HttpMethodBase.addRequestHeaders(HttpMethodBase.java:1327)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequestHeaders(HttpMethodBase.java:2056)
+	at org.apache.commons.httpclient.HttpMethodBase.writeRequest(HttpMethodBase.java:1939)
+	at org.apache.commons.httpclient.HttpMethodBase.execute(HttpMethodBase.java:1000)
+	at org.archive.httpclient.HttpRecorderGetMethod.execute(HttpRecorderGetMethod.java:116)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeWithRetry(HttpMethodDirector.java:397)
+	at org.apache.commons.httpclient.HttpMethodDirector.executeMethod(HttpMethodDirector.java:170)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:396)
+	at org.apache.commons.httpclient.HttpClient.executeMethod(HttpClient.java:346)
+	at org.archive.crawler.fetcher.FetchHTTP.innerProcess(FetchHTTP.java:500)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #7: http://www.steves-digicams.com/2007_reviews/canon_sd850.html" daemon prio=10 tid=0x0841bc00 nid=0x4f10 waiting for monitor entry [0xcf19d000..0xcf19df30]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #5: http://a712.g.akamai.net/7/712/225/v20061013eb/www.eastbay.com/images/products/zoom/1088404_z.jpg" daemon prio=10 tid=0x085c6800 nid=0x4f0e waiting for monitor entry [0xcef15000..0xcef15e30]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"ToeThread #1: http://www.anthropologie.com/anthro/catalog/category.jsp?_DARGS=/anthro/common/dropdownHomeBody.jsp.4_A&_DAV=HOME_HOME_PAGE&_dynSessConf=5661551036306455957&navAction=jump&navCount=1045&id=BATHING" daemon prio=10 tid=0x083f1000 nid=0x4f0a waiting for monitor entry [0xcea56000..0xcea57030]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at org.archive.crawler.postprocessor.FrontierScheduler.innerProcess(FrontierScheduler.java:76)
+	- waiting to lock <0xd5bada80> (a org.archive.crawler.postprocessor.FrontierScheduler)
+	at org.archive.crawler.framework.Processor.process(Processor.java:112)
+	at org.archive.crawler.framework.ToeThread.processCrawlUri(ToeThread.java:302)
+	at org.archive.crawler.framework.ToeThread.run(ToeThread.java:151)
+
+"waker for org.archive.crawler.admin.CrawlJob$MBeanCrawlController@1dc596e" daemon prio=10 tid=0x084dc400 nid=0x4f08 in Object.wait() [0xcf14c000..0xcf14d0b0]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	- locked <0xd5bdd8d8> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"Checkpointer" daemon prio=10 tid=0x08423800 nid=0x4f01 in Object.wait() [0xcee73000..0xcee73f30]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sleepycat.je.utilint.DaemonThread.run(DaemonThread.java:163)
+	- locked <0xd5bba2c8> (a java.lang.Object)
+	at java.lang.Thread.run(Thread.java:619)
+
+"Cleaner-1" daemon prio=10 tid=0x085c5800 nid=0x4f00 in Object.wait() [0xcfe8a000..0xcfe8afb0]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at com.sleepycat.je.utilint.DaemonThread.run(DaemonThread.java:163)
+	- locked <0xd5bb8c28> (a java.lang.Object)
+	at java.lang.Thread.run(Thread.java:619)
+
+"INCompressor" daemon prio=10 tid=0x0893c400 nid=0x4eff in Object.wait() [0xcee22000..0xcee22e30]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at com.sleepycat.je.utilint.DaemonThread.run(DaemonThread.java:165)
+	- locked <0xd5bb9f98> (a java.lang.Object)
+	at java.lang.Thread.run(Thread.java:619)
+
+"Timer-0" daemon prio=10 tid=0xcf7fc800 nid=0x6fba in Object.wait() [0xcddfe000..0xcddfee30]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0xd50a0878> (a java.util.TaskQueue)
+	at java.lang.Object.wait(Object.java:485)
+	at java.util.TimerThread.mainLoop(Timer.java:483)
+	- locked <0xd50a0878> (a java.util.TaskQueue)
+	at java.util.TimerThread.run(Timer.java:462)
+
+"DestroyJavaVM" prio=10 tid=0xcfc98400 nid=0x5ba0 waiting on condition [0x00000000..0xf7e65100]
+   java.lang.Thread.State: RUNNABLE
+
+"PoolThread-1" prio=10 tid=0xd00ff800 nid=0x5bb6 in Object.wait() [0xcfb5c000..0xcfb5cf30]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at org.mortbay.util.ThreadPool$PoolThread.run(ThreadPool.java:497)
+	- locked <0xd4df8df0> (a org.mortbay.util.ThreadPool$PoolThread)
+
+"PoolThread-0" prio=10 tid=0xd009c400 nid=0x5bb5 in Object.wait() [0xcfbad000..0xcfbadfb0]
+   java.lang.Thread.State: TIMED_WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at org.mortbay.util.ThreadPool$PoolThread.run(ThreadPool.java:497)
+	- locked <0xd4df8fa0> (a org.mortbay.util.ThreadPool$PoolThread)
+
+"Acceptor ServerSocket[addr=0.0.0.0/0.0.0.0,port=0,localport=8094]" prio=10 tid=0xd0086800 nid=0x5bb4 runnable [0xcfbfe000..0xcfbfee30]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked <0xd4df8d38> (a java.net.SocksSocketImpl)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at org.mortbay.util.ThreadedServer.acceptSocket(ThreadedServer.java:358)
+	at org.mortbay.util.ThreadedServer$Acceptor.run(ThreadedServer.java:552)
+
+"SessionScavenger" daemon prio=10 tid=0xd00af000 nid=0x5bb3 waiting on condition [0xcfd97000..0xcfd97eb0]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at org.mortbay.jetty.servlet.AbstractSessionManager$SessionScavenger.run(AbstractSessionManager.java:481)
+
+"Rollover" daemon prio=10 tid=0xd0085800 nid=0x5bb2 waiting on condition [0xcfde9000..0xcfde9130]
+   java.lang.Thread.State: TIMED_WAITING (sleeping)
+	at java.lang.Thread.sleep(Native Method)
+	at org.mortbay.util.RolloverFileOutputStream$Rollover.run(RolloverFileOutputStream.java:288)
+
+"RMI Scheduler(0)" daemon prio=10 tid=0x081cd400 nid=0x5bb1 waiting on condition [0xcfe39000..0xcfe3a1b0]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+	at sun.misc.Unsafe.park(Native Method)
+	- parking to wait for  <0xd4cb6118> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+	at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+	at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+	at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:582)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:575)
+	at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:946)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:906)
+	at java.lang.Thread.run(Thread.java:619)
+
+"RMI TCP Accept-9094" daemon prio=10 tid=0xd007a000 nid=0x5bac runnable [0xcffad000..0xcffadfb0]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked <0xd4cc1b28> (a java.net.SocksSocketImpl)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:369)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:341)
+	at java.lang.Thread.run(Thread.java:619)
+
+"RMI TCP Accept-0" daemon prio=10 tid=0xd006fc00 nid=0x5bab runnable [0xcfffe000..0xcfffee30]
+   java.lang.Thread.State: RUNNABLE
+	at java.net.PlainSocketImpl.socketAccept(Native Method)
+	at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+	- locked <0xd4cb63c8> (a java.net.SocksSocketImpl)
+	at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+	at java.net.ServerSocket.accept(ServerSocket.java:421)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:369)
+	at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:341)
+	at java.lang.Thread.run(Thread.java:619)
+
+"Low Memory Detector" daemon prio=10 tid=0x08136000 nid=0x5baa runnable [0x00000000..0x00000000]
+   java.lang.Thread.State: RUNNABLE
+
+"CompilerThread1" daemon prio=10 tid=0x08134400 nid=0x5ba9 waiting on condition [0x00000000..0xd0493788]
+   java.lang.Thread.State: RUNNABLE
+
+"CompilerThread0" daemon prio=10 tid=0x08132c00 nid=0x5ba8 waiting on condition [0x00000000..0xd0514808]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x08131c00 nid=0x5ba7 waiting on condition [0x00000000..0x00000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x0811f000 nid=0x5ba6 in Object.wait() [0xd0709000..0xd070a0b0]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+	- locked <0xd4cfe828> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=10 tid=0x0811e400 nid=0x5ba5 in Object.wait() [0xd075a000..0xd075af30]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:485)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+	- locked <0xd4cfe6c8> (a java.lang.ref.Reference$Lock)
+
+"VM Thread" prio=10 tid=0x0811bc00 nid=0x5ba4 runnable 
+
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x08060c00 nid=0x5ba2 runnable 
+
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x08061c00 nid=0x5ba3 runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0xd007c800 nid=0x5bad waiting on condition 
+
+JNI global references: 873
+
+Heap
+ PSYoungGen      total 58176K, used 9357K [0xf13d0000, 0xf4cb0000, 0xf4cb0000)
+  eden space 58112K, 16% used [0xf13d0000,0xf1cef708,0xf4c90000)
+  from space 64K, 25% used [0xf4ca0000,0xf4ca4000,0xf4cb0000)
+  to   space 64K, 0% used [0xf4c90000,0xf4c90000,0xf4ca0000)
+ PSOldGen        total 466048K, used 425073K [0xd4cb0000, 0xf13d0000, 0xf13d0000)
+  object space 466048K, 91% used [0xd4cb0000,0xeebcc690,0xf13d0000)
+ PSPermGen       total 22144K, used 21756K [0xd0cb0000, 0xd2250000, 0xd4cb0000)
+  object space 22144K, 98% used [0xd0cb0000,0xd21ef2c8,0xd2250000)
+

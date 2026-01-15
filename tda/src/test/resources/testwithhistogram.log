@@ -1,0 +1,1168 @@
+[2006-05-03:12:00:00.000] dummy log line for timestamp
+
+Full thread dump Java HotSpot(TM) Client VM (1.5.0_06-b05 mixed mode):
+
+"TimerQueue" daemon prio=1 tid=0x08256e88 nid=0x2d55 in Object.wait() [0xa967c000..0xa967c1c0]
+        at java.lang.Object.wait(Native Method)
+        - waiting on <0xaab97850> (a javax.swing.TimerQueue)
+        at javax.swing.TimerQueue.run(TimerQueue.java:233)
+        - locked <0xaab97850> (a javax.swing.TimerQueue)
+        at java.lang.Thread.run(Thread.java:595)
+
+"Timer-0" daemon prio=1 tid=0x08222940 nid=0x2d53 in Object.wait() [0xa95fa000..0xa95fb0c0]
+        at java.lang.Object.wait(Native Method)
+        - waiting on <0xaab4e650> (a java.util.TaskQueue)
+        at java.util.TimerThread.mainLoop(Timer.java:509)
+        - locked <0xaab4e650> (a java.util.TaskQueue)
+        at java.util.TimerThread.run(Timer.java:462)
+
+"DestroyJavaVM" prio=1 tid=0x0805c840 nid=0x2d42 waiting on condition [0x00000000..0xbff16fb0]
+
+"AWT-EventQueue-0" prio=1 tid=0x081ead30 nid=0x2d4d in Object.wait() [0xa9a48000..0xa9a491c0]
+        at java.lang.Object.wait(Native Method)
+        - waiting on <0xaab07788> (a java.awt.EventQueue)
+        at java.lang.Object.wait(Object.java:474)
+        at java.awt.EventQueue.getNextEvent(EventQueue.java:345)
+        - locked <0xaab07788> (a java.awt.EventQueue)
+        at java.awt.EventDispatchThread.pumpOneEventForHierarchy(EventDispatchThread.java:189)
+        at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:163)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:157)
+        at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:149)
+        at java.awt.EventDispatchThread.run(EventDispatchThread.java:110)
+
+"AWT-Shutdown" prio=1 tid=0x081e8438 nid=0x2d4c in Object.wait() [0xa9ac9000..0xa9aca040]
+        at java.lang.Object.wait(Native Method)
+        - waiting on <0xaaad4f10> (a java.lang.Object)
+        at java.lang.Object.wait(Object.java:474)
+        at sun.awt.AWTAutoShutdown.run(AWTAutoShutdown.java:259)
+        - locked <0xaaad4f10> (a java.lang.Object)
+        at java.lang.Thread.run(Thread.java:595)
+
+"AWT-XAWT" daemon prio=1 tid=0x081e7f10 nid=0x2d4b runnable [0xa9b4a000..0xa9b4b0c0]
+        at sun.awt.X11.XToolkit.waitForEvents(Native Method)
+        at sun.awt.X11.XToolkit.run(XToolkit.java:463)
+        at sun.awt.X11.XToolkit.run(XToolkit.java:438)
+        at java.lang.Thread.run(Thread.java:595)
+
+"Java2D Disposer" daemon prio=1 tid=0x081d6d38 nid=0x2d4a in Object.wait() [0xa9bd4000..0xa9bd4f40]
+        at java.lang.Object.wait(Native Method)
+        - waiting on <0xaab078f0> (a java.lang.ref.ReferenceQueue$Lock)
+        at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+        - locked <0xaab078f0> (a java.lang.ref.ReferenceQueue$Lock)
+        at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+        at sun.java2d.Disposer.run(Disposer.java:107)
+        at java.lang.Thread.run(Thread.java:595)
+
+"Low Memory Detector" daemon prio=1 tid=0x080c6c28 nid=0x2d48 runnable [0x00000000..0x00000000]
+
+"CompilerThread0" daemon prio=1 tid=0x080c56c8 nid=0x2d47 waiting on condition [0x00000000..0xaa3178a8]
+
+"Signal Dispatcher" daemon prio=1 tid=0x080c4820 nid=0x2d46 waiting on condition [0x00000000..0x00000000]
+
+"Finalizer" daemon prio=1 tid=0x080b95a8 nid=0x2d45 in Object.wait() [0xaa44d000..0xaa44d1c0]
+        at java.lang.Object.wait(Native Method)
+        - waiting on <0xaaad50d8> (a java.lang.ref.ReferenceQueue$Lock)
+        at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+        - locked <0xaaad50d8> (a java.lang.ref.ReferenceQueue$Lock)
+        at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+        at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+"Reference Handler" daemon prio=1 tid=0x080b88d8 nid=0x2d44 in Object.wait() [0xaa4cd000..0xaa4ce040]
+        at java.lang.Object.wait(Native Method)
+        - waiting on <0xaaad4f00> (a java.lang.ref.Reference$Lock)
+        at java.lang.Object.wait(Object.java:474)
+        at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+        - locked <0xaaad4f00> (a java.lang.ref.Reference$Lock)
+
+"VM Thread" prio=1 tid=0x080b5c60 nid=0x2d43 runnable
+
+"VM Periodic Task Thread" prio=1 tid=0x080c80b8 nid=0x2d49 waiting on condition
+
+
+num   #instances    #bytes  class name
+--------------------------------------
+  1:     15660     3695576  [C
+  2:     28591     3246576  <no name>
+  3:     44495     1611808  <symbolKlass>
+  4:     28591     1606712  <methodKlass>
+  5:      2270     1403760  <constantPoolKlass>
+  6:      2270     1048608  <instanceKlassKlass>
+  7:      2171      964096  <constantPoolCacheKlass>
+  8:      2687      496600  [B
+  9:     15594      374256  java.lang.String
+ 10:      3622      261488  [S
+ 11:      2493      219384  java.lang.Class
+ 12:      2307      204568  [I
+ 13:      3724      190976  [[I
+ 14:      3762       90288  java.util.Hashtable$Entry
+ 15:      1250       81768  [Ljava.lang.Object;
+ 16:      2486       79552  javax.swing.text.html.parser.ContentModel
+ 17:      2994       71856  com.pironet.tda.utils.HistogramTableModel$Entry
+ 18:      2681       64344  java.util.HashMap$Entry
+ 19:       194       58976  <objArrayKlassKlass>
+ 20:       183       44328  [Ljava.util.Hashtable$Entry;
+ 21:      1352       32448  javax.swing.tree.DefaultMutableTreeNode
+ 22:       206       29544  [Ljava.util.HashMap$Entry;
+ 23:       710       23904  [Ljava.lang.String;
+ 24:      1321       21136  com.pironet.tda.ThreadInfo
+ 25:        24       11136  javax.swing.plaf.metal.MetalScrollButton
+ 26:        19       10752  [F
+ 27:       659       10544  java.lang.Integer
+ 28:       424       10176  java.util.Vector
+ 29:       199        9552  sun.java2d.loops.Blit
+ 30:       201        8040  java.util.HashMap
+ 31:       163        7824  sun.java2d.loops.ScaledBlit
+ 32:       176        7040  java.util.WeakHashMap$Entry
+ 33:       171        6840  java.util.Hashtable
+ 34:       250        6000  java.lang.ref.WeakReference
+ 35:       342        5472  javax.swing.event.EventListenerList
+ 36:       166        5312  javax.swing.text.html.parser.AttributeList
+ 37:        66        5280  java.lang.reflect.Method
+ 38:        80        5120  java.lang.reflect.Constructor
+ 39:        11        4928  javax.swing.JMenuItem
+ 40:       143        4576  java.lang.ref.SoftReference
+ 41:        10        4480  [[I
+ 42:        12        4224  javax.swing.JScrollPane$ScrollBar
+ 43:        88        4224  javax.swing.text.html.parser.Element
+ 44:        13        4160  javax.swing.JPanel
+ 45:       256        4096  java.lang.Short
+ 46:       226        3616  javax.swing.ArrayTable
+ 47:       105        3360  java.util.LinkedHashMap$Entry
+ 48:        36        3120  [Z
+ 49:        47        3008  java.util.logging.Logger
+ 50:        27        2984  [J
+ 51:        74        2960  javax.swing.plaf.ColorUIResource
+ 52:         8        2816  javax.swing.JViewport
+ 53:       146        2760  [Ljava.awt.Component;
+ 54:        38        2736  java.lang.reflect.Field
+ 55:         2        2704  [Lsun.java2d.loops.GraphicsPrimitive;
+ 56:         7        2632  javax.swing.JScrollPane
+ 57:       107        2568  java.awt.Rectangle
+ 58:       106        2544  javax.swing.text.html.CSS$LengthValue
+ 59:        53        2544  sun.java2d.loops.MaskBlit
+ 60:       104        2496  java.beans.PropertyChangeSupport
+ 61:       103        2472  javax.swing.text.html.parser.Entity
+ 62:         8        2432  <typeArrayKlassKlass>
+ 63:        74        2368  java.lang.ref.Finalizer
+ 64:        74        2368  sun.awt.X11.XAtom
+ 65:        97        2328  javax.swing.KeyStroke
+ 66:        36        2304  java.awt.geom.AffineTransform
+ 67:         3        2272  [[Ljava.lang.String;
+ 68:         5        2200  javax.swing.JButton
+ 69:        91        2184  javax.swing.text.html.StyleSheet$SmallConversionSet
+ 70:        44        2112  sun.java2d.loops.MaskFill
+ 71:         8        2048  javax.swing.CellRendererPane
+ 72:       108        2016  [Ljava.beans.PropertyChangeListener;
+ 73:       248        1984  java.lang.Object
+ 74:        80        1920  javax.swing.SizeRequirements
+ 75:        78        1872  sun.font.TrueTypeFont$DirectoryEntry
+ 76:        15        1800  sun.awt.image.ByteInterleavedRaster
+ 77:        20        1760  sun.font.CompositeFont
+ 78:        73        1752  javax.swing.text.StyleContext$NamedStyle
+ 79:       108        1728  sun.awt.EventListenerAggregate
+ 80:         9        1696  [Ljava.util.WeakHashMap$Entry;
+ 81:        69        1656  javax.swing.text.html.StyleSheet$SelectorMapping
+ 82:         5        1640  javax.swing.JPopupMenu$Separator
+ 83:        29        1624  java.net.URL
+ 84:        29        1592  [D
+ 85:        96        1536  java.awt.AWTEventMulticaster
+ 86:        12        1536  javax.swing.plaf.metal.MetalScrollBarUI
+ 87:        62        1488  java.util.logging.LogManager$LogNode
+ 88:        15        1440  sun.awt.image.ImageRepresentation
+ 89:        36        1440  javax.swing.plaf.basic.BasicTableUI$Actions
+ 90:         4        1440  javax.swing.JPopupMenu
+ 91:        30        1440  sun.java2d.loops.DrawGlyphListAA
+ 92:        89        1424  java.lang.Long
+ 93:        89        1424  javax.swing.ActionMap
+ 94:        59        1416  javax.swing.text.html.CSS$Attribute
+ 95:         3        1416  javax.swing.JMenu
+ 96:        58        1392  sun.java2d.loops.SurfaceType
+ 97:        43        1376  javax.swing.DefaultButtonModel
+ 98:         4        1344  javax.swing.Box$Filler
+ 99:        76        1312  [Ljava.lang.Class;
+100:        27        1296  sun.java2d.loops.BlitBg
+101:        81        1296  javax.swing.text.html.HTML$Attribute
+102:        77        1232  javax.swing.text.html.HTML$Tag
+103:        10        1200  <klassKlass>
+104:        15        1200  java.awt.image.IndexColorModel
+105:        70        1120  javax.swing.InputMap
+106:        69        1104  java.lang.ProcessEnvironment$Variable
+107:        69        1104  java.lang.ProcessEnvironment$Value
+108:         1        1040  [Ljava.lang.Integer;
+109:         1        1040  [Ljava.lang.Short;
+110:        26        1040  java.awt.SystemColor
+111:        32        1024  javax.swing.text.GapContent$MarkData
+112:        42        1008  sun.swing.SwingLazyValue
+113:        18        1008  java.nio.DirectByteBuffer
+114:        21        1008  javax.swing.Timer
+115:        20         960  sun.awt.X11PMBlitLoops
+116:        40         960  java.util.ArrayList
+117:        39         936  java.util.LinkedList$Entry
+118:         2         928  javax.swing.plaf.metal.MetalComboBoxButton
+119:        38         912  sun.reflect.NativeConstructorAccessorImpl
+120:         2         896  javax.swing.plaf.metal.MetalComboBoxEditor$1
+121:        37         888  java.awt.Insets
+122:         2         880  javax.swing.JToggleButton
+123:        22         880  sun.misc.SoftCache$ValueCell
+124:        11         880  javax.swing.text.html.InlineView
+125:         2         864  javax.swing.JEditorPane
+126:        12         864  javax.swing.plaf.FontUIResource
+127:         2         848  javax.swing.plaf.basic.BasicComboPopup
+128:        15         840  sun.java2d.loops.GraphicsPrimitiveProxy
+129:        21         840  java.awt.Color
+130:        35         840  java.io.ExpiringCache$Entry
+131:        17         816  sun.java2d.loops.FillRect
+132:        17         816  sun.java2d.loops.DrawGlyphList
+133:        25         800  java.util.Locale
+134:        11         792  javax.swing.plaf.basic.BasicMenuItemUI
+135:        33         792  javax.swing.plaf.basic.BasicButtonListener
+136:        20         784  [Lsun.font.PhysicalFont;
+137:         2         768  javax.swing.plaf.metal.MetalFileChooserUI$AlignedLabel
+138:         8         768  java.lang.Thread
+139:        16         768  sun.java2d.loops.FillSpans
+140:        16         768  sun.java2d.loops.DrawLine
+141:        16         768  sun.java2d.loops.DrawRect
+142:        16         768  sun.java2d.loops.DrawPolygons
+143:        47         752  javax.swing.UIDefaults$LazyInputMap
+144:         2         752  javax.swing.plaf.basic.BasicComboPopup$1
+145:        47         752  javax.swing.AbstractButton$Handler
+146:        46         736  javax.swing.event.ChangeEvent
+147:        44         728  [Ljavax.swing.text.AttributeSet;
+148:        18         720  javax.swing.text.html.HTMLDocument$RunElement
+149:        15         720  java.awt.image.PixelInterleavedSampleModel
+150:         2         720  javax.swing.JRootPane
+151:        24         720  [Ljavax.swing.text.html.CSS$Attribute;
+152:        29         696  java.lang.ref.PhantomReference
+153:        27         696  [Ljavax.swing.text.AbstractDocument$AbstractElement;
+154:        29         696  sun.java2d.DefaultDisposerRecord
+155:        17         680  javax.swing.text.html.HTMLDocument$BlockElement
+156:         5         680  java.awt.image.DirectColorModel
+157:        42         672  <compiledICHolderKlass>
+158:        12         672  java.util.jar.JarFile
+159:        21         672  java.util.ResourceBundle$LoaderReference
+160:        42         672  java.awt.Dimension
+161:        14         672  javax.swing.ImageIcon
+162:         2         656  javax.swing.JLayeredPane
+163:         9         648  java.awt.Font
+164:        27         648  sun.awt.SunHints$Value
+165:         5         640  javax.swing.text.html.ParagraphView
+166:        20         640  java.io.ObjectStreamField
+167:        16         640  javax.swing.DefaultBoundedRangeModel
+168:        20         640  java.util.TreeMap$Entry
+169:        39         624  sun.reflect.DelegatingConstructorAccessorImpl
+170:         6         624  javax.swing.plaf.basic.BasicTextUI$BasicCaret
+171:        11         616  javax.swing.text.html.StyleSheet$BoxPainter
+172:         2         608  <arrayKlassKlass>
+173:        38         608  java.lang.Float
+174:        15         600  java.awt.image.DataBufferByte
+175:        15         600  java.awt.image.BufferedImage
+176:        15         600  sun.awt.image.ToolkitImage
+177:        25         600  java.lang.ref.ReferenceQueue
+178:        23         592  [Ljavax.swing.text.View;
+179:        12         576  javax.swing.TransferHandler$SwingDropTarget
+180:        36         576  java.util.regex.Pattern$Category
+181:         6         576  [Lsun.java2d.loops.RenderCache$Entry;
+182:        12         576  sun.font.StrikeMetrics
+183:         6         576  sun.font.FileFontStrike
+184:        14         560  sun.awt.image.ByteArrayImageSource
+185:        10         560  java.awt.BorderLayout
+186:        23         552  sun.reflect.NativeMethodAccessorImpl
+187:        23         552  javax.swing.text.html.StyleSheet$ViewAttributeSet
+188:        23         552  com.sun.java.swing.SwingUtilities2$2
+189:        22         528  java.util.ResourceBundle$ResourceCacheKey
+190:         1         528  [Ljava.util.TimerTask;
+191:        22         528  java.security.AccessControlContext
+192:         6         528  javax.swing.text.ParagraphView$Row
+193:         5         520  sun.font.TrueTypeFont
+194:        13         520  sun.misc.Cleaner
+195:        16         512  java.util.concurrent.ConcurrentHashMap$Segment
+196:         9         504  sun.awt.image.BufImgSurfaceData
+197:        21         504  javax.swing.text.html.StyleSheet$ResolvedStyle
+198:         7         504  javax.swing.JMenuItem$AccessibleJMenuItem
+199:         7         504  sun.font.FontDesignMetrics
+200:        12         480  [Ljavax.swing.text.GapContent$MarkData;
+201:        12         480  sun.font.FontStrikeDisposer
+202:        12         480  sun.font.StrikeCache$SoftDisposerRef
+203:        20         480  sun.awt.shell.DefaultShellFolder
+204:        15         480  javax.swing.text.html.CSS$FontSize
+205:        20         480  javax.swing.plaf.InsetsUIResource
+206:        10         480  sun.awt.X11PMBlitLoops$DelegateBlitLoop
+207:        10         480  sun.awt.X11PMBlitBgLoops
+208:         6         480  sun.awt.X11SurfaceData$X11PixmapSurfaceData
+209:        29         464  javax.accessibility.AccessibleState
+210:        28         448  sun.reflect.DelegatingMethodAccessorImpl
+211:         1         448  javax.swing.plaf.metal.MetalFileChooserUI$3
+212:        14         448  javax.swing.plaf.metal.MetalBumps
+213:         1         448  sun.swing.FilePane
+214:        28         448  java.util.regex.Pattern$Ctype
+215:        28         448  java.util.HashSet
+216:         5         440  java.util.prefs.FileSystemPreferences
+217:         1         440  javax.swing.JTextField
+218:         5         440  [Ljavax.swing.Action;
+219:         9         432  sun.awt.motif.X11CachingSurfaceManager
+220:         9         432  java.util.WeakHashMap
+221:        18         432  java.util.LinkedList
+222:         1         424  sun.swing.FilePane$6
+223:        26         416  javax.swing.text.GapContent$StickyPosition
+224:        13         416  java.util.Collections$SynchronizedMap
+225:        13         416  javax.swing.plaf.basic.BasicLookAndFeel$AudioAction
+226:         1         416  javax.swing.tree.DefaultTreeCellRenderer
+227:         1         408  javax.swing.JFileChooser
+228:        17         408  sun.java2d.loops.CompositeType
+229:        25         400  javax.swing.text.html.CSS$Value
+230:        25         400  java.lang.StringBuffer
+231:        25         400  sun.font.Font2DHandle
+232:        25         400  javax.accessibility.AccessibleRelationSet
+233:         1         392  sun.swing.FilePane$DetailsTableCellRenderer
+234:         7         392  javax.swing.plaf.metal.MetalScrollPaneUI
+235:         7         392  javax.swing.ScrollPaneLayout$UIResource
+236:         1         392  javax.swing.JTree
+237:        12         384  javax.swing.plaf.basic.BasicScrollBarUI$TrackListener
+238:         1         384  sun.swing.FilePane$3
+239:        16         384  java.util.concurrent.locks.ReentrantLock$NonfairSync
+240:         1         384  com.pironet.tda.TDA
+241:        24         384  java.security.Provider$EngineDescription
+242:        24         384  java.io.File
+243:         8         384  javax.swing.text.html.HTMLEditorKit$InsertHTMLTextAction
+244:         4         384  java.util.jar.JarFile$JarFileEntry
+245:        12         384  sun.misc.URLClassPath$JarLoader
+246:        12         384  sun.font.FontStrikeDesc
+247:         1         376  javax.swing.plaf.metal.MetalFileChooserUI$FilterComboBoxRenderer
+248:         1         376  javax.swing.plaf.metal.MetalFileChooserUI$DirectoryComboBoxRenderer
+249:         1         376  javax.swing.table.JTableHeader$UIResourceTableCellRenderer
+250:         1         376  sun.swing.FilePane$FileRenderer
+251:         5         376  [Lsun.font.TrueTypeFont$DirectoryEntry;
+252:        23         368  java.util.jar.Attributes$Name
+253:         1         368  javax.swing.JComboBox
+254:         1         368  javax.swing.plaf.metal.MetalFileChooserUI$1
+255:         1         368  javax.swing.JLabel
+256:         1         360  javax.swing.JSplitPane
+257:         1         360  javax.swing.JFrame
+258:         1         352  javax.swing.table.JTableHeader
+259:         1         344  javax.swing.plaf.metal.MetalFileChooserUI
+260:         6         336  sun.reflect.DelegatingClassLoader
+261:        14         336  javax.swing.plaf.basic.LazyActionMap
+262:         6         336  javax.swing.tree.VariableHeightLayoutCache$TreeStateNode
+263:        21         336  javax.swing.Timer$DoPostEvent
+264:         1         336  javax.swing.JMenuBar
+265:         1         336  [Ljavax.swing.text.html.HTML$Attribute;
+266:         1         336  javax.swing.JDialog
+267:        20         320  javax.swing.plaf.InputMapUIResource
+268:        20         320  java.awt.font.TextAttribute
+269:        20         320  javax.swing.text.html.CSS$StringValue
+270:         1         320  javax.swing.plaf.metal.MetalSplitPaneDivider
+271:         1         312  [Ljavax.swing.text.html.HTML$Tag;
+272:        12         288  javax.swing.ComponentInputMap
+273:        12         288  java.awt.dnd.DropTargetContext
+274:        12         288  javax.swing.plaf.basic.BasicScrollBarUI$ScrollListener
+275:         9         288  sun.font.FontManager$FontRegistrationInfo
+276:        12         288  java.util.regex.Pattern$Single
+277:         3         288  javax.swing.plaf.basic.BasicListUI
+278:         3         288  javax.swing.plaf.basic.BasicMenuUI
+279:        18         288  java.text.DateFormat$Field
+280:         4         288  javax.swing.text.PlainDocument
+281:        12         288  java.util.Collections$UnmodifiableMap
+282:        18         288  java.util.BitSet
+283:         6         288  sun.font.CompositeStrike
+284:         7         280  java.util.TreeMap
+285:         5         280  javax.swing.DefaultListSelectionModel
+286:         7         280  sun.font.FontFamily
+287:         5         280  com.pironet.tda.utils.HistogramTableModel
+288:         8         272  [Ljavax.swing.SizeRequirements;
+289:         2         272  java.text.DecimalFormat
+290:        17         272  sun.java2d.pipe.PixelToShapeConverter
+291:        11         264  javax.swing.plaf.ComponentInputMapUIResource
+292:        11         264  java.util.regex.Pattern$GroupTail
+293:        16         256  javax.swing.text.html.CSS$FontWeight
+294:        16         256  [Ljava.util.concurrent.ConcurrentHashMap$HashEntry;
+295:         8         256  sun.java2d.loops.RenderCache$Entry
+296:         4         256  javax.swing.text.FieldView
+297:         8         256  sun.awt.X11Renderer
+298:         8         256  javax.swing.text.DefaultEditorKit$NextVisualPositionAction
+299:         1         248  sun.awt.X11.XFramePeer
+300:         6         240  javax.swing.BoxLayout
+301:        15         240  [[B
+302:         6         240  javax.swing.text.AbstractDocument$BidiElement
+303:         5         240  sun.nio.ch.FileChannelImpl
+304:         3         240  [Ljava.lang.ThreadLocal$ThreadLocalMap$Entry;
+305:         3         240  javax.swing.JMenu$AccessibleJMenu
+306:         5         240  java.util.Properties
+307:        10         240  javax.swing.UIDefaults$ProxyLazyValue
+308:         5         240  sun.font.CMap$CMapFormat4
+309:         6         240  javax.swing.text.GapContent
+310:         6         240  javax.swing.text.AbstractDocument$BidiRootElement
+311:         6         224  [Lsun.font.PhysicalStrike;
+312:         7         224  java.lang.ThreadLocal$ThreadLocalMap$Entry
+313:         4         224  javax.swing.UIDefaults
+314:         7         224  java.util.regex.Pattern$Curly
+315:         2         224  javax.swing.plaf.metal.MetalComboBoxUI
+316:        14         224  javax.swing.plaf.IconUIResource
+317:         2         224  javax.swing.text.html.HTMLEditorKit$HTMLFactory$BodyBlockView
+318:         9         216  java.awt.datatransfer.DataFlavor
+319:         9         216  javax.swing.text.StyledEditorKit$FontSizeAction
+320:         9         216  java.awt.datatransfer.MimeType
+321:         9         216  java.util.regex.Pattern$Range
+322:         3         216  javax.swing.JButton$AccessibleJButton
+323:         9         216  [Lsun.awt.SunHints$Value;
+324:         9         216  java.util.Stack
+325:         9         216  java.util.logging.Level
+326:        27         216  java.lang.ref.ReferenceQueue$Lock
+327:        13         208  java.util.zip.ZipFile$ZipCloser
+328:         2         208  javax.swing.text.html.HTMLEditorKit$HTMLFactory$1
+329:         5         200  sun.java2d.loops.RenderLoops
+330:         8         200  [Ljava.lang.Boolean;
+331:         5         200  javax.swing.text.FlowView$LogicalView
+332:         5         200  javax.swing.plaf.basic.DefaultMenuLayout
+333:         1         200  javax.swing.plaf.basic.BasicSplitPaneUI$1
+334:         5         192  [Lsun.font.CharToGlyphMapper;
+335:        12         192  javax.swing.plaf.basic.BasicScrollBarUI$ArrowButtonListener
+336:         3         192  java.util.regex.Pattern
+337:        12         192  javax.swing.plaf.basic.BasicScrollBarUI$ModelListener
+338:        12         192  javax.swing.plaf.metal.MetalScrollBarUI$ScrollBarListener
+339:        12         192  javax.swing.plaf.basic.BasicScrollBarUI$Handler
+340:        12         192  javax.swing.plaf.DimensionUIResource
+341:         2         192  javax.swing.text.html.HTMLDocument
+342:         3         192  javax.swing.text.html.StyleSheet
+343:         8         192  javax.swing.text.StyleContext$FontKey
+344:         8         192  [Ljava.io.ObjectStreamField;
+345:        12         192  java.awt.AlphaComposite
+346:        12         192  javax.swing.JScrollBar$ModelListener
+347:        12         192  [Ljava.security.ProtectionDomain;
+348:         8         192  javax.swing.border.EmptyBorder
+349:         3         192  javax.swing.table.TableColumn
+350:         2         192  javax.swing.text.html.BlockView
+351:         6         192  java.lang.ClassLoader$NativeLibrary
+352:         1         192  javax.swing.ImageIcon$1
+353:         1         184  javax.swing.plaf.metal.MetalTreeUI
+354:        11         176  java.util.regex.Pattern$GroupHead
+355:        11         176  javax.swing.plaf.basic.BasicMenuItemUI$Handler
+356:        11         176  java.io.FileDescriptor
+357:         3         168  javax.swing.text.html.HTMLEditorKit
+358:         7         168  javax.swing.event.SwingPropertyChangeSupport
+359:         7         168  javax.swing.DefaultSingleSelectionModel
+360:         2         168  [Ljava.text.DateFormat$Field;
+361:         5         160  sun.font.CompositeGlyphMapper
+362:        10         160  javax.swing.plaf.BorderUIResource$CompoundBorderUIResource
+363:         5         160  sun.font.FileFont$FileFontDisposer
+364:         2         160  javax.swing.JComboBox$AccessibleJComboBox
+365:        10         160  java.awt.Point
+366:         5         160  sun.font.TrueTypeGlyphMapper
+367:         5         160  sun.misc.SoftCache
+368:         5         160  [Ljava.util.Set;
+369:         5         160  java.awt.Cursor
+370:         5         160  [[S
+371:         5         160  [[Lsun.awt.FontDescriptor;
+372:         4         160  javax.swing.text.AbstractDocument$BranchElement
+373:         9         144  javax.swing.text.html.CSS$FontFamily
+374:         9         144  java.awt.font.FontRenderContext
+375:         3         144  java.nio.HeapByteBuffer
+376:         9         144  javax.swing.text.html.CSS$ColorValue
+377:         6         144  javax.swing.plaf.basic.BasicTextUI$BasicHighlighter
+378:         6         144  java.util.regex.Pattern$BitClass
+379:         6         144  javax.swing.text.DefaultHighlighter$SafeDamager
+380:         3         144  sun.util.calendar.ZoneInfo
+381:         9         144  java.awt.datatransfer.MimeTypeParameterList
+382:         9         144  javax.swing.plaf.ActionMapUIResource
+383:         6         144  javax.swing.plaf.basic.BasicTextUI$RootView
+384:         9         144  javax.swing.text.StyleConstants$ParagraphConstants
+385:         9         144  sun.awt.SunHints$Key
+386:         6         144  javax.swing.plaf.basic.BasicTextUI$UpdateHandler
+387:         6         144  javax.swing.plaf.basic.BasicPopupMenuUI
+388:         6         144  javax.swing.text.JTextComponent$KeymapWrapper
+389:         2         144  javax.swing.JList$AccessibleJList
+390:         6         144  javax.swing.text.JTextComponent$KeymapActionMap
+391:         6         144  javax.swing.plaf.basic.BasicTextUI$FocusAction
+392:         3         144  javax.swing.plaf.basic.BasicListUI$ListDropTargetListener
+393:         9         144  com.sun.org.apache.xerces.internal.util.TypeInfoImpl
+394:         2         144  javax.swing.JToggleButton$AccessibleJToggleButton
+395:         6         144  javax.swing.text.JTextComponent$MutableCaretEvent
+396:         3         144  [Ljava.lang.Thread;
+397:         6         144  javax.swing.text.GapContent$MarkVector
+398:         2         128  sun.nio.cs.ISO_8859_15$Encoder
+399:         2         128  sun.awt.X11.XInputMethod
+400:         8         128  javax.swing.JViewport$ViewListener
+401:         4         128  javax.swing.text.AbstractDocument$LeafElement
+402:         4         128  javax.swing.plaf.metal.MetalTextFieldUI
+403:         8         128  java.lang.Boolean
+404:         2         128  sun.awt.X11SurfaceData$X11WindowSurfaceData
+405:         2         128  sun.awt.im.InputMethodContext
+406:         8         128  javax.swing.text.SimpleAttributeSet
+407:         2         128  sun.awt.X11.XSelection
+408:         4         128  javax.swing.text.DefaultEditorKit$VerticalPageAction
+409:         4         128  javax.swing.plaf.basic.BasicTextUI$TextActionWrapper
+410:         4         128  sun.swing.FilePane$ViewTypeAction
+411:         2         128  javax.swing.JPopupMenu$AccessibleJPopupMenu
+412:         8         128  java.util.Collections$UnmodifiableSet
+413:         2         128  javax.swing.text.DefaultStyledDocument$ElementBuffer
+414:         1         120  sun.awt.X11.XContentWindow
+415:         5         120  java.io.RandomAccessFile
+416:         5         120  javax.swing.text.html.StyleSheet$SearchBuffer
+417:         3         120  javax.swing.plaf.basic.BasicListUI$Handler
+418:         5         120  sun.reflect.UnsafeIntegerFieldAccessorImpl
+419:         1         112  [Ljavax.swing.text.html.CSS$Value;
+420:        14         112  javax.swing.JMenuItem$MenuItemFocusListener
+421:         1         112  javax.swing.plaf.basic.BasicDirectoryModel$LoadFilesThread
+422:         1         112  javax.swing.plaf.metal.MetalSplitPaneUI
+423:         1         112  java.util.GregorianCalendar
+424:         7         112  javax.swing.text.StyleConstants$CharacterConstants
+425:         7         112  javax.swing.plaf.basic.BasicScrollPaneUI$Handler
+426:         7         112  javax.swing.plaf.metal.MetalLookAndFeel$MetalLazyValue
+427:         7         112  javax.swing.plaf.metal.MetalScrollPaneUI$1
+428:         7         112  javax.swing.tree.TreePath
+429:         2         112  javax.swing.JList$AccessibleJList$AccessibleJListChild
+430:         2         112  java.io.ExpiringCache$1
+431:         7         112  java.lang.ThreadLocal
+432:         2         112  sun.nio.cs.StreamEncoder$CharsetSE
+433:         2         112  java.text.DecimalFormatSymbols
+434:         1         104  java.awt.EventDispatchThread
+435:         1         104  java.util.TimerThread
+436:         1         104  sun.util.calendar.Gregorian$Date
+437:         4         104  [Ljava.lang.ref.SoftReference;
+438:         1         104  sun.awt.X11.XDragSourceContextPeer
+439:         1          96  [Lsun.font.FileFont;
+440:         6          96  javax.swing.text.DefaultCaret$Handler
+441:         4          96  java.awt.AWTKeyStroke
+442:         4          96  javax.swing.KeyboardManager$ComponentKeyStrokePair
+443:         1          96  [Lsun.font.CompositeFont;
+444:         3          96  javax.swing.text.html.HTMLEditorKit$LinkController
+445:         1          96  java.util.logging.LogManager$Cleaner
+446:         6          96  javax.swing.text.html.CSS$BorderStyle
+447:         1          96  sun.awt.X11.XIconWindow
+448:         6          96  javax.swing.plaf.basic.BasicPopupMenuUI$Actions
+449:         6          96  sun.java2d.loops.RenderCache
+450:         2          96  sun.swing.PrintColorUIResource
+451:         2          96  java.lang.ThreadGroup
+452:         1          96  javax.swing.ProgressMonitor
+453:         6          96  javax.swing.plaf.metal.MetalLookAndFeel$FontActiveValue
+454:         6          96  sun.java2d.pipe.TextRenderer
+455:         4          96  java.lang.RuntimePermission
+456:         3          96  sun.misc.URLClassPath
+457:         1          96  java.util.prefs.FileSystemPreferences$5$1
+458:         6          96  javax.swing.plaf.basic.BasicPopupMenuUI$BasicPopupMenuListener
+459:         6          96  javax.swing.plaf.basic.BasicPopupMenuUI$BasicMenuKeyListener
+460:         1          96  java.lang.ref.Reference$ReferenceHandler
+461:         1          96  java.lang.ref.Finalizer$FinalizerThread
+462:         6          96  sun.java2d.pipe.DuctusShapeRenderer
+463:         2          96  java.lang.Package
+464:         1          88  sun.awt.X11.XNETProtocol
+465:         1          88  sun.security.provider.Sun
+466:         1          88  javax.swing.ToolTipManager
+467:         1          88  sun.awt.motif.MFontConfiguration
+468:         1          80  [Ljava.util.concurrent.ConcurrentHashMap$Segment;
+469:         5          80  javax.swing.plaf.metal.MetalPopupMenuSeparatorUI
+470:         5          80  sun.font.TrueTypeFont$TTDisposerRecord
+471:         4          80  [Ljava.awt.AWTKeyStroke;
+472:         5          80  sun.nio.ch.NativeThreadSet
+473:         5          80  [Ljavax.swing.text.Position$Bias;
+474:         1          80  [[D
+475:         2          80  java.io.BufferedWriter
+476:         1          80  [Ljava.awt.geom.AffineTransform;
+477:         2          80  javax.swing.plaf.metal.MetalComboBoxButton$1
+478:         2          80  sun.awt.X11.XCreateWindowParams
+479:         5          80  com.pironet.tda.HistogramInfo
+480:         1          80  javax.swing.text.html.parser.DTD
+481:         2          80  java.io.ExpiringCache
+482:         1          80  javax.swing.text.html.BRView
+483:         5          80  java.nio.channels.spi.AbstractInterruptibleChannel$1
+484:         5          80  [Ljava.util.prefs.PreferenceChangeListener;
+485:         1          80  sun.awt.X11.MotifDnDDropTargetProtocol
+486:         5          80  [Ljava.util.prefs.NodeChangeListener;
+487:         2          80  javax.swing.plaf.metal.MetalRootPaneUI
+488:         1          72  sun.font.GlyphList
+489:         1          72  sun.awt.X11.XRootWindow
+490:         3          72  javax.swing.text.StyledEditorKit$FontFamilyAction
+491:         3          72  javax.swing.text.StyledEditorKit$AlignmentAction
+492:         3          72  javax.swing.text.html.CSS$BorderWidthValue
+493:         3          72  javax.swing.TransferHandler$TransferAction
+494:         3          72  javax.swing.text.html.CSS$BackgroundImage
+495:         3          72  javax.swing.text.html.CSS$BackgroundPosition
+496:         1          72  sun.misc.Launcher$ExtClassLoader
+497:         3          72  javax.swing.text.JTextComponent$DefaultKeymap
+498:         3          72  java.lang.ThreadLocal$ThreadLocalMap
+499:         3          72  sun.reflect.UnsafeBooleanFieldAccessorImpl
+500:         3          72  sun.swing.FilePane$1FilePaneAction
+501:         1          72  sun.awt.X11.XDnDDropTargetProtocol
+502:         3          72  javax.swing.text.DefaultEditorKit$BeginWordAction
+503:         3          72  javax.swing.text.html.CSS
+504:         3          72  javax.swing.text.DefaultEditorKit$EndWordAction
+505:         3          72  sun.awt.im.InputMethodLocator
+506:         1          72  sun.net.www.protocol.jar.URLJarFile
+507:         3          72  javax.swing.plaf.BorderUIResource$EmptyBorderUIResource
+508:         3          72  javax.swing.text.StyleContext$SmallAttributeSet
+509:         3          72  javax.swing.text.DefaultEditorKit$BeginLineAction
+510:         3          72  javax.swing.text.DefaultEditorKit$EndLineAction
+511:         3          72  javax.swing.text.DefaultEditorKit$BeginParagraphAction
+512:         3          72  javax.swing.text.DefaultEditorKit$EndParagraphAction
+513:         1          72  sun.misc.Launcher$AppClassLoader
+514:         3          72  java.lang.OutOfMemoryError
+515:         1          72  [Ljava.awt.Cursor;
+516:         1          64  sun.reflect.misc.MethodUtil
+517:         4          64  java.util.regex.Pattern$Branch
+518:         2          64  javax.swing.AbstractActionPropertyChangeListener$OwnedWeakReference
+519:         1          64  java.util.logging.LogManager$RootLogger
+520:         1          64  java.awt.DefaultKeyboardFocusManager
+521:         4          64  javax.swing.text.StyleConstants
+522:         1          64  javax.swing.MultiUIDefaults
+523:         2          64  javax.swing.text.html.HTMLEditorKit$NavigateLinkAction
+524:         4          64  javax.swing.text.StyleConstants$FontConstants
+525:         2          64  java.io.PrintStream
+526:         2          64  java.security.CodeSource
+527:         2          64  javax.swing.LayoutFocusTraversalPolicy
+528:         2          64  java.text.DigitList
+529:         4          64  java.util.TreeSet
+530:         1          64  javax.swing.JFileChooser$AccessibleJFileChooser
+531:         4          64  javax.swing.LayoutComparator
+532:         4          64  java.util.TreeMap$1
+533:         4          64  java.awt.Queue
+534:         2          64  java.awt.FlowLayout
+535:         1          64  sun.awt.X11GraphicsConfig
+536:         2          64  javax.swing.JToggleButton$ToggleButtonModel
+537:         4          64  javax.swing.JTextField$ScrollRepainter
+538:         2          64  javax.swing.plaf.basic.BasicEditorPaneUI
+539:         2          64  javax.swing.JEditorPane$1
+540:         2          64  java.security.ProtectionDomain
+541:         2          64  sun.java2d.pipe.Region
+542:         1          64  sun.awt.motif.X11RemoteOffScreenImage
+543:         1          64  javax.swing.JViewport$AccessibleJViewport
+544:         4          64  [Ljava.lang.annotation.Annotation;
+545:         4          64  java.io.FileInputStream
+546:         1          56  java.awt.EventQueue
+547:         1          56  java.awt.color.ICC_ColorSpace
+548:         1          56  sun.awt.X11.XToolkit
+549:         1          56  javax.swing.tree.VariableHeightLayoutCache
+550:         1          56  sun.awt.X11.MotifDnDDragSourceProtocol
+551:         1          56  javax.swing.tree.DefaultTreeSelectionModel
+552:         1          56  sun.awt.AppContext
+553:         1          56  com.pironet.tda.JDK14Parser
+554:         1          56  sun.awt.motif.X11RemoteOffScreenImage$X11RemoteSurfaceManager
+555:         1          56  sun.awt.image.WritableRasterNative
+556:         1          56  sun.security.provider.NativePRNG$RandomIO
+557:         1          48  sun.awt.X11GraphicsEnvironment
+558:         3          48  javax.swing.text.StyledEditorKit$AttributeTracker
+559:         3          48  sun.misc.Signal
+560:         3          48  javax.swing.JMenu$MenuChangeListener
+561:         3          48  javax.swing.text.StyledEditorKit$1
+562:         2          48  java.io.FileOutputStream
+563:         2          48  sun.nio.cs.Surrogate$Parser
+564:         3          48  java.util.HashMap$KeySet
+565:         3          48  javax.swing.text.html.CSS$CssValue
+566:         2          48  javax.swing.AncestorNotifier
+567:         2          48  javax.swing.plaf.basic.BasicRootPaneUI$RootPaneInputMap
+568:         3          48  javax.swing.UIManager$LookAndFeelInfo
+569:         3          48  java.text.AttributedCharacterIterator$Attribute
+570:         3          48  java.util.Arrays$ArrayList
+571:         3          48  com.sun.org.apache.xerces.internal.impl.dv.dtd.ListDatatypeValidator
+572:         1          48  [Lsun.font.FontStrike;
+573:         2          48  javax.swing.plaf.basic.BasicComboBoxUI$DefaultKeySelectionManager
+574:         2          48  java.util.regex.Pattern$Ques
+575:         3          48  javax.swing.event.DocumentEvent$EventType
+576:         3          48  javax.swing.text.html.CSS$CssValueMapper
+577:         1          48  javax.swing.plaf.basic.BasicTextUI$TextDropTargetListener
+578:         1          48  sun.awt.X11.XDnDDragSourceProtocol
+579:         1          48  java.io.BufferedReader
+580:         2          48  sun.awt.X11.AwtGraphicsConfigData
+581:         1          48  java.awt.image.SinglePixelPackedSampleModel
+582:         2          48  com.sun.java.swing.plaf.motif.MotifBorders$BevelBorder
+583:         2          48  java.io.BufferedOutputStream
+584:         1          48  java.awt.LightweightDispatcher
+585:         1          48  java.text.SimpleDateFormat
+586:         1          48  [[Lsun.awt.SunHints$Value;
+587:         2          48  java.security.Permissions
+588:         2          48  java.io.OutputStreamWriter
+589:         2          48  [Ljava.awt.Rectangle;
+590:         3          48  javax.swing.plaf.basic.BasicMenuUI$Handler
+591:         1          48  sun.awt.motif.X11VolatileSurfaceManager
+592:         1          48  sun.swing.FilePane$7
+593:         2          48  sun.reflect.UnsafeObjectFieldAccessorImpl
+594:         1          48  sun.awt.im.ExecutableInputMethodManager
+595:         3          48  sun.java2d.pipe.SpanClipRenderer
+596:         2          48  javax.swing.text.DefaultEditorKit$PageAction
+597:         2          48  javax.swing.plaf.BorderUIResource$LineBorderUIResource
+598:         1          48  java.util.LinkedHashMap
+599:         2          48  javax.swing.text.DefaultEditorKit$PreviousWordAction
+600:         3          48  java.util.regex.Pattern$Start
+601:         3          48  sun.awt.UNIXToolkit$GTKLoadStatus
+602:         2          48  javax.swing.text.DefaultEditorKit$NextWordAction
+603:         2          48  java.lang.ref.ReferenceQueue$Null
+604:         3          48  javax.swing.JMenu$WinListener
+605:         3          48  javax.swing.JList$ListSelectionHandler
+606:         3          48  java.awt.ComponentOrientation
+607:         3          48  java.nio.charset.CodingErrorAction
+608:         2          48  javax.swing.text.DefaultEditorKit$BeginAction
+609:         1          48  javax.swing.plaf.basic.BasicTableUI$TableDropTargetListener
+610:         2          48  javax.swing.text.DefaultEditorKit$EndAction
+611:         2          48  com.sun.org.apache.xerces.internal.xni.QName
+612:         2          48  javax.swing.text.DefaultEditorKit$DefaultKeyTypedAction
+613:         1          48  javax.swing.text.html.HTMLEditorKit$InsertHRAction
+614:         1          40  java.util.logging.LogManager
+615:         1          40  java.awt.color.ICC_ProfileRGB
+616:         1          40  javax.swing.plaf.basic.BasicPopupMenuUI$MenuKeyboardHelper
+617:         1          40  javax.swing.plaf.metal.MetalFileChooserUI$DirectoryComboBoxModel
+618:         1          40  java.text.DateFormatSymbols
+619:         1          40  java.util.zip.Inflater
+620:         1          40  javax.swing.RepaintManager
+621:         1          40  javax.swing.UIManager$LAFState
+622:         1          40  [Ljavax.swing.plaf.FontUIResource;
+623:         1          40  sun.awt.image.SunVolatileImage
+624:         1          40  sun.awt.AWTAutoShutdown$PeerMap
+625:         1          40  java.text.AttributedString$AttributedStringIterator
+626:         1          40  sun.nio.cs.StreamDecoder$CharsetSD
+627:         1          40  sun.nio.cs.StandardCharsets$Aliases
+628:         1          40  javax.swing.table.DefaultTableColumnModel
+629:         1          40  javax.swing.plaf.basic.BasicDirectoryModel
+630:         1          40  sun.java2d.NullSurfaceData
+631:         1          40  java.util.prefs.FileSystemPreferences$4
+632:         1          40  sun.nio.cs.StandardCharsets$Classes
+633:         1          40  sun.nio.cs.StandardCharsets$Cache
+634:         1          40  sun.awt.X11.XGlobalCursorManager
+635:         1          40  javax.swing.plaf.metal.MetalToggleButtonUI
+636:         1          40  javax.swing.plaf.basic.BasicTreeUI$Handler
+637:         1          40  [Lcom.sun.java.swing.SwingUtilities2$LSBCacheEntry;
+638:         1          40  javax.swing.plaf.basic.BasicTableUI
+639:         1          40  java.util.concurrent.ConcurrentHashMap
+640:         1          40  sun.nio.cs.ISO_8859_15$Decoder
+641:         1          40  javax.swing.plaf.basic.BasicTreeUI$TreeDropTargetListener
+642:         1          40  [[C
+643:         1          40  sun.awt.image.DataBufferNative
+644:         5          40  javax.swing.plaf.basic.BasicBorders$MarginBorder
+645:         1          32  javax.swing.text.DefaultEditorKit$SelectParagraphAction
+646:         2          32  javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager
+647:         2          32  [Ljavax.swing.MenuElement;
+648:         2          32  javax.swing.JComboBox$1
+649:         2          32  sun.misc.NativeSignalHandler
+650:         2          32  javax.swing.plaf.basic.BasicComboBoxUI$Handler
+651:         1          32  java.awt.BasicStroke
+652:         2          32  javax.swing.plaf.basic.BasicLookAndFeel$1
+653:         1          32  [[Ljava.awt.AWTKeyStroke;
+654:         1          32  java.text.DontCareFieldPosition
+655:         1          32  javax.swing.plaf.basic.BasicTextUI$TextTransferHandler
+656:         1          32  java.io.FilePermission
+657:         1          32  java.io.BufferedInputStream
+658:         2          32  sun.awt.datatransfer.DataTransferer$CharsetComparator
+659:         2          32  sun.java2d.pipe.SpanShapeRenderer$Composite
+660:         2          32  javax.swing.text.Position$Bias
+661:         1          32  [Lsun.java2d.loops.RenderLoops;
+662:         1          32  [Lsun.java2d.loops.SurfaceType;
+663:         1          32  javax.swing.text.StyleContext
+664:         1          32  [Lsun.font.FontDesignMetrics;
+665:         2          32  java.util.HashMap$Values
+666:         2          32  sun.awt.X11.XMWMModality
+667:         1          32  java.util.concurrent.atomic.AtomicReferenceFieldUpdater$AtomicReferenceFieldUpdaterImpl
+668:         2          32  java.util.regex.Pattern$Dummy
+669:         4          32  sun.awt.X11.XBaseWindow$StateLock
+670:         2          32  javax.swing.AbstractButton$ButtonActionPropertyChangeListener
+671:         2          32  java.lang.Shutdown$WrappedHook
+672:         1          32  [Ljava.util.Map;
+673:         1          32  com.sun.java.swing.plaf.motif.MotifBorders$MotifPopupMenuBorder
+674:         1          32  sun.swing.FilePane$DetailsTableModel
+675:         1          32  java.awt.datatransfer.SystemFlavorMap
+676:         1          32  sun.awt.X11GraphicsDevice
+677:         2          32  [Ljava.security.Principal;
+678:         1          32  java.text.AttributedString
+679:         2          32  javax.swing.text.html.HTMLEditorKit$NavigateLinkAction$FocusHighlightPainter
+680:         2          32  javax.swing.text.StyleConstants$ColorConstants
+681:         2          32  javax.swing.plaf.basic.BasicFileChooserUI$Handler
+682:         2          32  [Ljava.security.cert.Certificate;
+683:         2          32  sun.awt.MostRecentKeyValue
+684:         1          32  sun.awt.AWTAutoShutdown
+685:         2          32  java.nio.ByteOrder
+686:         2          32  javax.swing.text.html.StyleSheet$BoxPainter$HorizontalMargin
+687:         1          32  [Ljava.lang.ThreadGroup;
+688:         2          32  sun.awt.X11.XRepaintArea
+689:         1          32  [Ljava.awt.Queue;
+690:         1          32  javax.swing.text.SegmentCache$CachedSegment
+691:         1          32  sun.awt.X11.XWindowAttributesData
+692:         1          32  java.util.Random
+693:         1          32  javax.swing.plaf.metal.MetalButtonUI
+694:         2          32  javax.swing.plaf.metal.MetalComboBoxEditor$UIResource
+695:         1          32  javax.swing.plaf.metal.BumpBuffer
+696:         1          32  java.awt.Toolkit$SelectiveAWTEventListener
+697:         1          32  sun.awt.image.FileImageSource
+698:         2          32  java.awt.ImageCapabilities
+699:         1          32  sun.swing.FilePane$10
+700:         1          32  javax.swing.plaf.basic.BasicSplitPaneUI$BasicHorizontalLayoutManager
+701:         2          32  javax.swing.text.DefaultStyledDocument$StyleContextChangeHandler
+702:         2          32  java.nio.charset.CoderResult
+703:         2          32  javax.swing.text.DefaultStyledDocument$StyleChangeHandler
+704:         2          32  javax.swing.plaf.basic.BasicComboPopup$Handler
+705:         1          32  javax.swing.text.Segment
+706:         2          32  java.util.regex.Pattern$Slice
+707:         2          32  [Ljava.util.logging.Handler;
+708:         1          32  [Ljava.awt.FontMetrics;
+709:         2          32  javax.swing.JRootPane$RootLayout
+710:         2          32  javax.swing.plaf.metal.MetalComboBoxEditor$EditorBorder
+711:         2          32  javax.swing.JComboBox$AccessibleJComboBox$AccessibleJComboBoxListSelectionListener
+712:         2          32  javax.swing.ToolTipManager$Actions
+713:         1          32  [[[S
+714:         2          32  javax.swing.JComboBox$AccessibleJComboBox$AccessibleJComboBoxPopupMenuListener
+715:         1          32  [[[I
+716:         2          32  java.util.Collections$UnmodifiableRandomAccessList
+717:         2          32  java.lang.StringBuilder
+718:         1          32  [[[Lsun.awt.FontDescriptor;
+719:         1          32  javax.swing.text.DefaultEditorKit$SelectWordAction
+720:         2          32  javax.swing.plaf.metal.MetalComboBoxUI$MetalPropertyChangeListener
+721:         1          32  javax.swing.text.DefaultEditorKit$SelectLineAction
+722:         1          24  sun.awt.X11.XSizeHints
+723:         1          24  javax.swing.plaf.basic.BasicTableUI$Handler
+724:         1          24  javax.swing.MenuSelectionManager
+725:         1          24  java.util.Date
+726:         1          24  javax.swing.text.DefaultEditorKit$SelectAllAction
+727:         1          24  javax.swing.text.DefaultEditorKit$UnselectAction
+728:         1          24  sun.nio.cs.ISO_8859_15
+729:         1          24  javax.swing.text.DefaultEditorKit$ToggleComponentOrientationAction
+730:         1          24  javax.swing.text.DefaultEditorKit$DumpModelAction
+731:         1          24  javax.swing.plaf.metal.MetalMenuBarUI
+732:         1          24  sun.nio.cs.ISO_8859_1
+733:         1          24  javax.swing.plaf.metal.MetalFileChooserUI$FilterComboBoxModel
+734:         1          24  sun.reflect.UnsafeStaticObjectFieldAccessorImpl
+735:         1          24  java.util.logging.LoggingPermission
+736:         1          24  [Ljavax.swing.UIManager$LookAndFeelInfo;
+737:         1          24  javax.swing.text.StyledEditorKit$BoldAction
+738:         1          24  com.sun.java.swing.plaf.motif.MotifBorders$ButtonBorder
+739:         1          24  [Ljavax.swing.plaf.metal.MetalFileChooserUI$AlignedLabel;
+740:         1          24  java.lang.NullPointerException
+741:         1          24  javax.swing.plaf.metal.MetalFileChooserUI$IndentIcon
+742:         1          24  javax.swing.text.StyledEditorKit$ItalicAction
+743:         1          24  java.lang.ArithmeticException
+744:         1          24  sun.nio.cs.UTF_8
+745:         1          24  javax.swing.text.StyledEditorKit$StyledInsertBreakAction
+746:         1          24  sun.awt.im.CompositionAreaHandler
+747:         1          24  com.sun.java.swing.plaf.motif.MotifBorders$ToggleButtonBorder
+748:         1          24  javax.swing.text.StyledEditorKit$UnderlineAction
+749:         1          24  [Ljavax.swing.UIDefaults;
+750:         1          24  javax.swing.tree.DefaultTreeModel
+751:         1          24  sun.awt.X11.XAnyEvent
+752:         1          24  java.security.BasicPermissionCollection
+753:         1          24  sun.awt.X11.XWM
+754:         1          24  java.util.Timer
+755:         1          24  javax.swing.plaf.basic.BasicFileChooserUI$ApproveSelectionAction
+756:         1          24  sun.awt.X11.XAWTLookAndFeel
+757:         1          24  sun.nio.cs.StandardCharsets
+758:         1          24  javax.swing.plaf.basic.BasicFileChooserUI$CancelSelectionAction
+759:         1          24  javax.swing.plaf.basic.BasicFileChooserUI$UpdateAction
+760:         1          24  sun.awt.image.FetcherInfo
+761:         1          24  javax.swing.plaf.basic.BasicFileChooserUI$GoHomeAction
+762:         1          24  java.security.Provider$ServiceKey
+763:         1          24  javax.swing.plaf.basic.BasicTableHeaderUI
+764:         1          24  java.io.InputStreamReader
+765:         1          24  javax.swing.plaf.basic.BasicFileChooserUI$ChangeToParentDirectoryAction
+766:         1          24  javax.swing.text.html.HTMLEditorKit$ActivateLinkAction
+767:         1          24  javax.swing.plaf.basic.BasicTableHeaderUI$MouseInputHandler
+768:         1          24  javax.swing.text.DefaultEditorKit$InsertContentAction
+769:         1          24  sun.awt.X11.XWMHints
+770:         1          24  javax.swing.text.DefaultEditorKit$DeletePrevCharAction
+771:         1          24  sun.nio.cs.UTF_16
+772:         1          24  javax.swing.plaf.metal.MetalFileChooserUI$DirectoryComboBoxAction
+773:         1          24  javax.swing.text.DefaultEditorKit$DeleteNextCharAction
+774:         1          24  [Ljavax.swing.text.html.StyleSheet$BoxPainter$HorizontalMargin;
+775:         1          24  javax.swing.text.DefaultEditorKit$ReadOnlyAction
+776:         1          24  javax.swing.text.DefaultEditorKit$WritableAction
+777:         1          24  javax.swing.text.DefaultEditorKit$CutAction
+778:         1          24  javax.swing.text.DefaultEditorKit$CopyAction
+779:         1          24  javax.swing.text.DefaultEditorKit$PasteAction
+780:         1          24  java.io.UnixFileSystem
+781:         1          24  sun.awt.resources.awt
+782:         1          24  [Ljavax.swing.JPanel;
+783:         1          24  javax.swing.plaf.basic.BasicButtonUI
+784:         1          24  java.lang.RuntimeException
+785:         1          24  javax.swing.DefaultCellEditor$1
+786:         1          24  javax.swing.text.DefaultEditorKit$InsertBreakAction
+787:         1          24  javax.swing.text.DefaultEditorKit$BeepAction
+788:         1          24  javax.swing.text.html.CSS$LengthUnit
+789:         1          24  javax.swing.PopupFactory$LightWeightPopup
+790:         1          24  [[Ljava.lang.ref.SoftReference;
+791:         1          24  javax.swing.border.LineBorder
+792:         1          24  sun.awt.X11.WindowDimensions
+793:         1          24  javax.swing.plaf.basic.BasicToggleButtonUI
+794:         1          24  java.lang.ProcessEnvironment$StringEnvironment
+795:         1          24  sun.awt.PostEventQueue
+796:         1          24  sun.awt.resources.awt_de
+797:         1          24  java.util.regex.Pattern$Add
+798:         1          24  sun.awt.datatransfer.DataTransferer$DataFlavorComparator
+799:         1          24  sun.reflect.UnsafeLongFieldAccessorImpl
+800:         1          24  [Lsun.awt.UNIXToolkit$GTKLoadStatus;
+801:         1          24  com.sun.java.swing.plaf.motif.MotifBorders$MenuBarBorder
+802:         1          24  javax.swing.JTextField$NotifyAction
+803:         1          24  sun.misc.JarIndex
+804:         3          24  sun.net.www.protocol.jar.Handler
+805:         1          24  java.lang.reflect.ReflectPermission
+806:         1          24  [Ljava.lang.ThreadLocal;
+807:         1          24  java.awt.GridLayout
+808:         1          24  javax.swing.ProgressMonitorInputStream
+809:         1          24  sun.misc.PerformanceLogger$TimeData
+810:         1          24  javax.swing.plaf.metal.MetalLookAndFeel
+811:         1          24  javax.swing.text.DefaultEditorKit$InsertTabAction
+812:         1          24  sun.awt.color.ProfileDeferralInfo
+813:         1          16  sun.awt.image.PixelConverter$Rgba
+814:         1          16  java.util.TreeMap$2
+815:         1          16  javax.swing.plaf.metal.MetalBorders$TableHeaderBorder
+816:         1          16  sun.awt.image.PixelConverter$RgbaPre
+817:         1          16  java.util.jar.Manifest
+818:         1          16  sun.awt.image.PixelConverter$Ushort565Rgb
+819:         1          16  java.awt.MediaTracker
+820:         1          16  com.sun.org.apache.xerces.internal.impl.Constants$ArrayEnumeration
+821:         1          16  com.sun.java.swing.plaf.motif.MotifBorders$FocusBorder
+822:         1          16  sun.awt.image.PixelConverter$Ushort555Rgb
+823:         1          16  java.awt.color.ICC_Profile$1
+824:         1          16  sun.awt.X11.XDropTargetRegistry
+825:         1          16  sun.net.ProgressMonitor
+826:         1          16  sun.awt.image.PixelConverter$Ushort555Rgbx
+827:         1          16  java.text.MessageFormat$Field
+828:         1          16  sun.awt.image.PixelConverter$Ushort4444Argb
+829:         1          16  sun.awt.X11.XModalStrategy$XApplicationModalityTreeUnsensetive
+830:         1          16  javax.swing.plaf.metal.MetalFileChooserUI$4
+831:         1          16  javax.swing.plaf.metal.MetalUtils$GradientPainter
+832:         1          16  sun.awt.image.PixelConverter$ByteGray
+833:         1          16  javax.swing.JFileChooser$1
+834:         1          16  java.text.DontCareFieldPosition$1
+835:         1          16  sun.awt.image.PixelConverter$UshortGray
+836:         1          16  [Ljavax.swing.filechooser.FileFilter;
+837:         1          16  javax.swing.plaf.basic.BasicPopupMenuUI$MenuKeyboardHelper$1
+838:         1          16  javax.swing.plaf.metal.CachedPainter$Cache
+839:         1          16  sun.awt.image.PixelConverter$Rgbx
+840:         1          16  javax.swing.TransferHandler$DropHandler
+841:         1          16  java.util.regex.Pattern$Node
+842:         1          16  java.util.jar.Attributes
+843:         1          16  sun.awt.image.PixelConverter$Bgrx
+844:         1          16  java.util.regex.Pattern$LastNode
+845:         1          16  javax.swing.plaf.basic.BasicMenuBarUI$Handler
+846:         1          16  sun.awt.image.PixelConverter$ArgbBm
+847:         1          16  sun.awt.X11.XKeyboardFocusManagerPeer
+848:         2          16  javax.swing.plaf.metal.MetalLabelUI
+849:         1          16  javax.swing.plaf.basic.BasicFileChooserUI$FileTransferHandler
+850:         1          16  java.util.Collections$EmptyList
+851:         2          16  javax.swing.plaf.metal.MetalComboBoxIcon
+852:         1          16  java.io.FilePermissionCollection
+853:         1          16  com.pironet.tda.utils.PrefManager
+854:         1          16  javax.swing.plaf.metal.MetalFileChooserUI$ButtonAreaLayout
+855:         2          16  com.sun.org.apache.xerces.internal.impl.dv.dtd.ENTITYDatatypeValidator
+856:         1          16  java.awt.VKCollection
+857:         1          16  javax.swing.plaf.metal.OceanTheme$1
+858:         1          16  java.lang.InheritableThreadLocal
+859:         1          16  javax.swing.plaf.metal.OceanTheme$2
+860:         1          16  sun.misc.Launcher
+861:         1          16  java.util.Collections$EmptyMap
+862:         1          16  javax.swing.text.JTextComponent$InputMethodRequestsHandler
+863:         1          16  javax.swing.plaf.metal.OceanTheme$3
+864:         1          16  javax.swing.plaf.metal.MetalFileChooserUI$5
+865:         1          16  javax.swing.plaf.metal.OceanTheme$4
+866:         1          16  [Ljavax.swing.text.Highlighter$Highlight;
+867:         1          16  javax.swing.plaf.metal.OceanTheme$5
+868:         2          16  java.lang.Shutdown$Lock
+869:         1          16  [Ljava.text.AttributedCharacterIterator$Attribute;
+870:         1          16  javax.swing.text.GlyphPainter1
+871:         1          16  [Ljava.util.prefs.AbstractPreferences;
+872:         1          16  javax.swing.text.DefaultHighlighter$DefaultHighlightPainter
+873:         1          16  javax.swing.plaf.metal.OceanTheme
+874:         1          16  [Ljava.awt.GraphicsDevice;
+875:         1          16  javax.swing.plaf.basic.BasicTreeUI$NodeDimensionsHandler
+876:         1          16  sun.swing.FilePane$4
+877:         1          16  javax.swing.JTree$TreeModelHandler
+878:         1          16  javax.swing.plaf.basic.BasicBorders$SplitPaneBorder
+879:         1          16  java.util.TaskQueue
+880:         1          16  javax.swing.PopupFactory
+881:         2          16  javax.swing.plaf.metal.MetalBorders$ScrollPaneBorder
+882:         1          16  javax.swing.plaf.metal.DefaultMetalTheme$FontDelegate
+883:         2          16  javax.swing.plaf.metal.MetalBorders$MenuItemBorder
+884:         1          16  sun.awt.GlobalCursorManager$NativeUpdater
+885:         1          16  java.util.regex.Pattern$All
+886:         1          16  javax.swing.plaf.basic.BasicListUI$ListDragGestureRecognizer
+887:         1          16  javax.swing.plaf.basic.BasicFileChooserUI$AcceptAllFileFilter
+888:         1          16  sun.swing.FilePane$Handler
+889:         1          16  java.util.Timer$1
+890:         1          16  [Ljava.text.FieldPosition;
+891:         1          16  javax.swing.plaf.basic.BasicListUI$ListTransferHandler
+892:         1          16  javax.swing.plaf.basic.BasicTreeUI$Actions
+893:         1          16  sun.awt.X11.XAWTLookAndFeel$1
+894:         1          16  sun.swing.FilePane$5
+895:         1          16  javax.swing.plaf.basic.BasicFileChooserUI$BasicFileView
+896:         1          16  sun.awt.X11.XAWTLookAndFeel$2
+897:         1          16  java.util.regex.Pattern$JavaLowerCase
+898:         1          16  javax.swing.plaf.basic.BasicSplitPaneDivider$DividerLayout
+899:         1          16  java.awt.DefaultFocusTraversalPolicy
+900:         1          16  javax.swing.plaf.basic.BasicTreeUI$TreeDragGestureRecognizer
+901:         1          16  java.util.regex.Pattern$JavaUpperCase
+902:         1          16  javax.swing.SwingContainerOrderFocusTraversalPolicy
+903:         1          16  javax.swing.JTree$TreeSelectionRedirector
+904:         1          16  java.util.regex.Pattern$JavaTitleCase
+905:         1          16  sun.awt.X11.XAWTLookAndFeel$3
+906:         1          16  java.awt.font.TransformAttribute
+907:         1          16  javax.swing.plaf.basic.BasicTextUI$DragListener
+908:         1          16  javax.swing.SwingDefaultFocusTraversalPolicy
+909:         1          16  javax.swing.plaf.basic.BasicMenuItemUI$Actions
+910:         1          16  java.util.regex.Pattern$JavaDigit
+911:         1          16  sun.awt.X11.XAWTLookAndFeel$4
+912:         1          16  javax.swing.plaf.basic.BasicTreeUI$TreeTransferHandler
+913:         1          16  com.pironet.tda.TDA$PopupListener
+914:         1          16  java.util.regex.Pattern$JavaDefined
+915:         1          16  javax.swing.plaf.basic.BasicSplitPaneDivider$MouseHandler
+916:         1          16  sun.awt.X11.XAWTLookAndFeel$5
+917:         1          16  [Ljava.lang.StackTraceElement;
+918:         1          16  java.util.regex.Pattern$JavaLetter
+919:         1          16  javax.swing.plaf.metal.MetalTreeUI$LineListener
+920:         1          16  java.util.regex.Pattern$JavaLetterOrDigit
+921:         1          16  com.pironet.tda.DumpParserFactory
+922:         1          16  javax.swing.plaf.basic.BasicBorders$SplitPaneDividerBorder
+923:         1          16  [Ljava.io.File;
+924:         1          16  java.util.regex.Pattern$JavaJavaIdentifierStart
+925:         1          16  [Ljavax.swing.tree.TreePath;
+926:         1          16  java.util.regex.Pattern$JavaJavaIdentifierPart
+927:         1          16  sun.util.calendar.Gregorian
+928:         1          16  javax.swing.plaf.metal.MetalFileChooserUI$MetalFileChooserUIAccessor
+929:         1          16  sun.misc.FloatingDecimal$1
+930:         1          16  java.util.regex.Pattern$JavaUnicodeIdentifierStart
+931:         1          16  javax.swing.ButtonGroup
+932:         1          16  java.util.regex.Pattern$JavaUnicodeIdentifierPart
+933:         1          16  [Lsun.awt.X11.XAtom;
+934:         1          16  java.util.regex.Pattern$JavaIdentifierIgnorable
+935:         1          16  javax.swing.text.SegmentCache
+936:         1          16  javax.swing.plaf.basic.BasicLookAndFeel$PopupInvocationHelper
+937:         1          16  javax.swing.SystemEventQueueUtilities$ComponentWorkRequest
+938:         1          16  javax.swing.plaf.metal.OceanTheme$COIcon
+939:         1          16  java.util.regex.Pattern$JavaSpaceChar
+940:         1          16  sun.swing.FilePane$1
+941:         1          16  sun.reflect.BootstrapConstructorAccessorImpl
+942:         1          16  java.util.regex.Pattern$JavaWhitespace
+943:         1          16  java.util.regex.Pattern$JavaISOControl
+944:         1          16  java.util.regex.Pattern$JavaMirrored
+945:         1          16  sun.java2d.opengl.GLXGraphicsConfig$2
+946:         1          16  javax.swing.text.html.StyleSheet$LargeConversionSet
+947:         1          16  java.awt.EventDispatchThread$1
+948:         1          16  sun.awt.X11.XAWTLookAndFeel$6
+949:         1          16  sun.awt.X11.XAWTLookAndFeel$7
+950:         1          16  java.awt.MutableBoolean
+951:         1          16  java.nio.charset.CoderResult$1
+952:         1          16  javax.swing.ToolTipManager$insideTimerAction
+953:         1          16  sun.awt.X11.XDropTargetEventProcessor
+954:         1          16  sun.awt.X11.XAWTLookAndFeel$8
+955:         1          16  javax.swing.TimerQueue
+956:         1          16  java.nio.charset.CoderResult$2
+957:         1          16  sun.awt.X11.XAWTLookAndFeel$9
+958:         1          16  javax.swing.ToolTipManager$outsideTimerAction
+959:         1          16  java.util.Collections$SynchronizedSet
+960:         1          16  sun.awt.X11.XAWTLookAndFeel$10
+961:         1          16  javax.swing.ToolTipManager$stillInsideTimerAction
+962:         1          16  sun.awt.X11.XAWTLookAndFeel$11
+963:         1          16  java.util.concurrent.atomic.AtomicLong
+964:         1          16  javax.swing.plaf.basic.BasicSplitPaneUI$Handler
+965:         1          16  sun.awt.X11.XAWTLookAndFeel$12
+966:         1          16  javax.swing.plaf.basic.BasicTableUI$TableDragGestureRecognizer
+967:         1          16  java.awt.KeyboardFocusManager$HeavyweightFocusRequest
+968:         1          16  sun.font.CMap$NullCMapClass
+969:         1          16  javax.swing.plaf.basic.BasicTableUI$TableTransferHandler
+970:         1          16  sun.awt.shell.ShellFolderManager
+971:         1          16  sun.awt.image.PixelConverter
+972:         1          16  sun.awt.shell.ShellFolderManager$1
+973:         1          16  javax.swing.ToolTipManager$MoveBeforeEnterListener
+974:         1          16  sun.swing.FilePane$9
+975:         1          16  java.util.regex.Pattern$Dot
+976:         1          16  javax.swing.plaf.basic.BasicPopupMenuUI$MouseGrabber
+977:         1          16  sun.awt.image.PixelConverter$Xrgb
+978:         1          16  javax.swing.filechooser.FileSystemView$FileSystemRoot
+979:         1          16  sun.awt.image.PixelConverter$Argb
+980:         1          16  java.util.Currency
+981:         1          16  sun.awt.image.PixelConverter$ArgbPre
+982:         1          16  javax.swing.KeyboardManager
+983:         1          16  sun.awt.image.PixelConverter$Xbgr
+984:         1          16  java.security.AllPermissionCollection
+985:         1          16  javax.swing.plaf.metal.MetalFileChooserUI$2
+986:         1           8  java.util.Hashtable$EmptyIterator
+987:         1           8  javax.swing.plaf.basic.BasicPanelUI
+988:         1           8  sun.nio.ch.FileDispatcher
+989:         1           8  com.sun.org.apache.xerces.internal.impl.dv.SecuritySupport12
+990:         1           8  sun.misc.Unsafe
+991:         1           8  sun.java2d.pipe.AlphaPaintPipe
+992:         1           8  sun.java2d.SunGraphicsEnvironment$TTFilter
+993:         1           8  java.lang.System$2
+994:         1           8  sun.net.DefaultProgressMeteringPolicy
+995:         1           8  com.pironet.tda.TDA$3
+996:         1           8  sun.java2d.SunGraphicsEnvironment$T1Filter
+997:         1           8  javax.swing.text.StyledEditorKit$StyledViewFactory
+998:         1           8  javax.swing.plaf.metal.MetalBorders$MenuBarBorder
+999:         1           8  com.sun.org.apache.xerces.internal.impl.dv.dtd.StringDatatypeValidator
+1000:         1           8  sun.awt.X11.XProtocol$1
+1001:         1           8  sun.reflect.GeneratedMethodAccessor4
+1002:         1           8  sun.java2d.pipe.ValidatePipe
+1003:         1           8  com.sun.org.apache.xerces.internal.impl.dv.dtd.IDDatatypeValidator
+1004:         1           8  sun.java2d.Disposer
+1005:         1           8  java.util.Collections$EmptySet
+1006:         1           8  sun.awt.X11.XToolkit$1
+1007:         1           8  javax.swing.plaf.basic.BasicLabelUI
+1008:         1           8  com.sun.org.apache.xerces.internal.impl.dv.dtd.IDREFDatatypeValidator
+1009:         1           8  javax.swing.tree.DefaultMutableTreeNode$1
+1010:         1           8  sun.awt.X11.XToolkit$5
+1011:         1           8  sun.java2d.pipe.GeneralCompositePipe
+1012:         1           8  sun.awt.X11.XKeyboardFocusManagerPeer$1
+1013:         1           8  sun.reflect.GeneratedMethodAccessor3
+1014:         1           8  com.sun.org.apache.xerces.internal.impl.dv.dtd.NOTATIONDatatypeValidator
+1015:         1           8  java.lang.reflect.ReflectAccess
+1016:         1           8  com.sun.org.apache.xerces.internal.impl.dv.dtd.NMTOKENDatatypeValidator
+1017:         1           8  sun.awt.X11.XDropTargetContextPeer$XDropTargetProtocolListenerImpl
+1018:         1           8  java.util.Collections$ReverseComparator
+1019:         1           8  sun.reflect.GeneratedMethodAccessor5
+1020:         1           8  javax.swing.text.FlowView$FlowStrategy
+1021:         1           8  javax.swing.ViewportLayout
+1022:         1           8  sun.misc.Launcher$Factory
+1023:         1           8  java.lang.Runtime
+1024:         1           8  javax.xml.parsers.SecuritySupport
+1025:         1           8  java.util.jar.JavaUtilJarAccessImpl
+1026:         1           8  javax.swing.plaf.basic.BasicViewportUI
+1027:         1           8  sun.java2d.pipe.NullPipe
+1028:         1           8  javax.swing.UIManager$2
+1029:         1           8  javax.swing.text.html.HTMLEditorKit$HTMLFactory
+1030:         1           8  javax.swing.text.html.parser.ParserDelegator
+1031:         1           8  sun.awt.image.ImageWatched$Link
+1032:         1           8  javax.swing.filechooser.FileSystemView$1
+1033:         1           8  sun.java2d.pipe.DrawImage
+1034:         1           8  sun.java2d.loops.GraphicsPrimitiveMgr$1
+1035:         1           8  sun.java2d.loops.GraphicsPrimitiveMgr$2
+1036:         1           8  javax.swing.plaf.basic.BasicComboPopup$EmptyListModelClass
+1037:         1           8  javax.swing.filechooser.UnixFileSystemView
+1038:         1           8  sun.java2d.pipe.LoopPipe
+1039:         1           8  java.awt.Component$AWTTreeLock
+1040:         1           8  javax.swing.SystemEventQueueUtilities$RunnableCanvasGraphics
+1041:         1           8  sun.awt.X11SurfaceData$LazyPipe
+1042:         1           8  sun.java2d.pipe.OutlineTextRenderer
+1043:         1           8  javax.swing.text.DefaultEditorKit
+1044:         1           8  sun.misc.ASCIICaseInsensitiveComparator
+1045:         1           8  sun.font.X11TextRenderer
+1046:         1           8  javax.swing.plaf.metal.MetalIconFactory$MenuArrowIcon
+1047:         1           8  sun.java2d.pipe.SolidTextRenderer
+1048:         1           8  java.lang.String$CaseInsensitiveComparator
+1049:         1           8  sun.java2d.pipe.AATextRenderer
+1050:         1           8  sun.reflect.GeneratedMethodAccessor2
+1051:         1           8  sun.net.www.protocol.file.Handler
+1052:         1           8  sun.java2d.pipe.AlphaColorPipe
+1053:         1           8  sun.swing.FilePane$2
+1054:         1           8  sun.net.www.protocol.jar.JarFileFactory
+1055:         1           8  javax.swing.plaf.metal.MetalBorders$TextFieldBorder
+1056:         1           8  javax.swing.text.SimpleAttributeSet$EmptyAttributeSet
+1057:         1           8  sun.awt.X11.XSelection$IncrementalTransferHandler
+1058:         1           8  sun.awt.X11.XSelection$SelectionEventHandler
+1059:         1           8  sun.reflect.GeneratedConstructorAccessor1
+1060:         1           8  java.awt.Container$MouseEventTargetFilter
+1061:         1           8  sun.awt.X11.XWM$1
+1062:         1           8  sun.awt.X11.XWM$2
+1063:         1           8  sun.reflect.ReflectionFactory
+1064:         1           8  sun.reflect.GeneratedMethodAccessor1
+1065:         1           8  javax.swing.text.SimpleAttributeSet$1
+1066:         1           8  sun.awt.X11.XInputMethodDescriptor
+1067:         1           8  java.util.prefs.FileSystemPreferencesFactory
+1068:         1           8  java.util.prefs.FileSystemPreferences$5
+1069:         1           8  javax.swing.plaf.metal.MetalBorders$PopupMenuBorder
+1070:         1           8  javax.swing.plaf.metal.MetalIconFactory$MenuItemArrowIcon
+1071:         1           8  javax.swing.plaf.metal.MetalBorders$ToggleButtonBorder
+1072:         1           8  javax.swing.plaf.metal.MetalBorders$ButtonBorder
+1073:         1           8  sun.awt.DebugHelperStub
+1074:         1           8  sun.awt.NullComponentPeer
+1075:         1           8  javax.swing.plaf.metal.MetalIconFactory$FileChooserDetailViewIcon
+1076:         1           8  java.lang.ref.Reference$Lock
+1077:         1           8  javax.swing.plaf.metal.MetalIconFactory$FileChooserListViewIcon
+1078:         1           8  javax.swing.plaf.basic.BasicRootPaneUI
+1079:         1           8  java.net.UnknownContentHandler
+1080:         1           8  javax.swing.Autoscroller
+1081:         1           8  sun.awt.X11.XDataTransferer
+1082:         1           8  java.lang.Terminator$1
+1083:         1           8  java.awt.GraphicsCallback$PaintCallback
+1084:         1           8  java.util.Hashtable$EmptyEnumerator
+Total   183155    16330872

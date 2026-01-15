@@ -1,0 +1,2586 @@
+2007-11-06 10:30:41
+Full thread dump Java HotSpot(TM) Client VM 1.6.0_03-b05
+
+"RMI TCP Connection(23)-127.0.1.1" id=3149 in RUNNABLE (running in native)
+    at java.net.SocketInputStream.socketRead0(Native Method)
+    at java.net.SocketInputStream.read(SocketInputStream.java:129)
+    at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+    at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+    at java.io.FilterInputStream.read(FilterInputStream.java:66)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:517)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@166fba
+
+"RMI TCP Connection(22)-127.0.1.1" id=3148 in RUNNABLE (running in native)
+    at java.net.SocketInputStream.socketRead0(Native Method)
+    at java.net.SocketInputStream.read(SocketInputStream.java:129)
+    at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+    at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+    at java.io.FilterInputStream.read(FilterInputStream.java:66)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:517)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@15bc412
+
+"RMI TCP Connection(21)-127.0.1.1" id=3147 in RUNNABLE
+    at sun.management.ThreadImpl.dumpThreads0(Native Method)
+    at sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:374)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke(Method.java:597)
+    at com.sun.jmx.mbeanserver.ConvertingMethod.invokeWithOpenReturn(ConvertingMethod.java:167)
+    at com.sun.jmx.mbeanserver.MXBeanIntrospector.invokeM2(MXBeanIntrospector.java:96)
+    at com.sun.jmx.mbeanserver.MXBeanIntrospector.invokeM2(MXBeanIntrospector.java:33)
+    at com.sun.jmx.mbeanserver.MBeanIntrospector.invokeM(MBeanIntrospector.java:208)
+    at com.sun.jmx.mbeanserver.PerInterface.invoke(PerInterface.java:120)
+    at com.sun.jmx.mbeanserver.MBeanSupport.invoke(MBeanSupport.java:262)
+    at javax.management.StandardMBean.invoke(StandardMBean.java:391)
+    at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:836)
+    at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:761)
+    at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1426)
+    at javax.management.remote.rmi.RMIConnectionImpl.access$200(RMIConnectionImpl.java:72)
+    at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1264)
+    at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1359)
+    at javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:788)
+    at sun.reflect.GeneratedMethodAccessor617.invoke(Unknown Source)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke(Method.java:597)
+    at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:305)
+    at sun.rmi.transport.Transport$1.run(Transport.java:159)
+    at java.security.AccessController.doPrivileged(Native Method)
+    at sun.rmi.transport.Transport.serviceCall(Transport.java:155)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:535)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@1a5930e
+
+"JMX server connection timeout 3146" id=3146 in TIMED_WAITING
+    - waiting on <0x18df8a5> (a [I)
+    - locked <0x18df8a5> (a [I)
+    at java.lang.Object.wait(Native Method)
+    at com.sun.jmx.remote.internal.ServerCommunicatorAdmin$Timeout.run(ServerCommunicatorAdmin.java:150)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"RMI TCP Connection(19)-127.0.1.1" id=3144 in RUNNABLE (running in native)
+    at java.net.SocketInputStream.socketRead0(Native Method)
+    at java.net.SocketInputStream.read(SocketInputStream.java:129)
+    at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+    at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+    at java.io.FilterInputStream.read(FilterInputStream.java:66)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:517)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@19c6840
+
+"Inactive RequestProcessor thread [Was:AnnotationHolder/org.netbeans.modules.editor.hints.AnnotationHolder$2$2]" id=3143 in TIMED_WAITING
+    - waiting on <0x18c4e5f> (a java.lang.Object)
+    - locked <0x18c4e5f> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Versioning/org.netbeans.modules.versioning.system.cvss.FilesystemHandler$3]" id=3142 in TIMED_WAITING
+    - waiting on <0x1901c0d> (a java.lang.Object)
+    - locked <0x1901c0d> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:TimedSoftReference/org.openide.util.TimedSoftReference]" id=3141 in TIMED_WAITING
+    - waiting on <0x1d1db12> (a java.lang.Object)
+    - locked <0x1d1db12> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3140 in TIMED_WAITING
+    - waiting on <0x182dd72> (a java.lang.Object)
+    - locked <0x182dd72> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3139 in TIMED_WAITING
+    - waiting on <0x1796bbc> (a java.lang.Object)
+    - locked <0x1796bbc> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3138 in TIMED_WAITING
+    - waiting on <0x1fac7ae> (a java.lang.Object)
+    - locked <0x1fac7ae> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3137 in TIMED_WAITING
+    - waiting on <0x114d3b6> (a java.lang.Object)
+    - locked <0x114d3b6> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/org.codehaus.mevenide.netbeans.nodes.ProjectFilesNode]" id=3136 in TIMED_WAITING
+    - waiting on <0x482793> (a java.lang.Object)
+    - locked <0x482793> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/org.netbeans.modules.project.ui.ProjectsRootNode$BadgingNode]" id=3135 in TIMED_WAITING
+    - waiting on <0xa28a> (a java.lang.Object)
+    - locked <0xa28a> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3134 in TIMED_WAITING
+    - waiting on <0x88a7ea> (a java.lang.Object)
+    - locked <0x88a7ea> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3133 in TIMED_WAITING
+    - waiting on <0x164bc68> (a java.lang.Object)
+    - locked <0x164bc68> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3132 in TIMED_WAITING
+    - waiting on <0x15594c8> (a java.lang.Object)
+    - locked <0x15594c8> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3131 in TIMED_WAITING
+    - waiting on <0x163320f> (a java.lang.Object)
+    - locked <0x163320f> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3130 in TIMED_WAITING
+    - waiting on <0x133f628> (a java.lang.Object)
+    - locked <0x133f628> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3129 in TIMED_WAITING
+    - waiting on <0x15b57f8> (a java.lang.Object)
+    - locked <0x15b57f8> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3128 in TIMED_WAITING
+    - waiting on <0x1bb6056> (a java.lang.Object)
+    - locked <0x1bb6056> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3127 in TIMED_WAITING
+    - waiting on <0x1a9abb8> (a java.lang.Object)
+    - locked <0x1a9abb8> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3126 in TIMED_WAITING
+    - waiting on <0x16ca633> (a java.lang.Object)
+    - locked <0x16ca633> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3125 in TIMED_WAITING
+    - waiting on <0x1a6d5c8> (a java.lang.Object)
+    - locked <0x1a6d5c8> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3124 in TIMED_WAITING
+    - waiting on <0x190486> (a java.lang.Object)
+    - locked <0x190486> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3123 in TIMED_WAITING
+    - waiting on <0x1a03236> (a java.lang.Object)
+    - locked <0x1a03236> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3122 in TIMED_WAITING
+    - waiting on <0x2a5751> (a java.lang.Object)
+    - locked <0x2a5751> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3121 in TIMED_WAITING
+    - waiting on <0x1595756> (a java.lang.Object)
+    - locked <0x1595756> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3120 in TIMED_WAITING
+    - waiting on <0x3795a1> (a java.lang.Object)
+    - locked <0x3795a1> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3119 in TIMED_WAITING
+    - waiting on <0xdf8179> (a java.lang.Object)
+    - locked <0xdf8179> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3118 in TIMED_WAITING
+    - waiting on <0x1077c90> (a java.lang.Object)
+    - locked <0x1077c90> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3117 in TIMED_WAITING
+    - waiting on <0x2fbeef> (a java.lang.Object)
+    - locked <0x2fbeef> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3116 in TIMED_WAITING
+    - waiting on <0x1740e88> (a java.lang.Object)
+    - locked <0x1740e88> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3115 in TIMED_WAITING
+    - waiting on <0x1d1607> (a java.lang.Object)
+    - locked <0x1d1607> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3114 in TIMED_WAITING
+    - waiting on <0x6ffee3> (a java.lang.Object)
+    - locked <0x6ffee3> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3113 in TIMED_WAITING
+    - waiting on <0xdb575e> (a java.lang.Object)
+    - locked <0xdb575e> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3112 in TIMED_WAITING
+    - waiting on <0x1fed426> (a java.lang.Object)
+    - locked <0x1fed426> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3111 in TIMED_WAITING
+    - waiting on <0x15219b> (a java.lang.Object)
+    - locked <0x15219b> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3110 in TIMED_WAITING
+    - waiting on <0x1a3a9ee> (a java.lang.Object)
+    - locked <0x1a3a9ee> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3109 in TIMED_WAITING
+    - waiting on <0xcccc0c> (a java.lang.Object)
+    - locked <0xcccc0c> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3108 in TIMED_WAITING
+    - waiting on <0x1178018> (a java.lang.Object)
+    - locked <0x1178018> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3107 in TIMED_WAITING
+    - waiting on <0xfa0e81> (a java.lang.Object)
+    - locked <0xfa0e81> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3106 in TIMED_WAITING
+    - waiting on <0xe287aa> (a java.lang.Object)
+    - locked <0xe287aa> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3105 in TIMED_WAITING
+    - waiting on <0x171b1f> (a java.lang.Object)
+    - locked <0x171b1f> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/org.codehaus.mevenide.netbeans.nodes.MavenProjectNode]" id=3104 in TIMED_WAITING
+    - waiting on <0x9c0cdf> (a java.lang.Object)
+    - locked <0x9c0cdf> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:TimedSoftReference/org.openide.util.TimedSoftReference]" id=3103 in TIMED_WAITING
+    - waiting on <0x7aa377> (a java.lang.Object)
+    - locked <0x7aa377> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3102 in TIMED_WAITING
+    - waiting on <0x18f3935> (a java.lang.Object)
+    - locked <0x18f3935> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3101 in TIMED_WAITING
+    - waiting on <0x29fb70> (a java.lang.Object)
+    - locked <0x29fb70> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3100 in TIMED_WAITING
+    - waiting on <0xf754cb> (a java.lang.Object)
+    - locked <0xf754cb> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3099 in TIMED_WAITING
+    - waiting on <0xa0f9e2> (a java.lang.Object)
+    - locked <0xa0f9e2> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3098 in TIMED_WAITING
+    - waiting on <0xd6b93e> (a java.lang.Object)
+    - locked <0xd6b93e> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3097 in TIMED_WAITING
+    - waiting on <0xc18fb> (a java.lang.Object)
+    - locked <0xc18fb> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3096 in TIMED_WAITING
+    - waiting on <0x3dcb75> (a java.lang.Object)
+    - locked <0x3dcb75> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3095 in TIMED_WAITING
+    - waiting on <0x1f5d99f> (a java.lang.Object)
+    - locked <0x1f5d99f> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3094 in TIMED_WAITING
+    - waiting on <0x15c29e0> (a java.lang.Object)
+    - locked <0x15c29e0> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/org.netbeans.spi.project.support.ant.GlobFileBuiltQuery$StatusImpl]" id=3093 in TIMED_WAITING
+    - waiting on <0x3061b> (a java.lang.Object)
+    - locked <0x3061b> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3092 in TIMED_WAITING
+    - waiting on <0xa1b41e> (a java.lang.Object)
+    - locked <0xa1b41e> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"RMI TCP Connection(15)-127.0.1.1" id=2617 in TIMED_WAITING
+    - waiting on <0x19e0708> (a com.sun.jmx.remote.internal.ArrayNotificationBuffer)
+    - locked <0x19e0708> (a com.sun.jmx.remote.internal.ArrayNotificationBuffer)
+    at java.lang.Object.wait(Native Method)
+    at com.sun.jmx.remote.internal.ArrayNotificationBuffer.fetchNotifications(ArrayNotificationBuffer.java:341)
+    at com.sun.jmx.remote.internal.ArrayNotificationBuffer$ShareBuffer.fetchNotifications(ArrayNotificationBuffer.java:123)
+    at com.sun.jmx.remote.internal.ServerNotifForwarder.fetchNotifs(ServerNotifForwarder.java:258)
+    at javax.management.remote.rmi.RMIConnectionImpl$2.run(RMIConnectionImpl.java:1227)
+    at javax.management.remote.rmi.RMIConnectionImpl$2.run(RMIConnectionImpl.java:1225)
+    at javax.management.remote.rmi.RMIConnectionImpl.fetchNotifications(RMIConnectionImpl.java:1231)
+    at sun.reflect.GeneratedMethodAccessor706.invoke(Unknown Source)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke(Method.java:597)
+    at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:305)
+    at sun.rmi.transport.Transport$1.run(Transport.java:159)
+    at java.security.AccessController.doPrivileged(Native Method)
+    at sun.rmi.transport.Transport.serviceCall(Transport.java:155)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:535)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@131f99
+
+"RMI TCP Connection(20)-127.0.1.1" id=2616 in RUNNABLE (running in native)
+    at java.net.SocketInputStream.socketRead0(Native Method)
+    at java.net.SocketInputStream.read(SocketInputStream.java:129)
+    at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+    at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+    at java.io.FilterInputStream.read(FilterInputStream.java:66)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:517)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@18ff747
+
+"RMI TCP Connection(18)-127.0.1.1" id=2615 in TIMED_WAITING
+    - waiting on <0x19e0708> (a com.sun.jmx.remote.internal.ArrayNotificationBuffer)
+    - locked <0x19e0708> (a com.sun.jmx.remote.internal.ArrayNotificationBuffer)
+    at java.lang.Object.wait(Native Method)
+    at com.sun.jmx.remote.internal.ArrayNotificationBuffer.fetchNotifications(ArrayNotificationBuffer.java:341)
+    at com.sun.jmx.remote.internal.ArrayNotificationBuffer$ShareBuffer.fetchNotifications(ArrayNotificationBuffer.java:123)
+    at com.sun.jmx.remote.internal.ServerNotifForwarder.fetchNotifs(ServerNotifForwarder.java:258)
+    at javax.management.remote.rmi.RMIConnectionImpl$2.run(RMIConnectionImpl.java:1227)
+    at javax.management.remote.rmi.RMIConnectionImpl$2.run(RMIConnectionImpl.java:1225)
+    at javax.management.remote.rmi.RMIConnectionImpl.fetchNotifications(RMIConnectionImpl.java:1231)
+    at sun.reflect.GeneratedMethodAccessor706.invoke(Unknown Source)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke(Method.java:597)
+    at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:305)
+    at sun.rmi.transport.Transport$1.run(Transport.java:159)
+    at java.security.AccessController.doPrivileged(Native Method)
+    at sun.rmi.transport.Transport.serviceCall(Transport.java:155)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:535)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@b38440
+
+"JMX server connection timeout 2613" id=2613 in TIMED_WAITING
+    - waiting on <0x302c8e> (a [I)
+    - locked <0x302c8e> (a [I)
+    at java.lang.Object.wait(Native Method)
+    at com.sun.jmx.remote.internal.ServerCommunicatorAdmin$Timeout.run(ServerCommunicatorAdmin.java:150)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"RMI Scheduler(0)" id=2547 in TIMED_WAITING
+    - waiting on <0x1efe2bc> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    - locked <0x1efe2bc> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+    at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:582)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:575)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:946)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:906)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"RMI TCP Accept-0" id=2545 in RUNNABLE (running in native)
+    at java.net.PlainSocketImpl.socketAccept(Native Method)
+    at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+    at java.net.ServerSocket.accept(ServerSocket.java:421)
+    at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:369)
+    at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:341)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Attach Listener" id=2544 in RUNNABLE
+
+    Locked synchronizers: count = 0
+
+"GSF Source Worker Thread" id=137 in TIMED_WAITING
+    - waiting on <0x13a2ace> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    - locked <0x13a2ace> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+    at java.util.concurrent.PriorityBlockingQueue.poll(PriorityBlockingQueue.java:245)
+    at org.netbeans.api.retouche.source.Source$CompilationJob.run(Source.java:1126)
+    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+    at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+    at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@d38397
+
+"org.netbeans.modules.retouche.source.usages.RepositoryUpdater" id=136 in WAITING
+    - waiting on <0xc1a33> (a java.util.TaskQueue)
+    - locked <0xc1a33> (a java.util.TaskQueue)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.util.TimerThread.mainLoop(Timer.java:483)
+    at java.util.TimerThread.run(Timer.java:462)
+
+    Locked synchronizers: count = 0
+
+"pool-2-thread-1" id=134 in WAITING
+    - waiting on <0xbf6480> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    - locked <0xbf6480> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:158)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1925)
+    at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:358)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:946)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:906)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Timer-2" id=89 in WAITING
+    - waiting on <0x1470797> (a java.util.TaskQueue)
+    - locked <0x1470797> (a java.util.TaskQueue)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.util.TimerThread.mainLoop(Timer.java:483)
+    at java.util.TimerThread.run(Timer.java:462)
+
+    Locked synchronizers: count = 0
+
+"DestroyJavaVM" id=51 in RUNNABLE
+
+    Locked synchronizers: count = 0
+
+"Collaboration Notification" id=46 in WAITING
+    - waiting on <0x198ab83> (a java.lang.Object)
+    - locked <0x198ab83> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at org.netbeans.modules.collab.ui.NotificationThread.run(NotificationThread.java:121)
+
+    Locked synchronizers: count = 0
+
+"AWT-EventQueue-1" id=45 in WAITING
+    - waiting on <0x1104843> (a java.awt.EventQueue)
+    - locked <0x1104843> (a java.awt.EventQueue)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.awt.EventQueue.getNextEvent(EventQueue.java:479)
+    at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:245)
+    at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:183)
+    at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:173)
+    at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:168)
+    at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:160)
+    at java.awt.EventDispatchThread.run(EventDispatchThread.java:121)
+
+    Locked synchronizers: count = 0
+
+"Creator Error Handler Listener" id=44 in RUNNABLE (running in native)
+    at java.net.PlainSocketImpl.socketAccept(Native Method)
+    at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+    at java.net.ServerSocket.accept(ServerSocket.java:421)
+    at org.netbeans.modules.visualweb.errorhandler.DebugServerThread.run(DebugServerThread.java:115)
+
+    Locked synchronizers: count = 0
+
+"*** JFluid Separate Command Execution Thread" id=38 in WAITING
+    - waiting on <0x61cebf> (a java.lang.Object)
+    - locked <0x61cebf> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at org.netbeans.lib.profiler.ProfilerClient$SeparateCmdExecutionThread.run(ProfilerClient.java:104)
+
+    Locked synchronizers: count = 0
+
+"Repository writer 0" id=31 in TIMED_WAITING
+    at java.lang.Thread.sleep(Native Method)
+    at org.netbeans.modules.cnd.repository.queue.RepositoryWritingThread.waitReady(RepositoryWritingThread.java:94)
+    at org.netbeans.modules.cnd.repository.queue.RepositoryWritingThread.run(RepositoryWritingThread.java:128)
+    at org.netbeans.modules.cnd.repository.queue.RepositoryThreadManager$Wrapper.run(RepositoryThreadManager.java:84)
+    at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:561)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:986)
+
+    Locked synchronizers: count = 0
+
+"TimerQueue" id=25 in TIMED_WAITING
+    - waiting on <0x1d6d71c> (a javax.swing.TimerQueue)
+    - locked <0x1d6d71c> (a javax.swing.TimerQueue)
+    at java.lang.Object.wait(Native Method)
+    at javax.swing.TimerQueue.run(TimerQueue.java:236)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Thread-3" id=24 in WAITING
+    - waiting on <0x65ff23> (a java.util.LinkedList)
+    - locked <0x65ff23> (a java.util.LinkedList)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.util.prefs.AbstractPreferences$EventDispatchThread.run(AbstractPreferences.java:1461)
+
+    Locked synchronizers: count = 0
+
+"Java Source Worker Thread" id=23 in TIMED_WAITING
+    - waiting on <0x6b2268> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    - locked <0x6b2268> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+    at java.util.concurrent.PriorityBlockingQueue.poll(PriorityBlockingQueue.java:245)
+    at org.netbeans.api.java.source.JavaSource$CompilationJob.run(JavaSource.java:1428)
+    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+    at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+    at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@ea2050
+
+"Code Model Parser 0" id=17 in WAITING
+    - waiting on <0x18bc3e4> (a java.lang.Object)
+    - locked <0x18bc3e4> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserQueue.waitReady(ParserQueue.java:378)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserThread.run(ParserThread.java:68)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserThreadManager$Wrapper.run(ParserThreadManager.java:82)
+    at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:561)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:986)
+
+    Locked synchronizers: count = 0
+
+"AWT-Shutdown" id=16 in WAITING
+    - waiting on <0x1d4094b> (a java.lang.Object)
+    - locked <0x1d4094b> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at sun.awt.AWTAutoShutdown.run(AWTAutoShutdown.java:259)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"AWT-XAWT" id=14 in RUNNABLE
+    at sun.awt.X11.XToolkit.waitForEvents(Native Method)
+    at sun.awt.X11.XToolkit.run(XToolkit.java:544)
+    at sun.awt.X11.XToolkit.run(XToolkit.java:519)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Java2D Disposer" id=13 in WAITING
+    - waiting on <0x12c336> (a java.lang.ref.ReferenceQueue$Lock)
+    - locked <0x12c336> (a java.lang.ref.ReferenceQueue$Lock)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+    at sun.java2d.Disposer.run(Disposer.java:125)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Code Model Parser 1" id=11 in WAITING
+    - waiting on <0x18bc3e4> (a java.lang.Object)
+    - locked <0x18bc3e4> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserQueue.waitReady(ParserQueue.java:378)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserThread.run(ParserThread.java:68)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserThreadManager$Wrapper.run(ParserThreadManager.java:82)
+    at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:561)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:986)
+
+    Locked synchronizers: count = 0
+
+"Timer-0" id=10 in TIMED_WAITING
+    - waiting on <0x6a1dfc> (a java.util.TaskQueue)
+    - locked <0x6a1dfc> (a java.util.TaskQueue)
+    at java.lang.Object.wait(Native Method)
+    at java.util.TimerThread.mainLoop(Timer.java:509)
+    at java.util.TimerThread.run(Timer.java:462)
+
+    Locked synchronizers: count = 0
+
+"CLI Requests Server" id=9 in RUNNABLE (running in native)
+    at java.net.PlainSocketImpl.socketAccept(Native Method)
+    at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+    at java.net.ServerSocket.accept(ServerSocket.java:421)
+    at org.netbeans.CLIHandler$Server.run(CLIHandler.java:1003)
+
+    Locked synchronizers: count = 0
+
+"Active Reference Queue Daemon" id=8 in WAITING
+    - waiting on <0x10c0d43> (a java.lang.ref.ReferenceQueue$Lock)
+    - locked <0x10c0d43> (a java.lang.ref.ReferenceQueue$Lock)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+    at org.openide.util.Utilities$ActiveQueue.run(Utilities.java:3056)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Signal Dispatcher" id=4 in RUNNABLE
+
+    Locked synchronizers: count = 0
+
+"Finalizer" id=3 in WAITING
+    - waiting on <0xcb9d10> (a java.lang.ref.ReferenceQueue$Lock)
+    - locked <0xcb9d10> (a java.lang.ref.ReferenceQueue$Lock)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+    at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+    Locked synchronizers: count = 0
+
+"Reference Handler" id=2 in WAITING
+    - waiting on <0x1dea370> (a java.lang.ref.Reference$Lock)
+    - locked <0x1dea370> (a java.lang.ref.Reference$Lock)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+
+    Locked synchronizers: count = 0
+
+
+
+<EndOfDump>
+
+
+2007-11-06 10:30:45
+Full thread dump Java HotSpot(TM) Client VM 1.6.0_03-b05
+
+"RMI TCP Connection(23)-127.0.1.1" id=3149 in RUNNABLE (running in native)
+    at java.net.SocketInputStream.socketRead0(Native Method)
+    at java.net.SocketInputStream.read(SocketInputStream.java:129)
+    at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+    at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+    at java.io.FilterInputStream.read(FilterInputStream.java:66)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:517)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@166fba
+
+"RMI TCP Connection(22)-127.0.1.1" id=3148 in RUNNABLE (running in native)
+    at java.net.SocketInputStream.socketRead0(Native Method)
+    at java.net.SocketInputStream.read(SocketInputStream.java:129)
+    at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+    at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+    at java.io.FilterInputStream.read(FilterInputStream.java:66)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:517)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@15bc412
+
+"RMI TCP Connection(21)-127.0.1.1" id=3147 in RUNNABLE
+    at sun.management.ThreadImpl.dumpThreads0(Native Method)
+    at sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:374)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke(Method.java:597)
+    at com.sun.jmx.mbeanserver.ConvertingMethod.invokeWithOpenReturn(ConvertingMethod.java:167)
+    at com.sun.jmx.mbeanserver.MXBeanIntrospector.invokeM2(MXBeanIntrospector.java:96)
+    at com.sun.jmx.mbeanserver.MXBeanIntrospector.invokeM2(MXBeanIntrospector.java:33)
+    at com.sun.jmx.mbeanserver.MBeanIntrospector.invokeM(MBeanIntrospector.java:208)
+    at com.sun.jmx.mbeanserver.PerInterface.invoke(PerInterface.java:120)
+    at com.sun.jmx.mbeanserver.MBeanSupport.invoke(MBeanSupport.java:262)
+    at javax.management.StandardMBean.invoke(StandardMBean.java:391)
+    at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:836)
+    at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:761)
+    at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1426)
+    at javax.management.remote.rmi.RMIConnectionImpl.access$200(RMIConnectionImpl.java:72)
+    at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1264)
+    at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1359)
+    at javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:788)
+    at sun.reflect.GeneratedMethodAccessor617.invoke(Unknown Source)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke(Method.java:597)
+    at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:305)
+    at sun.rmi.transport.Transport$1.run(Transport.java:159)
+    at java.security.AccessController.doPrivileged(Native Method)
+    at sun.rmi.transport.Transport.serviceCall(Transport.java:155)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:535)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@1a5930e
+
+"JMX server connection timeout 3146" id=3146 in TIMED_WAITING
+    - waiting on <0x18df8a5> (a [I)
+    - locked <0x18df8a5> (a [I)
+    at java.lang.Object.wait(Native Method)
+    at com.sun.jmx.remote.internal.ServerCommunicatorAdmin$Timeout.run(ServerCommunicatorAdmin.java:150)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"RMI TCP Connection(19)-127.0.1.1" id=3144 in RUNNABLE (running in native)
+    at java.net.SocketInputStream.socketRead0(Native Method)
+    at java.net.SocketInputStream.read(SocketInputStream.java:129)
+    at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+    at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+    at java.io.FilterInputStream.read(FilterInputStream.java:66)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:517)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@19c6840
+
+"Inactive RequestProcessor thread [Was:Versioning/org.netbeans.modules.versioning.system.cvss.FilesystemHandler$3]" id=3142 in TIMED_WAITING
+    - waiting on <0x1901c0d> (a java.lang.Object)
+    - locked <0x1901c0d> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:TimedSoftReference/org.openide.util.TimedSoftReference]" id=3141 in TIMED_WAITING
+    - waiting on <0x1d1db12> (a java.lang.Object)
+    - locked <0x1d1db12> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3140 in TIMED_WAITING
+    - waiting on <0x182dd72> (a java.lang.Object)
+    - locked <0x182dd72> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3139 in TIMED_WAITING
+    - waiting on <0x1796bbc> (a java.lang.Object)
+    - locked <0x1796bbc> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3138 in TIMED_WAITING
+    - waiting on <0x1fac7ae> (a java.lang.Object)
+    - locked <0x1fac7ae> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3137 in TIMED_WAITING
+    - waiting on <0x114d3b6> (a java.lang.Object)
+    - locked <0x114d3b6> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/org.netbeans.modules.project.ui.ProjectsRootNode$BadgingNode]" id=3135 in TIMED_WAITING
+    - waiting on <0xa28a> (a java.lang.Object)
+    - locked <0xa28a> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3134 in TIMED_WAITING
+    - waiting on <0x88a7ea> (a java.lang.Object)
+    - locked <0x88a7ea> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3133 in TIMED_WAITING
+    - waiting on <0x164bc68> (a java.lang.Object)
+    - locked <0x164bc68> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3132 in TIMED_WAITING
+    - waiting on <0x15594c8> (a java.lang.Object)
+    - locked <0x15594c8> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3131 in TIMED_WAITING
+    - waiting on <0x163320f> (a java.lang.Object)
+    - locked <0x163320f> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3130 in TIMED_WAITING
+    - waiting on <0x133f628> (a java.lang.Object)
+    - locked <0x133f628> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3129 in TIMED_WAITING
+    - waiting on <0x15b57f8> (a java.lang.Object)
+    - locked <0x15b57f8> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3128 in TIMED_WAITING
+    - waiting on <0x1bb6056> (a java.lang.Object)
+    - locked <0x1bb6056> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3127 in TIMED_WAITING
+    - waiting on <0x1a9abb8> (a java.lang.Object)
+    - locked <0x1a9abb8> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3126 in TIMED_WAITING
+    - waiting on <0x16ca633> (a java.lang.Object)
+    - locked <0x16ca633> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3125 in TIMED_WAITING
+    - waiting on <0x1a6d5c8> (a java.lang.Object)
+    - locked <0x1a6d5c8> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3124 in TIMED_WAITING
+    - waiting on <0x190486> (a java.lang.Object)
+    - locked <0x190486> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3123 in TIMED_WAITING
+    - waiting on <0x1a03236> (a java.lang.Object)
+    - locked <0x1a03236> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3122 in TIMED_WAITING
+    - waiting on <0x2a5751> (a java.lang.Object)
+    - locked <0x2a5751> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3121 in TIMED_WAITING
+    - waiting on <0x1595756> (a java.lang.Object)
+    - locked <0x1595756> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3120 in TIMED_WAITING
+    - waiting on <0x3795a1> (a java.lang.Object)
+    - locked <0x3795a1> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3119 in TIMED_WAITING
+    - waiting on <0xdf8179> (a java.lang.Object)
+    - locked <0xdf8179> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3118 in TIMED_WAITING
+    - waiting on <0x1077c90> (a java.lang.Object)
+    - locked <0x1077c90> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3117 in TIMED_WAITING
+    - waiting on <0x2fbeef> (a java.lang.Object)
+    - locked <0x2fbeef> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3116 in TIMED_WAITING
+    - waiting on <0x1740e88> (a java.lang.Object)
+    - locked <0x1740e88> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3115 in TIMED_WAITING
+    - waiting on <0x1d1607> (a java.lang.Object)
+    - locked <0x1d1607> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3114 in TIMED_WAITING
+    - waiting on <0x6ffee3> (a java.lang.Object)
+    - locked <0x6ffee3> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3113 in TIMED_WAITING
+    - waiting on <0xdb575e> (a java.lang.Object)
+    - locked <0xdb575e> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3112 in TIMED_WAITING
+    - waiting on <0x1fed426> (a java.lang.Object)
+    - locked <0x1fed426> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3111 in TIMED_WAITING
+    - waiting on <0x15219b> (a java.lang.Object)
+    - locked <0x15219b> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3110 in TIMED_WAITING
+    - waiting on <0x1a3a9ee> (a java.lang.Object)
+    - locked <0x1a3a9ee> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3109 in TIMED_WAITING
+    - waiting on <0xcccc0c> (a java.lang.Object)
+    - locked <0xcccc0c> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3108 in TIMED_WAITING
+    - waiting on <0x1178018> (a java.lang.Object)
+    - locked <0x1178018> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3107 in TIMED_WAITING
+    - waiting on <0xfa0e81> (a java.lang.Object)
+    - locked <0xfa0e81> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3106 in TIMED_WAITING
+    - waiting on <0xe287aa> (a java.lang.Object)
+    - locked <0xe287aa> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3105 in TIMED_WAITING
+    - waiting on <0x171b1f> (a java.lang.Object)
+    - locked <0x171b1f> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/org.codehaus.mevenide.netbeans.nodes.MavenProjectNode]" id=3104 in TIMED_WAITING
+    - waiting on <0x9c0cdf> (a java.lang.Object)
+    - locked <0x9c0cdf> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:TimedSoftReference/org.openide.util.TimedSoftReference]" id=3103 in TIMED_WAITING
+    - waiting on <0x7aa377> (a java.lang.Object)
+    - locked <0x7aa377> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3102 in TIMED_WAITING
+    - waiting on <0x18f3935> (a java.lang.Object)
+    - locked <0x18f3935> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3101 in TIMED_WAITING
+    - waiting on <0x29fb70> (a java.lang.Object)
+    - locked <0x29fb70> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3100 in TIMED_WAITING
+    - waiting on <0xf754cb> (a java.lang.Object)
+    - locked <0xf754cb> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3099 in TIMED_WAITING
+    - waiting on <0xa0f9e2> (a java.lang.Object)
+    - locked <0xa0f9e2> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3098 in TIMED_WAITING
+    - waiting on <0xd6b93e> (a java.lang.Object)
+    - locked <0xd6b93e> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3097 in TIMED_WAITING
+    - waiting on <0xc18fb> (a java.lang.Object)
+    - locked <0xc18fb> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3096 in TIMED_WAITING
+    - waiting on <0x3dcb75> (a java.lang.Object)
+    - locked <0x3dcb75> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3095 in TIMED_WAITING
+    - waiting on <0x1f5d99f> (a java.lang.Object)
+    - locked <0x1f5d99f> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3094 in TIMED_WAITING
+    - waiting on <0x15c29e0> (a java.lang.Object)
+    - locked <0x15c29e0> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/org.netbeans.spi.project.support.ant.GlobFileBuiltQuery$StatusImpl]" id=3093 in TIMED_WAITING
+    - waiting on <0x3061b> (a java.lang.Object)
+    - locked <0x3061b> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3092 in TIMED_WAITING
+    - waiting on <0xa1b41e> (a java.lang.Object)
+    - locked <0xa1b41e> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"RMI TCP Connection(15)-127.0.1.1" id=2617 in TIMED_WAITING
+    - waiting on <0x19e0708> (a com.sun.jmx.remote.internal.ArrayNotificationBuffer)
+    - locked <0x19e0708> (a com.sun.jmx.remote.internal.ArrayNotificationBuffer)
+    at java.lang.Object.wait(Native Method)
+    at com.sun.jmx.remote.internal.ArrayNotificationBuffer.fetchNotifications(ArrayNotificationBuffer.java:341)
+    at com.sun.jmx.remote.internal.ArrayNotificationBuffer$ShareBuffer.fetchNotifications(ArrayNotificationBuffer.java:123)
+    at com.sun.jmx.remote.internal.ServerNotifForwarder.fetchNotifs(ServerNotifForwarder.java:258)
+    at javax.management.remote.rmi.RMIConnectionImpl$2.run(RMIConnectionImpl.java:1227)
+    at javax.management.remote.rmi.RMIConnectionImpl$2.run(RMIConnectionImpl.java:1225)
+    at javax.management.remote.rmi.RMIConnectionImpl.fetchNotifications(RMIConnectionImpl.java:1231)
+    at sun.reflect.GeneratedMethodAccessor706.invoke(Unknown Source)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke(Method.java:597)
+    at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:305)
+    at sun.rmi.transport.Transport$1.run(Transport.java:159)
+    at java.security.AccessController.doPrivileged(Native Method)
+    at sun.rmi.transport.Transport.serviceCall(Transport.java:155)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:535)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@131f99
+
+"RMI TCP Connection(20)-127.0.1.1" id=2616 in RUNNABLE (running in native)
+    at java.net.SocketInputStream.socketRead0(Native Method)
+    at java.net.SocketInputStream.read(SocketInputStream.java:129)
+    at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+    at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+    at java.io.FilterInputStream.read(FilterInputStream.java:66)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:517)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@18ff747
+
+"RMI TCP Connection(18)-127.0.1.1" id=2615 in TIMED_WAITING
+    - waiting on <0x19e0708> (a com.sun.jmx.remote.internal.ArrayNotificationBuffer)
+    - locked <0x19e0708> (a com.sun.jmx.remote.internal.ArrayNotificationBuffer)
+    at java.lang.Object.wait(Native Method)
+    at com.sun.jmx.remote.internal.ArrayNotificationBuffer.fetchNotifications(ArrayNotificationBuffer.java:341)
+    at com.sun.jmx.remote.internal.ArrayNotificationBuffer$ShareBuffer.fetchNotifications(ArrayNotificationBuffer.java:123)
+    at com.sun.jmx.remote.internal.ServerNotifForwarder.fetchNotifs(ServerNotifForwarder.java:258)
+    at javax.management.remote.rmi.RMIConnectionImpl$2.run(RMIConnectionImpl.java:1227)
+    at javax.management.remote.rmi.RMIConnectionImpl$2.run(RMIConnectionImpl.java:1225)
+    at javax.management.remote.rmi.RMIConnectionImpl.fetchNotifications(RMIConnectionImpl.java:1231)
+    at sun.reflect.GeneratedMethodAccessor706.invoke(Unknown Source)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke(Method.java:597)
+    at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:305)
+    at sun.rmi.transport.Transport$1.run(Transport.java:159)
+    at java.security.AccessController.doPrivileged(Native Method)
+    at sun.rmi.transport.Transport.serviceCall(Transport.java:155)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:535)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@b38440
+
+"JMX server connection timeout 2613" id=2613 in TIMED_WAITING
+    - waiting on <0x302c8e> (a [I)
+    - locked <0x302c8e> (a [I)
+    at java.lang.Object.wait(Native Method)
+    at com.sun.jmx.remote.internal.ServerCommunicatorAdmin$Timeout.run(ServerCommunicatorAdmin.java:150)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"RMI Scheduler(0)" id=2547 in TIMED_WAITING
+    - waiting on <0x1efe2bc> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    - locked <0x1efe2bc> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+    at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:582)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:575)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:946)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:906)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"RMI TCP Accept-0" id=2545 in RUNNABLE (running in native)
+    at java.net.PlainSocketImpl.socketAccept(Native Method)
+    at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+    at java.net.ServerSocket.accept(ServerSocket.java:421)
+    at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:369)
+    at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:341)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Attach Listener" id=2544 in RUNNABLE
+
+    Locked synchronizers: count = 0
+
+"GSF Source Worker Thread" id=137 in TIMED_WAITING
+    - waiting on <0x13a2ace> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    - locked <0x13a2ace> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+    at java.util.concurrent.PriorityBlockingQueue.poll(PriorityBlockingQueue.java:245)
+    at org.netbeans.api.retouche.source.Source$CompilationJob.run(Source.java:1126)
+    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+    at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+    at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@d38397
+
+"org.netbeans.modules.retouche.source.usages.RepositoryUpdater" id=136 in WAITING
+    - waiting on <0xc1a33> (a java.util.TaskQueue)
+    - locked <0xc1a33> (a java.util.TaskQueue)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.util.TimerThread.mainLoop(Timer.java:483)
+    at java.util.TimerThread.run(Timer.java:462)
+
+    Locked synchronizers: count = 0
+
+"pool-2-thread-1" id=134 in WAITING
+    - waiting on <0xbf6480> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    - locked <0xbf6480> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:158)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1925)
+    at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:358)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:946)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:906)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Timer-2" id=89 in WAITING
+    - waiting on <0x1470797> (a java.util.TaskQueue)
+    - locked <0x1470797> (a java.util.TaskQueue)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.util.TimerThread.mainLoop(Timer.java:483)
+    at java.util.TimerThread.run(Timer.java:462)
+
+    Locked synchronizers: count = 0
+
+"DestroyJavaVM" id=51 in RUNNABLE
+
+    Locked synchronizers: count = 0
+
+"Collaboration Notification" id=46 in WAITING
+    - waiting on <0x198ab83> (a java.lang.Object)
+    - locked <0x198ab83> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at org.netbeans.modules.collab.ui.NotificationThread.run(NotificationThread.java:121)
+
+    Locked synchronizers: count = 0
+
+"AWT-EventQueue-1" id=45 in WAITING
+    - waiting on <0x1104843> (a java.awt.EventQueue)
+    - locked <0x1104843> (a java.awt.EventQueue)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.awt.EventQueue.getNextEvent(EventQueue.java:479)
+    at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:245)
+    at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:183)
+    at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:173)
+    at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:168)
+    at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:160)
+    at java.awt.EventDispatchThread.run(EventDispatchThread.java:121)
+
+    Locked synchronizers: count = 0
+
+"Creator Error Handler Listener" id=44 in RUNNABLE (running in native)
+    at java.net.PlainSocketImpl.socketAccept(Native Method)
+    at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+    at java.net.ServerSocket.accept(ServerSocket.java:421)
+    at org.netbeans.modules.visualweb.errorhandler.DebugServerThread.run(DebugServerThread.java:115)
+
+    Locked synchronizers: count = 0
+
+"*** JFluid Separate Command Execution Thread" id=38 in WAITING
+    - waiting on <0x61cebf> (a java.lang.Object)
+    - locked <0x61cebf> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at org.netbeans.lib.profiler.ProfilerClient$SeparateCmdExecutionThread.run(ProfilerClient.java:104)
+
+    Locked synchronizers: count = 0
+
+"Repository writer 0" id=31 in TIMED_WAITING
+    at java.lang.Thread.sleep(Native Method)
+    at org.netbeans.modules.cnd.repository.queue.RepositoryWritingThread.waitReady(RepositoryWritingThread.java:94)
+    at org.netbeans.modules.cnd.repository.queue.RepositoryWritingThread.run(RepositoryWritingThread.java:128)
+    at org.netbeans.modules.cnd.repository.queue.RepositoryThreadManager$Wrapper.run(RepositoryThreadManager.java:84)
+    at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:561)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:986)
+
+    Locked synchronizers: count = 0
+
+"TimerQueue" id=25 in TIMED_WAITING
+    - waiting on <0x1d6d71c> (a javax.swing.TimerQueue)
+    - locked <0x1d6d71c> (a javax.swing.TimerQueue)
+    at java.lang.Object.wait(Native Method)
+    at javax.swing.TimerQueue.run(TimerQueue.java:236)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Thread-3" id=24 in WAITING
+    - waiting on <0x65ff23> (a java.util.LinkedList)
+    - locked <0x65ff23> (a java.util.LinkedList)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.util.prefs.AbstractPreferences$EventDispatchThread.run(AbstractPreferences.java:1461)
+
+    Locked synchronizers: count = 0
+
+"Java Source Worker Thread" id=23 in TIMED_WAITING
+    - waiting on <0x6b2268> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    - locked <0x6b2268> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+    at java.util.concurrent.PriorityBlockingQueue.poll(PriorityBlockingQueue.java:245)
+    at org.netbeans.api.java.source.JavaSource$CompilationJob.run(JavaSource.java:1428)
+    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+    at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+    at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@ea2050
+
+"Code Model Parser 0" id=17 in WAITING
+    - waiting on <0x18bc3e4> (a java.lang.Object)
+    - locked <0x18bc3e4> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserQueue.waitReady(ParserQueue.java:378)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserThread.run(ParserThread.java:68)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserThreadManager$Wrapper.run(ParserThreadManager.java:82)
+    at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:561)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:986)
+
+    Locked synchronizers: count = 0
+
+"AWT-Shutdown" id=16 in WAITING
+    - waiting on <0x1d4094b> (a java.lang.Object)
+    - locked <0x1d4094b> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at sun.awt.AWTAutoShutdown.run(AWTAutoShutdown.java:259)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"AWT-XAWT" id=14 in RUNNABLE
+    at sun.awt.X11.XToolkit.waitForEvents(Native Method)
+    at sun.awt.X11.XToolkit.run(XToolkit.java:544)
+    at sun.awt.X11.XToolkit.run(XToolkit.java:519)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Java2D Disposer" id=13 in WAITING
+    - waiting on <0x12c336> (a java.lang.ref.ReferenceQueue$Lock)
+    - locked <0x12c336> (a java.lang.ref.ReferenceQueue$Lock)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+    at sun.java2d.Disposer.run(Disposer.java:125)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Code Model Parser 1" id=11 in WAITING
+    - waiting on <0x18bc3e4> (a java.lang.Object)
+    - locked <0x18bc3e4> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserQueue.waitReady(ParserQueue.java:378)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserThread.run(ParserThread.java:68)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserThreadManager$Wrapper.run(ParserThreadManager.java:82)
+    at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:561)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:986)
+
+    Locked synchronizers: count = 0
+
+"Timer-0" id=10 in TIMED_WAITING
+    - waiting on <0x6a1dfc> (a java.util.TaskQueue)
+    - locked <0x6a1dfc> (a java.util.TaskQueue)
+    at java.lang.Object.wait(Native Method)
+    at java.util.TimerThread.mainLoop(Timer.java:509)
+    at java.util.TimerThread.run(Timer.java:462)
+
+    Locked synchronizers: count = 0
+
+"CLI Requests Server" id=9 in RUNNABLE (running in native)
+    at java.net.PlainSocketImpl.socketAccept(Native Method)
+    at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+    at java.net.ServerSocket.accept(ServerSocket.java:421)
+    at org.netbeans.CLIHandler$Server.run(CLIHandler.java:1003)
+
+    Locked synchronizers: count = 0
+
+"Active Reference Queue Daemon" id=8 in WAITING
+    - waiting on <0x10c0d43> (a java.lang.ref.ReferenceQueue$Lock)
+    - locked <0x10c0d43> (a java.lang.ref.ReferenceQueue$Lock)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+    at org.openide.util.Utilities$ActiveQueue.run(Utilities.java:3056)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Signal Dispatcher" id=4 in RUNNABLE
+
+    Locked synchronizers: count = 0
+
+"Finalizer" id=3 in WAITING
+    - waiting on <0xcb9d10> (a java.lang.ref.ReferenceQueue$Lock)
+    - locked <0xcb9d10> (a java.lang.ref.ReferenceQueue$Lock)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+    at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+    Locked synchronizers: count = 0
+
+"Reference Handler" id=2 in WAITING
+    - waiting on <0x1dea370> (a java.lang.ref.Reference$Lock)
+    - locked <0x1dea370> (a java.lang.ref.Reference$Lock)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+
+    Locked synchronizers: count = 0
+
+
+
+<EndOfDump>
+
+
+2007-11-06 10:30:46
+Full thread dump Java HotSpot(TM) Client VM 1.6.0_03-b05
+
+"RMI TCP Connection(23)-127.0.1.1" id=3149 in RUNNABLE (running in native)
+    at java.net.SocketInputStream.socketRead0(Native Method)
+    at java.net.SocketInputStream.read(SocketInputStream.java:129)
+    at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+    at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+    at java.io.FilterInputStream.read(FilterInputStream.java:66)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:517)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@166fba
+
+"RMI TCP Connection(22)-127.0.1.1" id=3148 in RUNNABLE (running in native)
+    at java.net.SocketInputStream.socketRead0(Native Method)
+    at java.net.SocketInputStream.read(SocketInputStream.java:129)
+    at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+    at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+    at java.io.FilterInputStream.read(FilterInputStream.java:66)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:517)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@15bc412
+
+"RMI TCP Connection(21)-127.0.1.1" id=3147 in RUNNABLE
+    at sun.management.ThreadImpl.dumpThreads0(Native Method)
+    at sun.management.ThreadImpl.dumpAllThreads(ThreadImpl.java:374)
+    at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+    at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke(Method.java:597)
+    at com.sun.jmx.mbeanserver.ConvertingMethod.invokeWithOpenReturn(ConvertingMethod.java:167)
+    at com.sun.jmx.mbeanserver.MXBeanIntrospector.invokeM2(MXBeanIntrospector.java:96)
+    at com.sun.jmx.mbeanserver.MXBeanIntrospector.invokeM2(MXBeanIntrospector.java:33)
+    at com.sun.jmx.mbeanserver.MBeanIntrospector.invokeM(MBeanIntrospector.java:208)
+    at com.sun.jmx.mbeanserver.PerInterface.invoke(PerInterface.java:120)
+    at com.sun.jmx.mbeanserver.MBeanSupport.invoke(MBeanSupport.java:262)
+    at javax.management.StandardMBean.invoke(StandardMBean.java:391)
+    at com.sun.jmx.interceptor.DefaultMBeanServerInterceptor.invoke(DefaultMBeanServerInterceptor.java:836)
+    at com.sun.jmx.mbeanserver.JmxMBeanServer.invoke(JmxMBeanServer.java:761)
+    at javax.management.remote.rmi.RMIConnectionImpl.doOperation(RMIConnectionImpl.java:1426)
+    at javax.management.remote.rmi.RMIConnectionImpl.access$200(RMIConnectionImpl.java:72)
+    at javax.management.remote.rmi.RMIConnectionImpl$PrivilegedOperation.run(RMIConnectionImpl.java:1264)
+    at javax.management.remote.rmi.RMIConnectionImpl.doPrivilegedOperation(RMIConnectionImpl.java:1359)
+    at javax.management.remote.rmi.RMIConnectionImpl.invoke(RMIConnectionImpl.java:788)
+    at sun.reflect.GeneratedMethodAccessor617.invoke(Unknown Source)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke(Method.java:597)
+    at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:305)
+    at sun.rmi.transport.Transport$1.run(Transport.java:159)
+    at java.security.AccessController.doPrivileged(Native Method)
+    at sun.rmi.transport.Transport.serviceCall(Transport.java:155)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:535)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@1a5930e
+
+"JMX server connection timeout 3146" id=3146 in TIMED_WAITING
+    - waiting on <0x18df8a5> (a [I)
+    - locked <0x18df8a5> (a [I)
+    at java.lang.Object.wait(Native Method)
+    at com.sun.jmx.remote.internal.ServerCommunicatorAdmin$Timeout.run(ServerCommunicatorAdmin.java:150)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"RMI TCP Connection(19)-127.0.1.1" id=3144 in RUNNABLE (running in native)
+    at java.net.SocketInputStream.socketRead0(Native Method)
+    at java.net.SocketInputStream.read(SocketInputStream.java:129)
+    at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+    at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+    at java.io.FilterInputStream.read(FilterInputStream.java:66)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:517)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@19c6840
+
+"Inactive RequestProcessor thread [Was:Versioning/org.netbeans.modules.versioning.system.cvss.FilesystemHandler$3]" id=3142 in TIMED_WAITING
+    - waiting on <0x1901c0d> (a java.lang.Object)
+    - locked <0x1901c0d> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:TimedSoftReference/org.openide.util.TimedSoftReference]" id=3141 in TIMED_WAITING
+    - waiting on <0x1d1db12> (a java.lang.Object)
+    - locked <0x1d1db12> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3140 in TIMED_WAITING
+    - waiting on <0x182dd72> (a java.lang.Object)
+    - locked <0x182dd72> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3139 in TIMED_WAITING
+    - waiting on <0x1796bbc> (a java.lang.Object)
+    - locked <0x1796bbc> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3138 in TIMED_WAITING
+    - waiting on <0x1fac7ae> (a java.lang.Object)
+    - locked <0x1fac7ae> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3137 in TIMED_WAITING
+    - waiting on <0x114d3b6> (a java.lang.Object)
+    - locked <0x114d3b6> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/org.netbeans.modules.project.ui.ProjectsRootNode$BadgingNode]" id=3135 in TIMED_WAITING
+    - waiting on <0xa28a> (a java.lang.Object)
+    - locked <0xa28a> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3134 in TIMED_WAITING
+    - waiting on <0x88a7ea> (a java.lang.Object)
+    - locked <0x88a7ea> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3133 in TIMED_WAITING
+    - waiting on <0x164bc68> (a java.lang.Object)
+    - locked <0x164bc68> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3132 in TIMED_WAITING
+    - waiting on <0x15594c8> (a java.lang.Object)
+    - locked <0x15594c8> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3131 in TIMED_WAITING
+    - waiting on <0x163320f> (a java.lang.Object)
+    - locked <0x163320f> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3130 in TIMED_WAITING
+    - waiting on <0x133f628> (a java.lang.Object)
+    - locked <0x133f628> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3129 in TIMED_WAITING
+    - waiting on <0x15b57f8> (a java.lang.Object)
+    - locked <0x15b57f8> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3128 in TIMED_WAITING
+    - waiting on <0x1bb6056> (a java.lang.Object)
+    - locked <0x1bb6056> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3127 in TIMED_WAITING
+    - waiting on <0x1a9abb8> (a java.lang.Object)
+    - locked <0x1a9abb8> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3126 in TIMED_WAITING
+    - waiting on <0x16ca633> (a java.lang.Object)
+    - locked <0x16ca633> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3125 in TIMED_WAITING
+    - waiting on <0x1a6d5c8> (a java.lang.Object)
+    - locked <0x1a6d5c8> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3124 in TIMED_WAITING
+    - waiting on <0x190486> (a java.lang.Object)
+    - locked <0x190486> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3123 in TIMED_WAITING
+    - waiting on <0x1a03236> (a java.lang.Object)
+    - locked <0x1a03236> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3122 in TIMED_WAITING
+    - waiting on <0x2a5751> (a java.lang.Object)
+    - locked <0x2a5751> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3121 in TIMED_WAITING
+    - waiting on <0x1595756> (a java.lang.Object)
+    - locked <0x1595756> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3120 in TIMED_WAITING
+    - waiting on <0x3795a1> (a java.lang.Object)
+    - locked <0x3795a1> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3119 in TIMED_WAITING
+    - waiting on <0xdf8179> (a java.lang.Object)
+    - locked <0xdf8179> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3118 in TIMED_WAITING
+    - waiting on <0x1077c90> (a java.lang.Object)
+    - locked <0x1077c90> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3117 in TIMED_WAITING
+    - waiting on <0x2fbeef> (a java.lang.Object)
+    - locked <0x2fbeef> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3116 in TIMED_WAITING
+    - waiting on <0x1740e88> (a java.lang.Object)
+    - locked <0x1740e88> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3115 in TIMED_WAITING
+    - waiting on <0x1d1607> (a java.lang.Object)
+    - locked <0x1d1607> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3114 in TIMED_WAITING
+    - waiting on <0x6ffee3> (a java.lang.Object)
+    - locked <0x6ffee3> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3113 in TIMED_WAITING
+    - waiting on <0xdb575e> (a java.lang.Object)
+    - locked <0xdb575e> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3112 in TIMED_WAITING
+    - waiting on <0x1fed426> (a java.lang.Object)
+    - locked <0x1fed426> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3111 in TIMED_WAITING
+    - waiting on <0x15219b> (a java.lang.Object)
+    - locked <0x15219b> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3110 in TIMED_WAITING
+    - waiting on <0x1a3a9ee> (a java.lang.Object)
+    - locked <0x1a3a9ee> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3109 in TIMED_WAITING
+    - waiting on <0xcccc0c> (a java.lang.Object)
+    - locked <0xcccc0c> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3108 in TIMED_WAITING
+    - waiting on <0x1178018> (a java.lang.Object)
+    - locked <0x1178018> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3107 in TIMED_WAITING
+    - waiting on <0xfa0e81> (a java.lang.Object)
+    - locked <0xfa0e81> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3106 in TIMED_WAITING
+    - waiting on <0xe287aa> (a java.lang.Object)
+    - locked <0xe287aa> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3105 in TIMED_WAITING
+    - waiting on <0x171b1f> (a java.lang.Object)
+    - locked <0x171b1f> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/org.codehaus.mevenide.netbeans.nodes.MavenProjectNode]" id=3104 in TIMED_WAITING
+    - waiting on <0x9c0cdf> (a java.lang.Object)
+    - locked <0x9c0cdf> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:TimedSoftReference/org.openide.util.TimedSoftReference]" id=3103 in TIMED_WAITING
+    - waiting on <0x7aa377> (a java.lang.Object)
+    - locked <0x7aa377> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3102 in TIMED_WAITING
+    - waiting on <0x18f3935> (a java.lang.Object)
+    - locked <0x18f3935> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3101 in TIMED_WAITING
+    - waiting on <0x29fb70> (a java.lang.Object)
+    - locked <0x29fb70> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3100 in TIMED_WAITING
+    - waiting on <0xf754cb> (a java.lang.Object)
+    - locked <0xf754cb> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3099 in TIMED_WAITING
+    - waiting on <0xa0f9e2> (a java.lang.Object)
+    - locked <0xa0f9e2> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3098 in TIMED_WAITING
+    - waiting on <0xd6b93e> (a java.lang.Object)
+    - locked <0xd6b93e> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3097 in TIMED_WAITING
+    - waiting on <0xc18fb> (a java.lang.Object)
+    - locked <0xc18fb> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3096 in TIMED_WAITING
+    - waiting on <0x3dcb75> (a java.lang.Object)
+    - locked <0x3dcb75> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3095 in TIMED_WAITING
+    - waiting on <0x1f5d99f> (a java.lang.Object)
+    - locked <0x1f5d99f> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3094 in TIMED_WAITING
+    - waiting on <0x15c29e0> (a java.lang.Object)
+    - locked <0x15c29e0> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/org.netbeans.spi.project.support.ant.GlobFileBuiltQuery$StatusImpl]" id=3093 in TIMED_WAITING
+    - waiting on <0x3061b> (a java.lang.Object)
+    - locked <0x3061b> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"Inactive RequestProcessor thread [Was:Default RequestProcessor/null]" id=3092 in TIMED_WAITING
+    - waiting on <0xa1b41e> (a java.lang.Object)
+    - locked <0xa1b41e> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:939)
+
+    Locked synchronizers: count = 0
+
+"RMI TCP Connection(idle)" id=2617 in TIMED_WAITING
+    - waiting on <0x822271> (a java.util.concurrent.SynchronousQueue$TransferStack)
+    - locked <0x822271> (a java.util.concurrent.SynchronousQueue$TransferStack)
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+    at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:424)
+    at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:323)
+    at java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:874)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:944)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:906)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"RMI TCP Connection(20)-127.0.1.1" id=2616 in RUNNABLE (running in native)
+    at java.net.SocketInputStream.socketRead0(Native Method)
+    at java.net.SocketInputStream.read(SocketInputStream.java:129)
+    at java.io.BufferedInputStream.fill(BufferedInputStream.java:218)
+    at java.io.BufferedInputStream.read(BufferedInputStream.java:237)
+    at java.io.FilterInputStream.read(FilterInputStream.java:66)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:517)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@18ff747
+
+"RMI TCP Connection(18)-127.0.1.1" id=2615 in TIMED_WAITING
+    - waiting on <0x19e0708> (a com.sun.jmx.remote.internal.ArrayNotificationBuffer)
+    - locked <0x19e0708> (a com.sun.jmx.remote.internal.ArrayNotificationBuffer)
+    at java.lang.Object.wait(Native Method)
+    at com.sun.jmx.remote.internal.ArrayNotificationBuffer.fetchNotifications(ArrayNotificationBuffer.java:341)
+    at com.sun.jmx.remote.internal.ArrayNotificationBuffer$ShareBuffer.fetchNotifications(ArrayNotificationBuffer.java:123)
+    at com.sun.jmx.remote.internal.ServerNotifForwarder.fetchNotifs(ServerNotifForwarder.java:258)
+    at javax.management.remote.rmi.RMIConnectionImpl$2.run(RMIConnectionImpl.java:1227)
+    at javax.management.remote.rmi.RMIConnectionImpl$2.run(RMIConnectionImpl.java:1225)
+    at javax.management.remote.rmi.RMIConnectionImpl.fetchNotifications(RMIConnectionImpl.java:1231)
+    at sun.reflect.GeneratedMethodAccessor706.invoke(Unknown Source)
+    at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+    at java.lang.reflect.Method.invoke(Method.java:597)
+    at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:305)
+    at sun.rmi.transport.Transport$1.run(Transport.java:159)
+    at java.security.AccessController.doPrivileged(Native Method)
+    at sun.rmi.transport.Transport.serviceCall(Transport.java:155)
+    at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:535)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:790)
+    at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:649)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@b38440
+
+"JMX server connection timeout 2613" id=2613 in TIMED_WAITING
+    - waiting on <0x302c8e> (a [I)
+    - locked <0x302c8e> (a [I)
+    at java.lang.Object.wait(Native Method)
+    at com.sun.jmx.remote.internal.ServerCommunicatorAdmin$Timeout.run(ServerCommunicatorAdmin.java:150)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"RMI Scheduler(0)" id=2547 in TIMED_WAITING
+    - waiting on <0x1efe2bc> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    - locked <0x1efe2bc> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+    at java.util.concurrent.DelayQueue.take(DelayQueue.java:164)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:582)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:575)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:946)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:906)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"RMI TCP Accept-0" id=2545 in RUNNABLE (running in native)
+    at java.net.PlainSocketImpl.socketAccept(Native Method)
+    at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+    at java.net.ServerSocket.accept(ServerSocket.java:421)
+    at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.executeAcceptLoop(TCPTransport.java:369)
+    at sun.rmi.transport.tcp.TCPTransport$AcceptLoop.run(TCPTransport.java:341)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Attach Listener" id=2544 in RUNNABLE
+
+    Locked synchronizers: count = 0
+
+"GSF Source Worker Thread" id=137 in TIMED_WAITING
+    - waiting on <0x13a2ace> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    - locked <0x13a2ace> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+    at java.util.concurrent.PriorityBlockingQueue.poll(PriorityBlockingQueue.java:245)
+    at org.netbeans.api.retouche.source.Source$CompilationJob.run(Source.java:1126)
+    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+    at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+    at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@d38397
+
+"org.netbeans.modules.retouche.source.usages.RepositoryUpdater" id=136 in WAITING
+    - waiting on <0xc1a33> (a java.util.TaskQueue)
+    - locked <0xc1a33> (a java.util.TaskQueue)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.util.TimerThread.mainLoop(Timer.java:483)
+    at java.util.TimerThread.run(Timer.java:462)
+
+    Locked synchronizers: count = 0
+
+"pool-2-thread-1" id=134 in WAITING
+    - waiting on <0xbf6480> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    - locked <0xbf6480> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:158)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1925)
+    at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:358)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:946)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:906)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Timer-2" id=89 in WAITING
+    - waiting on <0x1470797> (a java.util.TaskQueue)
+    - locked <0x1470797> (a java.util.TaskQueue)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.util.TimerThread.mainLoop(Timer.java:483)
+    at java.util.TimerThread.run(Timer.java:462)
+
+    Locked synchronizers: count = 0
+
+"DestroyJavaVM" id=51 in RUNNABLE
+
+    Locked synchronizers: count = 0
+
+"Collaboration Notification" id=46 in WAITING
+    - waiting on <0x198ab83> (a java.lang.Object)
+    - locked <0x198ab83> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at org.netbeans.modules.collab.ui.NotificationThread.run(NotificationThread.java:121)
+
+    Locked synchronizers: count = 0
+
+"AWT-EventQueue-1" id=45 in WAITING
+    - waiting on <0x1104843> (a java.awt.EventQueue)
+    - locked <0x1104843> (a java.awt.EventQueue)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.awt.EventQueue.getNextEvent(EventQueue.java:479)
+    at java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:245)
+    at java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:183)
+    at java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:173)
+    at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:168)
+    at java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:160)
+    at java.awt.EventDispatchThread.run(EventDispatchThread.java:121)
+
+    Locked synchronizers: count = 0
+
+"Creator Error Handler Listener" id=44 in RUNNABLE (running in native)
+    at java.net.PlainSocketImpl.socketAccept(Native Method)
+    at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+    at java.net.ServerSocket.accept(ServerSocket.java:421)
+    at org.netbeans.modules.visualweb.errorhandler.DebugServerThread.run(DebugServerThread.java:115)
+
+    Locked synchronizers: count = 0
+
+"*** JFluid Separate Command Execution Thread" id=38 in WAITING
+    - waiting on <0x61cebf> (a java.lang.Object)
+    - locked <0x61cebf> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at org.netbeans.lib.profiler.ProfilerClient$SeparateCmdExecutionThread.run(ProfilerClient.java:104)
+
+    Locked synchronizers: count = 0
+
+"Repository writer 0" id=31 in TIMED_WAITING
+    at java.lang.Thread.sleep(Native Method)
+    at org.netbeans.modules.cnd.repository.queue.RepositoryWritingThread.waitReady(RepositoryWritingThread.java:94)
+    at org.netbeans.modules.cnd.repository.queue.RepositoryWritingThread.run(RepositoryWritingThread.java:128)
+    at org.netbeans.modules.cnd.repository.queue.RepositoryThreadManager$Wrapper.run(RepositoryThreadManager.java:84)
+    at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:561)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:986)
+
+    Locked synchronizers: count = 0
+
+"TimerQueue" id=25 in TIMED_WAITING
+    - waiting on <0x1d6d71c> (a javax.swing.TimerQueue)
+    - locked <0x1d6d71c> (a javax.swing.TimerQueue)
+    at java.lang.Object.wait(Native Method)
+    at javax.swing.TimerQueue.run(TimerQueue.java:236)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Thread-3" id=24 in WAITING
+    - waiting on <0x65ff23> (a java.util.LinkedList)
+    - locked <0x65ff23> (a java.util.LinkedList)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.util.prefs.AbstractPreferences$EventDispatchThread.run(AbstractPreferences.java:1461)
+
+    Locked synchronizers: count = 0
+
+"Java Source Worker Thread" id=23 in TIMED_WAITING
+    - waiting on <0x6b2268> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    - locked <0x6b2268> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1963)
+    at java.util.concurrent.PriorityBlockingQueue.poll(PriorityBlockingQueue.java:245)
+    at org.netbeans.api.java.source.JavaSource$CompilationJob.run(JavaSource.java:1428)
+    at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+    at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+    at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:885)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:907)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 1
+      - java.util.concurrent.locks.ReentrantLock$NonfairSync@ea2050
+
+"Code Model Parser 0" id=17 in WAITING
+    - waiting on <0x18bc3e4> (a java.lang.Object)
+    - locked <0x18bc3e4> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserQueue.waitReady(ParserQueue.java:378)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserThread.run(ParserThread.java:68)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserThreadManager$Wrapper.run(ParserThreadManager.java:82)
+    at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:561)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:986)
+
+    Locked synchronizers: count = 0
+
+"AWT-Shutdown" id=16 in WAITING
+    - waiting on <0x1d4094b> (a java.lang.Object)
+    - locked <0x1d4094b> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at sun.awt.AWTAutoShutdown.run(AWTAutoShutdown.java:259)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"AWT-XAWT" id=14 in RUNNABLE
+    at sun.awt.X11.XToolkit.waitForEvents(Native Method)
+    at sun.awt.X11.XToolkit.run(XToolkit.java:544)
+    at sun.awt.X11.XToolkit.run(XToolkit.java:519)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Java2D Disposer" id=13 in WAITING
+    - waiting on <0x12c336> (a java.lang.ref.ReferenceQueue$Lock)
+    - locked <0x12c336> (a java.lang.ref.ReferenceQueue$Lock)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+    at sun.java2d.Disposer.run(Disposer.java:125)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Code Model Parser 1" id=11 in WAITING
+    - waiting on <0x18bc3e4> (a java.lang.Object)
+    - locked <0x18bc3e4> (a java.lang.Object)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserQueue.waitReady(ParserQueue.java:378)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserThread.run(ParserThread.java:68)
+    at org.netbeans.modules.cnd.modelimpl.csm.core.ParserThreadManager$Wrapper.run(ParserThreadManager.java:82)
+    at org.openide.util.RequestProcessor$Task.run(RequestProcessor.java:561)
+    at org.openide.util.RequestProcessor$Processor.run(RequestProcessor.java:986)
+
+    Locked synchronizers: count = 0
+
+"Timer-0" id=10 in WAITING
+    - waiting on <0x6a1dfc> (a java.util.TaskQueue)
+    - locked <0x6a1dfc> (a java.util.TaskQueue)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.util.TimerThread.mainLoop(Timer.java:483)
+    at java.util.TimerThread.run(Timer.java:462)
+
+    Locked synchronizers: count = 0
+
+"CLI Requests Server" id=9 in RUNNABLE (running in native)
+    at java.net.PlainSocketImpl.socketAccept(Native Method)
+    at java.net.PlainSocketImpl.accept(PlainSocketImpl.java:384)
+    at java.net.ServerSocket.implAccept(ServerSocket.java:453)
+    at java.net.ServerSocket.accept(ServerSocket.java:421)
+    at org.netbeans.CLIHandler$Server.run(CLIHandler.java:1003)
+
+    Locked synchronizers: count = 0
+
+"Active Reference Queue Daemon" id=8 in WAITING
+    - waiting on <0x10c0d43> (a java.lang.ref.ReferenceQueue$Lock)
+    - locked <0x10c0d43> (a java.lang.ref.ReferenceQueue$Lock)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+    at org.openide.util.Utilities$ActiveQueue.run(Utilities.java:3056)
+    at java.lang.Thread.run(Thread.java:619)
+
+    Locked synchronizers: count = 0
+
+"Signal Dispatcher" id=4 in RUNNABLE
+
+    Locked synchronizers: count = 0
+
+"Finalizer" id=3 in WAITING
+    - waiting on <0xcb9d10> (a java.lang.ref.ReferenceQueue$Lock)
+    - locked <0xcb9d10> (a java.lang.ref.ReferenceQueue$Lock)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:116)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:132)
+    at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:159)
+
+    Locked synchronizers: count = 0
+
+"Reference Handler" id=2 in WAITING
+    - waiting on <0x1dea370> (a java.lang.ref.Reference$Lock)
+    - locked <0x1dea370> (a java.lang.ref.Reference$Lock)
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:485)
+    at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:116)
+
+    Locked synchronizers: count = 0
+
+
+
+<EndOfDump>
+

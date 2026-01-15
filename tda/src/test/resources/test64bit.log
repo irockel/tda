@@ -1,0 +1,18 @@
+Full thread dump Java HotSpot(TM) 64-Bit Server VM (1.5.0_13-b05 mixed mode):
+
+"LeaseRenewalManager Task" daemon prio=1 tid=0x0000002ac6c9b0a0 nid=0x57f8 in Object.wait() [0x0000000051d6d000..0x0000000051d6dd30]
+	at java.lang.Object.wait(Native Method)
+	at com.sun.jini.thread.TaskManager$TaskThread.run(TaskManager.java:341)
+	- locked <0x0000002aa55b63a0> (a com.sun.jini.thread.TaskManager)
+
+"LookupDiscovery Task" daemon prio=1 tid=0x0000002ac4f4ce90 nid=0x16b8 in Object.wait() [0x0000000051c6c000..0x0000000051c6cd30]
+	at java.lang.Object.wait(Native Method)
+	at com.sun.jini.thread.TaskManager$TaskThread.run(TaskManager.java:341)
+	- locked <0x0000002aa55b8cb8> (a com.sun.jini.thread.TaskManager)
+
+"Space LookupDiscovery Task" daemon prio=1 tid=0x0000002ac7322f00 nid=0x16b7 in Object.wait() [0x000000004abfc000..0x000000004abfceb0]
+	at java.lang.Object.wait(Native Method)
+	at com.sun.jini.thread.TaskManager$TaskThread.run(TaskManager.java:341)
+	- locked <0x0000002aa5920c40> (a com.sun.jini.thread.TaskManager)
+
+
