@@ -2354,6 +2354,12 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
      * main startup method for TDA
      */
     public static void main(String[] args) {
+        if (args.length > 0 && "--mcp".equals(args[0])) {
+            String[] mcpArgs = new String[args.length - 1];
+            System.arraycopy(args, 1, mcpArgs, 0, args.length - 1);
+            de.grimmfrost.tda.mcp.MCPServer.main(mcpArgs);
+            return;
+        }
         if (args.length > 0) {
             dumpFile = args[0];
         }
