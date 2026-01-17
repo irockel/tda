@@ -87,31 +87,13 @@ java -Djava.awt.headless=true -jar tda.jar --mcp
 
 The MCP server exposes the following tools:
 
-##### `parse_log`
-Parses a log file containing Java thread dumps.
-- **Arguments**:
-    - `path` (string, required): The absolute path to the log file.
-- **Description**: This tool must be called first to load the thread dumps into memory. It supports standard JDK thread dumps and some other formats.
-
-##### `get_summary`
-Returns a summary of all parsed thread dumps.
-- **Arguments**: None
-- **Description**: Provides an index, name, timestamp, thread count, and deadlock count for each dump found in the log file.
-
-##### `check_deadlocks`
-Checks for deadlocks in the parsed thread dumps.
-- **Arguments**: None
-- **Description**: Returns information about any deadlocks detected by the JVM in any of the parsed dumps.
-
-##### `find_long_running`
-Identifies threads that appear in multiple consecutive thread dumps.
-- **Arguments**: None
-- **Description**: Compares threads across all loaded dumps and identifies those that remain in the same state/stack trace, indicating potential performance issues or "hung" threads.
-
-##### `clear`
-Resets the server state.
-- **Arguments**: None
-- **Description**: Clears the internal thread store, allowing you to parse a new log file without interference from previous data.
+| Tool | Arguments | Description |
+| :--- | :--- | :--- |
+| `parse_log` | `path` (string, required) | Parses a log file containing Java thread dumps. This must be the first action for a log file. |
+| `get_summary` | None | Returns a summary of all parsed thread dumps (index, name, timestamp, thread/deadlock counts). |
+| `check_deadlocks` | None | Checks for and returns information about any deadlocks detected in the parsed thread dumps. |
+| `find_long_running` | None | Identifies threads that remain in the same state/stack trace across consecutive dumps. |
+| `clear` | None | Resets the server state and clears the internal thread store for a new log file. |
 
 #### Troubleshooting
 

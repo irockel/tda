@@ -82,7 +82,7 @@ public class MCPServer {
         JsonObject result = new JsonObject();
         List<JsonObject> tools = new ArrayList<>();
         
-        tools.add(createTool("parse_log", "Parses a log file containing Java thread dumps.", 
+        tools.add(createTool("parse_log", "Parses a log file containing Java thread dumps. This has to be the first action for a log file containing thread dumps!",
             createProperty("path", "string", "The absolute path to the log file.")));
             
         tools.add(createTool("get_summary", "Returns a summary of all parsed thread dumps.", new JsonObject()));
