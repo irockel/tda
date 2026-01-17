@@ -100,6 +100,34 @@ The MCP server exposes the following tools:
 - **Path issues**: Ensure you use absolute paths for the JAR file and the log files you want to parse.
 - **Headless mode**: If you see errors related to `java.awt.HeadlessException`, double-check that `-Djava.awt.headless=true` is set.
 - **Permissions**: Make sure the user running the MCP server has read permissions for the log files.
+
+#### 🤖 AI Agent Configuration (Cursor / Junie)
+
+To ensure that AI agents use TDA efficiently and don't attempt to read large log files directly (which is slow and expensive), you should configure a **System Prompt**.
+
+##### Global Configuration (Recommended):
+Instead of project-wise rules, you can configure these instructions globally:
+
+*   **Cursor**: Go to **Settings** -> **General** -> **Rules for AI** and add the recommended system prompt there.
+*   **Junie**: Create or edit the file `~/.junie/instructions.md` and add the recommended system prompt.
+
+##### Project-wise Configuration:
+If you prefer project-specific rules:
+
+*   **Cursor**: Add the recommended system prompt to your `.cursorrules` file in the project root.
+*   **Junie**: Add the recommended system prompt to your `.junie/instructions.md` file in the project root.
+
+##### Recommended System Prompt:
+```markdown
+When you encounter a log file that appears to contain Java thread dumps:
+1. DO NOT try to read or "cat" the entire file if it's large.
+2. Use the `tda-analyzer` MCP toolset.
+3. First, call `parse_log(path="...")` to initialize the analysis.
+4. Use `get_summary()`, `check_deadlocks()`, and `find_long_running()` to perform the analysis.
+5. Provide your insights based on the structured data returned by these tools rather than the raw log text.
+```
+
+This configuration makes the analysis much faster and significantly reduces token usage.
 ---
 
 ## 🏗 Building from Source
