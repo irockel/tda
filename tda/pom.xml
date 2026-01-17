@@ -2,12 +2,16 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>de.grimmfrost.tda</groupId>
+  <parent>
+    <groupId>de.grimmfrost.tda</groupId>
+    <artifactId>tda-parent</artifactId>
+    <version>2.6</version>
+  </parent>
+
   <artifactId>tda</artifactId>
-  <version>2.5</version>
   <packaging>jar</packaging>
 
-  <name>tda</name>
+  <name>TDA</name>
   <description>Thread Dump Analysis Tool</description>
 
   <properties>
@@ -47,6 +51,11 @@
   </dependencies>
 
   <build>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>de.grimmfrost.tda</groupId>
+        <artifactId>tda-parent</artifactId>
+        <version>2.6</version>
+    </parent>
+
+    <artifactId>visualvm-module</artifactId>
+    <packaging>nbm</packaging>
+
+    <name>VisualVM TDA Module</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.grimmfrost.tda</groupId>
+            <artifactId>visualvm-lib-component</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.grimmfrost.tda</groupId>
+            <artifactId>visualvm-logfile-component</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.visualvm.api</groupId>
+            <artifactId>org-graalvm-visualvm-application</artifactId>
+            <version>${visualvm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.visualvm.api</groupId>
+            <artifactId>org-graalvm-visualvm-application-views</artifactId>
+            <version>${visualvm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.visualvm.api</groupId>
+            <artifactId>org-graalvm-visualvm-core</artifactId>
+            <version>${visualvm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.visualvm.api</groupId>
+            <artifactId>org-graalvm-visualvm-threaddump</artifactId>
+            <version>${visualvm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.visualvm.api</groupId>
+            <artifactId>org-graalvm-visualvm-tools</artifactId>
+            <version>${visualvm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-modules-options-api</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-openide-awt</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-openide-modules</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-openide-util</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-openide-util-lookup</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-openide-util-ui</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-openide-windows</artifactId>
+            <version>${netbeans.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestFile>manifest.mf</manifestFile>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.netbeans.utilities</groupId>
+                <artifactId>nbm-maven-plugin</artifactId>
+                <configuration>
+                    <codeNameBase>net.java.dev.tda.visualvm/2</codeNameBase>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

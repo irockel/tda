@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>de.grimmfrost.tda</groupId>
+        <artifactId>tda-parent</artifactId>
+        <version>2.6</version>
+    </parent>
+
+    <artifactId>visualvm-lib-component</artifactId>
+    <packaging>nbm</packaging>
+
+    <name>VisualVM TDA Lib Component</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.grimmfrost.tda</groupId>
+            <artifactId>tda</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.visualvm.api</groupId>
+            <artifactId>org-graalvm-visualvm-application</artifactId>
+            <version>${visualvm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.visualvm.api</groupId>
+            <artifactId>org-graalvm-visualvm-application-views</artifactId>
+            <version>${visualvm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.visualvm.api</groupId>
+            <artifactId>org-graalvm-visualvm-core</artifactId>
+            <version>${visualvm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.visualvm.api</groupId>
+            <artifactId>org-graalvm-visualvm-threaddump</artifactId>
+            <version>${visualvm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.graalvm.visualvm.api</groupId>
+            <artifactId>org-graalvm-visualvm-tools</artifactId>
+            <version>${visualvm.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestFile>manifest.mf</manifestFile>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.netbeans.utilities</groupId>
+                <artifactId>nbm-maven-plugin</artifactId>
+                <configuration>
+                    <codeNameBase>net.java.dev.tda/2</codeNameBase>
+                    <publicPackages>
+                        <publicPackage>com.pironet.tda</publicPackage>
+                        <publicPackage>com.pironet.tda.filter</publicPackage>
+                        <publicPackage>com.pironet.tda.jconsole</publicPackage>
+                        <publicPackage>com.pironet.tda.utils</publicPackage>
+                        <publicPackage>com.pironet.tda.utils.jedit</publicPackage>
+                    </publicPackages>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

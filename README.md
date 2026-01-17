@@ -123,7 +123,11 @@ TDA is built using Maven. It requires **Java 11** or higher to build and run.
 ```bash
 mvn clean package
 ```
-The resulting JAR will be located in the `target/` directory.
+This will build all components:
+*   The standalone TDA JAR (in `tda/target/tda-2.5.jar`).
+*   The VisualVM plugins as NBM files (in the `target/` directory of each `visualvm-*` module).
+
+The resulting standalone JAR will also be located in the `tda/target/` directory.
 
 ---
 
