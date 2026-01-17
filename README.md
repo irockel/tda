@@ -30,11 +30,12 @@ The most common way to use TDA for offline analysis of production log files.
 
 **How to run:**
 ```bash
-java -jar tda.jar
+java -Xmx512m -jar tda.jar
 ```
-Once opened, you can add log files containing thread dumps. TDA will parse them and display them in the tree view.
+Once opened, you can add log files containing thread dumps. TDA will parse them and display them in the tree view. If you
+have several or big log files, you might need to adjust the memory allocation by increasing the `-Xmx` flag.
 
-<center><img src="./tda-main-screen.png" alt="TDA Main Screen" width="400"></center>
+<div style="text-align: center;"><img src="./tda-main-screen.png" alt="TDA Main Screen" width="600"></div>
 
 #### Important Features:
 *   **Thread Dump Tree**: Navigate through all detected dumps in a log file.
@@ -127,7 +128,7 @@ TDA is built using Maven. It requires **Java 11** or higher to build and run.
 mvn clean package
 ```
 This will build all components:
-*   The standalone TDA JAR (in `tda/target/tda-2.5.jar`).
+*   The standalone TDA JAR (in `tda/target/tda-x.x.jar`).
 *   The VisualVM plugins as NBM files (in the `target/` directory of each `visualvm-*` module).
 
 The resulting standalone JAR will also be located in the `tda/target/` directory.

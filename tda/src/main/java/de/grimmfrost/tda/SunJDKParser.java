@@ -82,6 +82,17 @@ public class SunJDKParser extends AbstractDumpParser {
         return (foundClassHistograms);
     }
 
+    private String normalizeTitle(String title) {
+        if (title == null) {
+            return null;
+        }
+        String normalizedTitle = title;
+        if (normalizedTitle.contains(" cpu=") && normalizedTitle.contains(" elapsed=")) {
+            normalizedTitle = normalizedTitle.replaceAll(" cpu=[\\d\\.]+ms", "").replaceAll(" elapsed=[\\d\\.]+s", "");
+        }
+        return normalizedTitle;
+    }
+
     /**
      * parse the next thread dump from the stream passed with the constructor.
      * @return null if no more thread dumps were found.
@@ -204,32 +215,37 @@ public class SunJDKParser extends AbstractDumpParser {
                             concurrentSyncsFlag = false;
                             String stringContent = content != null ? content.toString() : null;
                             if (title != null) {
-                                threads.put(title, content.toString());
+                                String threadContentStr = content.toString();
+                                threads.put(normalizeTitle(title), threadContentStr);
                                 content.append("</pre></pre>");
-                                addToCategory(catThreads, title, null, stringContent, singleLineCounter, true);
+                                addToCategory(catThreads, title, null, threadContentStr, singleLineCounter, true);
                                 
                                 // Add to virtual threads category if applicable
                                 if (isVirtualThread) {
-                                    addToCategory(catVirtualThreads, title, null, stringContent, singleLineCounter, true);
-                                    virtualThreads++;
+                                    addToCategory(catVirtualThreads, title, null, threadContentStr, singleLineCounter, true);
                                 }
                                 
                                 threadCount++;
-                            }
-                            if (inWaiting) {
-                                addToCategory(catWaiting, title, null, stringContent, singleLineCounter, true);
-                                inWaiting = false;
-                                waiting++;
-                            }
-                            if (inSleeping) {
-                                addToCategory(catSleeping, title, null, stringContent, singleLineCounter, true);
-                                inSleeping = false;
-                                sleeping++;
-                            }
-                            if (inLocking) {
-                                addToCategory(catLocking, title, null, stringContent, singleLineCounter, true);
-                                inLocking = false;
-                                locking++;
+
+                                if (inWaiting) {
+                                    addToCategory(catWaiting, title, null, threadContentStr, singleLineCounter, true);
+                                    inWaiting = false;
+                                    waiting++;
+                                }
+                                if (inSleeping) {
+                                    addToCategory(catSleeping, title, null, threadContentStr, singleLineCounter, true);
+                                    inSleeping = false;
+                                    sleeping++;
+                                }
+                                if (inLocking) {
+                                    addToCategory(catLocking, title, null, threadContentStr, singleLineCounter, true);
+                                    inLocking = false;
+                                    locking++;
+                                }
+                                if (isVirtualThread) {
+                                    virtualThreads++;
+                                    isVirtualThread = false;
+                                }
                             }
                             singleLineCounter = 0;
                             while (!monitorStack.empty()) {
@@ -239,7 +255,7 @@ public class SunJDKParser extends AbstractDumpParser {
                             // Second, initialize state for this new thread
                             title = line;
                             content = new StringBuffer("<body bgcolor=\"ffffff\"><pre><font size=" + TDA.getFontSizeModifier(-1) + ">");
-                            content.append(line);
+                            content.append(normalizeTitle(line));
                             content.append("\n");
                             
                             // Reset and check if this is a virtual thread
@@ -330,34 +346,41 @@ public class SunJDKParser extends AbstractDumpParser {
                     }
                 }
                 // last thread
-                String stringContent = content != null ? content.toString() : null;
                 if (title != null) {
-                    threads.put(title, content.toString());
+                    String threadContentStr = content.toString();
+                    threads.put(normalizeTitle(title), threadContentStr);
                     content.append("</pre></pre>");
-                    addToCategory(catThreads, title, null, stringContent, singleLineCounter, true);
+                    addToCategory(catThreads, title, null, threadContentStr, singleLineCounter, true);
                     
                     // Add to virtual threads category if applicable
                     if (isVirtualThread) {
-                        addToCategory(catVirtualThreads, title, null, stringContent, singleLineCounter, true);
-                        virtualThreads++;
+                        addToCategory(catVirtualThreads, title, null, threadContentStr, singleLineCounter, true);
                     }
+
+                    // Add to custom categories if applicable
+                    // addCustomCategories(title, threadContentStr, singleLineCounter);
                     
                     threadCount++;
-                }
-                if (inWaiting) {
-                    addToCategory(catWaiting, title, null, stringContent, singleLineCounter, true);
-                    inWaiting = false;
-                    waiting++;
-                }
-                if (inSleeping) {
-                    addToCategory(catSleeping, title, null, stringContent, singleLineCounter, true);
-                    inSleeping = false;
-                    sleeping++;
-                }
-                if (inLocking) {
-                    addToCategory(catLocking, title, null, stringContent, singleLineCounter, true);
-                    inLocking = false;
-                    locking++;
+
+                    if (inWaiting) {
+                        addToCategory(catWaiting, title, null, threadContentStr, singleLineCounter, true);
+                        inWaiting = false;
+                        waiting++;
+                    }
+                    if (inSleeping) {
+                        addToCategory(catSleeping, title, null, threadContentStr, singleLineCounter, true);
+                        inSleeping = false;
+                        sleeping++;
+                    }
+                    if (inLocking) {
+                        addToCategory(catLocking, title, null, threadContentStr, singleLineCounter, true);
+                        inLocking = false;
+                        locking++;
+                    }
+                    if (isVirtualThread) {
+                        virtualThreads++;
+                        isVirtualThread = false;
+                    }
                 }
                 singleLineCounter = 0;
                 while (!monitorStack.empty()) {
