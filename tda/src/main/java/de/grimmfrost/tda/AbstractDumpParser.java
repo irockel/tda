@@ -117,18 +117,22 @@ public abstract class AbstractDumpParser implements DumpParser {
             Iterator dumpIter = ((Map) dumpStore.get(keys.get(0))).keySet().iterator();
             
             while(dumpIter.hasNext()) {
-                String threadKey = ((String) dumpIter.next()).trim();
-                int occurence = 0;
+                String threadKey = (String) dumpIter.next();
+                int occurence = 1; 
                 
                 if(regex == null || regex.equals("") || threadKey.matches(regex)) {
                     for(int i = 1; i < dumps.length; i++) {
                         Map threads = (Map) dumpStore.get(keys.get(i));
-                        if(threads.containsKey(threadKey)) {
-                            occurence++;
+                        if(threads != null && threads.containsKey(threadKey)) {
+                            String content1 = (String) ((Map) dumpStore.get(keys.get(0))).get(threadKey);
+                            String content2 = (String) threads.get(threadKey);
+                            if (content1 != null && content2 != null && content1.equals(content2)) {
+                                occurence++;
+                            }
                         }
                     }
                 
-                    if(occurence >= (minOccurence-1)) {
+                    if(occurence >= minOccurence) {
                         threadCount++;
                         StringBuffer content = new StringBuffer("<body bgcolor=\"ffffff\"><b><font size=").append(TDA.getFontSizeModifier(-1)).
                                 append(">").append((String) keys.get(0)).append("</b></font><hr><pre><font size=").
@@ -260,6 +264,7 @@ public abstract class AbstractDumpParser implements DumpParser {
         threadInfo = new DefaultMutableTreeNode(new ThreadInfo(title, info != null ? info.toString() : null, content, lineCount, 
                 parseTokens ? getThreadTokens(title) : null));
         ((Category)category.getUserObject()).addToCatNodes(threadInfo);
+        category.add(threadInfo);
     }
 
     /**

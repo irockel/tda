@@ -1,0 +1,17 @@
+2026-01-17 10:00:00
+Full thread dump OpenJDK 64-Bit Server VM (11.0.12+7-LTS mixed mode):
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=0 cpu=55652.75ms elapsed=107142.81s tid=0x00007f4b3883d000 nid=0x10854 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+   No compile task
+
+"VM Periodic Task Thread" os_prio=0 cpu=450.00ms elapsed=107142.81s tid=0x00007f4b3883d000 nid=0x10855 waiting on condition
+
+2026-01-17 10:01:00
+Full thread dump OpenJDK 64-Bit Server VM (11.0.12+7-LTS mixed mode):
+
+"C2 CompilerThread0" #5 daemon prio=9 os_prio=0 cpu=55652.76ms elapsed=107145.12s tid=0x00007f4b3883d000 nid=0x10854 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+   No compile task
+
+"VM Periodic Task Thread" os_prio=0 cpu=451.00ms elapsed=107145.12s tid=0x00007f4b3883d000 nid=0x10855 waiting on condition

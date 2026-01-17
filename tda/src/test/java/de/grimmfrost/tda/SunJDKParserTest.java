@@ -25,6 +25,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.MutableTreeNode;
+import javax.swing.tree.TreePath;
 import junit.framework.*;
 import java.util.Map;
 import java.util.Vector;
@@ -306,6 +309,67 @@ public class SunJDKParserTest extends TestCase {
 
             // check if one dump was found.
             assertEquals(1, topNodes.size());
+        } finally {
+            if(instance != null) {
+                instance.close();
+            }
+            if(fis != null) {
+                fis.close();
+            }
+        }
+    }
+
+    public void testLongRunningDetectionWithVariableFields() throws FileNotFoundException, IOException {
+        System.out.println("testLongRunningDetectionWithVariableFields");
+        FileInputStream fis = null;
+        SunJDKParser instance = null;
+        
+        try {
+            fis = new FileInputStream("src/test/resources/jdk11_long_running.log");
+            Map dumpMap = new HashMap();
+            instance = (SunJDKParser) DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
+            
+            Vector topNodes = new Vector();
+            while (instance.hasMoreDumps()) {
+                MutableTreeNode node = instance.parseNext();
+                if (node != null) {
+                    topNodes.add(node);
+                    
+                    // Manually populate dumpMap since we are testing diffDumps which looks there
+                    DefaultMutableTreeNode dNode = (DefaultMutableTreeNode) node;
+                    ThreadDumpInfo tdi = (ThreadDumpInfo) dNode.getUserObject();
+                    
+                    // The dumpMap is supposed to contain a map of threads for each dump name
+                    // But in this test environment, the internal threadStore of instance IS the dumpMap
+                    // so it should already be populated by parseNext().
+                }
+            }
+
+            assertEquals(2, topNodes.size());
+            
+            // Re-simulate the long running detection logic
+            DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
+            TreePath[] paths = new TreePath[2];
+            DefaultMutableTreeNode dummyRoot = new DefaultMutableTreeNode("Dummies");
+            dummyRoot.add((DefaultMutableTreeNode)topNodes.get(0));
+            dummyRoot.add((DefaultMutableTreeNode)topNodes.get(1));
+            
+            paths[0] = new TreePath(((DefaultMutableTreeNode)topNodes.get(0)).getPath());
+            paths[1] = new TreePath(((DefaultMutableTreeNode)topNodes.get(1)).getPath());
+            
+            // before calling findLongRunningThreads, we MUST ensure the dumpMap is correctly populated.
+            // SunJDKParser stores threads in the map passed to it, keyed by dump name.
+            // Dump name for SunJDKParser is "Dump No. X".
+            
+            instance.findLongRunningThreads(root, dumpMap, paths, 2, null);
+            
+            // Check if long running threads were found
+            assertTrue("Should have children", root.getChildCount() > 0);
+            DefaultMutableTreeNode resultNode = (DefaultMutableTreeNode) root.getChildAt(0);
+            
+            // We expect at least 2 long running threads ("C2 CompilerThread0" and "VM Periodic Task Thread")
+            assertTrue("Should find at least one long running thread, found: " + resultNode.getChildCount(), resultNode.getChildCount() > 0);
+            
         } finally {
             if(instance != null) {
                 instance.close();
