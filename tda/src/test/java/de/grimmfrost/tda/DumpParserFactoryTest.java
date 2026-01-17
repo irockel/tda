@@ -23,7 +23,8 @@ package de.grimmfrost.tda;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import junit.framework.*;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 import java.io.InputStream;
 import java.util.Map;
 
@@ -31,27 +32,20 @@ import java.util.Map;
  *
  * @author irockel
  */
-public class DumpParserFactoryTest extends TestCase {
+public class DumpParserFactoryTest {
     
-    public DumpParserFactoryTest(String testName) {
-        super(testName);
-    }
-
+    @BeforeEach
     protected void setUp() throws Exception {
     }
 
+    @AfterEach
     protected void tearDown() throws Exception {
-    }
-
-    public static Test suite() {
-        TestSuite suite = new TestSuite(DumpParserFactoryTest.class);
-        
-        return suite;
     }
 
     /**
      * Test of get method, of class de.grimmfrost.tda.DumpParserFactory.
      */
+    @Test
     public void testGet() {
         System.out.println("get");
         
@@ -62,6 +56,7 @@ public class DumpParserFactoryTest extends TestCase {
     /**
      * Test of getDumpParserForVersion method, of class de.grimmfrost.tda.DumpParserFactory.
      */
+    @Test
     public void testGetDumpParserForSunLogfile() throws FileNotFoundException {
         System.out.println("getDumpParserForVersion");
         
@@ -78,6 +73,7 @@ public class DumpParserFactoryTest extends TestCase {
     /**
      * Test of getDumpParserForVersion method, of class de.grimmfrost.tda.DumpParserFactory.
      */
+    @Test
     public void testGetDumpParserForBeaLogfile() throws FileNotFoundException {
         System.out.println("getDumpParserForVersion");
         

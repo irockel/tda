@@ -28,7 +28,8 @@ import java.util.HashMap;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreePath;
-import junit.framework.*;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.Map;
 import java.util.Vector;
 
@@ -36,27 +37,20 @@ import java.util.Vector;
  * test parsing of log files from sun vms.
  * @author irockel
  */
-public class SunJDKParserTest extends TestCase {
+public class SunJDKParserTest {
     
-    public SunJDKParserTest(String testName) {
-        super(testName);
-    }
-
+    @BeforeEach
     protected void setUp() throws Exception {
     }
 
+    @AfterEach
     protected void tearDown() throws Exception {
-    }
-
-    public static Test suite() {
-        TestSuite suite = new TestSuite(SunJDKParserTest.class);
-        
-        return suite;
     }
 
     /**
      * Test of hasMoreDumps method, of class de.grimmfrost.tda.SunJDKParser.
      */
+    @Test
     public void testDumpLoad() throws FileNotFoundException, IOException {
         System.out.println("dumpLoad");
         FileInputStream fis = null;
@@ -89,6 +83,7 @@ public class SunJDKParserTest extends TestCase {
     /**
      * Test of isFoundClassHistograms method, of class de.grimmfrost.tda.SunJDKParser.
      */
+    @Test
     public void testIsFoundClassHistograms() throws FileNotFoundException, IOException {
         System.out.println("isFoundClassHistograms");
         DumpParser instance = null;
@@ -116,6 +111,7 @@ public class SunJDKParserTest extends TestCase {
         }
     }
     
+    @Test
     public void test64BitDumpLoad() throws FileNotFoundException, IOException {
         System.out.println("64BitDumpLoad");
         FileInputStream fis = null;
@@ -145,6 +141,7 @@ public class SunJDKParserTest extends TestCase {
         }
     }
     
+    @Test
     public void testJava8DumpLoad() throws FileNotFoundException, IOException {
         System.out.println("Java8DumpLoad");
         FileInputStream fis = null;
@@ -174,6 +171,7 @@ public class SunJDKParserTest extends TestCase {
         }
     }
     
+    @Test
     public void testJava11DumpLoad() throws FileNotFoundException, IOException {
         System.out.println("Java11DumpLoad");
         FileInputStream fis = null;
@@ -203,6 +201,7 @@ public class SunJDKParserTest extends TestCase {
         }
     }
     
+    @Test
     public void testHPDumps()  throws FileNotFoundException, IOException {
         System.out.println("HPDumpLoad");
         FileInputStream fis = null;
@@ -232,6 +231,7 @@ public class SunJDKParserTest extends TestCase {
         }
     }
     
+    @Test
     public void testRemoteVisualVMDumps()  throws FileNotFoundException, IOException {
         System.out.println("VisualVMDumpLoad");
         FileInputStream fis = null;
@@ -261,6 +261,7 @@ public class SunJDKParserTest extends TestCase {
         }
     }
 
+    @Test
     public void testURLThreadNameDumps()  throws FileNotFoundException, IOException {
         System.out.println("URLThreadNameDumpLoad");
         FileInputStream fis = null;
@@ -290,6 +291,7 @@ public class SunJDKParserTest extends TestCase {
         }
     }
 
+    @Test
     public void testVirtualThreadDumps() throws FileNotFoundException, IOException {
         System.out.println("VirtualThreadDumpLoad");
         FileInputStream fis = null;
@@ -319,6 +321,7 @@ public class SunJDKParserTest extends TestCase {
         }
     }
 
+    @Test
     public void testLongRunningDetectionWithVariableFields() throws FileNotFoundException, IOException {
         System.out.println("testLongRunningDetectionWithVariableFields");
         FileInputStream fis = null;
@@ -364,11 +367,11 @@ public class SunJDKParserTest extends TestCase {
             instance.findLongRunningThreads(root, dumpMap, paths, 2, null);
             
             // Check if long running threads were found
-            assertTrue("Should have children", root.getChildCount() > 0);
+            assertTrue(root.getChildCount() > 0, "Should have children");
             DefaultMutableTreeNode resultNode = (DefaultMutableTreeNode) root.getChildAt(0);
             
             // We expect at least 2 long running threads ("C2 CompilerThread0" and "VM Periodic Task Thread")
-            assertTrue("Should find at least one long running thread, found: " + resultNode.getChildCount(), resultNode.getChildCount() > 0);
+            assertTrue(resultNode.getChildCount() > 0, "Should find at least one long running thread, found: " + resultNode.getChildCount());
             
         } finally {
             if(instance != null) {

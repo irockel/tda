@@ -26,37 +26,27 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
  * @author irockel
  */
-public class BeaJDKParserTest extends TestCase {
+public class BeaJDKParserTest {
     
-    public BeaJDKParserTest(String testName) {
-        super(testName);
-    }            
-
+    @BeforeEach
     protected void setUp() throws Exception {
-        super.setUp();
     }
 
+    @AfterEach
     protected void tearDown() throws Exception {
-        super.tearDown();
-    }
-    
-    public static Test suite() {
-        TestSuite suite = new TestSuite(BeaJDKParserTest.class);
-        
-        return suite;
     }
     
     /**
      * Test of hasMoreDumps method, of class de.grimmfrost.tda.SunJDKParser.
      */
+    @Test
     public void testDumpLoad() throws FileNotFoundException, IOException {
         System.out.println("dumpLoad");
         FileInputStream fis = null;
