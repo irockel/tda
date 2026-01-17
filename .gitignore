@@ -31,6 +31,3 @@ nb-configuration.xml
 
 # Temporary files
 .output.txt
-
-# AI/Junie
-.output.txt
