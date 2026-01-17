@@ -2278,6 +2278,13 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
         //Image image = Toolkit.getDefaultToolkit().getImage( "TDA.gif" );
         Image image = TDA.createImageIcon("TDA.png").getImage();
         frame.setIconImage( image );
+
+        if (Taskbar.isTaskbarSupported()) {
+            Taskbar taskbar = Taskbar.getTaskbar();
+            if (taskbar.isSupported(Taskbar.Feature.ICON_IMAGE)) {
+                taskbar.setIconImage(image);
+            }
+        }
         
         final TDA tdaInstance = new TDA(true);
         frame.getRootPane().setPreferredSize(PrefManager.get().getPreferredSize());
