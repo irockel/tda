@@ -126,8 +126,8 @@ When you encounter a log file that appears to contain Java thread dumps:
 4. Use `get_summary()`, `check_deadlocks()`, and `find_long_running()` to perform the analysis.
 5. Provide your insights based on the structured data returned by these tools rather than the raw log text.
 ```
-
 This configuration makes the analysis much faster and significantly reduces token usage.
+
 ---
 
 ## 🏗 Building from Source
