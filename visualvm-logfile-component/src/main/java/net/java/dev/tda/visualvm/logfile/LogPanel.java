@@ -19,9 +19,9 @@
  */
 package net.java.dev.tda.visualvm.logfile;
 
-import com.pironet.tda.TDA;
-import com.pironet.tda.utils.jedit.JEditTextArea;
-import com.pironet.tda.utils.jedit.PopupMenu;
+import de.grimmfrost.tda.TDA;
+import de.grimmfrost.tda.utils.jedit.JEditTextArea;
+import de.grimmfrost.tda.utils.jedit.PopupMenu;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionListener;

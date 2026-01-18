@@ -23,6 +23,7 @@
           <compilerArgs>
             <arg>--add-modules</arg>
             <arg>jdk.jconsole</arg>
+            <arg>-proc:none</arg>
           </compilerArgs>
         </configuration>
       </plugin>
@@ -106,8 +107,7 @@
     </dependency>
   </dependencies>
   <properties>
-    <maven.compiler.target>11</maven.compiler.target>
-    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.release>11</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 </project>

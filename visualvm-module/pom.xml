@@ -101,6 +101,7 @@
                 <artifactId>nbm-maven-plugin</artifactId>
                 <configuration>
                     <codeNameBase>net.java.dev.tda.visualvm/2</codeNameBase>
+                    <verifyRuntime>false</verifyRuntime>
                 </configuration>
             </plugin>
         </plugins>

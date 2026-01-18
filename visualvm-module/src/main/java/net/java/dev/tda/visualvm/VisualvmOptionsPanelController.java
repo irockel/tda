@@ -17,11 +17,11 @@
  */
 package net.java.dev.tda.visualvm;
 
-import com.pironet.tda.CustomCategoriesDialog;
-import com.pironet.tda.CustomCategoriesDialog.CategoriesPanel;
-import com.pironet.tda.FilterDialog;
-import com.pironet.tda.FilterDialog.FilterPanel;
-import com.pironet.tda.PreferencesDialog;
+import de.grimmfrost.tda.CustomCategoriesDialog;
+import de.grimmfrost.tda.CustomCategoriesDialog.CategoriesPanel;
+import de.grimmfrost.tda.FilterDialog;
+import de.grimmfrost.tda.FilterDialog.FilterPanel;
+import de.grimmfrost.tda.PreferencesDialog;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import javax.swing.JComponent;

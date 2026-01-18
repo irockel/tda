@@ -19,7 +19,7 @@
  */
 package net.java.dev.tda.visualvm.logfile;
 
-import com.pironet.tda.utils.PrefManager;
+import de.grimmfrost.tda.utils.PrefManager;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.io.File;

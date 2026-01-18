@@ -19,7 +19,7 @@
  */
 package net.java.dev.tda.visualvm.logfile;
 
-import com.pironet.tda.TDA;
+import de.grimmfrost.tda.TDA;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

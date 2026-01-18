@@ -73,8 +73,9 @@
                 <configuration>
                     <codeNameBase>net.java.dev.tda.visualvm.logfile/2</codeNameBase>
                     <publicPackages>
-                        <publicPackage>net.java.dev.tda.visualvm.logfile</publicPackage>
+                        <publicPackage>net.java.dev.tda.visualvm.logfile.*</publicPackage>
                     </publicPackages>
+                    <verifyRuntime>false</verifyRuntime>
                 </configuration>
             </plugin>
         </plugins>

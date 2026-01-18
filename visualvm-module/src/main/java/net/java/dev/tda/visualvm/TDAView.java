@@ -18,7 +18,7 @@
 
 package net.java.dev.tda.visualvm;
 
-import com.pironet.tda.TDA;
+import de.grimmfrost.tda.TDA;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
