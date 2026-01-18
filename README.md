@@ -144,6 +144,10 @@ This will build all components:
 The resulting standalone JAR will also be located in the `tda/target/` directory.
 
 ---
+## 📋 GCViewer
+In combination with TDA for thread dump analysis, you can use [GCViewer](https://github.com/chewiebug/GCViewer) to visualize heap dumps.
+
+---
 
 ## 📜 License
 TDA is licensed under the **Lesser GNU General Public License (LGPL)**.
