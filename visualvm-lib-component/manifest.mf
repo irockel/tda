@@ -1,5 +1,9 @@
-Manifest-Version: 1.0
+OpenIDE-Module-Public-Packages: de.grimmfrost.tda.*, de.grimmfrost.tda.filter.*, de.grimmfrost.tda.jconsole.*, de.grimmfrost.tda.mcp.*, de.grimmfrost.tda.utils.*, de.grimmfrost.tda.utils.jedit.*, org.jdesktop.swingx.*, com.google.gson.*, com.jhlabs.*
+OpenIDE-Module-Module-Dependencies: org.graalvm.visualvm.application/2 > 2.0, org.graalvm.visualvm.application.views/2 > 2.0, org.graalvm.visualvm.core/2 > 2.2, org.graalvm.visualvm.threaddump/2 > 2.0, org.graalvm.visualvm.tools/2 > 2.0
+OpenIDE-Module-Java-Dependencies: Java > 1.8
 OpenIDE-Module: net.java.dev.tda/2
 OpenIDE-Module-Localizing-Bundle: net/java/dev/tda/Bundle.properties
 OpenIDE-Module-Specification-Version: 2.6
+OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1
+Class-Path: ext/tda.jar ext/swingx.jar ext/gson.jar ext/filters.jar
 

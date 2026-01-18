@@ -1,8 +1,24 @@
-Manifest-Version: 1.0
+OpenIDE-Module-Public-Packages: -
+OpenIDE-Module-Module-Dependencies: net.java.dev.tda/2 > 2.0,
+  net.java.dev.tda.visualvm.logfile/2 > 2.4,
+  org.graalvm.visualvm.application/2 > 2.0,
+  org.graalvm.visualvm.application.views/2 > 2.0,
+  org.graalvm.visualvm.core/2 > 2.2,
+  org.graalvm.visualvm.threaddump/2 > 2.0,
+  org.graalvm.visualvm.tools/2 > 2.0,
+  org.netbeans.modules.options.api/1 > 1.25.1,
+  org.openide.awt > 7.33.1,
+  org.openide.modules > 7.3.1,
+  org.openide.util > 7.10.1.1,
+  org.openide.util.lookup > 8.0,
+  org.openide.util.ui > 9.15,
+  org.openide.windows > 6.42.1
+OpenIDE-Module-Java-Dependencies: Java > 1.8
 AutoUpdate-Show-In-Client: true
 OpenIDE-Module: net.java.dev.tda.visualvm/2
 OpenIDE-Module-Localizing-Bundle: net/java/dev/tda/visualvm/Bundle.properties
 OpenIDE-Module-Specification-Version: 2.6
-OpenIDE-Module-Install: net.java.dev.tda.visualvm.Install
+OpenIDE-Module-Install: net/java/dev/tda/visualvm/Install.class
 OpenIDE-Module-Layer: net/java/dev/tda/visualvm/layer.xml
+OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1
 
