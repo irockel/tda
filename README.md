@@ -87,19 +87,20 @@ java -Djava.awt.headless=true -jar tda.jar --mcp
 
 The MCP server exposes the following tools:
 
-| Tool | Arguments | Description |
-| :--- | :--- | :--- |
-| `parse_log` | `path` (string, required) | Parses a log file containing Java thread dumps. This must be the first action for a log file. |
-| `get_summary` | None | Returns a summary of all parsed thread dumps (index, name, timestamp, thread/deadlock counts). |
-| `check_deadlocks` | None | Checks for and returns information about any deadlocks detected in the parsed thread dumps. |
-| `find_long_running` | None | Identifies threads that remain in the same state/stack trace across consecutive dumps. |
-| `clear` | None | Resets the server state and clears the internal thread store for a new log file. |
+| Tool                | Arguments                 | Description                                                                                    |
+|:--------------------|:--------------------------|:-----------------------------------------------------------------------------------------------|
+| `parse_log`         | `path` (string, required) | Parses a log file containing Java thread dumps. This must be the first action for a log file.  |
+| `get_summary`       | None                      | Returns a summary of all parsed thread dumps (index, name, timestamp, thread/deadlock counts). |
+| `check_deadlocks`   | None                      | Checks for and returns information about any deadlocks detected in the parsed thread dumps.    |
+| `find_long_running` | None                      | Identifies threads that remain in the same state/stack trace across consecutive dumps.         |
+| `clear`             | None                      | Resets the server state and clears the internal thread store for a new log file.               |
 
 #### Troubleshooting
 
 - **Path issues**: Ensure you use absolute paths for the JAR file and the log files you want to parse.
 - **Headless mode**: If you see errors related to `java.awt.HeadlessException`, double-check that `-Djava.awt.headless=true` is set.
 - **Permissions**: Make sure the user running the MCP server has read permissions for the log files.
+- **Memory issues**: If you see `OutOfMemoryError`s, you can increase the memory allocation by setting `-Xmx`.
 
 #### 🤖 AI Agent Configuration (Cursor / Junie)
 
