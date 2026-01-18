@@ -781,11 +781,11 @@ public class SunJDKParser extends AbstractDumpParser {
             }
             mi.setChildCount(monitorNode.getChildCount());
 
-            ((Category) catMonitors.getUserObject()).addToCatNodes(monitorNode);
+            ((Category) catMonitors.getUserObject()).addToCatNodes(new DefaultMutableTreeNode(mi));
             if (locks == 0) {
                 monitorsWithoutLocksCount++;
                 overallThreadsWaiting += waits;
-                ((Category) catMonitorsLocks.getUserObject()).addToCatNodes(monitorNode);
+                ((Category) catMonitorsLocks.getUserObject()).addToCatNodes(new DefaultMutableTreeNode(mi));
             }
         }
         return new int[]{monitorsWithoutLocksCount, overallThreadsWaiting};

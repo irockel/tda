@@ -68,7 +68,7 @@ public class TableCategory extends AbstractCategory {
             // apply new filter settings.
             DefaultMutableTreeNode filteredRootNode = filterNodes(getRootNode());
             if(filteredRootNode != null && filteredRootNode.getChildCount() > 0) {
-                ThreadsTableModel ttm = new ThreadsTableModel(filterNodes(getRootNode()));
+                ThreadsTableModel ttm = new ThreadsTableModel(filteredRootNode);
 
                 // create table instance (filtered)
                 setupTable(ttm, listener);
@@ -80,7 +80,7 @@ public class TableCategory extends AbstractCategory {
             setLastUpdated();
         } else if (!isFilterEnabled() && ((filteredTable == null) || (getLastUpdated() < PrefManager.get().getFiltersLastChanged()))) {
             // create unfiltered table view.
-            if(getRootNode().getChildCount() > 0) {
+            if(getRootNode() != null && getRootNode().getChildCount() > 0) {
                 ThreadsTableModel ttm = new ThreadsTableModel(getRootNode());
 
                 // create table instance (unfiltered)
@@ -93,7 +93,7 @@ public class TableCategory extends AbstractCategory {
     /**
      * setup the table instance with the specified table model 
      * (either filtered or none-filtered).
-     * @param ts the table sorter/model to use.
+     * @param tm the table model to use.
      * @param listener the event listener to add to the table
      */
     private void setupTable(TableModel tm, EventListener listener) {

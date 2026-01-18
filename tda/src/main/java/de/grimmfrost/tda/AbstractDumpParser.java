@@ -260,11 +260,10 @@ public abstract class AbstractDumpParser implements DumpParser {
      */
     protected void addToCategory(DefaultMutableTreeNode category, String title, StringBuffer info, String content, int lineCount,
             boolean parseTokens) {
-        DefaultMutableTreeNode threadInfo = null;
-        threadInfo = new DefaultMutableTreeNode(new ThreadInfo(title, info != null ? info.toString() : null, content, lineCount, 
-                parseTokens ? getThreadTokens(title) : null));
-        ((Category)category.getUserObject()).addToCatNodes(threadInfo);
-        category.add(threadInfo);
+        ThreadInfo ti = new ThreadInfo(title, info != null ? info.toString() : null, content, lineCount, 
+                parseTokens ? getThreadTokens(title) : null);
+        ((Category)category.getUserObject()).addToCatNodes(new DefaultMutableTreeNode(ti));
+        category.add(new DefaultMutableTreeNode(ti));
     }
 
     /**
