@@ -154,5 +154,5 @@ In combination with TDA for thread dump analysis, you can use [GCViewer](https:/
 TDA is licensed under the **Lesser GNU General Public License (LGPL)**.
 
 ---
-*For more detailed information, please refer to the internal documentation or the source code.*
+*For more detailed information, please refer to the source code. The wiki has been removed because it was outdated.*
 
