@@ -77,9 +77,17 @@ public class InfoDialog extends JDialog {
                 "FITNESS FOR A PARTICULAR PURPOSE. See the Lesser GNU General Public<br>" +
                 "License for more details.<p><br>";
         
-        getContentPane().add(new JLabel(info), BorderLayout.CENTER);
-        getContentPane().add(new JLabel(""), BorderLayout.EAST);
-        getContentPane().add(new JLabel(""), BorderLayout.WEST);
+        javax.swing.JEditorPane infoPane = new javax.swing.JEditorPane("text/html", info);
+        infoPane.setEditable(false);
+        infoPane.setBackground(getContentPane().getBackground());
+        infoPane.setCaretPosition(0);
+        
+        javax.swing.JScrollPane scrollPane = new javax.swing.JScrollPane(infoPane);
+        scrollPane.setBorder(null);
+        
+        getContentPane().add(scrollPane, BorderLayout.CENTER);
+        getContentPane().add(new javax.swing.JLabel("  "), BorderLayout.EAST);
+        getContentPane().add(new javax.swing.JLabel("  "), BorderLayout.WEST);
         JButton okButton = new JButton("Close");
         okButton.addActionListener( new ActionListener() {
             public void actionPerformed(ActionEvent e) {
