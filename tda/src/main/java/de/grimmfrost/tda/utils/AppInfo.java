@@ -18,6 +18,8 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 package de.grimmfrost.tda.utils;
+import java.io.InputStream;
+import java.util.Properties;
 
 /**
  * provides static application information like name and version
@@ -26,9 +28,22 @@ package de.grimmfrost.tda.utils;
 public class AppInfo {
     private static final String APP_SHORT_NAME = "TDA";
     private static final String APP_FULL_NAME = "Thread Dump Analyzer";
-    private static final String VERSION = "2.6";
+    private static String VERSION = "unknown";
     
     private static final String COPYRIGHT = "2006-2026";
+
+    static {
+        try (InputStream is = AppInfo.class.getResourceAsStream("/de/grimmfrost/tda/version.properties")) {
+            if (is != null) {
+                Properties props = new Properties();
+                props.load(is);
+                VERSION = props.getProperty("version", "unknown");
+            }
+        } catch (Exception e) {
+            // fallback to unknown or log error
+            e.printStackTrace();
+        }
+    }
     
     /**
      * get info text for status bar if no real info is displayed.

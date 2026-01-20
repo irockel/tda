@@ -20,6 +20,7 @@
  */
 package de.grimmfrost.tda;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import de.grimmfrost.tda.jconsole.MBeanDumper;
 import de.grimmfrost.tda.utils.AppInfo;
 import de.grimmfrost.tda.utils.Browser;
@@ -38,6 +39,7 @@ import de.grimmfrost.tda.utils.jedit.JEditTextArea;
 import de.grimmfrost.tda.utils.jedit.PopupMenu;
 
 import java.awt.*;
+import java.awt.SplashScreen;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.*;
 import java.io.FileNotFoundException;
@@ -776,43 +778,10 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
      * isn't looking that nice, even in 1.6)
      */
     private void setupLookAndFeel() {
-        try {
-            //--- set the desired preconfigured plaf ---
-            UIManager.LookAndFeelInfo currentLAFI = null;
-            
-            // retrieve plaf param.
-            String plaf = "Mac,Windows,Metal";
-            if(PrefManager.get().isUseGTKLF()) {
-                plaf = "GTK,Mac,Windows,Metal";
-            }
-            
-            System.setProperty("apple.laf.useScreenMenuBar", "true");
-            System.setProperty("com.apple.mrj.application.apple.menu.about.name", "TDA");
-            
-            // this line needs to be implemented in order to make L&F work properly
-            UIManager.getLookAndFeelDefaults().put("ClassLoader", getClass().getClassLoader());
-            
-            // query list of L&Fs
-            UIManager.LookAndFeelInfo[] plafs = UIManager.getInstalledLookAndFeels();
-            
-            if (!"".equals(plaf)) {
-                
-                String[] instPlafs = plaf.split(",");
-                search:
-                    for(int i = 0; i < instPlafs.length; i++) {
-                    for(int j=0; j<plafs.length; j++) {
-                        currentLAFI = plafs[j];
-                        if(currentLAFI.getName().startsWith(instPlafs[i])) {
-                            UIManager.setLookAndFeel(currentLAFI.getClassName());
-                            break search;
-                        }
-                    }
-                    }
-            }
-            
-        } catch (Exception except) {
-            except.printStackTrace();
-        }
+        FlatLightLaf.setup();
+        
+        System.setProperty("apple.laf.useScreenMenuBar", "true");
+        System.setProperty("com.apple.mrj.application.apple.menu.about.name", "TDA");
     }
     
     /**
@@ -2367,6 +2336,7 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
             de.grimmfrost.tda.mcp.MCPServer.main(mcpArgs);
             return;
         }
+
         if (args.length > 0) {
             dumpFile = args[0];
         }

@@ -6,7 +6,7 @@
     <parent>
         <groupId>de.grimmfrost.tda</groupId>
         <artifactId>tda-parent</artifactId>
-        <version>2.6</version>
+        <version>2.7</version>
     </parent>
 
     <artifactId>visualvm-lib-component</artifactId>
@@ -18,6 +18,16 @@
         <dependency>
             <groupId>de.grimmfrost.tda</groupId>
             <artifactId>tda</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf</artifactId>
+            <version>3.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.formdev</groupId>
+            <artifactId>flatlaf-extras</artifactId>
+            <version>3.3</version>
         </dependency>
         <dependency>
             <groupId>org.swinglabs</groupId>
@@ -88,6 +98,7 @@
                         <publicPackage>de.grimmfrost.tda.mcp.*</publicPackage>
                         <publicPackage>de.grimmfrost.tda.utils.*</publicPackage>
                         <publicPackage>de.grimmfrost.tda.utils.jedit.*</publicPackage>
+                        <publicPackage>com.formdev.flatlaf.*</publicPackage>
                         <publicPackage>org.jdesktop.swingx.*</publicPackage>
                         <publicPackage>com.google.gson.*</publicPackage>
                         <publicPackage>com.jhlabs.*</publicPackage>
@@ -107,7 +118,7 @@
                         <configuration>
                             <outputDirectory>${project.build.directory}/nbm/clusters/extra/modules/ext</outputDirectory>
                             <includeScope>runtime</includeScope>
-                            <includeGroupIds>de.grimmfrost.tda,org.swinglabs,com.jhlabs,com.google.code.gson</includeGroupIds>
+                            <includeGroupIds>de.grimmfrost.tda,org.swinglabs,com.jhlabs,com.google.code.gson,com.formdev</includeGroupIds>
                             <stripVersion>true</stripVersion>
                         </configuration>
                     </execution>

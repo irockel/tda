@@ -21,6 +21,7 @@
 
 package de.grimmfrost.tda;
 
+import de.grimmfrost.tda.utils.AppInfo;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -53,7 +54,7 @@ public class InfoDialog extends JDialog {
         upperLayout.setVgap(10);
         upperLayout.setHgap(10);
         JPanel upperPane = new JPanel(upperLayout);
-        upperPane.add(new JLabel(TDA.createImageIcon("tda-logo.png")), BorderLayout.CENTER);
+        upperPane.add(new JLabel(TDA.createImageIcon("splash.png")), BorderLayout.CENTER);
         upperPane.add(new JLabel(" "), BorderLayout.EAST);
         upperPane.add(new JLabel(" "), BorderLayout.WEST);
         upperPane.add(new JLabel(""), BorderLayout.NORTH);
@@ -61,9 +62,9 @@ public class InfoDialog extends JDialog {
         getContentPane().add(upperPane, BorderLayout.NORTH);
         
         String info = "<html><body>" +
+                "<h3>" + AppInfo.getAppInfo() + " v" + AppInfo.getVersion() + "</h3>" +
                 "<p><i>Java Version: " + System.getProperty("java.version") + "<br><br>" +
-                "(C) 2006-2020 by Ingo Rockel &lt;ingo.rockel@gmail.com&gt;,<br>" +
-                "with contributions from Robert Whitehurst &lt;maestoso@java.net&gt;.<br><br>" +
+                "(C) 2006-2026 by Ingo Rockel &lt;ingo.rockel@gmail.com&gt;,<br><br>" +
                 "Icons used are based on Benno System Icons by Benno Meyer.<br>" +
                 "Welcome screen uses icons from NuoveXT2 icon set by Alexandre Moore.<br>" +
                 "Contains classes from JEdit for logfile display.</i></p><br>" +

@@ -20,6 +20,7 @@
  * $Id: ThreadDumpInfo.java,v 1.11 2008-08-13 15:52:19 irockel Exp $
  */
 package de.grimmfrost.tda;
+import de.grimmfrost.tda.utils.PrefManager;
 
 /**
  * Thread Dump Information Node. It stores structural data about the thread dump
@@ -110,13 +111,24 @@ public class ThreadDumpInfo extends AbstractInfo {
         int deadlocksCount = getDeadlocks() == null ? 0 : getDeadlocks().getNodeCount();
         int monitorsNoLockCount = getMonitorsWithoutLocks() == null ? 0 : getMonitorsWithoutLocks().getNodeCount();
 
+        String bgColor = "#ffffff";
+        String textColor = "#333333";
+        String headerColor = "#2c3e50";
+        String borderColor = "#dee2e6";
+        String chartBgColor = "#f8f9fa";
+        String tableAltRowColor = "#fcfcfc";
+        String hintBgColor = "#fff3cd";
+        String hintBorderColor = "#ffeeba";
+        String hintTextColor = "#856404";
+
         StringBuilder statData = new StringBuilder();
-        statData.append("<html><body style=\"background-color: #ffffff; font-family: sans-serif; margin: 20px; color: #333;\">");
+        statData.append("<html><body style=\"background-color: ").append(bgColor).append("; font-family: sans-serif; margin: 20px; color: ").append(textColor).append(";\">");
         
-        statData.append("<h2 style=\"color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px;\">Thread Dump Overview</h2>");
+        statData.append("<h2 style=\"color: ").append(headerColor).append("; border-bottom: 2px solid #3498db; padding-bottom: 10px;\">Thread Dump Overview</h2>");
 
         // Thread State Distribution (Visual Chart)
         if (threadsCount > 0) {
+            // ... (keep state extraction logic as is)
             java.util.Map<String, Integer> stateDistribution = new java.util.HashMap<>();
             Category threadsCat = getThreads();
             for (int i = 0; i < threadsCount; i++) {
@@ -126,17 +138,12 @@ public class ThreadDumpInfo extends AbstractInfo {
                 String state = "UNKNOWN";
                 if (tokens != null) {
                     if (tokens.length >= 7) {
-                        // For prio= formats, state information might be harder to extract from tokens alone if not parsed.
-                        // But SunJDKParser puts it in title if missing.
-                        // Actually, tokens[2] is prio, [3] is tid, [4] is nid...
-                        // If it's the 3-token format: [0]=name, [1]=id, [2]=state
                         state = tokens.length == 3 ? tokens[2] : "OTHER";
                     } else if (tokens.length == 3) {
                         state = tokens[2];
                     }
                 }
                 
-                // Try to extract state from title if it's "state=..."
                 if ("UNKNOWN".equals(state) || "OTHER".equals(state)) {
                     String name = ti.getName();
                     if (name.contains("state=")) {
@@ -158,9 +165,9 @@ public class ThreadDumpInfo extends AbstractInfo {
                 stateDistribution.put(state, stateDistribution.getOrDefault(state, 0) + 1);
             }
 
-            statData.append("<div style=\"margin-bottom: 25px; padding: 15px; background-color: #f8f9fa; border-radius: 8px; border: 1px solid #e9ecef;\">");
-            statData.append("<h4 style=\"margin-top: 0; color: #495057;\">Thread State Distribution (").append(threadsCount).append(" threads)</h4>");
-            statData.append("<table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"height: 30px; border: 1px solid #dee2e6; border-radius: 4px; overflow: hidden;\"><tr>");
+            statData.append("<div style=\"margin-bottom: 25px; padding: 15px; background-color: ").append(chartBgColor).append("; border-radius: 8px; border: 1px solid ").append(borderColor).append(";\">");
+            statData.append("<h4 style=\"margin-top: 0; color: ").append(textColor).append(";\">Thread State Distribution (").append(threadsCount).append(" threads)</h4>");
+            statData.append("<table width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" style=\"height: 30px; border: 1px solid ").append(borderColor).append("; border-radius: 4px; overflow: hidden;\"><tr>");
             
             String[] commonStates = {"RUNNABLE", "WAITING", "TIMED_WAITING", "BLOCKED", "PARKING"};
             String[] colors = {"#28a745", "#ffc107", "#fd7e14", "#dc3545", "#6f42c1"};
@@ -203,18 +210,18 @@ public class ThreadDumpInfo extends AbstractInfo {
         statData.append("<table width=\"100%\" style=\"border-collapse: collapse; margin-bottom: 20px;\">");
         
         statData.append("<tr>");
-        statData.append("<td width=\"50%\" style=\"padding: 8px; border-bottom: 1px solid #eee; background-color: #fcfcfc;\"><b>Overall Monitor Count:</b> ").append(monitorsCount).append("</td>");
-        statData.append("<td width=\"50%\" style=\"padding: 8px; border-bottom: 1px solid #eee; background-color: #fcfcfc;\"><b>Deadlocks:</b> <span style=\"").append(deadlocksCount > 0 ? "color: #dc3545; font-weight: bold;" : "").append("\">").append(deadlocksCount).append("</span></td>");
+        statData.append("<td width=\"50%\" style=\"padding: 8px; border-bottom: 1px solid ").append(borderColor).append("; background-color: ").append(tableAltRowColor).append(";\"><b>Overall Monitor Count:</b> ").append(monitorsCount).append("</td>");
+        statData.append("<td width=\"50%\" style=\"padding: 8px; border-bottom: 1px solid ").append(borderColor).append("; background-color: ").append(tableAltRowColor).append(";\"><b>Deadlocks:</b> <span style=\"").append(deadlocksCount > 0 ? "color: #dc3545; font-weight: bold;" : "").append("\">").append(deadlocksCount).append("</span></td>");
         statData.append("</tr>");
 
         statData.append("<tr>");
-        statData.append("<td style=\"padding: 8px; border-bottom: 1px solid #eee;\"><b>Threads locking:</b> ").append(lockingCount).append("</td>");
-        statData.append("<td style=\"padding: 8px; border-bottom: 1px solid #eee;\"><b>Monitors without locking:</b> ").append(monitorsNoLockCount).append("</td>");
+        statData.append("<td style=\"padding: 8px; border-bottom: 1px solid ").append(borderColor).append(";\"><b>Threads locking:</b> ").append(lockingCount).append("</td>");
+        statData.append("<td style=\"padding: 8px; border-bottom: 1px solid ").append(borderColor).append(";\"><b>Monitors without locking:</b> ").append(monitorsNoLockCount).append("</td>");
         statData.append("</tr>");
 
         statData.append("<tr>");
-        statData.append("<td style=\"padding: 8px; border-bottom: 1px solid #eee; background-color: #fcfcfc;\"><b>Threads waiting:</b> ").append(waitingCount).append("</td>");
-        statData.append("<td style=\"padding: 8px; border-bottom: 1px solid #eee; background-color: #fcfcfc;\"><b>Threads sleeping:</b> ").append(sleepingCount).append("</td>");
+        statData.append("<td style=\"padding: 8px; border-bottom: 1px solid ").append(borderColor).append("; background-color: ").append(tableAltRowColor).append(";\"><b>Threads waiting:</b> ").append(waitingCount).append("</td>");
+        statData.append("<td style=\"padding: 8px; border-bottom: 1px solid ").append(borderColor).append("; background-color: ").append(tableAltRowColor).append(";\"><b>Threads sleeping:</b> ").append(sleepingCount).append("</td>");
         statData.append("</tr>");
         
         statData.append("</table>");
@@ -222,14 +229,14 @@ public class ThreadDumpInfo extends AbstractInfo {
         // Hints and Heap Info
         String hints = getDumpAnalyzer().analyzeDump();
         if (hints != null && !hints.isEmpty()) {
-            statData.append("<div style=\"margin-top: 20px; padding: 15px; background-color: #fff3cd; border: 1px solid #ffeeba; border-radius: 8px; color: #856404;\">");
+            statData.append("<div style=\"margin-top: 20px; padding: 15px; background-color: ").append(hintBgColor).append("; border: 1px solid ").append(hintBorderColor).append("; border-radius: 8px; color: ").append(hintTextColor).append(";\">");
             statData.append("<h4 style=\"margin-top: 0;\">Analysis Hints</h4>");
-            statData.append("<table border=\"0\" width=\"100%\" style=\"color: #856404;\">").append(hints).append("</table>");
+            statData.append("<table border=\"0\" width=\"100%\" style=\"color: ").append(hintTextColor).append(";\">").append(hints).append("</table>");
             statData.append("</div>");
         }
         
         if (getHeapInfo() != null) {
-            statData.append("<div style=\"margin-top: 20px; padding: 15px; background-color: #e2e3e5; border: 1px solid #d6d8db; border-radius: 8px;\">");
+            statData.append("<div style=\"margin-top: 20px; padding: 15px; background-color: #e2e3e5; border: 1px solid ").append(borderColor).append("; border-radius: 8px;\">");
             statData.append("<h4 style=\"margin-top: 0;\">Heap Information</h4>");
             statData.append(getHeapInfo());
             statData.append("</div>");
@@ -249,18 +256,29 @@ public class ThreadDumpInfo extends AbstractInfo {
      * @return a info node for the monitor.
      */
     public static String getMonitorInfo(int locks, int waits, int sleeps ) {
+        String bgColor = "#ffffff";
+        String textColor = "#333333";
+        String tableBgColor = "#f8f9fa";
+        String borderColor = "#dee2e6";
+        String altRowColor = "#f2f2f2";
+        String alertBgColor = "#f8d7da";
+        String alertBorderColor = "#dc3545";
+        String alertTextColor = "#721c24";
+        String noticeBgColor = "#e9ecef";
+        String noticeBorderColor = "#6c757d";
+
         StringBuilder statData = new StringBuilder();
-        statData.append("<html><body style=\"background-color: #ffffff; font-family: sans-serif; margin: 10px; color: #333;\">");
-        statData.append("<table width=\"100%\" style=\"border-collapse: collapse; background-color: #f8f9fa; border: 1px solid #dee2e6;\">");
+        statData.append("<html><body style=\"background-color: ").append(bgColor).append("; font-family: sans-serif; margin: 10px; color: ").append(textColor).append(";\">");
+        statData.append("<table width=\"100%\" style=\"border-collapse: collapse; background-color: ").append(tableBgColor).append("; border: 1px solid ").append(borderColor).append(";\">");
         
-        addMonitorStatRow(statData, "Threads locking monitor", locks, "#ffffff");
-        addMonitorStatRow(statData, "Threads sleeping on monitor", sleeps, "#f2f2f2");
-        addMonitorStatRow(statData, "Threads waiting to lock monitor", waits, "#ffffff");
+        addMonitorStatRow(statData, "Threads locking monitor", locks, bgColor);
+        addMonitorStatRow(statData, "Threads sleeping on monitor", sleeps, altRowColor);
+        addMonitorStatRow(statData, "Threads waiting to lock monitor", waits, bgColor);
         
         statData.append("</table>");
 
         if (locks == 0) {
-            statData.append("<div style=\"margin-top: 15px; padding: 10px; background-color: #e9ecef; border-left: 5px solid #6c757d; font-size: 12px;\">");
+            statData.append("<div style=\"margin-top: 15px; padding: 10px; background-color: ").append(noticeBgColor).append("; border-left: 5px solid ").append(noticeBorderColor).append("; font-size: 12px;\">");
             statData.append("<p><b>No locking thread detected.</b> Possible reasons:</p>");
             statData.append("<ul><li>A VM Thread is holding it.</li>");
             statData.append("<li>It is a <tt>java.util.concurrent</tt> lock and -XX:+PrintConcurrentLocks is missing.</li>");
@@ -271,7 +289,7 @@ public class ThreadDumpInfo extends AbstractInfo {
         }
         
         if (areALotOfWaiting(waits)) {
-            statData.append("<div style=\"margin-top: 15px; padding: 10px; background-color: #f8d7da; border-left: 5px solid #dc3545; color: #721c24; font-size: 12px;\">");
+            statData.append("<div style=\"margin-top: 15px; padding: 10px; background-color: ").append(alertBgColor).append("; border-left: 5px solid ").append(alertBorderColor).append("; color: ").append(alertTextColor).append("; font-size: 12px;\">");
             statData.append("<p><b>High congestion!</b> A lot of threads are waiting for this monitor.</p>");
             statData.append("<p>Analyze other blocked locks as well, as there might be a chain of waiting threads.</p>");
             statData.append("</div>");

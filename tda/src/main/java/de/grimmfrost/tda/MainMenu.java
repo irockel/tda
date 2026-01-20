@@ -25,6 +25,7 @@ package de.grimmfrost.tda;
 import de.grimmfrost.tda.utils.PrefManager;
 import de.grimmfrost.tda.utils.ResourceManager;
 import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JCheckBoxMenuItem;
@@ -150,7 +151,6 @@ public class MainMenu extends JMenuBar {
         //a group of JMenuItems
         menuItem = new JMenuItem(ResourceManager.translate("file.open"),
                 KeyStroke.getKeyStroke(ResourceManager.translate("file.open.mnem")).getKeyCode());
-        menuItem.setIcon(TDA.createImageIcon("FileOpen.png"));
         menuItem.setAccelerator(KeyStroke.getKeyStroke(
                 ResourceManager.translate("file.open.accel")));
         menuItem.getAccessibleContext().setAccessibleDescription(
@@ -160,7 +160,6 @@ public class MainMenu extends JMenuBar {
         
         closeMenuItem = new JMenuItem(ResourceManager.translate("file.close"),
                 KeyStroke.getKeyStroke(ResourceManager.translate("file.close.mnem")).getKeyCode());
-        closeMenuItem.setIcon(TDA.createImageIcon("CloseFile.png"));
         closeMenuItem.getAccessibleContext().setAccessibleDescription(
                 ResourceManager.translate("file.open.description"));
         closeMenuItem.addActionListener(listener);
@@ -181,7 +180,6 @@ public class MainMenu extends JMenuBar {
         menu.addSeparator();
         menuItem = new JMenuItem(ResourceManager.translate("file.getfromclipboard"),
                 KeyStroke.getKeyStroke(ResourceManager.translate("file.getfromclipboard.mnem")).getKeyCode());
-        menuItem.setIcon(TDA.createImageIcon("Empty.gif"));
         menuItem.getAccessibleContext().setAccessibleDescription(
                 ResourceManager.translate("file.getfromclipboard.description"));
         menuItem.setAccelerator(KeyStroke.getKeyStroke(
@@ -207,16 +205,18 @@ public class MainMenu extends JMenuBar {
         createRecentSessionsMenu();
         menu.add(recentSessionsMenu);
         
-        menu.addSeparator();
+        if (!System.getProperty("os.name").contains("Mac")) {
+            menu.addSeparator();
 
-        menuItem = new JMenuItem(ResourceManager.translate("file.exit"),
-                KeyStroke.getKeyStroke(ResourceManager.translate("file.exit.mnem")).getKeyCode());
-        menuItem.setAccelerator(KeyStroke.getKeyStroke(
-                ResourceManager.translate("file.exit.accel")));
-        menuItem.getAccessibleContext().setAccessibleDescription(
-                ResourceManager.translate("file.exit.description"));
-        menuItem.addActionListener(listener);
-        menu.add(menuItem);
+            menuItem = new JMenuItem(ResourceManager.translate("file.exit"),
+                    KeyStroke.getKeyStroke(ResourceManager.translate("file.exit.mnem")).getKeyCode());
+            menuItem.setAccelerator(KeyStroke.getKeyStroke(
+                    ResourceManager.translate("file.exit.accel")));
+            menuItem.getAccessibleContext().setAccessibleDescription(
+                    ResourceManager.translate("file.exit.description"));
+            menuItem.addActionListener(listener);
+            menu.add(menuItem);
+        }
         
         return(menu);
         
@@ -235,7 +235,6 @@ public class MainMenu extends JMenuBar {
         
         expandAllMenuItem = new JMenuItem(ResourceManager.translate("view.expand"),
                 KeyStroke.getKeyStroke(ResourceManager.translate("view.expand.mnem")).getKeyCode());
-        expandAllMenuItem.setIcon(TDA.createImageIcon("Expanded.png"));
         expandAllMenuItem.setAccelerator(KeyStroke.getKeyStroke(
                 ResourceManager.translate("view.expand.accel")));
         expandAllMenuItem.getAccessibleContext().setAccessibleDescription(
@@ -246,7 +245,6 @@ public class MainMenu extends JMenuBar {
 
         collapseAllMenuItem = new JMenuItem(ResourceManager.translate("view.collapse"),
                 KeyStroke.getKeyStroke(ResourceManager.translate("view.collapse.mnem")).getKeyCode());
-        collapseAllMenuItem.setIcon(TDA.createImageIcon("Collapsed.png"));
         collapseAllMenuItem.setAccelerator(KeyStroke.getKeyStroke(
                 ResourceManager.translate("view.collapse.accel")));
         collapseAllMenuItem.getAccessibleContext().setAccessibleDescription(
@@ -259,7 +257,6 @@ public class MainMenu extends JMenuBar {
         menuItem = new JCheckBoxMenuItem(ResourceManager.translate("view.showtoolbar"), PrefManager.get().getShowToolbar());
         menuItem.setMnemonic(KeyStroke.getKeyStroke(ResourceManager.translate("view.showtoolbar.mnem")).getKeyCode());
         menuItem.addActionListener(listener);
-        menuItem.setIcon(TDA.createImageIcon("Empty.gif"));
         menu.add(menuItem);
         
         return(menu);
@@ -278,9 +275,8 @@ public class MainMenu extends JMenuBar {
         
         longMenuItem = new JMenuItem(ResourceManager.translate("tools.longrunning"),
                 KeyStroke.getKeyStroke(ResourceManager.translate("tools.longrunning.mnem")).getKeyCode());
-        longMenuItem.setIcon(TDA.createImageIcon("FindLRThreads.png"));
         longMenuItem.setAccelerator(KeyStroke.getKeyStroke(
-                KeyEvent.VK_L, ActionEvent.ALT_MASK));
+                KeyEvent.VK_L, InputEvent.ALT_MASK));
         longMenuItem.getAccessibleContext().setAccessibleDescription(
                 "Find long running threads...");
         longMenuItem.addActionListener(listener);
@@ -290,9 +286,8 @@ public class MainMenu extends JMenuBar {
 
         menuItem = new JMenuItem("Filters",
                 KeyEvent.VK_F);
-        menuItem.setIcon(TDA.createImageIcon("Filters.png"));
         menuItem.setAccelerator(KeyStroke.getKeyStroke(
-                KeyEvent.VK_F, ActionEvent.ALT_MASK));
+                KeyEvent.VK_F, InputEvent.ALT_MASK));
         menuItem.getAccessibleContext().setAccessibleDescription(
                 "Setup Filter");
         menuItem.addActionListener(listener);
@@ -300,9 +295,8 @@ public class MainMenu extends JMenuBar {
         
         menuItem = new JMenuItem("Categories",
                 KeyEvent.VK_F);
-        menuItem.setIcon(TDA.createImageIcon("CustomCat.png"));
         menuItem.setAccelerator(KeyStroke.getKeyStroke(
-                KeyEvent.VK_G, ActionEvent.ALT_MASK));
+                KeyEvent.VK_G, InputEvent.ALT_MASK));
         menuItem.getAccessibleContext().setAccessibleDescription(
                 "Setup Categories");
         menuItem.addActionListener(listener);
@@ -312,21 +306,11 @@ public class MainMenu extends JMenuBar {
 
         menuItem = new JMenuItem(ResourceManager.translate("file.preferences"),
                 KeyStroke.getKeyStroke(ResourceManager.translate("file.preferences.mnem")).getKeyCode());
-        menuItem.setIcon(TDA.createImageIcon("Preferences.png"));
         menuItem.getAccessibleContext().setAccessibleDescription(
                 ResourceManager.translate("file.preferences.description"));
         menuItem.addActionListener(listener);
         menu.add(menuItem);
         
-        /*menu.addSeparator();
-        
-        menuItem = new JMenuItem("Load Configuration Set...",
-                KeyEvent.VK_F);
-        menuItem.setIcon(TDA.createImageIcon("Empty.gif"));
-        menuItem.getAccessibleContext().setAccessibleDescription(
-                "Load Configuration Set");
-        menuItem.addActionListener(listener);
-        menu.add(menuItem);*/
         return(menu);
     }
     
@@ -354,7 +338,6 @@ public class MainMenu extends JMenuBar {
         menu.addSeparator();
         menuItem = new JMenuItem("About TDA",
                 KeyEvent.VK_A);
-        menuItem.setIcon(TDA.createImageIcon("About.png"));
         menuItem.getAccessibleContext().setAccessibleDescription(
                 "About Thread Dump Analyzer");
         menuItem.addActionListener(listener);
@@ -373,7 +356,7 @@ public class MainMenu extends JMenuBar {
         recentFilesMenu.setMnemonic(KeyStroke.getKeyStroke(ResourceManager.translate("file.recentfiles.mnem")).getKeyCode());
         if(recentFiles.length > 1) {
             for(int i = 1; i < recentFiles.length; i++) {
-                if(!recentFiles[i].equals("")) {
+                if(!recentFiles[i].isEmpty()) {
                     JMenuItem item = new JMenuItem(recentFiles[i]);
                     ((JMenu) recentFilesMenu).add(item);
                     item.addActionListener(listener);
@@ -395,7 +378,7 @@ public class MainMenu extends JMenuBar {
         if(recentFiles.length > 1) {
             
             for(int i = 1; i < recentFiles.length; i++) {
-                if(!recentFiles[i].equals("")) {
+                if(!recentFiles[i].isEmpty()) {
                     JMenuItem item = new JMenuItem(recentFiles[i]);
                     ((JMenu) recentSessionsMenu).add(item);
                     item.addActionListener(listener);
