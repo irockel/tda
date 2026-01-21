@@ -39,7 +39,6 @@ import de.grimmfrost.tda.utils.jedit.JEditTextArea;
 import de.grimmfrost.tda.utils.jedit.PopupMenu;
 
 import java.awt.*;
-import java.awt.SplashScreen;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.*;
 import java.io.FileNotFoundException;
@@ -101,7 +100,6 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.ProgressMonitorInputStream;
-import javax.swing.UIManager;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 import javax.swing.event.ChangeEvent;
@@ -120,13 +118,11 @@ import javax.swing.tree.TreePath;
 public class TDA extends JPanel implements ListSelectionListener, TreeSelectionListener, ActionListener, MenuListener {
     private static FileDialog fc;
     private static JFileChooser sessionFc;
-    private static int DIVIDER_SIZE = 4;
+    private static final int DIVIDER_SIZE = 4;
     protected static JFrame frame;
     
     private static String dumpFile;
-    
-    private static String loggcFile;
-    
+
     private static int fontSizeModifier = 0;
 
     private JEditorPane htmlPane;
@@ -136,7 +132,7 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
     private JSplitPane splitPane;
     protected JSplitPane topSplitPane;
     private DumpStore dumpStore;
-    private Vector topNodes;
+    private Vector<DefaultMutableTreeNode> topNodes;
     private ViewScrollPane htmlView;
     private ViewScrollPane tableView;
     private ViewScrollPane dumpView;
@@ -618,7 +614,6 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
     
     /**
      * expand or collapse all nodes of the specified tree
-     * @param tree the tree to expand all/collapse all
      * @param parent the parent to start with
      * @param expand expand=true, collapse=false
      */
@@ -740,9 +735,7 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
                                 topNodes = (Vector) ois.readObject();
                                 dumpStore = (DumpStore) ois.readObject();
                                 ois.close();
-                            } catch (IOException ex) {
-                                ex.printStackTrace();
-                            } catch (ClassNotFoundException ex) {
+                            } catch (IOException | ClassNotFoundException ex) {
                                 ex.printStackTrace();
                             } finally {
                                 try {
@@ -859,7 +852,7 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
     /**
      * sync object is needed to synchronize opening of multiple files.
      */
-    private static Object syncObject = new Object();
+    private static final Object syncObject = new Object();
     
     /**
      * add the set dumpFileStream to the tree
@@ -1860,7 +1853,6 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
     
     /**
      * choose a log file.
-     * @param addFile check if a log file should be added or if tree should be cleared.
      */
     private void chooseFile() {
         if(firstFile && (PrefManager.get().getPreferredSizeFileChooser().height > 0)) {
@@ -1886,21 +1878,19 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
     private void openFiles(File[] files, boolean isRecent) {
         for (int i = 0; i < files.length; i++) {
             dumpFile = files[i].getAbsolutePath();
-            if(dumpFile != null) {
-                if(!firstFile) {
-                    // root nodes are moved down.
-                    setRootNodeLevel(1);
-                    
-                    // do direct add without re-init.
-                    addDumpFile();
-                } else {
-                    initDumpDisplay(null);
-                    if(isFileOpen()) {
-                       firstFile = false;
-                    }
+            if (!firstFile) {
+                // root nodes are moved down.
+                setRootNodeLevel(1);
+
+                // do direct add without re-init.
+                addDumpFile();
+            } else {
+                initDumpDisplay(null);
+                if (isFileOpen()) {
+                    firstFile = false;
                 }
             }
-            
+
             if(!isRecent) {
                 PrefManager.get().addToRecentFiles(files[i].getAbsolutePath());
             }
@@ -1996,7 +1986,8 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
         }
         
         Object[] options = { "Close File", "Cancel close" };
-        
+
+        assert selPath != null;
         String fileName = ((DefaultMutableTreeNode) selPath.getLastPathComponent()).getUserObject().toString();
         fileName = fileName.substring(fileName.indexOf(File.separator));
         
@@ -2010,22 +2001,13 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
             // remove stuff from the top nodes
             topNodes.remove(selPath.getLastPathComponent());
             
-            if(topNodes.size() == 0) {
+            if(topNodes.isEmpty()) {
                 // simply do a reinit, as there isn't anything to display
                 removeAll();
                 revalidate();
                 
                 init(runningAsJConsolePlugin, runningAsVisualVMPlugin);
-                getMainMenu().getLongMenuItem().setEnabled(false);
-                getMainMenu().getCloseMenuItem().setEnabled(false);
-                getMainMenu().getSaveSessionMenuItem().setEnabled(false);
-                getMainMenu().getCloseToolBarButton().setEnabled(false);
-                getMainMenu().getExpandButton().setEnabled(false);
-                getMainMenu().getCollapseButton().setEnabled(false);
-                getMainMenu().getFindLRThreadsToolBarButton().setEnabled(false);
-                getMainMenu().getCloseAllMenuItem().setEnabled(false);
-                getMainMenu().getExpandAllMenuItem().setEnabled(false);
-                getMainMenu().getCollapseAllMenuItem().setEnabled(false);
+                disableMainMenu();
 
             } else {
                 // rebuild jtree
@@ -2037,7 +2019,20 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
         }
         
     }
-    
+
+    private void disableMainMenu() {
+        getMainMenu().getLongMenuItem().setEnabled(false);
+        getMainMenu().getCloseMenuItem().setEnabled(false);
+        getMainMenu().getSaveSessionMenuItem().setEnabled(false);
+        getMainMenu().getCloseToolBarButton().setEnabled(false);
+        getMainMenu().getExpandButton().setEnabled(false);
+        getMainMenu().getCollapseButton().setEnabled(false);
+        getMainMenu().getFindLRThreadsToolBarButton().setEnabled(false);
+        getMainMenu().getCloseAllMenuItem().setEnabled(false);
+        getMainMenu().getExpandAllMenuItem().setEnabled(false);
+        getMainMenu().getCollapseAllMenuItem().setEnabled(false);
+    }
+
     /**
      * close all open dumps
      */
@@ -2051,7 +2046,7 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
         // if first option "close file" is selected.
         if(selectValue == 0) {
             // remove stuff from the top nodes
-            topNodes = new Vector();
+            topNodes = new Vector<>();
             
             // simply do a reinit, as there is anything to display
             resetMainPanel();
@@ -2067,17 +2062,8 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
         
         init(runningAsJConsolePlugin, runningAsVisualVMPlugin);
         revalidate();
-        
-        getMainMenu().getLongMenuItem().setEnabled(false);
-        getMainMenu().getCloseMenuItem().setEnabled(false);
-        getMainMenu().getSaveSessionMenuItem().setEnabled(false);
-        getMainMenu().getCloseToolBarButton().setEnabled(false);
-        getMainMenu().getExpandButton().setEnabled(false);
-        getMainMenu().getCollapseButton().setEnabled(false);
-        getMainMenu().getFindLRThreadsToolBarButton().setEnabled(false);
-        getMainMenu().getCloseAllMenuItem().setEnabled(false);
-        getMainMenu().getExpandAllMenuItem().setEnabled(false);
-        getMainMenu().getCollapseAllMenuItem().setEnabled(false);
+
+        disableMainMenu();
 
     }
 
@@ -2102,13 +2088,13 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
     private boolean checkNameFromNode(DefaultMutableTreeNode node, int startIndex, String startsWith) {
         Object info = node.getUserObject();
         String result = null;
-        if((info != null) && (info instanceof AbstractInfo)) {
+        if((info instanceof AbstractInfo)) {
             result = ((AbstractInfo) info).getName();
-        } else if ((info != null) && (info instanceof String)) {
+        } else if ((info instanceof String)) {
             result = (String) info;
         }
         
-        if(startIndex > 0) {
+        if(startIndex > 0 && result != null) {
             result = result.substring(startIndex);
         }
         
@@ -2125,41 +2111,37 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
 
         if (selectedFiles.length > 0) {
             File file = selectedFiles[1];
-            loggcFile = file.getAbsolutePath();
-            if(loggcFile != null) {
-                try {
-                    final InputStream loggcFileStream = new ProgressMonitorInputStream(
-                            this,
-                            "Parsing " + loggcFile,
-                            new FileInputStream(loggcFile));
-                    
-                    final SwingWorker worker = new SwingWorker() {
-                        public Object construct() {
+            String loggcFile = file.getAbsolutePath();
+            try {
+                final InputStream loggcFileStream = new ProgressMonitorInputStream(
+                        this,
+                        "Parsing " + loggcFile,
+                        new FileInputStream(loggcFile));
+
+                final SwingWorker worker = new SwingWorker() {
+                    public Object construct() {
+                        try {
+                            DefaultMutableTreeNode top = fetchTop(tree.getSelectionPath());
+
+                            ((Logfile) top.getUserObject()).getUsedParser().parseLoggcFile(loggcFileStream, top);
+
+                            addThreadDumps(top, loggcFileStream);
+                            createTree();
+                            getRootPane().revalidate();
+                            displayContent(null);
+                        } finally {
                             try {
-                                DefaultMutableTreeNode top = fetchTop(tree.getSelectionPath());
-                                
-                                ((Logfile) top.getUserObject()).getUsedParser().parseLoggcFile(loggcFileStream, top);
-                                
-                                addThreadDumps(top, loggcFileStream);
-                                createTree();
-                                getRootPane().revalidate();
-                                displayContent(null);
-                            } finally {
-                                if(loggcFileStream != null) {
-                                    try {
-                                        loggcFileStream.close();
-                                    } catch (IOException ex) {
-                                        ex.printStackTrace();
-                                    }
-                                }
+                                loggcFileStream.close();
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
                             }
-                            return null;
                         }
-                    };
-                    worker.start();
-                } catch (FileNotFoundException ex) {
-                    ex.printStackTrace();
-                }
+                        return null;
+                    }
+                };
+                worker.start();
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
             }
         }
     }
@@ -2377,10 +2359,6 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
         return(result);
     }
     
-    public static void setFontSizeModifier(int value) {
-        fontSizeModifier = value;
-    }
-    
     /**
      * handles dragging events for new files to open.
      */
@@ -2389,10 +2367,10 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
         public void drop(DropTargetDropEvent dtde) {
             try {
                 DataFlavor[] df = dtde.getTransferable().getTransferDataFlavors();
-                for (int i = 0; i < df.length; i++) {
-                    if (df[i].isMimeTypeEqual("application/x-java-serialized-object")) {
+                for (DataFlavor dataFlavor : df) {
+                    if (dataFlavor.isMimeTypeEqual("application/x-java-serialized-object")) {
                         dtde.acceptDrop(dtde.getDropAction());
-                        String[] fileStrings = ((String) dtde.getTransferable().getTransferData(df[i])).split("\n");
+                        String[] fileStrings = ((String) dtde.getTransferable().getTransferData(dataFlavor)).split("\n");
                         File[] files = new File[fileStrings.length];
                         for (int j = 0; j < fileStrings.length; j++) {
                             files[j] = new File(fileStrings[j].substring(7));
@@ -2401,10 +2379,7 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
                         dtde.dropComplete(true);
                     }
                 }
-            } catch (UnsupportedFlavorException ex) {
-                ex.printStackTrace();
-                dtde.rejectDrop();
-            } catch (IOException ex) {
+            } catch (UnsupportedFlavorException | IOException ex) {
                 ex.printStackTrace();
                 dtde.rejectDrop();
             }
