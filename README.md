@@ -66,6 +66,8 @@ For integration with AI tools (like Cursor, Junie, or Claude Desktop) or automat
 TDA can run as a **Model Context Protocol (MCP)** server. This allows for headless analysis of thread dumps using 
 AI assistance.
 
+There's also an [articel on dev.to](https://dev.to/irockel/stop-reading-raw-stacktraces-ai-powered-java-thread-dump-analysis-with-mcp-4673) about how to use TDA as an MCP server.
+
 #### How to run:
 ```bash
 java -Djava.awt.headless=true -jar tda.jar --mcp
