@@ -1,9 +1,14 @@
 <html>
 <link rel="stylesheet" type="text/css" href="stylesheet.css" title="Style">
 <body bgcolor="ffffff"><pre>
-TDA - Thread Dump Analyzer -- Version 2.6
+TDA - Thread Dump Analyzer -- Version 2.7
 
-Note: This is the 2.6 release of the software, for an usage overview see Help/Overview.
+Note: This is the 2.7 release of the software, for an usage overview see Help/Overview.
+
+Changes from 2.6 are:
+* Reworked the thread dump summary to provide information in a more compact way.
+* MacOS Binary is now provided.
+* Use flatplaf for a modern look and feel.
 
 Changes from 2.5 are:
 * TDA now is compiled with JDK 11, it requires Java 11 or higher to run, but still
