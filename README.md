@@ -8,6 +8,19 @@ memory problems in Java applications.
 
 TDA supports Java 1.4.x through Java 21+, including specialized support for **Virtual Threads** (Java 19+).
 
+## 📋 Table of Contents
+- [🚀 Key Features](#-key-features)
+- [🛠 Usage Modes](#-usage-modes)
+  - [1. Standalone Application](#1-standalone-application)
+  - [2. JConsole Plugin](#2-jconsole-plugin)
+  - [3. VisualVM Plugin](#3-visualvm-plugin)
+  - [4. MCP Server (Headless Analysis)](#4-mcp-server-headless-analysis)
+- [🍎 macOS Binary (DMG)](#-macos-binary-dmg)
+  - [Installation (Unsigned Binary)](#installation-unsigned-binary)
+- [🏗 Building from Source](#-building-from-source)
+- [📋 GCViewer](#-gcviewer)
+- [📜 License](#-license)
+
 ## 🚀 Key Features
 
 *   **Comprehensive Thread Dump Parsing**: Parse multiple thread dumps from log files and display them in an intuitive tree structure.
@@ -130,6 +143,24 @@ When you encounter a log file that appears to contain Java thread dumps:
 5. Provide your insights based on the structured data returned by these tools rather than the raw log text.
 ```
 This configuration makes the analysis much faster and significantly reduces token usage.
+
+---
+
+## 🍎 macOS Binary (DMG)
+
+TDA provides a native macOS DMG package for easier installation. This package includes its own Java runtime, so no 
+separate Java installation is required to run it.
+
+### Installation (Unsigned Binary)
+
+Since the DMG is currently unsigned, macOS will block it by default with a warning that the "developer cannot be 
+verified". To install and run TDA:
+
+1.  Download the `TDA-<version>.dmg` from the Releases page.
+2.  Open the DMG and drag **TDA.app** to your **Applications** folder.
+3.  **Right-click** (or Control-click) on `TDA.app` in your Applications folder and select **Open**.
+4.  A dialog will appear asking if you are sure you want to open it. Click **Open**. 
+5.  After this first launch, you can open TDA normally from Launchpad or Spotlight.
 
 ---
 
