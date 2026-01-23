@@ -105,6 +105,27 @@ public class Analyzer implements Serializable {
             statData.append("<a style=\"color: ").append(linkColor).append(";\" href=\"http://www.tagtraum.com/gcviewer.html\">GCViewer-Homepage</a> for more<br>");
             statData.append(" information on how to do this.</td></tr>");
         }
+
+        // check for stuck carrier threads
+        if (threadCount > 0) {
+            int stuckCarrierThreads = 0;
+            Category threadsCat = tdi.getThreads();
+            for (int i = 0; i < threadCount; i++) {
+                javax.swing.tree.DefaultMutableTreeNode node = (javax.swing.tree.DefaultMutableTreeNode) threadsCat.getNodeAt(i);
+                ThreadInfo ti = (ThreadInfo) node.getUserObject();
+                if (ti.getContent().contains("carrier thread seems to be stuck in application code")) {
+                    stuckCarrierThreads++;
+                }
+            }
+            if (stuckCarrierThreads > 0) {
+                statData.append("<tr bgcolor=\"#ffffff\"<td></td></tr>");
+                statData.append("<tr bgcolor=\"").append(altRowColor).append("\"><td colspan=2><font face=System color=\"").append(textColor).append("\"><p>")
+                        .append("Detected ").append(stuckCarrierThreads).append(" virtual thread(s) where the carrier thread seems to be stuck in application code.</p><br>");
+                statData.append("This might indicate \"pinning\" or long-running operations on a virtual thread that prevent it from yielding.<br>");
+                statData.append("A Carrier Thread is usually named something like 'ForkJoinPool-x-Worker'.<br>");
+                statData.append("Check the <a style=\"color: ").append(linkColor).append(";\" href=\"dump://\">thread dump</a> for threads with this warning.</td></tr>");
+            }
+        }
         
         return statData.toString();
     }

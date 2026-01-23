@@ -6,6 +6,7 @@ TDA - Thread Dump Analyzer -- Version 2.7
 Note: This is the 2.7 release of the software, for an usage overview see Help/Overview.
 
 Changes from 2.6 are:
+* Detect stuck Carrier Threads in Java 21+ thread dumps.
 * Reworked the thread dump summary to provide information in a more compact way.
 * MacOS Binary is now provided.
 * Use flatplaf for a modern look and feel.

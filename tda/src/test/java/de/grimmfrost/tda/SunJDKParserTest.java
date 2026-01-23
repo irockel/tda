@@ -322,6 +322,77 @@ public class SunJDKParserTest {
     }
 
     @Test
+    public void testCarrierThreadIssuesDetection() throws FileNotFoundException, IOException {
+        System.out.println("testCarrierThreadIssuesDetection");
+        FileInputStream fis = null;
+        DumpParser instance = null;
+        
+        try {
+            fis = new FileInputStream("src/test/resources/carrier_stuck.log");
+            Map dumpMap = new HashMap();
+            Vector topNodes = new Vector();
+            instance = DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
+            
+            assertTrue(instance instanceof SunJDKParser);
+
+            while (instance.hasMoreDumps()) {
+                topNodes.add(instance.parseNext());
+            }
+
+            assertEquals(1, topNodes.size());
+            DefaultMutableTreeNode dumpNode = (DefaultMutableTreeNode) topNodes.get(0);
+            
+            // Navigate to virtual threads category
+            DefaultMutableTreeNode vtCat = null;
+            for (int i = 0; i < dumpNode.getChildCount(); i++) {
+                DefaultMutableTreeNode child = (DefaultMutableTreeNode) dumpNode.getChildAt(i);
+                Object userObject = child.getUserObject();
+                if (userObject instanceof Category) {
+                    Category cat = (Category) userObject;
+                    if (cat.getName().contains("Virtual Threads")) {
+                        vtCat = child;
+                        break;
+                    }
+                }
+            }
+            
+            assertNotNull(vtCat, "Virtual Threads category should exist");
+            
+            boolean foundWarning = false;
+            for (int i = 0; i < vtCat.getChildCount(); i++) {
+                DefaultMutableTreeNode threadNode = (DefaultMutableTreeNode) vtCat.getChildAt(i);
+                Object userObject = threadNode.getUserObject();
+                String threadInfo = userObject.toString();
+                if (userObject instanceof ThreadInfo) {
+                    String content = ((ThreadInfo)userObject).getContent();
+                    if (threadInfo.contains("ForkJoinPool-1-worker-1") && content.contains("Note:")) {
+                        foundWarning = true;
+                        assertTrue(content.contains("carrier thread seems to be stuck in application code"), "Warning message should be correct");
+                    }
+                }
+            }
+            
+            assertTrue(foundWarning, "Should have found a warning note for the stuck carrier thread");
+            
+            // Now test the analyzer output
+            ThreadDumpInfo tdi = (ThreadDumpInfo) dumpNode.getUserObject();
+            Analyzer analyzer = new Analyzer(tdi);
+            String hints = analyzer.analyzeDump();
+            assertNotNull(hints, "Analysis hints should not be null");
+            assertTrue(hints.contains("carrier thread seems to be stuck in application code"), "Analysis hints should contain warning about stuck carrier thread");
+            assertTrue(hints.contains("Detected 1 virtual thread(s)"), "Analysis hints should report correct number of stuck carrier threads");
+            
+        } finally {
+            if(instance != null) {
+                instance.close();
+            }
+            if(fis != null) {
+                fis.close();
+            }
+        }
+    }
+
+    @Test
     public void testLongRunningDetectionWithVariableFields() throws FileNotFoundException, IOException {
         System.out.println("testLongRunningDetectionWithVariableFields");
         FileInputStream fis = null;

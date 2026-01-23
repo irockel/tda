@@ -1,0 +1,27 @@
+2026-01-23 21:50:00
+Full thread dump OpenJDK 64-Bit Server VM (21.0.2+13-LTS mixed mode, sharing):
+
+"ForkJoinPool-1-worker-1" #11 daemon [11] prio=5 os_prio=0 cpu=5678.90ms elapsed=58230.14s tid=0x00007f8b2c158000 nid=0x1ac7 runnable  [0x00007f8b234f5000]
+   java.lang.Thread.State: RUNNABLE
+        at com.example.app.StuckService.heavyProcessing(StuckService.java:45)
+        at com.example.app.StuckService.process(StuckService.java:25)
+        at java.lang.VirtualThread.run(java.base@21.0.2/VirtualThread.java:309)
+        at java.util.concurrent.ForkJoinPool.runWorker(java.base@21.0.2/ForkJoinPool.java:1519)
+        at java.util.concurrent.ForkJoinWorkerThread.run(java.base@21.0.2/ForkJoinWorkerThread.java:165)
+   Carrying virtual thread #21
+
+"VirtualThread[#21]" #21 virtual [21] prio=5 os_prio=0 cpu=45.23ms elapsed=12345.67s tid=0x00007f8b2c200000 nid=0x1ac8 runnable  [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+        at com.example.app.StuckService.heavyProcessing(StuckService.java:45)
+        at com.example.app.StuckService.process(StuckService.java:25)
+        at java.lang.VirtualThread.run(java.base@21.0.2/VirtualThread.java:309)
+
+"ForkJoinPool-1-worker-2" #12 daemon [12] prio=5 os_prio=0 cpu=100.00ms elapsed=58230.14s tid=0x00007f8b2c159000 nid=0x1ac8 waiting on condition  [0x00007f8b233f4000]
+   java.lang.Thread.State: WAITING (parking)
+        at jdk.internal.misc.Unsafe.park(java.base@21.0.2/Native Method)
+        at java.util.concurrent.locks.LockSupport.park(java.base@21.0.2/LockSupport.java:211)
+        at java.util.concurrent.ForkJoinPool.awaitWork(java.base@21.0.2/ForkJoinPool.java:1565)
+        at java.util.concurrent.ForkJoinPool.runWorker(java.base@21.0.2/ForkJoinPool.java:1519)
+        at java.util.concurrent.ForkJoinWorkerThread.run(java.base@21.0.2/ForkJoinWorkerThread.java:165)
+
+"VM Periodic Task Thread" os_prio=0 cpu=67892.34ms elapsed=58234.15s tid=0x00007f8b2c18f000 nid=0x1aca waiting on condition  

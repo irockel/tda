@@ -244,6 +244,7 @@ public class SunJDKParser extends AbstractDumpParser {
                                 }
                                 if (isVirtualThread) {
                                     virtualThreads++;
+                                    // Reset isVirtualThread here as we are moving to next thread
                                     isVirtualThread = false;
                                 }
                             }
@@ -307,6 +308,29 @@ public class SunJDKParser extends AbstractDumpParser {
                             content.append("</b></font>");
                             content.append("\n");
                             
+                            // Check if carrier thread has issues (like being stuck in application code)
+                            String contentStr = content.toString();
+                            int atIdx = contentStr.indexOf("at ");
+                            if (atIdx > 0) {
+                                String stackTrace = contentStr.substring(atIdx);
+                                String[] lines = stackTrace.split("\n");
+                                boolean foundAppCode = false;
+                                for (String stackLine : lines) {
+                                    if (stackLine.contains("at ") 
+                                            && !stackLine.contains("java.lang.VirtualThread.run")
+                                            && !stackLine.contains("java.util.concurrent.ForkJoinPool")
+                                            && !stackLine.contains("java.util.concurrent.ForkJoinWorkerThread")
+                                            && !stackLine.contains("java.base@")
+                                            && !stackLine.contains("jdk.internal")) {
+                                        foundAppCode = true;
+                                        break;
+                                    }
+                                }
+                                if (foundAppCode) {
+                                    content.append("<font color=\"#ff0000\"><b>Note: carrier thread seems to be stuck in application code.</b></font>\n");
+                                }
+                            }
+
                             // Mark this platform thread as carrying a virtual thread
                             isVirtualThread = true;
                             
@@ -438,6 +462,12 @@ public class SunJDKParser extends AbstractDumpParser {
                 ((Category) catMonitors.getUserObject()).setName(((Category) catMonitors.getUserObject()) + " (" + monitorCount + " Monitors)");
                 ((Category) catMonitorsLocks.getUserObject()).setName(((Category) catMonitorsLocks.getUserObject()) + " (" + monitorsWithoutLocksCount
                         + " Monitors)");
+                
+                if (virtualThreads > 0) {
+                    ((Category) catVirtualThreads.getUserObject()).setName(((Category) catVirtualThreads.getUserObject()) + " (" + virtualThreads + " Virtual Threads)");
+                    threadDump.add(catVirtualThreads);
+                }
+
                 // add thread dump to passed dump store.
                 if ((threadCount > 0) && (dumpKey != null)) {
                     threadStore.put(dumpKey.trim(), threads);
