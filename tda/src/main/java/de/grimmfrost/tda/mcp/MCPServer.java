@@ -91,6 +91,8 @@ public class MCPServer {
         
         tools.add(createTool("find_long_running", "Identifies threads that appear in multiple consecutive thread dumps.", new JsonObject()));
         
+        tools.add(createTool("analyze_virtual_threads", "Detects virtual threads where the carrier thread is stuck in application code.", new JsonObject()));
+
         result.add("tools", gson.toJsonTree(tools));
         sendResponse(request.get("id").getAsInt(), result);
     }
@@ -146,6 +148,8 @@ public class MCPServer {
                 return provider.checkForDeadlocks();
             case "find_long_running":
                 return provider.findLongRunningThreads();
+            case "analyze_virtual_threads":
+                return provider.analyzeVirtualThreads();
             case "clear":
                 provider.clear();
                 return "Cleared thread store.";

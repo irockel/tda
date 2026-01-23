@@ -83,12 +83,10 @@ public class HeadlessAnalysisProvider {
             paths[i] = new TreePath(topNodes.get(i).getPath());
         }
 
-        // AbstractDumpParser.findLongRunningThreads is protected or package private? 
-        // No, it is public in AbstractDumpParser but SunJDKParser might override it.
-        // Actually it's public in AbstractDumpParser.
+        // AbstractDumpParser.findLongRunningThreads is public in AbstractDumpParser.
         
         // We need a parser instance to call findLongRunningThreads
-        // Let's use the first one if possible or just any SunJDKParser
+        // Let's use any SunJDKParser
         SunJDKParser dummyParser = new SunJDKParser(null, threadStore, 0, false, 0, new DateMatcher());
         
         DefaultMutableTreeNode longRunningRoot = new DefaultMutableTreeNode("Long Running Threads");
@@ -102,6 +100,33 @@ public class HeadlessAnalysisProvider {
                 DefaultMutableTreeNode node = (DefaultMutableTreeNode) longRunningRoot.getChildAt(i);
                 results.add("Long running thread: " + node.getUserObject().toString());
             }
+        }
+        return results;
+    }
+
+    public List<String> analyzeVirtualThreads() {
+        List<String> results = new ArrayList<>();
+        int totalStuck = 0;
+        for (DefaultMutableTreeNode node : topNodes) {
+            ThreadDumpInfo tdi = (ThreadDumpInfo) node.getUserObject();
+            int stuckCarrierThreads = 0;
+            Category threadsCat = tdi.getThreads();
+            if (threadsCat != null) {
+                int threadCount = threadsCat.getNodeCount();
+                for (int i = 0; i < threadCount; i++) {
+                    DefaultMutableTreeNode threadNode = (DefaultMutableTreeNode) threadsCat.getNodeAt(i);
+                    ThreadInfo ti = (ThreadInfo) threadNode.getUserObject();
+                    if (ti.getContent().contains("carrier thread seems to be stuck in application code")) {
+                        stuckCarrierThreads++;
+                        results.add("Stuck carrier thread in dump '" + tdi.getName() + "': " + ti.getName());
+                    }
+                }
+            }
+            totalStuck += stuckCarrierThreads;
+        }
+
+        if (totalStuck == 0) {
+            results.add("No virtual threads with stuck carrier threads detected in " + topNodes.size() + " dumps.");
         }
         return results;
     }
