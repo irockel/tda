@@ -175,6 +175,12 @@ This will build all components:
 *   The standalone TDA JAR (in `tda/target/tda-x.x.jar`).
 *   The VisualVM plugins as NBM files (in the `target/` directory of each `visualvm-*` module).
 
+To build the macOS DMG package, use the `release` profile (requires macOS and JDK 17+):
+
+```bash
+mvn clean package -Prelease
+```
+
 The resulting standalone JAR will also be located in the `tda/target/` directory.
 
 ---

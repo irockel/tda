@@ -15,8 +15,16 @@
         <module>visualvm-lib-component</module>
         <module>visualvm-logfile-component</module>
         <module>visualvm-module</module>
-        <module>tda-macos-binary</module>
     </modules>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <modules>
+                <module>tda-macos-binary</module>
+            </modules>
+        </profile>
+    </profiles>
 
     <repositories>
         <repository>

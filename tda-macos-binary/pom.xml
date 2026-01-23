@@ -74,7 +74,7 @@
                             </javaOptions>
                             <macPackageIdentifier>de.grimmfrost.tda</macPackageIdentifier>
                             <macPackageName>TDA</macPackageName>
-                            <icon>src/main/resources/TDA.png</icon>
+                            <icon>src/main/resources/TDA.icns</icon>
                         </configuration>
                     </execution>
                 </executions>

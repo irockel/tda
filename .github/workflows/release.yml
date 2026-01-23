@@ -25,7 +25,7 @@ jobs:
 
       - name: Build macOS Binary
         run: |
-          mvn clean package -DskipTests -pl tda,tda-macos-binary -am
+          mvn clean package -Prelease -DskipTests -pl tda,tda-macos-binary -am
 
       - name: Upload macOS Binary to Release
         uses: softprops/action-gh-release@v2
@@ -54,7 +54,7 @@ jobs:
           cache: 'maven'
 
       - name: Build with Maven
-        run: mvn clean package -DskipTests -pl !tda-macos-binary
+        run: mvn clean package -DskipTests
 
       - name: Create Release
         id: create_release
