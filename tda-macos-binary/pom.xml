@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>de.grimmfrost.tda</groupId>
+        <artifactId>tda-parent</artifactId>
+        <version>2.7</version>
+    </parent>
+
+    <artifactId>tda-macos-binary</artifactId>
+    <name>TDA macOS Binary</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>de.grimmfrost.tda</groupId>
+            <artifactId>tda</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.6.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-tda-jar</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>de.grimmfrost.tda</groupId>
+                                    <artifactId>tda</artifactId>
+                                    <version>${project.version}</version>
+                                    <type>jar</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>${project.build.directory}/input</outputDirectory>
+                                    <destFileName>tda.jar</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.panteleyev</groupId>
+                <artifactId>jpackage-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>jpackage</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jpackage</goal>
+                        </goals>
+                        <configuration>
+                            <name>TDA</name>
+                            <appVersion>${project.version}</appVersion>
+                            <vendor>Ingo Rockel</vendor>
+                            <destination>${project.build.directory}/dist</destination>
+                            <input>${project.build.directory}/input</input>
+                            <mainJar>tda.jar</mainJar>
+                            <mainClass>de.grimmfrost.tda.TDA</mainClass>
+                            <type>DMG</type>
+                            <javaOptions>
+                                <option>-Xmx1024m</option>
+                            </javaOptions>
+                            <macPackageIdentifier>de.grimmfrost.tda</macPackageIdentifier>
+                            <macPackageName>TDA</macPackageName>
+                            <icon>src/main/resources/TDA.png</icon>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

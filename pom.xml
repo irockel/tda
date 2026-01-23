@@ -15,6 +15,7 @@
         <module>visualvm-lib-component</module>
         <module>visualvm-logfile-component</module>
         <module>visualvm-module</module>
+        <module>tda-macos-binary</module>
     </modules>
 
     <repositories>

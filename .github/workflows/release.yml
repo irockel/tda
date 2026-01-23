@@ -6,7 +6,37 @@ on:
       - '[0-9]+.[0-9]+*'
 
 jobs:
-  build:
+  build-macos:
+    name: Build macOS Binary
+    runs-on: macos-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Build macOS Binary
+        run: |
+          mvn clean package -DskipTests -pl tda,tda-macos-binary -am
+
+      - name: Upload macOS Binary to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          files: |
+            tda-macos-binary/target/dist/*.dmg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  build-linux:
     name: Build and Release
     runs-on: ubuntu-latest
     permissions:
@@ -24,7 +54,7 @@ jobs:
           cache: 'maven'
 
       - name: Build with Maven
-        run: mvn clean package -DskipTests
+        run: mvn clean package -DskipTests -pl !tda-macos-binary
 
       - name: Create Release
         id: create_release
