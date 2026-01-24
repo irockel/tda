@@ -18,8 +18,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  */
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.parser;
 
+import de.grimmfrost.tda.TDA;
+import de.grimmfrost.tda.model.*;
 import de.grimmfrost.tda.utils.DateMatcher;
 import de.grimmfrost.tda.utils.HistogramTableModel;
 import de.grimmfrost.tda.utils.IconFactory;
@@ -626,20 +628,20 @@ public class SunJDKParser extends AbstractDumpParser {
     PSPermGen       total 16384K, used 13145K [0x90130000, 0x91130000, 0x94130000)
     object space 16384K, 80% used [0x90130000,0x90e06610,0x91130000)
     
-     * @param threadDump
-     * @return
+     * @param tdi the thread dump info to check
+     * @return true if heap data was found
      * @throws java.io.IOException
      */
     private boolean checkThreadDumpStatData(ThreadDumpInfo tdi) throws IOException {
         boolean finished = false;
         boolean found = false;
-        StringBuffer hContent = new StringBuffer();
+        StringBuilder hContent = new StringBuilder();
         int heapLineCounter = 0;
         int lines = 0;
 
         while (getBis().ready() && !finished) {
             String line = getNextLine();
-            if (!found && !line.equals("")) {
+            if (!found && !line.isEmpty()) {
                 if (line.trim().startsWith("Heap")) {
                     found = true;
                 } else if (lines >= getMaxCheckLines()) {
@@ -816,79 +818,6 @@ public class SunJDKParser extends AbstractDumpParser {
         return new int[]{monitorsWithoutLocksCount, overallThreadsWaiting};
     }
 
-    private void renormalizeBlockingThreadTree(MonitorMap mmap, Map directChildMap) {
-        Map allBlockingThreadsMap = new HashMap(directChildMap); // All threads that are blocking at least one other thread
-
-        // First, renormalize based on monitors to get our unique tree
-        // Tree will be unique as long as there are no deadlocks aka monitor loops
-        for (Iterator iter = mmap.iterOfKeys(); iter.hasNext();) {
-            String monitor1 = (String) iter.next();
-            Map[] threads1 = mmap.getFromMonitorMap(monitor1);
-
-            DefaultMutableTreeNode thread1Node = (DefaultMutableTreeNode) allBlockingThreadsMap.get(monitor1);
-            if (thread1Node == null) {
-                continue;
-            }
-
-            // Get information on the one thread holding this lock
-            Iterator it = threads1[MonitorMap.LOCK_THREAD_POS].keySet().iterator();
-            if (!it.hasNext()) {
-                continue;
-            }
-            String threadLine1 = (String) it.next();
-
-            for (Iterator iter2 = mmap.iterOfKeys(); iter2.hasNext();) {
-                String monitor2 = (String) iter2.next();
-                if (monitor1 == monitor2) {
-                    continue;
-                }
-
-                Map[] threads2 = mmap.getFromMonitorMap(monitor2);
-                if (threads2[MonitorMap.WAIT_THREAD_POS].containsKey(threadLine1)) {
-                    // Get the node of the thread that is holding this lock
-                    DefaultMutableTreeNode thread2Node = (DefaultMutableTreeNode) allBlockingThreadsMap.get(monitor2);
-                    // Get the node of the monitor itself
-                    DefaultMutableTreeNode monitor2Node = (DefaultMutableTreeNode) thread2Node.getFirstChild();
-
-                    // If a redundant node for thread2 exists with no children, remove it
-                    // To compare, we have to remove "Thread - " from the front of display strings
-                    for (int i = 0; i < monitor2Node.getChildCount(); i++) {
-                        DefaultMutableTreeNode child2 = (DefaultMutableTreeNode) monitor2Node.getChildAt(i);
-                        if (child2.toString().substring(9).equals(threadLine1) && child2.getChildCount() == 0) {
-                            monitor2Node.remove(i);
-                            break;
-                        }
-                    }
-
-                    // Thread1 is blocked by monitor2 held by thread2, so move thread1 under thread2
-                    monitor2Node.insert(thread1Node, 0);
-                    directChildMap.remove(monitor1);
-                    break;
-                }
-            }
-        }
-
-        allBlockingThreadsMap.clear();
-
-        // Second, renormalize top level based on threads for cases where one thread holds multiple monitors
-        boolean changed = false;
-        do {
-            changed = false;
-            for (Iterator iter = directChildMap.entrySet().iterator(); iter.hasNext();) {
-                DefaultMutableTreeNode node = (DefaultMutableTreeNode) ((Map.Entry) iter.next()).getValue();
-                if (checkForDuplicateThreadItem(directChildMap, node)) {
-                    changed = true;
-                    break;
-                }
-            }
-        } while (changed);
-
-        // Third, renormalize lower levels of the tree based on threads for cases where one thread holds multiple monitors
-        for (Iterator iter = directChildMap.entrySet().iterator(); iter.hasNext();) {
-            renormalizeThreadDepth((DefaultMutableTreeNode) ((Map.Entry) iter.next()).getValue());
-        }
-    }
-
     private void renormalizeThreadDepth(DefaultMutableTreeNode threadNode1) {
         for (Enumeration e = threadNode1.children(); e.hasMoreElements();) {
             DefaultMutableTreeNode monitorNode2 = (DefaultMutableTreeNode) e.nextElement();
@@ -993,37 +922,6 @@ public class SunJDKParser extends AbstractDumpParser {
         }
 
         return "";
-    }
-
-    private void updateChildCount(DefaultMutableTreeNode threadOrMonitorNode, boolean isThreadNode) {
-        int count = 0;
-        for (Enumeration e = threadOrMonitorNode.depthFirstEnumeration(); e.hasMoreElements();) {
-            Object element = e.nextElement();
-            ThreadInfo mi = (ThreadInfo) (((DefaultMutableTreeNode) element).getUserObject());
-            if (mi.getName().startsWith("Thread")) {
-                count++;
-            }
-        }
-
-        ThreadInfo mi = (ThreadInfo) threadOrMonitorNode.getUserObject();
-        if (ThreadDumpInfo.areALotOfWaiting(count)) {
-            mi.setALotOfWaiting(true);
-        }
-        if (isThreadNode) {
-            count--;
-        }
-
-        mi.setChildCount(count);
-        if (count > 1) {
-            mi.setName(mi.getName() + ":    " + count + " Blocked threads");
-        } else if (count == 1) {
-            mi.setName(mi.getName() + ":    " + count + " Blocked thread");
-        }
-
-        // Recurse
-        for (Enumeration e = threadOrMonitorNode.children(); e.hasMoreElements();) {
-            updateChildCount((DefaultMutableTreeNode) e.nextElement(), !isThreadNode);
-        }
     }
 
     /**

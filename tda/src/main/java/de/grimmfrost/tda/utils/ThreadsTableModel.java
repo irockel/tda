@@ -21,7 +21,8 @@
  */
 package de.grimmfrost.tda.utils;
 
-import de.grimmfrost.tda.ThreadInfo;
+import de.grimmfrost.tda.model.ThreadInfo;
+
 import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;

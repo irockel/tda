@@ -19,10 +19,11 @@
  *
  * $Id: DumpParserFactoryTest.java,v 1.5 2008-02-15 09:05:04 irockel Exp $
  */
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.parser;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import java.io.InputStream;
@@ -67,7 +68,7 @@ public class DumpParserFactoryTest {
         DumpParser result = instance.getDumpParserForLogfile(dumpFileStream, threadStore, false, 0);
         assertNotNull(result);
         
-        assertTrue(result instanceof de.grimmfrost.tda.SunJDKParser);
+        assertTrue(result instanceof SunJDKParser);
     }
 
     /**
@@ -84,6 +85,6 @@ public class DumpParserFactoryTest {
         DumpParser result = instance.getDumpParserForLogfile(dumpFileStream, threadStore, false, 0);
         assertNotNull(result);
         
-        assertTrue(result instanceof de.grimmfrost.tda.BeaJDKParser);
+        assertTrue(result instanceof BeaJDKParser);
     }    
 }

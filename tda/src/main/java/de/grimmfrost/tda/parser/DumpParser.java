@@ -20,7 +20,7 @@
  * $Id: DumpParser.java,v 1.11 2007-11-27 09:42:20 irockel Exp $
  */
 
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.parser;
 
 import java.io.IOException;
 import java.io.InputStream;

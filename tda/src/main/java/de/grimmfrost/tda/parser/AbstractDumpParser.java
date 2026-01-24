@@ -16,9 +16,11 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
  */
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.parser;
 
+import de.grimmfrost.tda.TDA;
 import de.grimmfrost.tda.filter.Filter;
+import de.grimmfrost.tda.model.*;
 import de.grimmfrost.tda.utils.DateMatcher;
 import de.grimmfrost.tda.utils.IconFactory;
 import de.grimmfrost.tda.utils.PrefManager;
@@ -395,7 +397,7 @@ public abstract class AbstractDumpParser implements DumpParser {
             for(int j = 0; j < threads.getNodeCount(); j++) {
                 Iterator filterIter = ((CustomCategory) cats.getElementAt(i)).iterOfFilters();
                 boolean matches = true;
-                ThreadInfo ti = (ThreadInfo) ((DefaultMutableTreeNode) threads.getNodeAt(j)).getUserObject();
+                ThreadInfo ti = (ThreadInfo) threads.getNodeAt(j).getUserObject();
                 while (matches && filterIter.hasNext()) {
                     Filter filter = (Filter) filterIter.next();
                     matches = filter.matches(ti, true);

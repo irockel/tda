@@ -20,7 +20,7 @@
  * $Id: TreeCategory.java,v 1.2 2008-01-07 14:55:06 irockel Exp $
  */
 
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.model;
 
 import de.grimmfrost.tda.filter.FilterChecker;
 import de.grimmfrost.tda.utils.PrefManager;

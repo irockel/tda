@@ -1,6 +1,12 @@
 package de.grimmfrost.tda.mcp;
 
 import de.grimmfrost.tda.*;
+import de.grimmfrost.tda.model.Category;
+import de.grimmfrost.tda.model.ThreadDumpInfo;
+import de.grimmfrost.tda.model.ThreadInfo;
+import de.grimmfrost.tda.parser.DumpParser;
+import de.grimmfrost.tda.parser.DumpParserFactory;
+import de.grimmfrost.tda.parser.SunJDKParser;
 import de.grimmfrost.tda.utils.DateMatcher;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;

@@ -1,6 +1,7 @@
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.model;
 
 import javax.swing.tree.DefaultMutableTreeNode;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

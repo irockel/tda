@@ -21,10 +21,10 @@
  */
 package de.grimmfrost.tda.utils;
 
+import de.grimmfrost.tda.model.ThreadInfo;
+
 import java.util.Comparator;
 import javax.swing.tree.DefaultMutableTreeNode;
-
-import de.grimmfrost.tda.ThreadInfo;
 
 /**
  * compares monitor nodes based on the amount of threads refering to the monitors. 

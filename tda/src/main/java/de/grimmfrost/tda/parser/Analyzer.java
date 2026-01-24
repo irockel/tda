@@ -20,9 +20,12 @@
  * $Id: Analyzer.java,v 1.3 2008-01-28 09:29:34 irockel Exp $
  */
 
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.parser;
 
-import de.grimmfrost.tda.utils.PrefManager;
+import de.grimmfrost.tda.model.Category;
+import de.grimmfrost.tda.model.ThreadDumpInfo;
+import de.grimmfrost.tda.model.ThreadInfo;
+
 import java.io.Serializable;
 
 /**
@@ -109,6 +112,7 @@ public class Analyzer implements Serializable {
         // check for stuck carrier threads
         if (threadCount > 0) {
             int stuckCarrierThreads = 0;
+
             Category threadsCat = tdi.getThreads();
             for (int i = 0; i < threadCount; i++) {
                 javax.swing.tree.DefaultMutableTreeNode node = (javax.swing.tree.DefaultMutableTreeNode) threadsCat.getNodeAt(i);

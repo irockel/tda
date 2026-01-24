@@ -22,6 +22,9 @@ package de.grimmfrost.tda;
 
 import com.formdev.flatlaf.FlatLightLaf;
 import de.grimmfrost.tda.jconsole.MBeanDumper;
+import de.grimmfrost.tda.model.*;
+import de.grimmfrost.tda.parser.DumpParser;
+import de.grimmfrost.tda.parser.DumpParserFactory;
 import de.grimmfrost.tda.utils.AppInfo;
 import de.grimmfrost.tda.utils.Browser;
 import de.grimmfrost.tda.utils.HistogramTableModel;
@@ -1296,7 +1299,7 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
                 dumpMap = new HashMap();
                 dumpStore.addFileToDumpFiles(fileName, dumpMap);
             }
-            dp = DumpParserFactory.get().getDumpParserForLogfile(dumpFileStream, dumpMap, runningAsJConsolePlugin, 
+            dp = DumpParserFactory.get().getDumpParserForLogfile(dumpFileStream, dumpMap, runningAsJConsolePlugin,
                     dumpCounter);
             ((Logfile) top.getUserObject()).setUsedParser(dp);
             

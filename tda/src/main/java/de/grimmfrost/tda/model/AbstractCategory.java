@@ -17,7 +17,7 @@
  *
  * $Id: AbstractCategory.java,v 1.4 2008-03-09 06:36:51 irockel Exp $
  */
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.model;
 
 import de.grimmfrost.tda.filter.FilterChecker;
 import de.grimmfrost.tda.utils.IconFactory;

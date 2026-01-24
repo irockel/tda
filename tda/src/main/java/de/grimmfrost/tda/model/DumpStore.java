@@ -19,7 +19,7 @@
  *
  * $Id: DumpStore.java,v 1.2 2007-11-01 14:59:39 irockel Exp $
  */
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.model;
 
 import java.io.Serializable;
 import java.util.HashMap;

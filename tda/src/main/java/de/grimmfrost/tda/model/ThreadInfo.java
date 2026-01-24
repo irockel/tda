@@ -20,7 +20,7 @@
  * $Id: ThreadInfo.java,v 1.9 2008-03-13 21:16:08 irockel Exp $
  */
 
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.model;
 
 /**
  * Info (name, content tuple) for thread dump display tree.

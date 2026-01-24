@@ -20,14 +20,16 @@
  * $Id: Logfile.java,v 1.8 2008-02-16 18:00:24 irockel Exp $
  */
 
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.model;
+
+import de.grimmfrost.tda.parser.DumpParser;
 
 /**
  * root node info object of log file thread dump information
  * @author irockel
  */
 public class Logfile extends AbstractInfo {
-    private String content;
+    private final String content;
     private DumpParser usedParser;
     
     /** 

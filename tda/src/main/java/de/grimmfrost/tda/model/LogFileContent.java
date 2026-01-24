@@ -20,10 +20,9 @@
  * $Id: LogFileContent.java,v 1.7 2008-01-16 11:33:27 irockel Exp $
  */
 
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.model;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Serializable;

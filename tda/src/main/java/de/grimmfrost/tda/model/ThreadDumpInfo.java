@@ -19,8 +19,9 @@
  *
  * $Id: ThreadDumpInfo.java,v 1.11 2008-08-13 15:52:19 irockel Exp $
  */
-package de.grimmfrost.tda;
-import de.grimmfrost.tda.utils.PrefManager;
+package de.grimmfrost.tda.model;
+
+import de.grimmfrost.tda.parser.Analyzer;
 
 /**
  * Thread Dump Information Node. It stores structural data about the thread dump
@@ -49,7 +50,7 @@ public class ThreadDumpInfo extends AbstractInfo {
     private HeapInfo heapInfo;
     
     
-    ThreadDumpInfo(String name, int lineCount) {
+    public ThreadDumpInfo(String name, int lineCount) {
         setName(name);
         this.logLine = lineCount;
     }

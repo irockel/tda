@@ -23,7 +23,7 @@
  */
 package de.grimmfrost.tda.utils;
 
-import de.grimmfrost.tda.CustomCategory;
+import de.grimmfrost.tda.model.CustomCategory;
 import de.grimmfrost.tda.filter.Filter;
 import de.grimmfrost.tda.filter.FilterChecker;
 import java.awt.Dimension;

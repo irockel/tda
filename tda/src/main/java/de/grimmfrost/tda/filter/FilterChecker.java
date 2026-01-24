@@ -21,7 +21,7 @@
  */
 package de.grimmfrost.tda.filter;
 
-import de.grimmfrost.tda.ThreadInfo;
+import de.grimmfrost.tda.model.ThreadInfo;
 import de.grimmfrost.tda.utils.PrefManager;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -81,16 +81,6 @@ public class FilterChecker {
     }
     
     /**
-     * get filter from filter list
-     * @param key the name of the filter.
-     * @return filter with the given name, null otherwise.
-     */
-    public Filter getFromFilters(String key) {
-        System.out.println("getFromFilters= " + key);
-        return (filters != null ? (Filter) filters.get(key) : null);
-    }
-    
-    /**
      * checks if the given thread info passes the filters of
      * this filter checker instance
      */
@@ -126,12 +116,5 @@ public class FilterChecker {
             addToFilters(filter);
         }
         return(check(ti));
-    }
-    
-    /**
-     * get iterator on all set filters
-     */
-    public Iterator iterOfFilters() {
-        return(filters.values().iterator());
     }
 }

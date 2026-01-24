@@ -20,7 +20,7 @@
  * $Id: HeapInfo.java,v 1.1 2008-08-13 15:52:19 irockel Exp $
  */
 
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.model;
 
 /**
  * stores a heap information block for a thread dump

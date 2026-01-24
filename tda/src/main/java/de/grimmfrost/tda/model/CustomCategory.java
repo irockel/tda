@@ -19,7 +19,7 @@
  *
  * $Id: CustomCategory.java,v 1.1 2008-03-09 06:36:51 irockel Exp $
  */
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.model;
 
 import de.grimmfrost.tda.filter.Filter;
 import java.util.HashMap;

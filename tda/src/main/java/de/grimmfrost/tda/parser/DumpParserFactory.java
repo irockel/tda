@@ -19,7 +19,7 @@
  *
  */
 
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.parser;
 
 import de.grimmfrost.tda.utils.DateMatcher;
 import de.grimmfrost.tda.utils.PrefManager;

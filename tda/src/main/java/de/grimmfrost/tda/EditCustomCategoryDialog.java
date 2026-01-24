@@ -22,6 +22,7 @@
 package de.grimmfrost.tda;
 
 import de.grimmfrost.tda.filter.Filter;
+import de.grimmfrost.tda.model.CustomCategory;
 import de.grimmfrost.tda.utils.PrefManager;
 import de.grimmfrost.tda.utils.ResourceManager;
 import java.awt.BorderLayout;

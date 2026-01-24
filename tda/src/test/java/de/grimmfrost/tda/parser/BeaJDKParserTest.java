@@ -18,7 +18,7 @@
  * $Id: BeaJDKParserTest.java,v 1.4 2010-04-01 08:58:58 irockel Exp $
  */
 
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.parser;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
+
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 

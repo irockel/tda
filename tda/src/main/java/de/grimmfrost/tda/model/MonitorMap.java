@@ -20,7 +20,7 @@
  * $Id: MonitorMap.java,v 1.7 2008-11-21 21:17:51 irockel Exp $
  */
 
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.model;
 
 import java.io.Serializable;
 import java.util.Iterator;

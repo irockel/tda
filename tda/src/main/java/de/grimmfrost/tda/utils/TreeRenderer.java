@@ -22,12 +22,9 @@
 
 package de.grimmfrost.tda.utils;
 
-import de.grimmfrost.tda.Category;
-import de.grimmfrost.tda.HistogramInfo;
-import de.grimmfrost.tda.LogFileContent;
-import de.grimmfrost.tda.Logfile;
-import de.grimmfrost.tda.TDA;
-import de.grimmfrost.tda.ThreadInfo;
+import de.grimmfrost.tda.*;
+import de.grimmfrost.tda.model.*;
+
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.Icon;

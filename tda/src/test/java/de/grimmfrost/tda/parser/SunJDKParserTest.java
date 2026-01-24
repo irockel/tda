@@ -19,7 +19,7 @@
  *
  * $Id: SunJDKParserTest.java,v 1.9 2008-11-21 09:20:19 irockel Exp $
  */
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.parser;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -28,6 +28,10 @@ import java.util.HashMap;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreePath;
+
+import de.grimmfrost.tda.model.Category;
+import de.grimmfrost.tda.model.ThreadDumpInfo;
+import de.grimmfrost.tda.model.ThreadInfo;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Map;
@@ -40,18 +44,18 @@ import java.util.Vector;
 public class SunJDKParserTest {
     
     @BeforeEach
-    protected void setUp() throws Exception {
+    protected void setUp() {
     }
 
     @AfterEach
-    protected void tearDown() throws Exception {
+    protected void tearDown() {
     }
 
     /**
      * Test of hasMoreDumps method, of class de.grimmfrost.tda.SunJDKParser.
      */
     @Test
-    public void testDumpLoad() throws FileNotFoundException, IOException {
+    public void testDumpLoad() throws IOException {
         System.out.println("dumpLoad");
         FileInputStream fis = null;
         DumpParser instance = null;
@@ -142,7 +146,7 @@ public class SunJDKParserTest {
     }
     
     @Test
-    public void testJava8DumpLoad() throws FileNotFoundException, IOException {
+    public void testJava8DumpLoad() throws IOException {
         System.out.println("Java8DumpLoad");
         FileInputStream fis = null;
         DumpParser instance = null;
@@ -202,7 +206,7 @@ public class SunJDKParserTest {
     }
     
     @Test
-    public void testHPDumps()  throws FileNotFoundException, IOException {
+    public void testHPDumps()  throws IOException {
         System.out.println("HPDumpLoad");
         FileInputStream fis = null;
         DumpParser instance = null;
@@ -232,7 +236,7 @@ public class SunJDKParserTest {
     }
     
     @Test
-    public void testRemoteVisualVMDumps()  throws FileNotFoundException, IOException {
+    public void testRemoteVisualVMDumps()  throws IOException {
         System.out.println("VisualVMDumpLoad");
         FileInputStream fis = null;
         DumpParser instance = null;
@@ -262,7 +266,7 @@ public class SunJDKParserTest {
     }
 
     @Test
-    public void testURLThreadNameDumps()  throws FileNotFoundException, IOException {
+    public void testURLThreadNameDumps()  throws IOException {
         System.out.println("URLThreadNameDumpLoad");
         FileInputStream fis = null;
         DumpParser instance = null;
@@ -292,7 +296,7 @@ public class SunJDKParserTest {
     }
 
     @Test
-    public void testVirtualThreadDumps() throws FileNotFoundException, IOException {
+    public void testVirtualThreadDumps() throws IOException {
         System.out.println("VirtualThreadDumpLoad");
         FileInputStream fis = null;
         DumpParser instance = null;
@@ -322,7 +326,7 @@ public class SunJDKParserTest {
     }
 
     @Test
-    public void testCarrierThreadIssuesDetection() throws FileNotFoundException, IOException {
+    public void testCarrierThreadIssuesDetection() throws IOException {
         System.out.println("testCarrierThreadIssuesDetection");
         FileInputStream fis = null;
         DumpParser instance = null;
@@ -393,7 +397,7 @@ public class SunJDKParserTest {
     }
 
     @Test
-    public void testLongRunningDetectionWithVariableFields() throws FileNotFoundException, IOException {
+    public void testLongRunningDetectionWithVariableFields() throws IOException {
         System.out.println("testLongRunningDetectionWithVariableFields");
         FileInputStream fis = null;
         SunJDKParser instance = null;

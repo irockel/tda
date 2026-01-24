@@ -1,5 +1,6 @@
 /*
- * AbstractInfo.java
+ * DumpGeneralInfo.java
+ *
  *
  * This file is part of TDA - Thread Dump Analysis Tool.
  *
@@ -17,34 +18,25 @@
  * along with TDA; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * $Id: AbstractInfo.java,v 1.1 2007-12-08 09:58:34 irockel Exp $
+ * $Id: HistogramInfo.java,v 1.1 2006-03-01 19:19:37 irockel Exp $
  */
 
-package de.grimmfrost.tda;
-
-import java.io.Serializable;
+package de.grimmfrost.tda.model;
 
 /**
- * abstract info for presenting node data in the main tree.
- * 
+ *
  * @author irockel
  */
-public abstract class AbstractInfo implements Serializable {
-    private String name;
-
-    /**
-     * get the name of the node.
-     * @return
-     */
-    public String getName() {
-        return name;
+public class HistogramInfo {
+    public String threadDumpName;
+    public Object content;
+    
+    public HistogramInfo(String name, Object content) {
+        threadDumpName = name;
+        this.content = content;
     }
-
-    /**
-     * set the name of the node.
-     * @param name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
+    
+    public String toString() {
+        return threadDumpName;
+    }   
 }

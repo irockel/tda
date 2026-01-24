@@ -22,6 +22,8 @@
 
 package de.grimmfrost.tda;
 
+import de.grimmfrost.tda.model.Logfile;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Font;

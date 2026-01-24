@@ -17,8 +17,13 @@
  *
  */
 
-package de.grimmfrost.tda;
+package de.grimmfrost.tda.parser;
 
+import de.grimmfrost.tda.TDA;
+import de.grimmfrost.tda.model.MonitorMap;
+import de.grimmfrost.tda.model.TableCategory;
+import de.grimmfrost.tda.model.ThreadDumpInfo;
+import de.grimmfrost.tda.model.TreeCategory;
 import de.grimmfrost.tda.utils.DateMatcher;
 import de.grimmfrost.tda.utils.IconFactory;
 import java.io.BufferedReader;
