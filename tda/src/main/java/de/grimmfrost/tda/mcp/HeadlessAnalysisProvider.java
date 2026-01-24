@@ -131,6 +131,54 @@ public class HeadlessAnalysisProvider {
         return results;
     }
 
+    public List<Map<String, String>> getNativeThreads(int dumpIndex) {
+        if (dumpIndex < 0 || dumpIndex >= topNodes.size()) {
+            throw new IllegalArgumentException("Invalid dump index: " + dumpIndex);
+        }
+
+        List<Map<String, String>> nativeThreads = new ArrayList<>();
+        DefaultMutableTreeNode dumpNode = topNodes.get(dumpIndex);
+        ThreadDumpInfo tdi = (ThreadDumpInfo) dumpNode.getUserObject();
+        
+        collectNativeThreads(tdi.getThreads(), nativeThreads);
+        collectNativeThreads(tdi.getVirtualThreads(), nativeThreads);
+        
+        return nativeThreads;
+    }
+
+    private void collectNativeThreads(Category cat, List<Map<String, String>> nativeThreads) {
+        if (cat != null) {
+            int threadCount = cat.getNodeCount();
+            for (int i = 0; i < threadCount; i++) {
+                DefaultMutableTreeNode threadNode = cat.getNodeAt(i);
+                if (threadNode != null) {
+                    ThreadInfo ti = (ThreadInfo) threadNode.getUserObject();
+                    String content = ti.getContent();
+                    
+                    if (content.contains("Native Method")) {
+                        Map<String, String> threadMap = new HashMap<>();
+                        threadMap.put("threadName", ti.getName());
+                        
+                        // Extract native method and library info
+                        // e.g., at java.net.PlainSocketImpl.socketAccept(java.base@21.0.2/Native Method)
+                        String[] lines = content.split("\n");
+                        for (String line : lines) {
+                            if (line.contains("Native Method")) {
+                                int atIdx = line.indexOf("at ");
+                                if (atIdx >= 0) {
+                                    String methodPart = line.substring(atIdx + 3).trim();
+                                    threadMap.put("nativeMethod", methodPart);
+                                    break;
+                                }
+                            }
+                        }
+                        nativeThreads.add(threadMap);
+                    }
+                }
+            }
+        }
+    }
+
     public void clear() {
         threadStore.clear();
         topNodes.clear();

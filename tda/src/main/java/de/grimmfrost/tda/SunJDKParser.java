@@ -438,9 +438,9 @@ public class SunJDKParser extends AbstractDumpParser {
                     threadDump.add(catLocking);
                 }
 
-                // Add virtual threads category if there are any virtual threads
                 if (virtualThreads > 0) {
-                    ((Category) catVirtualThreads.getUserObject()).setName("Virtual Threads (" + virtualThreads + " Virtual Threads)");
+                    overallTDI.setVirtualThreads((Category) catVirtualThreads.getUserObject());
+                    ((Category) catVirtualThreads.getUserObject()).setName(((Category) catVirtualThreads.getUserObject()) + " (" + virtualThreads + " Virtual Threads)");
                     threadDump.add(catVirtualThreads);
                 }
 
@@ -462,11 +462,6 @@ public class SunJDKParser extends AbstractDumpParser {
                 ((Category) catMonitors.getUserObject()).setName(((Category) catMonitors.getUserObject()) + " (" + monitorCount + " Monitors)");
                 ((Category) catMonitorsLocks.getUserObject()).setName(((Category) catMonitorsLocks.getUserObject()) + " (" + monitorsWithoutLocksCount
                         + " Monitors)");
-                
-                if (virtualThreads > 0) {
-                    ((Category) catVirtualThreads.getUserObject()).setName(((Category) catVirtualThreads.getUserObject()) + " (" + virtualThreads + " Virtual Threads)");
-                    threadDump.add(catVirtualThreads);
-                }
 
                 // add thread dump to passed dump store.
                 if ((threadCount > 0) && (dumpKey != null)) {

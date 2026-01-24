@@ -42,6 +42,7 @@ public class ThreadDumpInfo extends AbstractInfo {
     private Category lockingThreads;
     private Category monitors;
     private Category monitorsWithoutLocks;
+    private Category virtualThreads;
     private Category blockingMonitors;
     private Category threads;
     private Category deadlocks;
@@ -354,6 +355,14 @@ public class ThreadDumpInfo extends AbstractInfo {
 
     public void setMonitors(Category monitors) {
         this.monitors = monitors;
+    }
+
+    public Category getVirtualThreads() {
+        return virtualThreads;
+    }
+
+    public void setVirtualThreads(Category virtualThreads) {
+        this.virtualThreads = virtualThreads;
     }
 
     public Category getBlockingMonitors() {

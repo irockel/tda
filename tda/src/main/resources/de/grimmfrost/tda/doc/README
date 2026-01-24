@@ -7,6 +7,9 @@ Note: This is the 2.7 release of the software, for an usage overview see Help/Ov
 
 Changes from 2.6 are:
 * Detect stuck Carrier Threads in Java 21+ thread dumps.
+* Extended MCP Server for fetching the stuck Carrier Threads.
+* Added a method to the MCP Server to enable the Agent to fetch a list of threads which are
+  running in native code, including library information if available.
 * Reworked the thread dump summary to provide information in a more compact way.
 * MacOS Binary is now provided.
 * Use flatplaf for a modern look and feel.

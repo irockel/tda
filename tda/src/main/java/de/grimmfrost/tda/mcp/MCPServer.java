@@ -92,6 +92,9 @@ public class MCPServer {
         tools.add(createTool("find_long_running", "Identifies threads that appear in multiple consecutive thread dumps.", new JsonObject()));
         
         tools.add(createTool("analyze_virtual_threads", "Detects virtual threads where the carrier thread is stuck in application code.", new JsonObject()));
+        
+        tools.add(createTool("get_native_threads", "Returns a list of all threads currently in a native method for a specific thread dump.", 
+            createProperty("dump_index", "integer", "The index of the thread dump as retrieved from get_summary.")));
 
         result.add("tools", gson.toJsonTree(tools));
         sendResponse(request.get("id").getAsInt(), result);
@@ -150,6 +153,9 @@ public class MCPServer {
                 return provider.findLongRunningThreads();
             case "analyze_virtual_threads":
                 return provider.analyzeVirtualThreads();
+            case "get_native_threads":
+                int dumpIndex = params.get("dump_index").getAsInt();
+                return provider.getNativeThreads(dumpIndex);
             case "clear":
                 provider.clear();
                 return "Cleared thread store.";
