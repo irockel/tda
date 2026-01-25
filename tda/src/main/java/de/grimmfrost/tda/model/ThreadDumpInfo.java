@@ -153,7 +153,7 @@ public class ThreadDumpInfo extends AbstractInfo {
                         }
                         tidMap.put(hexTid, ti);
                     } catch (NumberFormatException nfe) {
-                        // ignore
+                        // Invalid tid format; skip this thread when building the SMR tid mapping
                     }
                 }
 
