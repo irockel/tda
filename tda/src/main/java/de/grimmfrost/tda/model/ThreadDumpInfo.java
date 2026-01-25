@@ -147,7 +147,7 @@ public class ThreadDumpInfo extends AbstractInfo {
                 if (tokens != null && tokens.length > 3 && tokens[3] != null && tokens[3].length() > 0) {
                     try {
                         String hexTid = "0x" + Long.toHexString(Long.parseLong(tokens[3]));
-                        // Pad to 16 chars to match SMR info format often seen
+                        // Pad to 18 chars ("0x" + 16 hex digits) to match SMR info format often seen
                         while (hexTid.length() < 18) {
                             hexTid = "0x0" + hexTid.substring(2);
                         }
