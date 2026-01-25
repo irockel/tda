@@ -1,6 +1,27 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
-  ]
+    "config:recommended",
+    ":separateMajorReleases",
+    "helpers:pinGitHubActionDigests"
+  ],
+  "dependencyDashboard": true,
+  "packageRules": [
+    {
+      "description": "Group minor und patch Updates",
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "non-major dependencies",
+      "schedule": ["before 8am on monday"]
+    },
+    {
+      "description": "Major Updates in isolated PRs",
+      "matchUpdateTypes": ["major"],
+      "labels": ["major-update", "manual-review"]
+    }
+  ],
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "assignees": ["irockel"]
+  },
+  "timezone": "Europe/Berlin"
 }
