@@ -24,6 +24,9 @@ package de.grimmfrost.tda.parser;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
 import java.util.HashMap;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.MutableTreeNode;
@@ -394,6 +397,22 @@ public class SunJDKParserTest {
                 fis.close();
             }
         }
+    }
+
+    @Test
+    public void testSMRInfoParsing() throws Exception {
+        System.out.println("testSMRInfoParsing");
+        InputStream dumpFileStream = new FileInputStream("src/test/resources/jstack_dump.log");
+        DumpParser instance = DumpParserFactory.get().getDumpParserForLogfile(dumpFileStream, new HashMap(), false, 0);
+        assertTrue(instance instanceof SunJDKParser);
+        DefaultMutableTreeNode result = (DefaultMutableTreeNode) instance.parseNext();
+        assertNotNull(result);
+        ThreadDumpInfo tdi = (ThreadDumpInfo) result.getUserObject();
+        String smrInfo = tdi.getSmrInfo();
+        assertNotNull(smrInfo);
+        assertTrue(smrInfo.contains("Threads class SMR info:"));
+        assertTrue(smrInfo.contains("_java_thread_list=0x000000087e826560"));
+        assertTrue(smrInfo.contains("length=12"));
     }
 
     @Test

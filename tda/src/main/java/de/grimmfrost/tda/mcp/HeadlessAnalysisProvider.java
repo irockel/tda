@@ -52,6 +52,9 @@ public class HeadlessAnalysisProvider {
             info.put("time", tdi.getStartTime());
             info.put("threadCount", tdi.getThreads() != null ? tdi.getThreads().getNodeCount() : 0);
             info.put("deadlockCount", tdi.getDeadlocks() != null ? tdi.getDeadlocks().getNodeCount() : 0);
+            if (tdi.getSmrInfo() != null) {
+                info.put("smrInfo", tdi.getSmrInfo());
+            }
             summary.add(info);
         }
         return summary;

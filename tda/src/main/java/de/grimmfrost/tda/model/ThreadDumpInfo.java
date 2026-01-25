@@ -36,6 +36,7 @@ public class ThreadDumpInfo extends AbstractInfo {
     
     private String startTime;
     private String overview;
+    private String smrInfo;
     private Analyzer dumpAnalyzer;
     
     private Category waitingThreads;
@@ -215,7 +216,13 @@ public class ThreadDumpInfo extends AbstractInfo {
         statData.append("<td width=\"50%\" style=\"padding: 8px; border-bottom: 1px solid ").append(borderColor).append("; background-color: ").append(tableAltRowColor).append(";\"><b>Overall Monitor Count:</b> ").append(monitorsCount).append("</td>");
         statData.append("<td width=\"50%\" style=\"padding: 8px; border-bottom: 1px solid ").append(borderColor).append("; background-color: ").append(tableAltRowColor).append(";\"><b>Deadlocks:</b> <span style=\"").append(deadlocksCount > 0 ? "color: #dc3545; font-weight: bold;" : "").append("\">").append(deadlocksCount).append("</span></td>");
         statData.append("</tr>");
-
+        
+        if (getSmrInfo() != null) {
+            statData.append("<tr>");
+            statData.append("<td colspan=\"2\" style=\"padding: 8px; border-bottom: 1px solid ").append(borderColor).append(";\"><b>Threads class SMR info:</b><br><pre style=\"margin: 5px; font-size: 11px; white-space: pre-wrap;\">").append(getSmrInfo()).append("</pre></td>");
+            statData.append("</tr>");
+        }
+        
         statData.append("<tr>");
         statData.append("<td style=\"padding: 8px; border-bottom: 1px solid ").append(borderColor).append(";\"><b>Threads locking:</b> ").append(lockingCount).append("</td>");
         statData.append("<td style=\"padding: 8px; border-bottom: 1px solid ").append(borderColor).append(";\"><b>Monitors without locking:</b> ").append(monitorsNoLockCount).append("</td>");
@@ -440,6 +447,22 @@ public class ThreadDumpInfo extends AbstractInfo {
      */
     public void setHeapInfo(HeapInfo value) {
         heapInfo = value;
+    }
+
+    /**
+     * get the SMR info of this thread dump.
+     * @return SMR info.
+     */
+    public String getSmrInfo() {
+        return smrInfo;
+    }
+
+    /**
+     * set the SMR info of this thread dump.
+     * @param smrInfo the SMR info.
+     */
+    public void setSmrInfo(String smrInfo) {
+        this.smrInfo = smrInfo;
     }
 
     /**
