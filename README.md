@@ -112,6 +112,7 @@ The MCP server exposes the following tools:
 | `find_long_running` | None                      | Identifies threads that remain in the same state/stack trace across consecutive dumps.         |
 | `analyze_virtual_threads` | None                  | Detects virtual threads where the carrier thread is stuck in application code.                |
 | `get_native_threads` | `dump_index` (int, required) | Returns a list of all threads in a native method for a specific thread dump.                   |
+| `get_zombie_threads` | None                      | Returns a list of zombie threads (unresolved SMR addresses) with timestamps and dump names. |
 | `clear`             | None                      | Resets the server state and clears the internal thread store for a new log file.               |
 
 #### Troubleshooting
@@ -143,7 +144,7 @@ When you encounter a log file that appears to contain Java thread dumps:
 1. DO NOT try to read or "cat" the entire file if it's large.
 2. Use the `tda-analyzer` MCP toolset.
 3. First, call `parse_log(path="...")` to initialize the analysis.
-4. Use `get_summary()`, `check_deadlocks()`, `find_long_running()`, `analyze_virtual_threads()`, and `get_native_threads()` to perform the analysis.
+4. Use `get_summary()`, `check_deadlocks()`, `find_long_running()`, `analyze_virtual_threads()`, `get_native_threads()`, and `get_zombie_threads()` to perform the analysis.
 5. Provide your insights based on the structured data returned by these tools rather than the raw log text.
 ```
 This configuration makes the analysis much faster and significantly reduces token usage.

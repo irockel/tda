@@ -158,6 +158,8 @@ public class SunJDKParser extends AbstractDumpParser {
                 int sleeping = 0;
                 int virtualThreads = 0;
                 boolean locked = true;
+                boolean inSmrInfo = false;
+                StringBuilder smrInfo = new StringBuilder();
                 boolean finished = false;
                 MonitorMap mmap = new MonitorMap();
                 Stack monitorStack = new Stack();
@@ -211,6 +213,20 @@ public class SunJDKParser extends AbstractDumpParser {
                             }
                         }
                     } else {
+                        if (line.indexOf("Threads class SMR info:") >= 0) {
+                            inSmrInfo = true;
+                            smrInfo.append(line).append("\n");
+                            continue;
+                        }
+                        if (inSmrInfo) {
+                            if (line.trim().length() == 0 || line.startsWith("\"")) {
+                                inSmrInfo = false;
+                                overallTDI.setSmrInfo(smrInfo.toString().trim());
+                            } else {
+                                smrInfo.append(line).append("\n");
+                                continue;
+                            }
+                        }
                         if (line.startsWith("\"")) {
                             // We are starting a group of lines for a different thread
                             // First, flush state for the previous thread (if any)

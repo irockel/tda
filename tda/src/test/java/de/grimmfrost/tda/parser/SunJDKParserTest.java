@@ -24,6 +24,9 @@ package de.grimmfrost.tda.parser;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
 import java.util.HashMap;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.MutableTreeNode;
@@ -394,6 +397,63 @@ public class SunJDKParserTest {
                 fis.close();
             }
         }
+    }
+
+    @Test
+    public void testSMRInfoParsing() throws Exception {
+        System.out.println("testSMRInfoParsing");
+        InputStream dumpFileStream = new FileInputStream("src/test/resources/jstack_dump.log");
+        DumpParser instance = DumpParserFactory.get().getDumpParserForLogfile(dumpFileStream, new HashMap(), false, 0);
+        assertTrue(instance instanceof SunJDKParser);
+        DefaultMutableTreeNode result = (DefaultMutableTreeNode) instance.parseNext();
+        assertNotNull(result);
+        ThreadDumpInfo tdi = (ThreadDumpInfo) result.getUserObject();
+        String smrInfo = tdi.getSmrInfo();
+        assertNotNull(smrInfo);
+        assertTrue(smrInfo.contains("Threads class SMR info:"));
+        assertTrue(smrInfo.contains("_java_thread_list=0x000000087e826560"));
+        assertTrue(smrInfo.contains("length=12"));
+        
+        String overview = tdi.getOverview();
+        assertNotNull(overview);
+        assertTrue(overview.contains("Address</th>"));
+        assertTrue(overview.contains("Resolved Thread</th>"));
+        assertTrue(overview.contains("0x000000010328e320"));
+        assertTrue(overview.contains("Reference Handler"));
+        
+        // Check for NOT FOUND for a thread that might not be in the dump (if I modified the log)
+        // In jstack_dump.log all 12 elements are present.
+        // Let's check that all are resolved.
+        assertFalse(overview.contains("NOT FOUND"));
+    }
+
+    @Test
+    public void testSMRInfoWithUnresolved() throws Exception {
+        System.out.println("testSMRInfoWithUnresolved");
+        String dumpContent = "2026-01-20 17:29:40\n" +
+                "Full thread dump OpenJDK 64-Bit Server VM (21.0.9+10-LTS mixed mode, sharing):\n" +
+                "\n" +
+                "Threads class SMR info:\n" +
+                "_java_thread_list=0x000000087e826560, length=2, elements={\n" +
+                "0x000000010328e320, 0x00000001deadbeef\n" +
+                "}\n" +
+                "\n" +
+                "\"Reference Handler\" #9 [30467] daemon prio=10 os_prio=31 cpu=0.44ms elapsed=25574.11s tid=0x000000010328e320 nid=30467 waiting on condition  [0x000000016e7c2000]\n" +
+                "   java.lang.Thread.State: RUNNABLE\n" +
+                "\n";
+        
+        java.io.InputStream is = new java.io.ByteArrayInputStream(dumpContent.getBytes());
+        SunJDKParser parser = new SunJDKParser(new java.io.BufferedReader(new java.io.InputStreamReader(is)), new java.util.HashMap(), 0, false, 0, new de.grimmfrost.tda.utils.DateMatcher());
+        
+        DefaultMutableTreeNode result = (DefaultMutableTreeNode) parser.parseNext();
+        ThreadDumpInfo tdi = (ThreadDumpInfo) result.getUserObject();
+        String overview = tdi.getOverview();
+        
+        assertTrue(overview.contains("0x000000010328e320"));
+        assertTrue(overview.contains("Reference Handler"));
+        assertTrue(overview.contains("0x00000001deadbeef"));
+        assertTrue(overview.contains("NOT FOUND"));
+        assertTrue(overview.contains("Some SMR addresses could not be resolved to threads"));
     }
 
     @Test

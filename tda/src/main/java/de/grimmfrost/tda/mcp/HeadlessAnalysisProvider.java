@@ -52,6 +52,9 @@ public class HeadlessAnalysisProvider {
             info.put("time", tdi.getStartTime());
             info.put("threadCount", tdi.getThreads() != null ? tdi.getThreads().getNodeCount() : 0);
             info.put("deadlockCount", tdi.getDeadlocks() != null ? tdi.getDeadlocks().getNodeCount() : 0);
+            if (tdi.getSmrInfo() != null) {
+                info.put("smrInfo", tdi.getSmrInfo());
+            }
             summary.add(info);
         }
         return summary;
@@ -150,6 +153,24 @@ public class HeadlessAnalysisProvider {
         collectNativeThreads(tdi.getVirtualThreads(), nativeThreads);
         
         return nativeThreads;
+    }
+
+    public List<Map<String, String>> getZombieThreads() {
+        List<Map<String, String>> results = new ArrayList<>();
+        for (DefaultMutableTreeNode node : topNodes) {
+            ThreadDumpInfo tdi = (ThreadDumpInfo) node.getUserObject();
+            List<String> unresolved = tdi.getUnresolvedSmrAddresses();
+            if (unresolved != null && !unresolved.isEmpty()) {
+                for (String addr : unresolved) {
+                    Map<String, String> entry = new HashMap<>();
+                    entry.put("address", addr);
+                    entry.put("dumpName", tdi.getName());
+                    entry.put("timestamp", tdi.getStartTime() != null ? tdi.getStartTime() : "unknown");
+                    results.add(entry);
+                }
+            }
+        }
+        return results;
     }
 
     private void collectNativeThreads(Category cat, List<Map<String, String>> nativeThreads) {
