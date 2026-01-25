@@ -73,7 +73,7 @@ public class CustomCategory {
      * @return true if found, false otherwise.
      */
     public boolean hasInFilters(String name) {
-        return (filters != null ? filters.containsKey(name) : false);
+        return (filters != null && filters.containsKey(name));
     }
     
     /**

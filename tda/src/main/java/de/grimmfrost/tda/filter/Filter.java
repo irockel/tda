@@ -211,17 +211,17 @@ public class Filter {
                     result = getFilterExpressionPattern().matcher(ti.getContent()).matches();
                     break;
                 case WAITING_ON_RULE :
-                    result = (ti.getContent().indexOf("- waiting on") >= 0) && checkLine(ti, "- waiting on", '<', ')');
+                    result = (ti.getContent().contains("- waiting on")) && checkLine(ti, "- waiting on", '<', ')');
                     break;
                 case WAITING_FOR_RULE :
-                    result = (ti.getName().indexOf("waiting for monitor entry") >= 0) &&
+                    result = (ti.getName().contains("waiting for monitor entry")) &&
                             checkLine(ti, "- waiting to lock", '<', ')');
                     break;
                 case LOCKING_RULE :
-                    result = (ti.getContent().indexOf("- locked") >= 0) && checkLine(ti, "- locked", '<', ')');
+                    result = (ti.getContent().contains("- locked")) && checkLine(ti, "- locked", '<', ')');
                     break;
                 case SLEEPING_RULE :
-                    result = (ti.getName().indexOf("Object.wait()") >= 0);
+                    result = (ti.getName().contains("Object.wait()"));
                     break;
                 case STACK_IS_LONGER_THAN_RULE :
                     result = (ti.getStackLines() == 0) || ((ti.getStackLines() -2) > Integer.parseInt(filterExpression));
@@ -250,6 +250,6 @@ public class Filter {
 
     public String toString() {
         //  (general)  removed atm.
-        return (getName() + (isGeneralFilter() ? "" : "") + (isEnabled() ? " (default)" : ""));
+        return (getName() + (isEnabled() ? " (default)" : ""));
     }
 }

@@ -73,6 +73,69 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.6.0</version>
+        <executions>
+          <execution>
+            <id>unpack-licenses</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.formdev</groupId>
+                  <artifactId>flatlaf</artifactId>
+                  <version>3.3</version>
+                  <type>jar</type>
+                  <includes>META-INF/LICENSE</includes>
+                  <outputDirectory>${project.build.directory}/licenses/flatlaf</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>com.formdev</groupId>
+                  <artifactId>flatlaf-extras</artifactId>
+                  <version>3.3</version>
+                  <type>jar</type>
+                  <includes>META-INF/LICENSE</includes>
+                  <outputDirectory>${project.build.directory}/licenses/flatlaf-extras</outputDirectory>
+                </artifactItem>
+                <artifactItem>
+                  <groupId>com.github.weisj</groupId>
+                  <artifactId>jsvg</artifactId>
+                  <version>1.2.0</version>
+                  <type>jar</type>
+                  <includes>META-INF/LICENSE</includes>
+                  <outputDirectory>${project.build.directory}/licenses/jsvg</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>3.1.0</version>
+        <executions>
+          <execution>
+            <id>rename-licenses</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <copy file="${project.build.directory}/licenses/flatlaf/META-INF/LICENSE" tofile="${project.build.outputDirectory}/META-INF/LICENSE_flatlaf" />
+                <copy file="${project.build.directory}/licenses/flatlaf-extras/META-INF/LICENSE" tofile="${project.build.outputDirectory}/META-INF/LICENSE_flatlaf-extras" />
+                <copy file="${project.build.directory}/licenses/jsvg/META-INF/LICENSE" tofile="${project.build.outputDirectory}/META-INF/LICENSE_jsvg" />
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.8.1</version>
         <configuration>
@@ -130,10 +193,12 @@
                 <filter>
                   <artifact>*:*</artifact>
                   <excludes>
+                    <exclude>module-info.class</exclude>
                     <exclude>META-INF/MANIFEST.MF</exclude>
                     <exclude>META-INF/*.SF</exclude>
                     <exclude>META-INF/*.DSA</exclude>
                     <exclude>META-INF/*.RSA</exclude>
+                    <exclude>META-INF/LICENSE</exclude>
                   </excludes>
                 </filter>
               </filters>

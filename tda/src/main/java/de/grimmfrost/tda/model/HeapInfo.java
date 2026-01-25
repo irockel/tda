@@ -51,14 +51,11 @@ public class HeapInfo {
     }
 
     public String toString() {
-        StringBuffer info = new StringBuffer();
-        info.append("<tr bgcolor=\"#ffffff\"<td></td></tr>");
-        info.append("<tr bgcolor=\"#cccccc\"><td colspan=2><font face=System ");
-        info.append("<b><u>Heap Information:</u></b><br/>");
-        info.append("</font><pre>\n");
-        info.append(heapInfo);
-        info.append("</pre></td></tr>");
-
-        return(info.toString());
+        return("<tr bgcolor=\"#ffffff\"<td></td></tr>" +
+                "<tr bgcolor=\"#cccccc\"><td colspan=2><font face=System " +
+                "<b><u>Heap Information:</u></b><br/>" +
+                "</font><pre>\n" +
+                heapInfo +
+                "</pre></td></tr>");
     }
 }

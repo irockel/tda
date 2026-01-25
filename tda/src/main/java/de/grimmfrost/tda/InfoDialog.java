@@ -75,7 +75,9 @@ public class InfoDialog extends JDialog {
                 "TDA is distributed in the hope that it will be useful, but WITHOUT ANY<br>" +
                 "WARRANTY; without even the implied warranty of MERCHANTABILITY or <br>" +
                 "FITNESS FOR A PARTICULAR PURPOSE. See the Lesser GNU General Public<br>" +
-                "License for more details.<p><br>";
+                "License for more details.</p><br>" +
+                "<p>This distribution includes 3rd-party libraries: <b>FlatLaf</b>, <b>FlatLaf-Extras</b>, and <b>JSVG</b>.<br> " +
+                "Their licenses can be found in the <code>META-INF/</code> directory of the jar file.</p><br>";
         
         javax.swing.JEditorPane infoPane = new javax.swing.JEditorPane("text/html", info);
         infoPane.setEditable(false);
