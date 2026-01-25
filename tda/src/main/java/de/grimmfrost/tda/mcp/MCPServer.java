@@ -96,6 +96,8 @@ public class MCPServer {
         tools.add(createTool("get_native_threads", "Returns a list of all threads currently in a native method for a specific thread dump.", 
             createProperty("dump_index", "integer", "The index of the thread dump as retrieved from get_summary.")));
 
+        tools.add(createTool("get_zombie_threads", "Returns a list of zombie threads (SMR addresses that could not be resolved to any thread).", new JsonObject()));
+
         result.add("tools", gson.toJsonTree(tools));
         sendResponse(request.get("id").getAsInt(), result);
     }
@@ -156,6 +158,8 @@ public class MCPServer {
             case "get_native_threads":
                 int dumpIndex = params.get("dump_index").getAsInt();
                 return provider.getNativeThreads(dumpIndex);
+            case "get_zombie_threads":
+                return provider.getZombieThreads();
             case "clear":
                 provider.clear();
                 return "Cleared thread store.";

@@ -37,6 +37,7 @@ public class ThreadDumpInfo extends AbstractInfo {
     private String startTime;
     private String overview;
     private String smrInfo;
+    private java.util.List<String> unresolvedSmrAddresses;
     private Analyzer dumpAnalyzer;
     
     private Category waitingThreads;
@@ -123,6 +124,9 @@ public class ThreadDumpInfo extends AbstractInfo {
         String hintBgColor = "#fff3cd";
         String hintBorderColor = "#ffeeba";
         String hintTextColor = "#856404";
+        String warningBgColor = "#f8d7da";
+        String warningBorderColor = "#f5c6cb";
+        String warningTextColor = "#721c24";
 
         StringBuilder statData = new StringBuilder();
         statData.append("<html><body style=\"background-color: ").append(bgColor).append("; font-family: sans-serif; margin: 20px; color: ").append(textColor).append(";\">");
@@ -130,14 +134,29 @@ public class ThreadDumpInfo extends AbstractInfo {
         statData.append("<h2 style=\"color: ").append(headerColor).append("; border-bottom: 2px solid #3498db; padding-bottom: 10px;\">Thread Dump Overview</h2>");
 
         // Thread State Distribution (Visual Chart)
+        java.util.Map<String, ThreadInfo> tidMap = new java.util.HashMap<>();
         if (threadsCount > 0) {
-            // ... (keep state extraction logic as is)
             java.util.Map<String, Integer> stateDistribution = new java.util.HashMap<>();
             Category threadsCat = getThreads();
             for (int i = 0; i < threadsCount; i++) {
                 javax.swing.tree.DefaultMutableTreeNode node = (javax.swing.tree.DefaultMutableTreeNode) threadsCat.getNodeAt(i);
                 ThreadInfo ti = (ThreadInfo) node.getUserObject();
+                
+                // Build tid map for SMR resolution
                 String[] tokens = ti.getTokens();
+                if (tokens != null && tokens.length > 3 && tokens[3] != null && tokens[3].length() > 0) {
+                    try {
+                        String hexTid = "0x" + Long.toHexString(Long.parseLong(tokens[3]));
+                        // Pad to 16 chars to match SMR info format often seen
+                        while (hexTid.length() < 18) {
+                            hexTid = "0x0" + hexTid.substring(2);
+                        }
+                        tidMap.put(hexTid, ti);
+                    } catch (NumberFormatException nfe) {
+                        // ignore
+                    }
+                }
+
                 String state = "UNKNOWN";
                 if (tokens != null) {
                     if (tokens.length >= 7) {
@@ -218,8 +237,54 @@ public class ThreadDumpInfo extends AbstractInfo {
         statData.append("</tr>");
         
         if (getSmrInfo() != null) {
+            unresolvedSmrAddresses = new java.util.ArrayList<>();
             statData.append("<tr>");
-            statData.append("<td colspan=\"2\" style=\"padding: 8px; border-bottom: 1px solid ").append(borderColor).append(";\"><b>Threads class SMR info:</b><br><pre style=\"margin: 5px; font-size: 11px; white-space: pre-wrap;\">").append(getSmrInfo()).append("</pre></td>");
+            statData.append("<td colspan=\"2\" style=\"padding: 8px; border-bottom: 1px solid ").append(borderColor).append(";\"><b>Threads class SMR (Safe Memory Reclamation) info:</b><br>");
+            
+            // Format SMR info as table
+            String smr = getSmrInfo();
+            java.util.List<String> addresses = new java.util.ArrayList<>();
+            java.util.regex.Pattern p = java.util.regex.Pattern.compile("0x[0-9a-fA-F]+");
+            java.util.regex.Matcher m = p.matcher(smr);
+            while (m.find()) {
+                String addr = m.group().toLowerCase();
+                if (!smr.contains("_java_thread_list=" + addr)) {
+                    addresses.add(addr);
+                }
+            }
+            
+            statData.append("<table style=\"margin: 10px 0; border-collapse: collapse; font-size: 11px; width: 100%;\">");
+            statData.append("<tr style=\"background-color: ").append(chartBgColor).append(";\">");
+            statData.append("<th style=\"padding: 5px; border: 1px solid ").append(borderColor).append("; text-align: left;\">Address</th>");
+            statData.append("<th style=\"padding: 5px; border: 1px solid ").append(borderColor).append("; text-align: left;\">Resolved Thread</th>");
+            statData.append("</tr>");
+            
+            boolean hasUnresolved = false;
+            for (String addr : addresses) {
+                statData.append("<tr>");
+                statData.append("<td style=\"padding: 5px; border: 1px solid ").append(borderColor).append(";\">").append(addr).append("</td>");
+                
+                ThreadInfo resolved = tidMap.get(addr);
+                if (resolved != null) {
+                    statData.append("<td style=\"padding: 5px; border: 1px solid ").append(borderColor).append(";\">").append(resolved.getName()).append("</td>");
+                } else {
+                    statData.append("<td style=\"padding: 5px; border: 1px solid ").append(borderColor).append("; color: #dc3545; font-weight: bold;\">NOT FOUND</td>");
+                    hasUnresolved = true;
+                    unresolvedSmrAddresses.add(addr);
+                }
+                statData.append("</tr>");
+            }
+            statData.append("</table>");
+            
+            if (hasUnresolved) {
+                statData.append("<div style=\"padding: 10px; background-color: ").append(warningBgColor)
+                        .append("; border: 1px solid ").append(warningBorderColor)
+                        .append("; color: ").append(warningTextColor)
+                        .append("; border-radius: 4px; margin-top: 10px; font-size: 12px;\">")
+                        .append("<b>Warning:</b> Some SMR addresses could not be resolved to threads. This might indicate issues with properly removing threads from the JVM's internal thread list.")
+                        .append("</div>");
+            }
+
             statData.append("</tr>");
         }
         
@@ -463,6 +528,17 @@ public class ThreadDumpInfo extends AbstractInfo {
      */
     public void setSmrInfo(String smrInfo) {
         this.smrInfo = smrInfo;
+    }
+
+    /**
+     * get the unresolved SMR addresses found in this thread dump.
+     * @return list of unresolved SMR addresses.
+     */
+    public java.util.List<String> getUnresolvedSmrAddresses() {
+        if (overview == null) {
+            createOverview();
+        }
+        return unresolvedSmrAddresses;
     }
 
     /**

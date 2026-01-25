@@ -155,6 +155,24 @@ public class HeadlessAnalysisProvider {
         return nativeThreads;
     }
 
+    public List<Map<String, String>> getZombieThreads() {
+        List<Map<String, String>> results = new ArrayList<>();
+        for (DefaultMutableTreeNode node : topNodes) {
+            ThreadDumpInfo tdi = (ThreadDumpInfo) node.getUserObject();
+            List<String> unresolved = tdi.getUnresolvedSmrAddresses();
+            if (unresolved != null && !unresolved.isEmpty()) {
+                for (String addr : unresolved) {
+                    Map<String, String> entry = new HashMap<>();
+                    entry.put("address", addr);
+                    entry.put("dumpName", tdi.getName());
+                    entry.put("timestamp", tdi.getStartTime() != null ? tdi.getStartTime() : "unknown");
+                    results.add(entry);
+                }
+            }
+        }
+        return results;
+    }
+
     private void collectNativeThreads(Category cat, List<Map<String, String>> nativeThreads) {
         if (cat != null) {
             int threadCount = cat.getNodeCount();
