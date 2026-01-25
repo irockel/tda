@@ -6,7 +6,9 @@ TDA - Thread Dump Analyzer -- Version 2.7
 Note: This is the 2.7 release of the software, for an usage overview see Help/Overview.
 
 Changes from 2.6 are:
-* Detect stuck Carrier Threads in Java 21+ thread dumps.
+* Experimental support for JSON based jmap thread dumps.
+* Support for SMR parsing in thread dumps (Java 11+)
+* Detect stuck Carrier Threads used by Virtual Threads in Java 21+ thread dumps.
 * Extended MCP Server for fetching the stuck Carrier Threads.
 * Added a method to the MCP Server to enable the Agent to fetch a list of threads which are
   running in native code, including library information if available.
