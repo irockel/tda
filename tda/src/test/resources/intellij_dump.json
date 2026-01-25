@@ -1,0 +1,125 @@
+{
+  "threadDump": {
+    "processId": "3862",
+    "time": "2026-01-25T15:46:04.439828Z",
+    "runtimeVersion": "21.0.10+7-LTS",
+    "threadContainers": [
+      {
+        "container": "<root>",
+        "parent": null,
+        "owner": null,
+        "threads": [
+         {
+           "tid": "9",
+           "name": "Reference Handler",
+           "stack": [
+              "java.base\/java.lang.ref.Reference.waitForReferencePendingList(Native Method)",
+              "java.base\/java.lang.ref.Reference.processPendingReferences(Reference.java:246)",
+              "java.base\/java.lang.ref.Reference$ReferenceHandler.run(Reference.java:208)"
+           ]
+         },
+         {
+           "tid": "10",
+           "name": "Finalizer",
+           "stack": [
+              "java.base\/java.lang.Object.wait0(Native Method)",
+              "java.base\/java.lang.Object.wait(Object.java:366)",
+              "java.base\/java.lang.Object.wait(Object.java:339)",
+              "java.base\/java.lang.ref.NativeReferenceQueue.await(NativeReferenceQueue.java:48)",
+              "java.base\/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:158)",
+              "java.base\/java.lang.ref.NativeReferenceQueue.remove(NativeReferenceQueue.java:89)",
+              "java.base\/java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:173)"
+           ]
+         },
+         {
+           "tid": "11",
+           "name": "Signal Dispatcher",
+           "stack": [
+           ]
+         },
+         {
+           "tid": "18",
+           "name": "Notification Thread",
+           "stack": [
+           ]
+         },
+         {
+           "tid": "19",
+           "name": "Common-Cleaner",
+           "stack": [
+              "java.base\/jdk.internal.misc.Unsafe.park(Native Method)",
+              "java.base\/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)",
+              "java.base\/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:1886)",
+              "java.base\/java.lang.ref.ReferenceQueue.await(ReferenceQueue.java:71)",
+              "java.base\/java.lang.ref.ReferenceQueue.remove0(ReferenceQueue.java:143)",
+              "java.base\/java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:218)",
+              "java.base\/jdk.internal.ref.CleanerImpl.run(CleanerImpl.java:140)",
+              "java.base\/java.lang.Thread.run(Thread.java:1583)",
+              "java.base\/jdk.internal.misc.InnocuousThread.run(InnocuousThread.java:186)"
+           ]
+         },
+         {
+           "tid": "21",
+           "name": "JPS event loop",
+           "stack": [
+              "java.base\/sun.nio.ch.KQueue.poll(Native Method)",
+              "java.base\/sun.nio.ch.KQueueSelectorImpl.doSelect(KQueueSelectorImpl.java:125)",
+              "java.base\/sun.nio.ch.SelectorImpl.lockAndDoSelect(SelectorImpl.java:130)",
+              "java.base\/sun.nio.ch.SelectorImpl.select(SelectorImpl.java:142)",
+              "io.netty.channel.nio.NioIoHandler.select(NioIoHandler.java:646)",
+              "io.netty.channel.nio.NioIoHandler.run(NioIoHandler.java:432)",
+              "io.netty.channel.SingleThreadIoEventLoop.runIo(SingleThreadIoEventLoop.java:203)",
+              "io.netty.channel.SingleThreadIoEventLoop.run(SingleThreadIoEventLoop.java:174)",
+              "io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:1123)",
+              "io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)",
+              "java.base\/java.lang.Thread.run(Thread.java:1583)"
+           ]
+         },
+         {
+           "tid": "37",
+           "name": "DestroyJavaVM",
+           "stack": [
+           ]
+         },
+         {
+           "tid": "38",
+           "name": "Attach Listener",
+           "stack": [
+              "java.base\/java.lang.Thread.getStackTrace(Thread.java:2451)",
+              "java.base\/jdk.internal.vm.ThreadDumper.dumpThreadToJson(ThreadDumper.java:270)",
+              "java.base\/jdk.internal.vm.ThreadDumper.dumpThreadsToJson(ThreadDumper.java:242)",
+              "java.base\/jdk.internal.vm.ThreadDumper.dumpThreadsToJson(ThreadDumper.java:206)",
+              "java.base\/jdk.internal.vm.ThreadDumper.dumpThreadsToFile(ThreadDumper.java:117)",
+              "java.base\/jdk.internal.vm.ThreadDumper.dumpThreadsToJson(ThreadDumper.java:85)"
+           ]
+         }
+        ],
+        "threadCount": "8"
+      },
+      {
+        "container": "java.util.concurrent.ThreadPoolExecutor@41e68fc",
+        "parent": "<root>",
+        "owner": null,
+        "threads": [
+        ],
+        "threadCount": "0"
+      },
+      {
+        "container": "ForkJoinPool.commonPool\/jdk.internal.vm.SharedThreadContainer@5781cbe2",
+        "parent": "<root>",
+        "owner": null,
+        "threads": [
+        ],
+        "threadCount": "0"
+      },
+      {
+        "container": "java.util.concurrent.ThreadPoolExecutor@163e4e87",
+        "parent": "<root>",
+        "owner": null,
+        "threads": [
+        ],
+        "threadCount": "0"
+      }
+    ]
+  }
+}

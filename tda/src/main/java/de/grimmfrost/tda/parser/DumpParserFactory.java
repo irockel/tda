@@ -78,13 +78,35 @@ public class DumpParserFactory {
             while (bis.ready() && (currentDumpParser == null)) {
                 bis.mark(readAheadLimit);
                 String line = bis.readLine();
+                if (line == null) break;
                 dm.checkForDateMatch(line);
-                if (WrappedSunJDKParser.checkForSupportedThreadDump(line)) {
-                  currentDumpParser = new WrappedSunJDKParser(bis, threadStore, lineCounter, withCurrentTimeStamp, startCounter, dm);
-                } else if(SunJDKParser.checkForSupportedThreadDump(line)) {
-                    currentDumpParser = new SunJDKParser(bis, threadStore, lineCounter, withCurrentTimeStamp, startCounter, dm);
-                } else if(BeaJDKParser.checkForSupportedThreadDump(line)) {
-                    currentDumpParser = new BeaJDKParser(bis, threadStore, lineCounter, dm);
+                if (JCmdJSONParser.checkForSupportedThreadDump(line)) {
+                    currentDumpParser = new JCmdJSONParser(bis, threadStore, lineCounter, dm);
+                } else {
+                    // check next lines if it is a JSON dump which doesn't start with "threadDump" in the first line
+                    for (int i=0; i < 10 && bis.ready(); i++) {
+                        String nextLine = bis.readLine();
+                        if (nextLine == null) break;
+                        if (JCmdJSONParser.checkForSupportedThreadDump(nextLine)) {
+                            currentDumpParser = new JCmdJSONParser(bis, threadStore, lineCounter, dm);
+                            break;
+                        }
+                    }
+                    if (currentDumpParser == null) {
+                        bis.reset();
+                        // re-read the first line as we reset the stream
+                        line = bis.readLine();
+                    }
+                }
+
+                if (currentDumpParser == null) {
+                    if (WrappedSunJDKParser.checkForSupportedThreadDump(line)) {
+                        currentDumpParser = new WrappedSunJDKParser(bis, threadStore, lineCounter, withCurrentTimeStamp, startCounter, dm);
+                    } else if(SunJDKParser.checkForSupportedThreadDump(line)) {
+                        currentDumpParser = new SunJDKParser(bis, threadStore, lineCounter, withCurrentTimeStamp, startCounter, dm);
+                    } else if(BeaJDKParser.checkForSupportedThreadDump(line)) {
+                        currentDumpParser = new BeaJDKParser(bis, threadStore, lineCounter, dm);
+                    }
                 }
                 lineCounter++;
             }
