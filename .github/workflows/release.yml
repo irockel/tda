@@ -28,7 +28,7 @@ jobs:
           mvn clean package -Prelease -DskipTests -pl tda,tda-macos-binary -am
 
       - name: Upload macOS Binary to Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2
         with:
           draft: true
           files: |
@@ -58,7 +58,7 @@ jobs:
 
       - name: Create Release
         id: create_release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2
         with:
           draft: true
           files: |
