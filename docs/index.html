@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDA - Thread Dump Analyzer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <header class="relative text-white pb-20 pt-10 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="welcome.png" alt="Background" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-slate-900/80"></div>
+        </div>
+
+        <nav class="relative z-10 container mx-auto px-6 flex justify-between items-center mb-16">
+            <div class="flex items-center space-x-3">
+                <img src="TDA.png" alt="TDA Logo" class="w-10 h-10 shadow-lg rounded-lg">
+                <span class="text-2xl font-bold tracking-tight">TDA</span>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#features" class="hover:text-blue-400 transition">Features</a>
+                <a href="#download" class="hover:text-blue-400 transition">Download</a>
+                <a href="https://github.com/irockel/tda" class="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-full font-semibold transition flex items-center">
+                    <i class="fab fa-github mr-2"></i> GitHub
+                </a>
+            </div>
+        </nav>
+
+        <div class="relative z-10 container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+                Analyze Java Thread Dumps <br><span class="text-blue-400">with Ease</span>
+            </h1>
+            <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+                TDA (Thread Dump Analyzer) is a powerful tool for parsing and analyzing Java thread dumps, helping you identify performance bottlenecks and deadlocks in seconds.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#download" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-xl">
+                    Get TDA Now
+                </a>
+                <a href="https://github.com/irockel/tda" class="bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition border border-slate-700">
+                    View Repository
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 mt-8">
+        <!-- Features -->
+        <section id="features" class="mb-24 pt-8">
+            <h2 class="text-3xl font-bold text-center mb-16">Why use TDA?</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-search text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Deep Parsing</h3>
+                    <p class="text-slate-600">Automatically parses standard thread dumps, including those from Oracle/Sun HotSpot and IBM JVMs.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-skull-crossbones text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Deadlock Detection</h3>
+                    <p class="text-slate-600">Quickly identifies circular dependencies and locking issues that cause application freezes.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-clock text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Historical Diff</h3>
+                    <p class="text-slate-600">Compare multiple dumps to see thread movement over time and find long-running operations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screenshot -->
+        <div class="bg-white rounded-2xl shadow-sm p-2 md:p-4 mb-20 overflow-hidden border border-slate-200">
+            <img src="tda-main-screen.png" alt="TDA Screenshot" class="rounded-xl w-full h-auto">
+        </div>
+
+        <!-- Usage Modes -->
+        <section class="mb-24 bg-slate-100 -mx-6 px-6 py-20 rounded-3xl">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12">Flexible Usage</h2>
+                <div class="space-y-6">
+                    <div class="flex items-start space-x-4 bg-white p-6 rounded-xl shadow-sm">
+                        <div class="text-blue-600 mt-1"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4 class="font-bold">Standalone App</h4>
+                            <p class="text-slate-600">Run TDA as a local application for offline analysis of log files.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4 bg-white p-6 rounded-xl shadow-sm">
+                        <div class="text-blue-600 mt-1"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4 class="font-bold">VisualVM Plugin</h4>
+                            <p class="text-slate-600">Integrate directly into your VisualVM workflow for seamless analysis.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4 bg-white p-6 rounded-xl shadow-sm">
+                        <div class="text-blue-600 mt-1"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4 class="font-bold">JConsole Plugin</h4>
+                            <p class="text-slate-600">Analyze running applications in real-time within JConsole.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section id="download" class="mb-24 text-center">
+            <h2 class="text-3xl font-bold mb-6">Download Latest Version</h2>
+            <p class="text-slate-600 mb-12 max-w-xl mx-auto">TDA is available for multiple platforms. Download the one that fits your needs.</p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- JAR -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-2 border-blue-500 flex flex-col items-center scale-105 relative">
+                    <span class="absolute top-0 right-0 bg-blue-500 text-white text-xs px-3 py-1 rounded-bl-lg rounded-tr-xl font-bold uppercase tracking-wider">Recommended</span>
+                    <i class="fas fa-file-code text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Java self-contained JAR</h3>
+                    <p class="text-sm text-slate-500 mb-6">Requires Java installed, run with java -jar</p>
+                    <a href="https://github.com/irockel/tda/releases/latest" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+                        Download JAR
+                    </a>
+                </div>
+                <!-- macOS -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-2 border-slate-100 flex flex-col items-center">
+                    <i class="fab fa-apple text-4xl text-slate-900 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">macOS App</h3>
+                    <p class="text-sm text-slate-500 mb-6">Native DMG with bundled JRE</p>
+                    <a href="https://github.com/irockel/tda/releases/latest" class="w-full bg-slate-900 text-white py-3 rounded-lg font-semibold hover:bg-slate-800 transition">
+                        Download DMG
+                    </a>
+                </div>
+                <!-- Plugins -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-2 border-slate-100 flex flex-col items-center">
+                    <i class="fas fa-plug text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">IDE Plugins</h3>
+                    <p class="text-sm text-slate-500 mb-6">VisualVM & JConsole</p>
+                    <a href="https://github.com/irockel/tda/releases/latest" class="w-full bg-slate-900 text-white py-3 rounded-lg font-semibold hover:bg-slate-800 transition">
+                        Get Plugins
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-6 md:mb-0">
+                <img src="TDA.png" alt="TDA Logo" class="w-6 h-6 grayscale opacity-50">
+                <span class="text-white font-bold tracking-tight">TDA</span>
+            </div>
+            <div class="text-sm">
+                &copy; 2006-2026 Ingo Rockel. Released under the Apache 2.0 License.
+            </div>
+            <div class="flex space-x-6 mt-6 md:mt-0 text-xl">
+                <a href="https://github.com/irockel/tda" class="hover:text-white transition"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
