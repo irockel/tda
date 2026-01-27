@@ -52,7 +52,9 @@ TDA can be installed or used in several ways:
 The simplest way to use TDA is to download the `tda.jar` from the **Releases** page. Since it's a self-contained JAR, you can run it directly on any system with Java installed.
 
 ### 2. VisualVM Plugin
-TDA is available as a plugin for VisualVM. You can install it directly from the **VisualVM Plugin Center** (Tools -> Plugins). This integrates TDA's analysis capabilities directly into your VisualVM environment.
+TDA is available as a plugin for VisualVM. You can install it directly from the **VisualVM Plugin Center** (Tools -> Plugins). 
+This integrates TDA's analysis capabilities directly into your VisualVM environment. The last available version in the plugin center is 2.4. 
+For installing the recent version, download the 3 nbm Files from the Releases page and install them manually in the VisualVM plugins settings.
 
 ### 3. macOS Binary (DMG)
 TDA provides a native macOS DMG package for easier installation. This package includes its own Java runtime, so no separate Java installation is required to run it.
