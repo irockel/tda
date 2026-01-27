@@ -6,6 +6,8 @@
     <title>TDA - Thread Dump Analyzer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- GitHub Buttons -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
@@ -28,6 +30,7 @@
             </div>
             <div class="hidden md:flex space-x-8 items-center">
                 <a href="#features" class="hover:text-blue-400 transition">Features</a>
+                <a href="https://github.com/irockel/tda#readme" class="hover:text-blue-400 transition">Documentation</a>
                 <a href="#download" class="hover:text-blue-400 transition">Download</a>
                 <a href="https://github.com/irockel/tda" class="bg-blue-600 hover:bg-blue-700 px-5 py-2 rounded-full font-semibold transition flex items-center">
                     <i class="fab fa-github mr-2"></i> GitHub
@@ -39,16 +42,25 @@
             <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
                 Analyze Java Thread Dumps <br><span class="text-blue-400">with Ease</span>
             </h1>
-            <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+            <p class="text-xl text-slate-300 mb-6 max-w-2xl mx-auto">
                 TDA (Thread Dump Analyzer) is a powerful tool for parsing and analyzing Java thread dumps, helping you identify performance bottlenecks and deadlocks in seconds.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+            <div class="mb-10">
+                <span class="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-bold bg-blue-500/20 text-blue-300 border border-blue-500/30">
+                    <i class="fas fa-unlock-alt mr-2"></i> Free & Open Source
+                </span>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
                 <a href="#download" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition shadow-xl">
                     Get TDA Now
                 </a>
                 <a href="https://github.com/irockel/tda" class="bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-xl font-bold text-lg transition border border-slate-700">
                     View Repository
                 </a>
+            </div>
+            <!-- Mobile/Secondary Star Button -->
+            <div class="mt-8">
+                <a class="github-button" href="https://github.com/irockel/tda" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star irockel/tda on GitHub">Star</a>
             </div>
         </div>
     </header>
@@ -58,7 +70,7 @@
         <!-- Features -->
         <section id="features" class="mb-24 pt-8">
             <h2 class="text-3xl font-bold text-center mb-16">Why use TDA?</h2>
-            <div class="grid md:grid-cols-3 gap-12">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
                 <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
                     <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6">
                         <i class="fas fa-search text-xl"></i>
@@ -79,6 +91,13 @@
                     </div>
                     <h3 class="text-xl font-bold mb-4">Historical Diff</h3>
                     <p class="text-slate-600">Compare multiple dumps to see thread movement over time and find long-running operations.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center mb-6">
+                        <i class="fas fa-robot text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">AI-Ready MCP Server</h3>
+                    <p class="text-slate-600">Integrate with AI agents like Cursor or Claude via the Model Context Protocol for automated analysis.</p>
                 </div>
             </div>
         </section>
@@ -114,6 +133,24 @@
                             <p class="text-slate-600">Analyze running applications in real-time within JConsole.</p>
                         </div>
                     </div>
+                    <div class="flex items-start space-x-4 bg-white p-6 rounded-xl shadow-sm">
+                        <div class="text-blue-600 mt-1"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h4 class="font-bold">MCP Server (Headless)</h4>
+                            <p class="text-slate-600">Run TDA as a Model Context Protocol server for AI-powered, headless analysis in your terminal or IDE.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Documentation Hint -->
+                <div class="mt-16 bg-blue-50 border border-blue-100 rounded-2xl p-8 text-center">
+                    <h3 class="text-xl font-bold mb-4">Need more details?</h3>
+                    <p class="text-slate-600 mb-6">
+                        Complete documentation, including installation guides, usage examples, and advanced configuration, is available in the project's README.
+                    </p>
+                    <a href="https://github.com/irockel/tda#readme" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition">
+                        <i class="fas fa-book-open mr-2"></i> Read the Documentation on GitHub
+                    </a>
                 </div>
             </div>
         </section>
@@ -164,7 +201,8 @@
                 <span class="text-white font-bold tracking-tight">TDA</span>
             </div>
             <div class="text-sm">
-                &copy; 2006-2026 Ingo Rockel. Released under the Apache 2.0 License.
+                &copy; 2006-2026 Ingo Rockel. Released under the GNU Lesser General Public License (LGPL) 2.1.<br>
+                Built with <a href="https://tailwindcss.com" class="hover:text-white transition">Tailwind CSS</a> and <a href="https://fontawesome.com" class="hover:text-white transition">Font Awesome</a>.
             </div>
             <div class="flex space-x-6 mt-6 md:mt-0 text-xl">
                 <a href="https://github.com/irockel/tda" class="hover:text-white transition"><i class="fab fa-github"></i></a>
