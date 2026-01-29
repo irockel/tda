@@ -2,6 +2,10 @@ package de.grimmfrost.tda.utils;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.*;
 import javax.swing.SwingUtilities;
 
@@ -41,6 +45,26 @@ public class LogManager {
             return;
         }
 
+        // Check if running in a test environment (e.g., Maven/Surefire)
+        boolean isTestEnv = System.getProperty("surefire.real.class.path") != null || 
+                           System.getProperty("junit.jupiter.execution.parallel.enabled") != null ||
+                           System.getProperty("java.class.path").contains("junit-platform-launcher");
+
+        if (isTestEnv) {
+            // In test environment, don't use the custom file-based logging.
+            // Let Maven handle the logging.
+            initialized = true;
+
+            Logger rootLogger = Logger.getLogger("de.grimmfrost.tda");
+            rootLogger.setUseParentHandlers(false);
+            ConsoleHandler consoleHandler = new ConsoleHandler();
+            consoleHandler.setLevel(Level.WARNING);
+            consoleHandler.setFormatter(new CompactFormatter());
+            rootLogger.addHandler(consoleHandler);
+
+            return;
+        }
+
         try {
             String logDir = getLogDirectory();
             File dir = new File(logDir);
@@ -52,10 +76,11 @@ public class LogManager {
             logFilePath = logFile.getAbsolutePath();
 
             FileHandler fileHandler = new FileHandler(logFilePath, 1024 * 1024, 5, true);
-            fileHandler.setFormatter(new SimpleFormatter());
+            fileHandler.setFormatter(new CompactFormatter());
             fileHandler.setLevel(Level.ALL);
 
             Logger rootLogger = Logger.getLogger("de.grimmfrost.tda");
+            rootLogger.setUseParentHandlers(false);
             rootLogger.addHandler(fileHandler);
             rootLogger.setLevel(Level.INFO);
             
@@ -63,15 +88,9 @@ public class LogManager {
             // But we should be careful not to pollute stdout if it's used for MCP protocol.
             // MCPServer uses System.out for JSON-RPC. Logging to System.err is safer.
             
-            Handler[] handlers = rootLogger.getHandlers();
-            for (Handler handler : handlers) {
-                if (handler instanceof ConsoleHandler) {
-                    rootLogger.removeHandler(handler);
-                }
-            }
-            
             ConsoleHandler consoleHandler = new ConsoleHandler();
             consoleHandler.setLevel(Level.WARNING);
+            consoleHandler.setFormatter(new CompactFormatter());
             rootLogger.addHandler(consoleHandler);
 
             rootLogger.addHandler(new ErrorHandler());
@@ -80,6 +99,57 @@ public class LogManager {
             LOGGER.info("Logging initialized. Log file: " + logFilePath);
         } catch (IOException e) {
             System.err.println("Failed to initialize logging: " + e.getMessage());
+        }
+    }
+
+    static class CompactFormatter extends Formatter {
+        private final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        @Override
+        public String format(LogRecord record) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(dateFormat.format(new Date(record.getMillis())));
+            sb.append(" ");
+            sb.append(formatLevel(record.getLevel()));
+            sb.append(" [");
+            sb.append(getSimpleClassName(record.getSourceClassName()));
+            sb.append(".");
+            sb.append(record.getSourceMethodName());
+            sb.append("] ");
+            sb.append(formatMessage(record));
+            sb.append("\n");
+            if (record.getThrown() != null) {
+                try {
+                    StringWriter sw = new StringWriter();
+                    PrintWriter pw = new PrintWriter(sw);
+                    record.getThrown().printStackTrace(pw);
+                    pw.close();
+                    sb.append(sw);
+                } catch (Exception ex) {
+                    // ignore
+                }
+            }
+            return sb.toString();
+        }
+
+        private String formatLevel(Level level) {
+            if (level == Level.SEVERE) return "SEV";
+            if (level == Level.WARNING) return "WRN";
+            if (level == Level.INFO) return "INF";
+            if (level == Level.CONFIG) return "CFG";
+            if (level == Level.FINE) return "FIN";
+            if (level == Level.FINER) return "FNR";
+            if (level == Level.FINEST) return "FST";
+            return level.getName().substring(0, Math.min(3, level.getName().length())).toUpperCase();
+        }
+
+        private String getSimpleClassName(String className) {
+            if (className == null) return "unknown";
+            int lastDot = className.lastIndexOf('.');
+            if (lastDot >= 0) {
+                return className.substring(lastDot + 1);
+            }
+            return className;
         }
     }
 
