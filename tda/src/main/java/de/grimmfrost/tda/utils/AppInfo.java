@@ -20,12 +20,15 @@
 package de.grimmfrost.tda.utils;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * provides static application information like name and version
  * @author irockel
  */
 public class AppInfo {
+    private static final Logger LOGGER = LogManager.getLogger(AppInfo.class);
     private static final String APP_SHORT_NAME = "TDA";
     private static final String APP_FULL_NAME = "Thread Dump Analyzer";
     private static String VERSION = "unknown";
@@ -41,7 +44,7 @@ public class AppInfo {
             }
         } catch (Exception e) {
             // fallback to unknown or log error
-            e.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Failed to load version properties", e);
         }
     }
     

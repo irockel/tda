@@ -3,17 +3,22 @@ package de.grimmfrost.tda.mcp;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import de.grimmfrost.tda.utils.LogManager;
 import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * MCP Server for TDA thread dump analysis.
  */
 public class MCPServer {
+    private static final Logger LOGGER = LogManager.getLogger(MCPServer.class);
     private static final Gson gson = new Gson();
     private static final HeadlessAnalysisProvider provider = new HeadlessAnalysisProvider();
 
     public static void main(String[] args) {
+        LogManager.init();
         System.setProperty("java.awt.headless", "true");
         
         // Output capabilities to stderr for debugging/logging if needed, 
@@ -48,6 +53,7 @@ public class MCPServer {
                     sendResponse(request.get("id").getAsInt(), result);
                 }
             } catch (Exception e) {
+                LOGGER.log(Level.SEVERE, "Error processing MCP request", e);
                 sendError(requestHasId(line) ? getId(line) : -1, e.getMessage());
             }
         }

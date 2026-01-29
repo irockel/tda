@@ -23,6 +23,7 @@ package de.grimmfrost.tda.parser;
 import de.grimmfrost.tda.TDA;
 import de.grimmfrost.tda.model.*;
 import de.grimmfrost.tda.utils.DateMatcher;
+import de.grimmfrost.tda.utils.LogManager;
 import de.grimmfrost.tda.utils.HistogramTableModel;
 import de.grimmfrost.tda.utils.IconFactory;
 import java.io.BufferedReader;
@@ -39,6 +40,8 @@ import java.util.Stack;
 import java.util.Vector;
 import java.util.regex.Matcher;
 import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.MutableTreeNode;
 
@@ -49,6 +52,7 @@ import javax.swing.tree.MutableTreeNode;
  * @author irockel
  */
 public class SunJDKParser extends AbstractDumpParser {
+    private static final Logger LOGGER = LogManager.getLogger(SunJDKParser.class);
 
     private MutableTreeNode nextDump = null;
     private Map<String, Map<String, String>> threadStore = null;
@@ -502,7 +506,7 @@ public class SunJDKParser extends AbstractDumpParser {
                         "Error during Parsing Thread Dump", JOptionPane.ERROR_MESSAGE);
                 retry = true;
             } catch (IOException e) {
-                e.printStackTrace();
+                LOGGER.log(Level.SEVERE, "IO error parsing thread dump", e);
             }
         } while (retry);
 
@@ -967,7 +971,7 @@ public class SunJDKParser extends AbstractDumpParser {
                 }
             }
         } catch (IOException ex) {
-            ex.printStackTrace();
+            LOGGER.log(Level.SEVERE, "IO error parsing loggc file", ex);
         }
     }
     

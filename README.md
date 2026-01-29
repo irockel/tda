@@ -160,6 +160,11 @@ The MCP server exposes the following tools:
 
 #### Troubleshooting
 
+- **Logging**: TDA maintains a log file for troubleshooting. The location depends on your operating system:
+    - **macOS**: `~/Library/Logs/TDA/tda.log`
+    - **Windows**: `%LOCALAPPDATA%\TDA\Logs\tda.log`
+    - **Linux/Unix**: `~/.tda/logs/tda.log`
+  You can check this file if TDA or the MCP server doesn't behave as expected.
 - **Path issues**: Ensure you use absolute paths for the JAR file and the log files you want to parse.
 - **Headless mode**: If you see errors related to `java.awt.HeadlessException`, double-check that `-Djava.awt.headless=true` is set.
 - **Permissions**: Make sure the user running the MCP server has read permissions for the log files.

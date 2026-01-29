@@ -41,7 +41,10 @@ import de.grimmfrost.tda.utils.ViewScrollPane;
 import de.grimmfrost.tda.utils.jedit.JEditTextArea;
 import de.grimmfrost.tda.utils.jedit.PopupMenu;
 
+import de.grimmfrost.tda.utils.LogManager;
 import java.awt.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.dnd.*;
 import java.io.FileNotFoundException;
@@ -119,6 +122,7 @@ import javax.swing.tree.TreePath;
  * @author irockel
  */
 public class TDA extends JPanel implements ListSelectionListener, TreeSelectionListener, ActionListener, MenuListener {
+    private static final Logger LOGGER = LogManager.getLogger(TDA.class);
     private static FileDialog fc;
     private static JFileChooser sessionFc;
     private static final int DIVIDER_SIZE = 4;
@@ -397,9 +401,9 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
                 text = (String)t.getTransferData(DataFlavor.stringFlavor);
             }
         } catch (UnsupportedFlavorException ex) {
-            ex.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Unsupported flavor for clipboard data", ex);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            LOGGER.log(Level.SEVERE, "IO error reading clipboard data", ex);
         }
         
         if(text != null) {
@@ -444,9 +448,9 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
             resultString = resultString.replaceFirst("<!-- ##recentsessions## -->", getAsTable("opensession://", PrefManager.get().getRecentSessions()));
         } catch (IllegalArgumentException ex) {
             // hack to prevent crashing of the app because off unparsed replacer.
-            ex.printStackTrace();
+            LOGGER.log(Level.SEVERE, "Failed to parse welcome page replacers", ex);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            LOGGER.log(Level.SEVERE, "IO error reading welcome page", ex);
         } finally {
             try {
                 if(br != null) {
@@ -454,7 +458,7 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
                     is.close();
                 }
             } catch (IOException ex) {
-                ex.printStackTrace();
+                LOGGER.log(Level.SEVERE, "Error closing stream", ex);
             }
         }
         // remove unparsed replacers.
@@ -2315,6 +2319,7 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
      * main startup method for TDA
      */
     public static void main(String[] args) {
+        LogManager.init();
         if (args.length > 0 && "--mcp".equals(args[0])) {
             String[] mcpArgs = new String[args.length - 1];
             System.arraycopy(args, 1, mcpArgs, 0, args.length - 1);

@@ -22,12 +22,15 @@
 package de.grimmfrost.tda.parser;
 
 import de.grimmfrost.tda.utils.DateMatcher;
+import de.grimmfrost.tda.utils.LogManager;
 import de.grimmfrost.tda.utils.PrefManager;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Factory for the dump parsers.
@@ -35,6 +38,7 @@ import java.util.Map;
  * @author irockel
  */
 public class DumpParserFactory {
+    private static final Logger LOGGER = LogManager.getLogger(DumpParserFactory.class);
     private static DumpParserFactory instance = null;
     
     /** 
@@ -112,8 +116,9 @@ public class DumpParserFactory {
             if (currentDumpParser != null) {
                 bis.reset();
             }
+            LOGGER.log(Level.INFO, "parsing logfile using " + (currentDumpParser != null ? currentDumpParser.getClass().getName() : "<none>"));
         } catch (IOException ex) {
-            ex.printStackTrace();
+            LOGGER.log(Level.SEVERE, "IO error detecting parser for logfile", ex);
         }
         return currentDumpParser;
     }    

@@ -8,20 +8,25 @@ import de.grimmfrost.tda.parser.DumpParser;
 import de.grimmfrost.tda.parser.DumpParserFactory;
 import de.grimmfrost.tda.parser.SunJDKParser;
 import de.grimmfrost.tda.utils.DateMatcher;
+import de.grimmfrost.tda.utils.LogManager;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import java.io.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Headless analysis provider for TDA.
  */
 public class HeadlessAnalysisProvider {
+    private static final Logger LOGGER = LogManager.getLogger(HeadlessAnalysisProvider.class);
     private final Map<String, Map<String, String>> threadStore = new HashMap<>();
     private final List<DefaultMutableTreeNode> topNodes = new ArrayList<>();
     private String currentLogFile;
 
     public void parseLogFile(String filePath) throws IOException {
+        LOGGER.info("Parsing log file: " + filePath);
         this.currentLogFile = filePath;
         File file = new File(filePath);
         if (!file.exists()) {

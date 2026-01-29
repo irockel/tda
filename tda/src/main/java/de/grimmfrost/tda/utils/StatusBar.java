@@ -41,20 +41,50 @@ import javax.swing.JProgressBar;
 public class StatusBar extends JPanel {
     private JLabel infoLabel = null;
     private JProgressBar memStatus = null;
+    private JLabel errorLabel = null;
+    private static StatusBar instance = null;
     
     /** 
      * Creates a new instance of StatusBar 
      */
     public StatusBar(boolean showMemory) {
         super(new BorderLayout());
+        instance = this;
         add(createInfoPanel(), BorderLayout.WEST);
         if(showMemory) {
-            add(createMemoryStatus(), BorderLayout.CENTER);
+            JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 5, 0));
+            rightPanel.setOpaque(false);
+            
+            errorLabel = new JLabel(new RedDotIcon());
+            errorLabel.setVisible(false);
+            errorLabel.setToolTipText("An error has occurred. Please check the logfile.");
+            rightPanel.add(errorLabel);
+
+            rightPanel.add(createMemoryStatus());
+            
             JPanel iconPanel = new JPanel(new BorderLayout());
             iconPanel.add(new JLabel(new AngledLinesWindowsCornerIcon()), BorderLayout.SOUTH);
-            add(iconPanel, BorderLayout.EAST);
+            rightPanel.add(iconPanel);
+
+            add(rightPanel, BorderLayout.EAST);
         } else { // plugin mode
             setBackground(Color.WHITE);
+        }
+    }
+
+    /**
+     * @return the instance of the status bar.
+     */
+    public static StatusBar getInstance() {
+        return instance;
+    }
+
+    /**
+     * Show the error indicator in the status bar.
+     */
+    public void showErrorIndicator() {
+        if (errorLabel != null) {
+            errorLabel.setVisible(true);
         }
     }
     
@@ -83,7 +113,8 @@ public class StatusBar extends JPanel {
         memStatus = new JProgressBar(0, 100);
         memStatus.setPreferredSize(new Dimension(100, 15));
         memStatus.setStringPainted(true);
-        JPanel memPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        JPanel memPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 0, 0));
+        memPanel.setOpaque(false);
         memPanel.add(memStatus);
         
         // Start Updater
@@ -92,6 +123,24 @@ public class StatusBar extends JPanel {
         return memPanel;
     }
     
+}
+
+/**
+ * simple icon for a red dot
+ */
+class RedDotIcon implements Icon {
+    public int getIconHeight() {
+        return 10;
+    }
+
+    public int getIconWidth() {
+        return 10;
+    }
+
+    public void paintIcon(Component c, Graphics g, int x, int y) {
+        g.setColor(Color.RED);
+        g.fillOval(x, y, 10, 10);
+    }
 }
 
 /**

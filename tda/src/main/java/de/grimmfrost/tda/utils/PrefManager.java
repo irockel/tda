@@ -29,6 +29,8 @@ import de.grimmfrost.tda.filter.FilterChecker;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.prefs.BackingStoreException;
@@ -44,6 +46,7 @@ import javax.swing.ListModel;
  * @author irockel
  */
 public class PrefManager {
+    private static final Logger LOGGER = LogManager.getLogger(PrefManager.class);
     public static final String PARAM_DELIM = "\u00A7\u00A7\u00A7\u00A7";
     
     public static final String FILTER_SEP = "\u00ac\u00ac\u00ac\u00ac";
