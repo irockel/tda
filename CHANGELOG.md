@@ -1,0 +1,151 @@
+# Changelog
+
+All notable changes to TDA (Thread Dump Analyzer) will be documented in this file.
+
+## [2.7]
+### Features
+- Introduced logging for easier debugging in MCP mode, added red dot in UI mode if error occurred with tooltip to check logfile.
+- Experimental support for JSON based jmap thread dumps.
+- Support for SMR parsing in thread dumps (Java 11+)
+- Detect stuck Carrier Threads used by Virtual Threads in Java 21+ thread dumps.
+- Extended MCP Server for fetching pinned Carrier Threads.
+- Added a method to the MCP Server to enable the Agent to fetch a list of threads which are running in native code, including library information if available.
+- Reworked the thread dump summary to provide information in a more compact way.
+- MacOS Binary is now provided.
+- Use FlatLaf for a modern look and feel.
+
+### Bugfixes
+- Fixed address range parsing in thread titles for newer JVMs.
+- Fixed missing `protocolVersion` in MCP, which broke the Cursor Integration.
+
+## [2.6]
+### Features
+- TDA now is compiled with JDK 11, it requires Java 11 or higher to run, but still supports thread dumps from older JDKs.
+- Fixed issue #23: fixed long running thread detection with Java 11+.
+- The whole build now is based on maven, no more Netbeans needed for building.
+- Biggest new feature: include a mcp server for thread dump parsing from AI Agents.
+
+## [2.5]
+### Features
+- Added support for Java Virtual Threads (Project Loom) introduced in Java 19+
+- Can parse and analyze thread dumps containing virtual threads
+- Provides insights into virtual thread states and carrier thread relationships
+- Identifies virtual thread pinning issues
+- Updated parsing to handle Java 21 thread dump format
+
+## [2.4]
+- Compiled using JDK 1.8 so Source Level now is 1.8
+- Fixed #20: updated tda visual vm plugin to Visual VM 2.0
+- Fixed #21: fixed parsing of jdk 11 thread dumps.
+- Fixed colors for dark UIs
+- `tda.sh` can now be called from everywhere
+
+## [2.3]
+- Fixed locked main screen after closing a dialog using (x)
+- Use System Toolbar on MacOS.
+- Fixed crash in filters and categories.
+- Fixed missing "Add Logfile" Link in VisualVM if running on Windows.
+- Don't do any L&F changes if in plugin mode (JConsole or VisualVM)
+- Fixed broken init of native FileChooser Dialog.
+- Fixed crash while exiting the app.
+- Fixed font size problem in VisualVM plugin.
+- Removed obsolete Forum Link.
+
+## [2.2]
+- Added Drag and Drop of logfiles (GitHub Issue 1)
+- Use native File Dialog (GitHub Issue 1)
+- Fixed parsing of Java 8 Thread Dumps (GitHub Issue 6)
+- Fixed Crash in logfile parsing (Github Issue 2)
+- Fixed dumping of blocked threads in jconsole plugin.
+- Fixed issue TDA-31: class cast exception in predefined categories fallback.
+- Fixed issue TDA-35: improved unix shell script.
+
+## [2.1]
+- Implemented Issue 9: now parked threads using java.lang.concurrent are recognized.
+- Fixed Issue 26: no more lost filters in categories. Thanks to Robert Whitehurst.
+- Fixed Issue 27: Improved memory footprint, now parsed thread dump use about 20% less memory.
+- Fixed Issue 29: Closing of log files now works on windows.
+- Fixed Issue 30: Opening from welcome page now works on windows.
+- Fixed HTML if JDK 5.x is used.
+- Small Adjustments and Fixes.
+
+## [2.0]
+- Added last line parsed to the error message if an error occurs during parsing.
+- Fixed Issue 22, check for null if diffing dumps.
+- Fixed Issue 23, fixed parsing of remote VisualVM Dumps.
+- Fixes Issue 24, fixed parsing of monitors in VisualVM Dumps.
+- Bugfixing.
+
+## [1.6]
+- Tool now is available as VisualVM plugin.
+- Skip broken thread dumps.
+- Custom Thread Categories.
+- New Welcome Screen.
+- Small Adjustments to support SAP JVM Dumps (slightly modified from SUN Dumps).
+- Small Adjustments to support HP JVM Dumps (slightly modified from SUN Dumps).
+- Icons of monitors with high contention now have a red background (issue 13).
+- Multiple Selection of Threads (issue 11).
+- Stack line count is now also set in long running thread result (issue 19).
+- Read heap information from Sun JDK 1.6 Dumps and display them.
+- Thread Dumps or logfiles can be pasted from clipboard (issue 20).
+- Internationalisation (only english available so far, not finished yet).
+- Extended Help, now uses javahelp.
+- Bugfixing.
+
+## [1.5]
+- Added new filter rule "stack line count greater as".
+- Added clipboard operation in logfile view.
+- Enhanced Monitor View, added expand all nodes and sort by thread count to popup.
+- Added View operations for root tree.
+- Added Drag and Drop for new files to open.
+- Threads are now displayed in a table, the thread ids and native ids are transferred from hexadecimal to decimal.
+- Date parsing for Sun JDK 1.6 time stamps is added as default regex.
+- Bugfixed and reworked long running thread detection.
+- Extended Help Overview.
+- Bugfixing.
+
+## [1.4]
+- Added jconsole plugin support, TDA can now be used as jconsole plugin.
+- Added ability to request thread dumps via JMX if running as jconsole plugin.
+- JMX Dumps can be saved into logfile for later offline usage.
+- Session now can be stored to disk (and loaded again).
+- Extended help overview.
+- Major code cleanup.
+- Improved memory footprint.
+- Added splash-screen (JDK 1.6 only).
+- Bugfixing.
+
+## [1.3]
+- Full logfile is added as node (loaded up to specified size).
+- Added Thread Dump navigation into logfile.
+- Improved Deadlock analysis, additional hints concerning deadlocks found be JVM.
+- Fixed Issue 5.
+- Added toolbar (can be switched off).
+- Improved GTK Display for recent JDKs.
+- Bugfixing.
+
+## [1.2]
+- Improved Dump navigation.
+- Added context sensitive information about dumps.
+- Added jstack support.
+- Refactored Monitor-Display (threads now are only displayed once).
+- Bugfixing.
+
+## [1.1]
+- Ability to filter the threads display to be able to ignore e.g. idle threads.
+- Improved gui layout for better navigation (three pane view instead of two).
+- Added 1.5 and 1.6 parsing of thread dumps.
+- Opened Logfiles can be closed now.
+- Reworked help.
+- Links in help now open in external browser.
+- Added Forum link to help menu.
+- Improved GUI with better native Integration.
+- Added Webstart Deployment for easy installation.
+- Some font hacks to use GTK as native L&F on Linux and JDK 1.6.
+- Bugfixing.
+
+## [1.0]
+- Ability to open more than one logfile at a time.
+- History of recent opened files.
+- Multiple regex for date parsing in settings (but only one active).
+- Bugfixing.

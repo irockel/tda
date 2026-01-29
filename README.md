@@ -26,6 +26,7 @@ TDA supports Java 1.4.x through Java 21+, including specialized support for **Vi
   - [4. JSON-based Thread Dumps (Experimental)](#4-json-based-thread-dumps-experimental)
   - [5. MCP Server (Headless Analysis)](#5-mcp-server-headless-analysis)
 - [🏗 Building from Source](#-building-from-source)
+- [📜 Changelog](CHANGELOG.md)
 - [📜 License](#-license)
 
 ## 🚀 Key Features
