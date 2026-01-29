@@ -15,12 +15,11 @@ public class JCmdJSONParserTest {
 
     @Test
     public void testJSONDumpParsing() throws Exception {
-        System.out.println("testJSONDumpParsing");
         InputStream dumpFileStream = new FileInputStream("src/test/resources/intellij_dump.json");
-        Map threadStore = new HashMap();
+        Map<String, Map<String, String>> threadStore = new HashMap<>();
         DumpParser instance = DumpParserFactory.get().getDumpParserForLogfile(dumpFileStream, threadStore, false, 0);
-        
-        assertTrue(instance instanceof JCmdJSONParser);
+
+        assertInstanceOf(JCmdJSONParser.class, instance);
         
         DefaultMutableTreeNode result = (DefaultMutableTreeNode) instance.parseNext();
         assertNotNull(result);

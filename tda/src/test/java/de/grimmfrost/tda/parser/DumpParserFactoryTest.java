@@ -27,20 +27,21 @@ import java.io.FileNotFoundException;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
- *
+ * test if the dump parser factory selects the right dump parser for the provided log files.
  * @author irockel
  */
 public class DumpParserFactoryTest {
     
     @BeforeEach
-    protected void setUp() throws Exception {
+    protected void setUp() {
     }
 
     @AfterEach
-    protected void tearDown() throws Exception {
+    protected void tearDown() {
     }
 
     /**
@@ -48,8 +49,6 @@ public class DumpParserFactoryTest {
      */
     @Test
     public void testGet() {
-        System.out.println("get");
-        
         DumpParserFactory result = DumpParserFactory.get();
         assertNotNull(result);                
     }
@@ -59,32 +58,28 @@ public class DumpParserFactoryTest {
      */
     @Test
     public void testGetDumpParserForSunLogfile() throws FileNotFoundException {
-        System.out.println("getDumpParserForVersion");
-        
         InputStream dumpFileStream = new FileInputStream("src/test/resources/test.log");
-        Map threadStore = null;
+        Map<String, Map<String, String>> threadStore = new HashMap<>();
         DumpParserFactory instance = DumpParserFactory.get();
         
         DumpParser result = instance.getDumpParserForLogfile(dumpFileStream, threadStore, false, 0);
         assertNotNull(result);
-        
-        assertTrue(result instanceof SunJDKParser);
+
+        assertInstanceOf(SunJDKParser.class, result);
     }
 
     /**
      * Test of getDumpParserForVersion method, of class de.grimmfrost.tda.DumpParserFactory.
      */
     @Test
-    public void testGetDumpParserForBeaLogfile() throws FileNotFoundException {
-        System.out.println("getDumpParserForVersion");
-        
-        InputStream dumpFileStream = new FileInputStream("src/test/resources/jrockit_15_dump.txt");
-        Map threadStore = null;
+    public void testGetDumpParserForJSONLogfile() throws FileNotFoundException {
+        InputStream dumpFileStream = new FileInputStream("src/test/resources/intellij_dump.json");
+        Map<String, Map<String, String>> threadStore = new HashMap<>();
         DumpParserFactory instance = DumpParserFactory.get();
-        
+
         DumpParser result = instance.getDumpParserForLogfile(dumpFileStream, threadStore, false, 0);
         assertNotNull(result);
-        
-        assertTrue(result instanceof BeaJDKParser);
-    }    
+
+        assertInstanceOf(JCmdJSONParser.class, result);
+    }
 }

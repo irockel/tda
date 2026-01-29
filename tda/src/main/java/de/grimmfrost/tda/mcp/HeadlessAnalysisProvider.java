@@ -17,8 +17,8 @@ import java.util.*;
  * Headless analysis provider for TDA.
  */
 public class HeadlessAnalysisProvider {
-    private Map<String, Map> threadStore = new HashMap<>();
-    private List<DefaultMutableTreeNode> topNodes = new ArrayList<>();
+    private final Map<String, Map<String, String>> threadStore = new HashMap<>();
+    private final List<DefaultMutableTreeNode> topNodes = new ArrayList<>();
     private String currentLogFile;
 
     public void parseLogFile(String filePath) throws IOException {

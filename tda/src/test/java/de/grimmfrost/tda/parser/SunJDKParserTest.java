@@ -21,12 +21,7 @@
  */
 package de.grimmfrost.tda.parser;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
+import java.io.*;
 import java.util.HashMap;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.MutableTreeNode;
@@ -35,6 +30,8 @@ import javax.swing.tree.TreePath;
 import de.grimmfrost.tda.model.Category;
 import de.grimmfrost.tda.model.ThreadDumpInfo;
 import de.grimmfrost.tda.model.ThreadInfo;
+import de.grimmfrost.tda.utils.DateMatcher;
+import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.Map;
@@ -59,17 +56,16 @@ public class SunJDKParserTest {
      */
     @Test
     public void testDumpLoad() throws IOException {
-        System.out.println("dumpLoad");
         FileInputStream fis = null;
         DumpParser instance = null;
         
         try {
             fis = new FileInputStream("src/test/resources/test.log");
-            Map dumpMap = new HashMap();
-            Vector topNodes = new Vector();
+            Map<String, Map<String, String>> dumpMap = new HashMap<>();
+            Vector<MutableTreeNode> topNodes = new Vector<>();
             instance = DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
-            
-            assertTrue(instance instanceof SunJDKParser);
+
+            assertInstanceOf(SunJDKParser.class, instance);
 
             while (instance.hasMoreDumps()) {
                 topNodes.add(instance.parseNext());
@@ -91,46 +87,39 @@ public class SunJDKParserTest {
      * Test of isFoundClassHistograms method, of class de.grimmfrost.tda.SunJDKParser.
      */
     @Test
-    public void testIsFoundClassHistograms() throws FileNotFoundException, IOException {
-        System.out.println("isFoundClassHistograms");
+    public void testIsFoundClassHistograms() throws IOException {
         DumpParser instance = null;
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream("src/test/resources/testwithhistogram.log");
-            Map dumpMap = new HashMap();
+        try (FileInputStream fis = new FileInputStream("src/test/resources/testwithhistogram.log")) {
+            Map<String, Map<String, String>> dumpMap = new HashMap<>();
             instance = DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
             
-            Vector topNodes = new Vector();
+            Vector<MutableTreeNode> topNodes = new Vector<>();
             while (instance.hasMoreDumps()) {
                 topNodes.add(instance.parseNext());
             }
-            
-            boolean expResult = true;
+            assertEquals(1, topNodes.size());
+
             boolean result = instance.isFoundClassHistograms();
-            assertEquals(expResult, result);        
+            assertTrue(result);
         } finally {
-            if(instance != null) {
+            if (instance != null) {
                 instance.close();
-            }
-            if(fis != null) {
-                fis.close();
             }
         }
     }
     
     @Test
-    public void test64BitDumpLoad() throws FileNotFoundException, IOException {
-        System.out.println("64BitDumpLoad");
+    public void test64BitDumpLoad() throws IOException {
         FileInputStream fis = null;
         DumpParser instance = null;
         
         try {
             fis = new FileInputStream("src/test/resources/test64bit.log");
-            Map dumpMap = new HashMap();
-            Vector topNodes = new Vector();
+            Map<String, Map<String, String>> dumpMap = new HashMap<>();
+            Vector<MutableTreeNode> topNodes = new Vector<>();
             instance = DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
-            
-            assertTrue(instance instanceof SunJDKParser);
+
+            assertInstanceOf(SunJDKParser.class, instance);
 
             while (instance.hasMoreDumps()) {
                 topNodes.add(instance.parseNext());
@@ -150,17 +139,16 @@ public class SunJDKParserTest {
     
     @Test
     public void testJava8DumpLoad() throws IOException {
-        System.out.println("Java8DumpLoad");
         FileInputStream fis = null;
         DumpParser instance = null;
         
         try {
             fis = new FileInputStream("src/test/resources/java8dump.log");
-            Map dumpMap = new HashMap();
-            Vector topNodes = new Vector();
+            Map<String, Map<String, String>> dumpMap = new HashMap<>();
+            Vector<MutableTreeNode> topNodes = new Vector<>();
             instance = DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
-            
-            assertTrue(instance instanceof SunJDKParser);
+
+            assertInstanceOf(SunJDKParser.class, instance);
 
             while (instance.hasMoreDumps()) {
                 topNodes.add(instance.parseNext());
@@ -179,18 +167,18 @@ public class SunJDKParserTest {
     }
     
     @Test
-    public void testJava11DumpLoad() throws FileNotFoundException, IOException {
+    public void testJava11DumpLoad() throws IOException {
         System.out.println("Java11DumpLoad");
         FileInputStream fis = null;
         DumpParser instance = null;
         
         try {
             fis = new FileInputStream("src/test/resources/java11dump.log");
-            Map dumpMap = new HashMap();
-            Vector topNodes = new Vector();
+            Map<String, Map<String, String>> dumpMap = new HashMap<>();
+            Vector<MutableTreeNode> topNodes = new Vector<>();
             instance = DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
-            
-            assertTrue(instance instanceof SunJDKParser);
+
+            assertInstanceOf(SunJDKParser.class, instance);
 
             while (instance.hasMoreDumps()) {
                 topNodes.add(instance.parseNext());
@@ -210,17 +198,16 @@ public class SunJDKParserTest {
     
     @Test
     public void testHPDumps()  throws IOException {
-        System.out.println("HPDumpLoad");
         FileInputStream fis = null;
         DumpParser instance = null;
         
         try {
             fis = new FileInputStream("src/test/resources/hpdump.log");
-            Map dumpMap = new HashMap();
-            Vector topNodes = new Vector();
+            Map<String, Map<String, String>> dumpMap = new HashMap<>();
+            Vector<MutableTreeNode> topNodes = new Vector<>();
             instance = DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
-            
-            assertTrue(instance instanceof SunJDKParser);
+
+            assertInstanceOf(SunJDKParser.class, instance);
 
             while (instance.hasMoreDumps()) {
                 topNodes.add(instance.parseNext());
@@ -240,17 +227,16 @@ public class SunJDKParserTest {
     
     @Test
     public void testRemoteVisualVMDumps()  throws IOException {
-        System.out.println("VisualVMDumpLoad");
         FileInputStream fis = null;
         DumpParser instance = null;
 
         try {
             fis = new FileInputStream("src/test/resources/visualvmremote.log");
-            Map dumpMap = new HashMap();
-            Vector topNodes = new Vector();
+            Map<String, Map<String, String>> dumpMap = new HashMap<>();
+            Vector<MutableTreeNode> topNodes = new Vector<>();
             instance = DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
 
-            assertTrue(instance instanceof SunJDKParser);
+            assertInstanceOf(SunJDKParser.class, instance);
 
             while (instance.hasMoreDumps()) {
                 topNodes.add(instance.parseNext());
@@ -270,17 +256,16 @@ public class SunJDKParserTest {
 
     @Test
     public void testURLThreadNameDumps()  throws IOException {
-        System.out.println("URLThreadNameDumpLoad");
         FileInputStream fis = null;
         DumpParser instance = null;
         
         try {
             fis = new FileInputStream("src/test/resources/urlthread.log");
-            Map dumpMap = new HashMap();
-            Vector topNodes = new Vector();
+            Map<String, Map<String, String>> dumpMap = new HashMap<>();
+            Vector<MutableTreeNode> topNodes = new Vector<>();
             instance = DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
-            
-            assertTrue(instance instanceof SunJDKParser);
+
+            assertInstanceOf(SunJDKParser.class, instance);
 
             while (instance.hasMoreDumps()) {
                 topNodes.add(instance.parseNext());
@@ -300,17 +285,16 @@ public class SunJDKParserTest {
 
     @Test
     public void testVirtualThreadDumps() throws IOException {
-        System.out.println("VirtualThreadDumpLoad");
         FileInputStream fis = null;
         DumpParser instance = null;
         
         try {
             fis = new FileInputStream("src/test/resources/java21dump.log");
-            Map dumpMap = new HashMap();
-            Vector topNodes = new Vector();
+            Map<String, Map<String, String>> dumpMap = new HashMap<>();
+            Vector<MutableTreeNode> topNodes = new Vector<>();
             instance = DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
-            
-            assertTrue(instance instanceof SunJDKParser);
+
+            assertInstanceOf(SunJDKParser.class, instance);
 
             while (instance.hasMoreDumps()) {
                 topNodes.add(instance.parseNext());
@@ -330,17 +314,16 @@ public class SunJDKParserTest {
 
     @Test
     public void testCarrierThreadIssuesDetection() throws IOException {
-        System.out.println("testCarrierThreadIssuesDetection");
         FileInputStream fis = null;
         DumpParser instance = null;
         
         try {
             fis = new FileInputStream("src/test/resources/carrier_stuck.log");
-            Map dumpMap = new HashMap();
-            Vector topNodes = new Vector();
+            Map<String, Map<String, String>> dumpMap = new HashMap<>();
+            Vector<MutableTreeNode> topNodes = new Vector<>();
             instance = DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
-            
-            assertTrue(instance instanceof SunJDKParser);
+
+            assertInstanceOf(SunJDKParser.class, instance);
 
             while (instance.hasMoreDumps()) {
                 topNodes.add(instance.parseNext());
@@ -401,10 +384,9 @@ public class SunJDKParserTest {
 
     @Test
     public void testSMRInfoParsing() throws Exception {
-        System.out.println("testSMRInfoParsing");
         InputStream dumpFileStream = new FileInputStream("src/test/resources/jstack_dump.log");
         DumpParser instance = DumpParserFactory.get().getDumpParserForLogfile(dumpFileStream, new HashMap(), false, 0);
-        assertTrue(instance instanceof SunJDKParser);
+        assertInstanceOf(SunJDKParser.class, instance);
         DefaultMutableTreeNode result = (DefaultMutableTreeNode) instance.parseNext();
         assertNotNull(result);
         ThreadDumpInfo tdi = (ThreadDumpInfo) result.getUserObject();
@@ -429,21 +411,9 @@ public class SunJDKParserTest {
 
     @Test
     public void testSMRInfoWithUnresolved() throws Exception {
-        System.out.println("testSMRInfoWithUnresolved");
-        String dumpContent = "2026-01-20 17:29:40\n" +
-                "Full thread dump OpenJDK 64-Bit Server VM (21.0.9+10-LTS mixed mode, sharing):\n" +
-                "\n" +
-                "Threads class SMR info:\n" +
-                "_java_thread_list=0x000000087e826560, length=2, elements={\n" +
-                "0x000000010328e320, 0x00000001deadbeef\n" +
-                "}\n" +
-                "\n" +
-                "\"Reference Handler\" #9 [30467] daemon prio=10 os_prio=31 cpu=0.44ms elapsed=25574.11s tid=0x000000010328e320 nid=30467 waiting on condition  [0x000000016e7c2000]\n" +
-                "   java.lang.Thread.State: RUNNABLE\n" +
-                "\n";
-        
-        java.io.InputStream is = new java.io.ByteArrayInputStream(dumpContent.getBytes());
-        SunJDKParser parser = new SunJDKParser(new java.io.BufferedReader(new java.io.InputStreamReader(is)), new java.util.HashMap(), 0, false, 0, new de.grimmfrost.tda.utils.DateMatcher());
+        InputStream is = getSMSInfoTextBlock();
+        SunJDKParser parser = new SunJDKParser(new BufferedReader(new InputStreamReader(is)), new HashMap<>(), 0,
+                false, 0, new DateMatcher());
         
         DefaultMutableTreeNode result = (DefaultMutableTreeNode) parser.parseNext();
         ThreadDumpInfo tdi = (ThreadDumpInfo) result.getUserObject();
@@ -456,18 +426,34 @@ public class SunJDKParserTest {
         assertTrue(overview.contains("Some SMR addresses could not be resolved to threads"));
     }
 
+    private static @NonNull InputStream getSMSInfoTextBlock() {
+        String dumpContent = "2026-01-20 17:29:40\n" +
+                "Full thread dump OpenJDK 64-Bit Server VM (21.0.9+10-LTS mixed mode, sharing):\n" +
+                "\n" +
+                "Threads class SMR info:\n" +
+                "_java_thread_list=0x000000087e826560, length=2, elements={\n" +
+                "0x000000010328e320, 0x00000001deadbeef\n" +
+                "}\n" +
+                "\n" +
+                "\"Reference Handler\" #9 [30467] daemon prio=10 os_prio=31 cpu=0.44ms elapsed=25574.11s tid=0x000000010328e320 nid=30467 waiting on condition  [0x000000016e7c2000]\n" +
+                "   java.lang.Thread.State: RUNNABLE\n" +
+                "\n";
+
+        InputStream is = new ByteArrayInputStream(dumpContent.getBytes());
+        return is;
+    }
+
     @Test
     public void testLongRunningDetectionWithVariableFields() throws IOException {
-        System.out.println("testLongRunningDetectionWithVariableFields");
         FileInputStream fis = null;
         SunJDKParser instance = null;
         
         try {
             fis = new FileInputStream("src/test/resources/jdk11_long_running.log");
-            Map dumpMap = new HashMap();
+            Map<String, Map<String, String>> dumpMap = new HashMap<>();
             instance = (SunJDKParser) DumpParserFactory.get().getDumpParserForLogfile(fis, dumpMap, false, 0);
             
-            Vector topNodes = new Vector();
+            Vector<MutableTreeNode> topNodes = new Vector<>();
             while (instance.hasMoreDumps()) {
                 MutableTreeNode node = instance.parseNext();
                 if (node != null) {
@@ -489,8 +475,8 @@ public class SunJDKParserTest {
             DefaultMutableTreeNode root = new DefaultMutableTreeNode("Root");
             TreePath[] paths = new TreePath[2];
             DefaultMutableTreeNode dummyRoot = new DefaultMutableTreeNode("Dummies");
-            dummyRoot.add((DefaultMutableTreeNode)topNodes.get(0));
-            dummyRoot.add((DefaultMutableTreeNode)topNodes.get(1));
+            dummyRoot.add(topNodes.get(0));
+            dummyRoot.add(topNodes.get(1));
             
             paths[0] = new TreePath(((DefaultMutableTreeNode)topNodes.get(0)).getPath());
             paths[1] = new TreePath(((DefaultMutableTreeNode)topNodes.get(1)).getPath());

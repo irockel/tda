@@ -51,7 +51,7 @@ import javax.swing.tree.MutableTreeNode;
 public class SunJDKParser extends AbstractDumpParser {
 
     private MutableTreeNode nextDump = null;
-    private Map threadStore = null;
+    private Map<String, Map<String, String>> threadStore = null;
     private int counter = 1;
     private int lineCounter = 0;
     private boolean foundClassHistograms = false;
@@ -60,7 +60,7 @@ public class SunJDKParser extends AbstractDumpParser {
     /** 
      * Creates a new instance of SunJDKParser 
      */
-    public SunJDKParser(BufferedReader bis, Map threadStore, int lineCounter, boolean withCurrentTimeStamp, int startCounter, DateMatcher dm) {
+    public SunJDKParser(BufferedReader bis, Map<String, Map<String, String>> threadStore, int lineCounter, boolean withCurrentTimeStamp, int startCounter, DateMatcher dm) {
         super(bis, dm);
         this.threadStore = threadStore;
         this.withCurrentTimeStamp = withCurrentTimeStamp;
@@ -120,7 +120,7 @@ public class SunJDKParser extends AbstractDumpParser {
             DefaultMutableTreeNode catVirtualThreads = null;
 
             try {
-                Map threads = new HashMap();
+                Map<String, String> threads = new HashMap<>();
                 overallTDI = new ThreadDumpInfo("Dump No. " + counter++, 0);
                 if (withCurrentTimeStamp) {
                     overallTDI.setStartTime((new Date(System.currentTimeMillis())).toString());

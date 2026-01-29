@@ -64,7 +64,8 @@ public class DumpParserFactory {
      *                             the current time stamp instead of a parsed one.
      * @return a proper dump parser for the given log file, null if no proper parser was found.
      */
-    public DumpParser getDumpParserForLogfile(InputStream dumpFileStream, Map threadStore, boolean withCurrentTimeStamp, int startCounter) {
+    public DumpParser getDumpParserForLogfile(InputStream dumpFileStream, Map<String, Map<String, String>> threadStore,
+                                              boolean withCurrentTimeStamp, int startCounter) {
         BufferedReader bis = null;
         int readAheadLimit = PrefManager.get().getStreamResetBuffer();
         int lineCounter = 0;
@@ -104,14 +105,11 @@ public class DumpParserFactory {
                         currentDumpParser = new WrappedSunJDKParser(bis, threadStore, lineCounter, withCurrentTimeStamp, startCounter, dm);
                     } else if(SunJDKParser.checkForSupportedThreadDump(line)) {
                         currentDumpParser = new SunJDKParser(bis, threadStore, lineCounter, withCurrentTimeStamp, startCounter, dm);
-                    } else if(BeaJDKParser.checkForSupportedThreadDump(line)) {
-                        currentDumpParser = new BeaJDKParser(bis, threadStore, lineCounter, dm);
                     }
                 }
                 lineCounter++;
             }
-            //System.out.println("Selected Dump Parser: " + currentDumpParser.getClass().getName());
-            if ((currentDumpParser != null) && (bis != null)) {
+            if (currentDumpParser != null) {
                 bis.reset();
             }
         } catch (IOException ex) {
