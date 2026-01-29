@@ -42,6 +42,7 @@ public class StatusBar extends JPanel {
     private JLabel infoLabel = null;
     private JProgressBar memStatus = null;
     private JLabel errorLabel = null;
+    private JLabel errorLabelText = null;
     private static StatusBar instance = null;
     
     /** 
@@ -57,8 +58,13 @@ public class StatusBar extends JPanel {
             
             errorLabel = new JLabel(new RedDotIcon());
             errorLabel.setVisible(false);
-            errorLabel.setToolTipText("An error has occurred. Please check the logfile.");
+            errorLabel.setToolTipText("An error has occurred. Please check the logfile (see README on GitHub for details).");
             rightPanel.add(errorLabel);
+
+            errorLabelText = new JLabel("Error occurred!");
+            errorLabelText.setToolTipText("An error has occurred. Please check the logfile (see README on GitHub for details).");
+            errorLabelText.setVisible(false);
+            rightPanel.add(errorLabelText);
 
             rightPanel.add(createMemoryStatus());
             
@@ -85,6 +91,7 @@ public class StatusBar extends JPanel {
     public void showErrorIndicator() {
         if (errorLabel != null) {
             errorLabel.setVisible(true);
+            errorLabelText.setVisible(true);
         }
     }
     
@@ -162,7 +169,7 @@ class MemoryStatusUpdater implements Runnable {
     public void run() {
         try {
             while(true) {
-                double factor = (int) rt.totalMemory() / 100;
+                double factor = (double) (int) rt.totalMemory() / 100;
                 int perc = (int) ((rt.totalMemory() - rt.freeMemory()) / factor);
                 memStatus.setValue(perc);
                 double usedMem = (rt.totalMemory() - rt.freeMemory()) / 1024.0 / 1024.0;
