@@ -1046,15 +1046,13 @@ public class SunJDKParser extends AbstractDumpParser {
                     tokens[4] = nidToken;
                 }
 
-                if (strippedToken.indexOf('[') > 0) {
+                if (strippedToken.lastIndexOf('[') > strippedToken.indexOf("nid=")) {
                     if (strippedToken.indexOf("lwp_id=") > 0) {
-                        tokens[5] = strippedToken.substring(strippedToken.indexOf(" ", strippedToken.indexOf("lwp_id=")) + 1, strippedToken.indexOf('[',
-                                strippedToken.indexOf("lwp_id=")) - 1);
+                        tokens[5] = strippedToken.substring(strippedToken.indexOf(" ", strippedToken.indexOf("lwp_id=")) + 1, strippedToken.lastIndexOf('[') - 1);
                     } else {
-                        tokens[5] = strippedToken.substring(strippedToken.indexOf(" ", strippedToken.indexOf("nid=")) + 1, strippedToken.indexOf('[',
-                                strippedToken.indexOf("nid=")) - 1);
+                        tokens[5] = strippedToken.substring(strippedToken.indexOf(" ", strippedToken.indexOf("nid=")) + 1, strippedToken.lastIndexOf('[') - 1);
                     }
-                    tokens[6] = strippedToken.substring(strippedToken.indexOf('['));
+                    tokens[6] = strippedToken.substring(strippedToken.lastIndexOf('['));
                 } else {
                     tokens[5] = strippedToken.substring(strippedToken.indexOf(" ", strippedToken.indexOf("nid=")) + 1);
                 }

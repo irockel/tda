@@ -503,4 +503,23 @@ public class SunJDKParserTest {
             }
         }
     }
+    @Test
+    public void testGetThreadTokensWithThreadTypeNumber() {
+        Map<String, Map<String, String>> threadStore = new HashMap<>();
+        SunJDKParser parser = new SunJDKParser(new BufferedReader(new StringReader("")), threadStore, 0, false, 0, new DateMatcher());
+
+        // Line from carrier_stuck.log
+        String line = "\"ForkJoinPool-1-worker-1\" #11 daemon [11] prio=5 os_prio=0 cpu=5678.90ms elapsed=58230.14s tid=0x00007f8b2c158000 nid=0x1ac7 runnable  [0x00007f8b234f5000]";
+
+        String[] tokens = parser.getThreadTokens(line);
+
+        // tokens: 0: name, 1: type, 2: prio, 3: tid, 4: nid, 5: state, 6: address
+        assertEquals("ForkJoinPool-1-worker-1", tokens[0], "Thread Name");
+        assertEquals("Daemon", tokens[1], "Thread Type");
+        assertEquals("5", tokens[2], "Priority");
+        assertEquals(String.valueOf(Long.parseLong("00007f8b2c158000", 16)), tokens[3], "TID");
+        assertEquals(String.valueOf(Long.parseLong("1ac7", 16)), tokens[4], "NID");
+        assertEquals("runnable", tokens[5].trim(), "State");
+        assertEquals("[0x00007f8b234f5000]", tokens[6], "Address Range");
+    }
 }

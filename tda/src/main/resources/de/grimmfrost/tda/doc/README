@@ -6,6 +6,9 @@ TDA - Thread Dump Analyzer -- Version 2.7
 Note: This is the 2.7 release of the software, for an usage overview see Help/Overview.
 
 Changes from 2.6 are:
+* Introduced logging for easier debugging in MCP mode, added red dot in UI mode if error
+  occurred with tooltip to check logfile.
+* Fixed address range parsing in thread titles for newer JVMs.
 * Fixed missing protocolVersion in MCP, which broke the Cursor Integration.
 * Experimental support for JSON based jmap thread dumps.
 * Support for SMR parsing in thread dumps (Java 11+)
