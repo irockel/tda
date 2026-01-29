@@ -6,10 +6,9 @@ TDA - Thread Dump Analyzer -- Version 2.7
 Note: This is the 2.7 release of the software, for an usage overview see Help/Overview.
 
 Changes from 2.6 are:
+Features:
 * Introduced logging for easier debugging in MCP mode, added red dot in UI mode if error
   occurred with tooltip to check logfile.
-* Fixed address range parsing in thread titles for newer JVMs.
-* Fixed missing protocolVersion in MCP, which broke the Cursor Integration.
 * Experimental support for JSON based jmap thread dumps.
 * Support for SMR parsing in thread dumps (Java 11+)
 * Detect stuck Carrier Threads used by Virtual Threads in Java 21+ thread dumps.
@@ -19,6 +18,9 @@ Changes from 2.6 are:
 * Reworked the thread dump summary to provide information in a more compact way.
 * MacOS Binary is now provided.
 * Use flatplaf for a modern look and feel.
+Bugfixes:
+* Fixed address range parsing in thread titles for newer JVMs.
+* Fixed missing protocolVersion in MCP, which broke the Cursor Integration.
 
 Changes from 2.5 are:
 * TDA now is compiled with JDK 11, it requires Java 11 or higher to run, but still

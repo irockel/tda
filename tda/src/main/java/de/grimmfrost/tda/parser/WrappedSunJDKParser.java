@@ -32,7 +32,7 @@ public class WrappedSunJDKParser extends SunJDKParser {
    * Creates a new instance of WrappedSunJDKParser: A SunJDKParser reading a log
    * file created by the Tanuki Service Wrapper.
    */
-  public WrappedSunJDKParser(BufferedReader bis, Map threadStore, int lineCounter,
+  public WrappedSunJDKParser(BufferedReader bis, Map<String, Map<String, String>> threadStore, int lineCounter,
                              boolean withCurrentTimeStamp, int startCounter, DateMatcher dm) {
     super(bis, threadStore, lineCounter, withCurrentTimeStamp, startCounter, dm);
   }
@@ -46,7 +46,7 @@ public class WrappedSunJDKParser extends SunJDKParser {
    */
   public static boolean checkForSupportedThreadDump(String logLine) {
     return logLine.startsWith("INFO   | jvm ")
-           && logLine.trim().indexOf(" | Full thread dump") >= 0;
+           && logLine.trim().contains(" | Full thread dump");
   }
 
   protected String getNextLine() throws IOException {

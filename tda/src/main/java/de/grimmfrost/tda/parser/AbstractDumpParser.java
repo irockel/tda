@@ -34,7 +34,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 
 /**
- * abstract dump parser class, contains all generic dump parser
+ * Abstract dump parser class, contains all generic dump parser
  * stuff, which doesn't have any jdk specific parsing code.
  * 
  * All Dump Parser should extend from this class as it already provides

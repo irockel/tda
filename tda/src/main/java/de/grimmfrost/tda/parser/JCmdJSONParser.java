@@ -11,6 +11,7 @@ import de.grimmfrost.tda.utils.IconFactory;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,9 +28,9 @@ public class JCmdJSONParser extends AbstractDumpParser {
     private boolean hasMore = true;
     private int counter = 1;
 
-    private Map threadStore;
+    private Map<String, Map<String, String>> threadStore;
 
-    public JCmdJSONParser(BufferedReader bis, Map threadStore, int lineCounter, DateMatcher dm) {
+    public JCmdJSONParser(BufferedReader bis, Map<String, Map<String, String>> threadStore, int lineCounter, DateMatcher dm) {
         super(bis, dm);
         this.threadStore = threadStore;
     }
@@ -113,8 +114,8 @@ public class JCmdJSONParser extends AbstractDumpParser {
         String[] tokens = new String[7];
         // Minimal implementation for now, matching SunJDKParser's structure if possible
         // tokens: 0: name, 1: type, 2: prio, 3: tid, 4: nid, 5: state, 6: address
-        
-        for (int i = 0; i < tokens.length; i++) tokens[i] = "";
+
+        Arrays.fill(tokens, "");
         
         if (title.startsWith("\"")) {
             int endQuote = title.indexOf("\"", 1);

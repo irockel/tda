@@ -41,9 +41,9 @@ public interface DumpParser {
     
     public void close() throws IOException;
     
-    public void findLongRunningThreads(DefaultMutableTreeNode root, Map dumpStore, TreePath[] paths, int minOccurence, String regex);
+    public void findLongRunningThreads(DefaultMutableTreeNode root, Map<String, Map<String, String>> dumpStore, TreePath[] paths, int minOccurrence, String regex);
     
-    public void mergeDumps(DefaultMutableTreeNode root, Map dumpStore, TreePath[] dumps, int minOccurence, String regex);
+    public void mergeDumps(DefaultMutableTreeNode root, Map<String, Map<String, String>> dumpStore, TreePath[] dumps, int minOccurrence, String regex);
 
     public boolean isFoundClassHistograms();
     
