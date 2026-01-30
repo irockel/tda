@@ -264,8 +264,11 @@ public abstract class AbstractDumpParser implements DumpParser {
             boolean parseTokens) {
         ThreadInfo ti = new ThreadInfo(title, info != null ? info.toString() : null, content, lineCount, 
                 parseTokens ? getThreadTokens(title) : null);
-        ((Category)category.getUserObject()).addToCatNodes(new DefaultMutableTreeNode(ti));
-        category.add(new DefaultMutableTreeNode(ti));
+        Category cat = (Category) category.getUserObject();
+        cat.addToCatNodes(new DefaultMutableTreeNode(ti));
+        if (!(cat instanceof TableCategory)) {
+            category.add(new DefaultMutableTreeNode(ti));
+        }
     }
 
     /**
@@ -305,6 +308,19 @@ public abstract class AbstractDumpParser implements DumpParser {
     }
     
         
+    /**
+     * copy the given node and all its children.
+     * @param node the node to copy
+     * @return a copy of the node
+     */
+    protected DefaultMutableTreeNode copyNode(DefaultMutableTreeNode node) {
+        DefaultMutableTreeNode copy = new DefaultMutableTreeNode(node.getUserObject());
+        for (int i = 0; i < node.getChildCount(); i++) {
+            copy.add(copyNode((DefaultMutableTreeNode) node.getChildAt(i)));
+        }
+        return copy;
+    }
+
     /**
      * retrieve the next node for adding histogram information into the tree.
      * @param root the root to use for search.

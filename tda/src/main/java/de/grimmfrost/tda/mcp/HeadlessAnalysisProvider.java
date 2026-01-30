@@ -110,8 +110,10 @@ public class HeadlessAnalysisProvider {
         if (longRunningRoot.getChildCount() == 0) {
             results.add("No long running threads found across " + topNodes.size() + " dumps.");
         } else {
-            for (int i = 0; i < longRunningRoot.getChildCount(); i++) {
-                DefaultMutableTreeNode node = (DefaultMutableTreeNode) longRunningRoot.getChildAt(i);
+            DefaultMutableTreeNode catMergeNode = (DefaultMutableTreeNode) longRunningRoot.getChildAt(0);
+            Category catMerge = (Category) catMergeNode.getUserObject();
+            for (int i = 0; i < catMerge.getNodeCount(); i++) {
+                DefaultMutableTreeNode node = catMerge.getNodeAt(i);
                 results.add("Long running thread: " + node.getUserObject().toString());
             }
         }
