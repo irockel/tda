@@ -73,13 +73,13 @@ public class MCPServer {
 
     private static void handleInitialize(JsonObject request) {
         JsonObject result = new JsonObject();
-        result.addProperty("protocolVersion", "2024-11-05");
+        result.addProperty("protocolVersion", "2025-11-25");
         JsonObject capabilities = new JsonObject();
         capabilities.add("tools", new JsonObject());
         result.add("capabilities", capabilities);
         JsonObject serverInfo = new JsonObject();
         serverInfo.addProperty("name", "tda-mcp-server");
-        serverInfo.addProperty("version", "1.0.0");
+        serverInfo.addProperty("version", "3.0.0");
         result.add("serverInfo", serverInfo);
         
         sendResponse(request.get("id").getAsInt(), result);

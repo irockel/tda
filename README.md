@@ -1,5 +1,15 @@
 
 # TDA - Thread Dump Analyzer
+
+> [!IMPORTANT]
+> **2026-01-30 - TDA 3.0 is now available!** 🚀
+> This major release brings significant enhancements:
+> *   **Extended MCP Server**: Now with **Carrier Thread Pinning** detection and support for **SMR (Safe Memory Relocation)** parsing.
+> *   **Modernized UI**: Completely refreshed look and feel using **FlatLaf**.
+> *   **Usability Improvements**: Fixed several long-standing issues, including improved split-pane management and faster parsing.
+> *   **Native macOS Support**: Now providing a dedicated macOS binary.
+> *   **Logging**: Especially for troubleshooting in MCP Mode.
+
 [![Java CI with Maven](https://github.com/irockel/tda/actions/workflows/build.yml/badge.svg)](https://github.com/irockel/tda/actions/workflows/build.yml)
 [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://github.com/irockel/tda/issues?q=is%3Aissue+is%3Aopen+label%3Adependencies)
 [![Dependencies](https://img.shields.io/librariesio/github/irockel/tda)](https://libraries.io/github/irockel/tda)
@@ -26,6 +36,7 @@ TDA supports Java 1.4.x through Java 21+, including specialized support for **Vi
   - [4. JSON-based Thread Dumps (Experimental)](#4-json-based-thread-dumps-experimental)
   - [5. MCP Server (Headless Analysis)](#5-mcp-server-headless-analysis)
 - [🏗 Building from Source](#-building-from-source)
+- [🛠️ Troubleshooting](#️-troubleshooting)
 - [📜 Changelog](CHANGELOG.md)
 - [📜 License](#-license)
 
@@ -159,18 +170,6 @@ The MCP server exposes the following tools:
 | `get_zombie_threads` | None                      | Returns a list of zombie threads (unresolved SMR addresses) with timestamps and dump names. |
 | `clear`             | None                      | Resets the server state and clears the internal thread store for a new log file.               |
 
-#### Troubleshooting
-
-- **Logging**: TDA maintains a log file for troubleshooting. The location depends on your operating system:
-    - **macOS**: `~/Library/Logs/TDA/tda.log`
-    - **Windows**: `%LOCALAPPDATA%\TDA\Logs\tda.log`
-    - **Linux/Unix**: `~/.tda/logs/tda.log`
-  You can check this file if TDA or the MCP server doesn't behave as expected.
-- **Path issues**: Ensure you use absolute paths for the JAR file and the log files you want to parse.
-- **Headless mode**: If you see errors related to `java.awt.HeadlessException`, double-check that `-Djava.awt.headless=true` is set.
-- **Permissions**: Make sure the user running the MCP server has read permissions for the log files.
-- **Memory issues**: If you see `OutOfMemoryError`s, you can increase the memory allocation by setting `-Xmx`.
-
 #### 🤖 AI Agent Configuration (Cursor / Junie)
 
 To ensure that AI agents use TDA efficiently and don't attempt to read large log files directly (which is slow and expensive), you should configure a **System Prompt**.
@@ -218,6 +217,40 @@ mvn clean package -Prelease
 ```
 
 The resulting standalone JAR will also be located in the `tda/target/` directory.
+
+---
+
+## 🛠️ Troubleshooting
+
+If you encounter issues while using TDA, check the following sections for guidance.
+
+### 1. Logging
+TDA maintains a centralized log file to help diagnose issues. If something isn't working as expected, the log file is the first place to look.
+
+#### Log File Locations
+*   **macOS**: `~/Library/Logs/TDA/tda.log`
+*   **Windows**: `%LOCALAPPDATA%\TDA\Logs\tda.log`
+*   **Linux/Unix**: `~/.tda/logs/tda.log`
+
+#### Error Indicators (UI Mode)
+In standalone or plugin mode, TDA will display a **red dot** in the status bar (next to the memory indicator) if a critical error has occurred. Hover over the dot to see a tooltip reminding you to check the log file.
+
+### 2. MCP Server Specifics
+Running TDA as a headless MCP server has specific requirements:
+
+*   **Headless Environment**: Ensure you pass `-Djava.awt.headless=true` when running the JAR. TDA is a Swing-based application, and the MCP mode must bypass UI initialization.
+*   **Std-in/Std-out Pollution**: The MCP protocol communicates via `stdin` and `stdout`. Avoid using any commands or scripts that print additional information to `stdout`, as this will corrupt the JSON-RPC stream and cause the AI client to lose connection.
+*   **Absolute Paths**: When calling `parse_log`, always use **absolute paths** for the log file. The working directory of the MCP server might not be what you expect depending on how your AI client (e.g., Claude Desktop) launches it.
+*   **Permissions**: Ensure the user running the AI client has read permissions for the log files being analyzed.
+
+### 3. Memory Management
+Thread dumps from large production systems can be hundreds of megabytes. 
+
+*   **OutOfMemoryErrors**: If TDA crashes or fails to parse a large file, increase the heap size using the `-Xmx` flag:
+    ```bash
+    java -Xmx2g -jar tda.jar
+    ```
+*   **Max Logfile Size**: TDA has a safety limit for log file sizes. You can adjust this in the **Preferences** dialog (UI mode) or by manually editing the configuration if necessary.
 
 ---
 

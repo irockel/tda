@@ -1,17 +1,17 @@
 <html>
 <link rel="stylesheet" type="text/css" href="stylesheet.css" title="Style">
 <body bgcolor="#f5f5f5">
-<h3>TDA - Thread Dump Analyzer -- Version 2.7</h3>
+<h3>TDA - Thread Dump Analyzer -- Version 3.0</h3>
 
-<p>Note: This is the 2.7 release of the software, for an usage overview see <b><a href="https://github.com/irockel/tda">README</a> on GitHub</b>.</p>
+<p>Note: This is the 3.0 release of the software, for an usage overview see <b><a href="https://github.com/irockel/tda">README</a> on GitHub</b>.</p>
 
 <p>Recent changes are:</p>
 
-<h4>Version 2.7</h4>
+<h4>Version 3.0</h4>
 <ul>
 <li>Introduced logging for easier debugging in MCP mode, added red dot in UI mode if error occurred with tooltip to check logfile.</li>
 <li>Experimental support for JSON based jmap thread dumps.</li>
-<li>Support for SMR parsing in thread dumps (Java 11+).</li>
+<li>Support for SMR (Safe Memory Reclamation) parsing in thread dumps (Java 11+).</li>
 <li>Detect stuck Carrier Threads used by Virtual Threads in Java 21+ thread dumps.</li>
 <li>Extended MCP Server for fetching pinned Carrier Threads.</li>
 <li>Added a method to the MCP Server to enable the Agent to fetch a list of threads which are running in native code, including library information if available.</li>
