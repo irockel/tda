@@ -28,41 +28,36 @@ import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 /**
- *
+ * Displays a dialog for setting some preferences for using tda. These
+ * are persisted using java.util.prefs package.
  * @author irockel
  */
 public class PreferencesDialog extends JDialog {
     private JTabbedPane prefsPane;
     private GeneralPanel generalPanel;
     private RegExPanel regExPanel;
-    private JPanel buttonPanel;
     private JButton okButton;
-    private JButton cancelButton;
-    private Frame frame;
+    private final Frame frame;
     
     /**
      * Creates a new instance of PreferencesDialog
      */
     public PreferencesDialog(Frame owner) {
         super(owner, "Preferences", true);
-        try {
-            this.setIconImage(TDA.createImageIcon("Preferences.png").getImage());
-        } catch (NoSuchMethodError nsme) {
-        // ignore, for 1.4 backward compatibility
-        }
+        this.setIconImage(TDA.createImageIcon("Preferences.png").getImage());
 
         frame = owner;
         getContentPane().setLayout(new BorderLayout());
@@ -85,25 +80,15 @@ public class PreferencesDialog extends JDialog {
         // otherwise we are running in visualvm
         if(frame != null) {
             okButton = new JButton("Ok");
-            cancelButton = new JButton("Cancel");
-            buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+            JButton cancelButton = new JButton("Cancel");
+            JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             buttonPanel.add(okButton);
             buttonPanel.add(cancelButton);
             getContentPane().add(buttonPanel, BorderLayout.SOUTH);
 
-            okButton.addActionListener(new ActionListener() {
+            okButton.addActionListener(e -> saveSettings());
 
-                public void actionPerformed(ActionEvent e) {
-                    saveSettings();
-                }
-            });
-
-            cancelButton.addActionListener(new ActionListener() {
-
-                public void actionPerformed(ActionEvent e) {
-                    dispose();
-                }
-            });
+            cancelButton.addActionListener(e -> dispose());
         }
         reset();
     }
@@ -118,13 +103,12 @@ public class PreferencesDialog extends JDialog {
         generalPanel.maxLinesField.setText(String.valueOf(PrefManager.get().getMaxRows()));
         generalPanel.bufferField.setText(String.valueOf(PrefManager.get().getStreamResetBuffer()));
         generalPanel.showHotspotClasses.setSelected(PrefManager.get().getShowHotspotClasses());
-        generalPanel.useGTKLF.setSelected(PrefManager.get().isUseGTKLF());
         generalPanel.maxLogfileSizeField.setText(String.valueOf(PrefManager.get().getMaxLogfileSize()));
         
-        DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
+        DefaultComboBoxModel<String> boxModel = new DefaultComboBoxModel<>();
         String[] regexs = PrefManager.get().getDateParsingRegexs();
-        for(int i = 0; i < regexs.length; i++) {
-            boxModel.addElement(regexs[i]);
+        for (String regex : regexs) {
+            boxModel.addElement(regex);
         }
         regExPanel.dateParsingRegexs.setModel(boxModel);
         regExPanel.dateParsingRegexs.setSelectedItem(PrefManager.get().getDateParsingRegex());
@@ -141,20 +125,18 @@ public class PreferencesDialog extends JDialog {
         PrefManager.get().setDateParsingRegex((String) regExPanel.dateParsingRegexs.getSelectedItem());
         PrefManager.get().setDateParsingRegexs(regExPanel.dateParsingRegexs.getModel());
         PrefManager.get().setMillisTimeStamp(regExPanel.isMillisTimeStamp.isSelected());
-        PrefManager.get().setUseGTKLF(generalPanel.useGTKLF.isSelected());
         PrefManager.get().setJDK16DefaultParsing(regExPanel.isJDK16DefaultParsing.isSelected());
         PrefManager.get().setMaxLogfileSize(Integer.parseInt(generalPanel.maxLogfileSizeField.getText()));
         dispose();
     }
     
-    class GeneralPanel extends JPanel {
+    static class GeneralPanel extends JPanel {
         JTextField maxLinesField;
         JTextField bufferField;
         JTextField maxLogfileSizeField;
         JCheckBox forceLoggcLoading;
         JCheckBox showHotspotClasses;
-        JCheckBox useGTKLF;
-        
+
         public GeneralPanel() {
             setLayout(new FlowLayout(FlowLayout.RIGHT));
             JPanel innerPanel = new JPanel();
@@ -192,18 +174,14 @@ public class PreferencesDialog extends JDialog {
             showHotspotClasses = new JCheckBox();
             layoutPanel.add(showHotspotClasses);
             innerPanel.add(layoutPanel);
-            
-            layoutPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-            layoutPanel.add(new JLabel("Use GTK Look and Feel on Unix/Linux"));
-            useGTKLF = new JCheckBox();
-            layoutPanel.add(useGTKLF);
-            innerPanel.add(layoutPanel);
+
+            // add preferences to parent panel.
             add(innerPanel);
         }
     }
     
-    public class RegExPanel extends JPanel implements ActionListener {
-        JComboBox dateParsingRegexs;
+    public static class RegExPanel extends JPanel implements ActionListener {
+        JComboBox<String> dateParsingRegexs;
         JCheckBox isMillisTimeStamp;
         JCheckBox isJDK16DefaultParsing;
         JButton clearButton;
@@ -211,12 +189,10 @@ public class PreferencesDialog extends JDialog {
         
         RegExPanel() {
             setLayout(new BorderLayout());
-            //setPreferredSize(new Dimension(580, 190));
-            
             JPanel layoutPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             
             layoutPanel.add(new JLabel("Regular Expression for parsing timestamps in logs files"));
-            dateParsingRegexs = new JComboBox();
+            dateParsingRegexs = new JComboBox<>();
             dateParsingRegexs.setEditable(true);
             dateParsingRegexs.addActionListener(this);
             layoutPanel.add(dateParsingRegexs);
@@ -235,7 +211,7 @@ public class PreferencesDialog extends JDialog {
             
             layoutPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
             isJDK16DefaultParsing = new JCheckBox();
-            layoutPanel.add(new JLabel("Perform Parsing for Default Thread Dump Timestamps of Sun JDK 1.6"));
+            layoutPanel.add(new JLabel("Perform Parsing for Default Thread Dump Timestamps of current JDKs."));
             layoutPanel.add(isJDK16DefaultParsing);
             lowerPanel.add(layoutPanel,BorderLayout.CENTER);
             add(lowerPanel, BorderLayout.SOUTH);
@@ -243,12 +219,12 @@ public class PreferencesDialog extends JDialog {
         
         public void actionPerformed(ActionEvent e) {
             if(e.getSource() == dateParsingRegexs) {
-                if((lastSelectedItem == null) || !((String) dateParsingRegexs.getSelectedItem()).equals(lastSelectedItem)) {
-                    dateParsingRegexs.addItem(dateParsingRegexs.getSelectedItem());
+                if((lastSelectedItem == null) || !Objects.equals(dateParsingRegexs.getSelectedItem(), lastSelectedItem)) {
+                    dateParsingRegexs.addItem((String) dateParsingRegexs.getSelectedItem());
                     lastSelectedItem = (String) dateParsingRegexs.getSelectedItem();
                 }
             } else if (e.getSource() == clearButton) {
-                dateParsingRegexs.setModel(new DefaultComboBoxModel());
+                dateParsingRegexs.setModel(new DefaultComboBoxModel<>());
             }
         }
     }
