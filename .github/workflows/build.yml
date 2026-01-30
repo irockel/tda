@@ -6,12 +6,14 @@ on:
     paths-ignore:
       - 'README.md'
       - 'CHANGELOG.md'
+      - 'renovate.json'
       - 'docs/**'
   pull_request:
     branches: [ "*" ]
     paths-ignore:
       - 'README.md'
       - 'CHANGELOG.md'
+      - 'renovate.json'
       - 'docs/**'
 
 jobs:
