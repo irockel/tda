@@ -20,7 +20,7 @@
 <li>Use FlatLaf for a modern look and feel.</li>
 <li>Fixed address range parsing in thread titles for newer JVMs.</li>
 <li>Fixed missing protocolVersion in MCP, which broke the Cursor Integration.</li>
-<li>Fixed right thread pane to always be invisible on first load.</li>
+<li>Fixed right thread pane to always be visible on first load.</li>
 </ul>
 
 <h4>Version 2.6</h4>
