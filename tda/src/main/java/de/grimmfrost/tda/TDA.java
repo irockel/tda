@@ -54,7 +54,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-
+import javax.swing.SwingUtilities;
 import javax.swing.JTree;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
@@ -282,6 +282,7 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
         topSplitPane.setLeftComponent(emptyView);
         topSplitPane.setDividerSize(DIVIDER_SIZE);
         topSplitPane.setContinuousLayout(true);
+        topSplitPane.setResizeWeight(0.2);
         
         //Add the scroll panes to a split pane.
         splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
@@ -289,6 +290,7 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
         splitPane.setTopComponent(topSplitPane);
         splitPane.setDividerSize(DIVIDER_SIZE);
         splitPane.setContinuousLayout(true);
+        splitPane.setResizeWeight(0.5);
         
         splitPane.setForeground(Color.red);
         
@@ -814,22 +816,24 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
             }
         }
         if(runningAsJConsolePlugin || runningAsVisualVMPlugin || isFileOpen()) {
-            if(topSplitPane.getDividerLocation() <= 0) {
-                topSplitPane.setDividerLocation(200);
-            }
-            
             // change from html view to split pane
             remove(0);
-            revalidate();
             htmlPane.setText("");
             splitPane.setBottomComponent(htmlView);
             add(splitPane, BorderLayout.CENTER);
-            if(PrefManager.get().getDividerPos() > 0) {
-                splitPane.setDividerLocation(PrefManager.get().getDividerPos());
-            } else {
-                // set default divider location
-                splitPane.setDividerLocation(100);
-            }
+            
+            revalidate();
+            
+            SwingUtilities.invokeLater(() -> {
+                topSplitPane.setDividerLocation(0.3);
+                splitPane.setDividerLocation(0.3);
+                
+                // second call to ensure it sticks after layout
+                SwingUtilities.invokeLater(() -> {
+                    topSplitPane.setDividerLocation(0.3);
+                    splitPane.setDividerLocation(0.3);
+                });
+            });
             revalidate();
         }
     }
@@ -892,21 +896,41 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
                 top.add(logFile);
             }
         }
+        final int currentTopNodesCount = topNodes.size();
         setFileOpen(true);
 
         final SwingWorker worker = new SwingWorker() {
+                    private int capturedDivider;
+                    private int capturedMaxDivider;
 
                     public Object construct() {
                         synchronized (syncObject) {
-                            int divider = topSplitPane.getDividerLocation();
+                            capturedDivider = topSplitPane.getDividerLocation();
+                            capturedMaxDivider = topSplitPane.getMaximumDividerLocation();
                             addThreadDumps(top, parseFileStream);
-                            createTree();
-                            tree.expandRow(1);
-
-                            topSplitPane.setDividerLocation(divider);
                         }
 
                         return null;
+                    }
+
+                    @Override
+                    public void finished() {
+                        synchronized (syncObject) {
+                            createTree();
+                            tree.expandRow(1);
+
+                            SwingUtilities.invokeLater(() -> {
+                                if (currentTopNodesCount > 1 && capturedDivider > 0 && capturedDivider < capturedMaxDivider - 20) {
+                                    topSplitPane.setDividerLocation(capturedDivider);
+                                    // double call to ensure it sticks after layout
+                                    SwingUtilities.invokeLater(() -> topSplitPane.setDividerLocation(capturedDivider));
+                                } else {
+                                    topSplitPane.setDividerLocation(0.3);
+                                    // double call to ensure it sticks after layout
+                                    SwingUtilities.invokeLater(() -> topSplitPane.setDividerLocation(0.3));
+                                }
+                            });
+                        }
                     }
                 };
         worker.start();
@@ -994,8 +1018,16 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
             
             private void resetPane() {
                 int dividerLocation = topSplitPane.getDividerLocation();
+                int maxDivider = topSplitPane.getMaximumDividerLocation();
                 topSplitPane.setRightComponent(emptyView);
-                topSplitPane.setDividerLocation(dividerLocation);
+                if (dividerLocation > 0 && dividerLocation < maxDivider - 20) {
+                    topSplitPane.setDividerLocation(dividerLocation);
+                    SwingUtilities.invokeLater(() -> {
+                        if (topSplitPane.getRightComponent() == emptyView) {
+                            topSplitPane.setDividerLocation(dividerLocation);
+                        }
+                    });
+                }
             }
             
         });
@@ -1108,6 +1140,8 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
     
     private void displayLogFileContent(Object nodeInfo) {
         int dividerLocation = splitPane.getDividerLocation();
+        int maxDivider = splitPane.getMaximumDividerLocation();
+
         if(splitPane.getBottomComponent() != jeditPane) {
             if(jeditPane == null) {
                 initJeditView();
@@ -1118,7 +1152,14 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
         LogFileContent lfc = (LogFileContent) nodeInfo;
         jeditPane.setText(lfc.getContent());
         jeditPane.setCaretPosition(0);
-        splitPane.setDividerLocation(dividerLocation);
+        
+        SwingUtilities.invokeLater(() -> {
+            if (dividerLocation > 0 && dividerLocation < maxDivider - 20) {
+                splitPane.setDividerLocation(dividerLocation);
+            } else {
+                splitPane.setDividerLocation(0.3);
+            }
+        });
         statusBar.setInfoText(AppInfo.getStatusBarInfo());
     }
     
@@ -1141,15 +1182,9 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
      */
     private void displayCategory(Object nodeInfo) {
         Category cat = ((Category) nodeInfo);
-        Dimension size = null;
-        ((JScrollPane) topSplitPane.getLeftComponent()).setPreferredSize(topSplitPane.getLeftComponent().getSize());
-        boolean needDividerPos = false;
+        int dividerLocation = topSplitPane.getDividerLocation();
+        int maxDivider = topSplitPane.getMaximumDividerLocation();
         
-        if(topSplitPane.getRightComponent() != null) {
-            size = topSplitPane.getRightComponent().getSize();
-        } else {
-            needDividerPos = true;
-        }
         setThreadDisplay(true);
         if(cat.getLastView() == null) {
             JComponent catComp = cat.getCatComponent(this);
@@ -1159,27 +1194,31 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
                 catComp.addMouseListener(getCatPopupMenu());
             }
             dumpView = new ViewScrollPane(catComp, runningAsVisualVMPlugin);
-            if(size != null) {
-                dumpView.setPreferredSize(size);
-            }
-            
             topSplitPane.setRightComponent(dumpView);
             cat.setLastView(dumpView);
         } else {
-            if(size != null) {
-                cat.getLastView().setPreferredSize(size);
-            }
             topSplitPane.setRightComponent(cat.getLastView());
         }
         
+        SwingUtilities.invokeLater(() -> {
+            int targetPos;
+            if (dividerLocation > 0 && dividerLocation < maxDivider - 20) {
+                targetPos = dividerLocation;
+            } else {
+                topSplitPane.setDividerLocation(0.3);
+                return;
+            }
+            topSplitPane.setDividerLocation(targetPos);
+            // double call to ensure it sticks
+            SwingUtilities.invokeLater(() -> topSplitPane.setDividerLocation(targetPos));
+        });
+
         if(cat.getCurrentlySelectedUserObject() != null) {
             displayThreadInfo(cat.getCurrentlySelectedUserObject());
         } else {
             displayContent(null);
         }
-        if(needDividerPos) {
-            topSplitPane.setDividerLocation(PrefManager.get().getTopDividerPos());
-        }
+        
         if (cat.howManyFiltered() > 0) {
             statusBar.setInfoText("Filtered " + cat.howManyFiltered() + " elements in this category. Showing remaining " + cat.showing() + " elements.");
         } else {
@@ -1191,7 +1230,16 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
     
     private void displayContent(String text) {
         if(splitPane.getBottomComponent() != htmlView) {
+            int dividerLocation = splitPane.getDividerLocation();
+            int maxDivider = splitPane.getMaximumDividerLocation();
             splitPane.setBottomComponent(htmlView);
+            SwingUtilities.invokeLater(() -> {
+                if (dividerLocation > 0 && dividerLocation < maxDivider - 20) {
+                    splitPane.setDividerLocation(dividerLocation);
+                } else {
+                    splitPane.setDividerLocation(0.3);
+                }
+            });
         }
         if (text != null) {
             htmlPane.setContentType("text/html");
@@ -1259,7 +1307,16 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
         
         histogramView.setPreferredSize(splitPane.getBottomComponent().getSize());
         
+        int dividerLocation = splitPane.getDividerLocation();
+        int maxDivider = splitPane.getMaximumDividerLocation();
         splitPane.setBottomComponent(histogramView);
+        SwingUtilities.invokeLater(() -> {
+            if (dividerLocation > 0 && dividerLocation < maxDivider - 20) {
+                splitPane.setDividerLocation(dividerLocation);
+            } else {
+                splitPane.setDividerLocation(0.3);
+            }
+        });
     }
 
     private class FilterListener implements CaretListener {
@@ -2203,10 +2260,6 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
         }
         PrefManager.get().setPreferredSize(frame.getRootPane().getSize());
         PrefManager.get().setWindowPos(frame.getX(), frame.getY());
-        if(isThreadDisplay()) {
-            PrefManager.get().setTopDividerPos(topSplitPane.getDividerLocation());
-            PrefManager.get().setDividerPos(splitPane.getDividerLocation());
-        }
         PrefManager.get().flush();
     }
     
