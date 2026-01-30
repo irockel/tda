@@ -8,6 +8,7 @@ on:
       - 'CHANGELOG.md'
       - 'renovate.json'
       - 'docs/**'
+      - 'tda-main-screen.png'
   pull_request:
     branches: [ "*" ]
     paths-ignore:
@@ -15,6 +16,7 @@ on:
       - 'CHANGELOG.md'
       - 'renovate.json'
       - 'docs/**'
+      - 'tda-main-screen.png'
 
 jobs:
   build:
