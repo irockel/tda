@@ -10,12 +10,18 @@
  */
 package de.grimmfrost.tda.utils;
 
+import java.awt.Desktop;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /** 
  * helper class for launching the default browser
  */
 public class Browser { 
+    private static final Logger LOGGER = LogManager.getLogger(Browser.class);
     
     /**
      * Starts the default browser for the current platform.
@@ -23,23 +29,52 @@ public class Browser {
      * @param url The link to point the browser to.
      */
     public static void open(String url) throws InterruptedException, IOException {
+        if (url == null || url.trim().isEmpty()) {
+            return;
+        }
+
+        // Try java.awt.Desktop first (standard Java API)
+        if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+            try {
+                Desktop.getDesktop().browse(new URI(url));
+                return;
+            } catch (URISyntaxException | IOException e) {
+                LOGGER.log(Level.WARNING, "Failed to open browser via Desktop API, falling back to manual command", e);
+            }
+        }
+
+        // Fallback to manual commands
         String cmd = null;
+        String os = System.getProperty("os.name").toLowerCase();
         
-        if (isWindows()) {
-            cmd = ("rundll32 url.dll,FileProtocolHandler " + maybeFixupURLForWindows(url));
-            Runtime.getRuntime().exec(cmd);
+        if (os.contains("win")) {
+            cmd = "rundll32 url.dll,FileProtocolHandler " + maybeFixupURLForWindows(url);
+        } else if (os.contains("mac")) {
+            cmd = "open " + url;
         } else {
+            // Unix/Linux fallback
             if(System.getenv("BROWSER") != null) {
                 cmd = System.getenv("BROWSER") + " " + url;
             } else {
-                cmd = "firefox -remote openURL(" + url + ")";
+                // Try common linux browser launchers
+                String[] launchers = {"xdg-open", "gnome-open", "kfmclient", "firefox", "google-chrome"};
+                for (String launcher : launchers) {
+                    try {
+                        if (Runtime.getRuntime().exec(new String[]{"which", launcher}).waitFor() == 0) {
+                            cmd = launcher + " " + url;
+                            break;
+                        }
+                    } catch (Exception e) {
+                        // ignore
+                    }
+                }
             }
-            Process p = Runtime.getRuntime().exec(cmd);
-            int exitcode = p.waitFor();
-            if (exitcode != 0) {
-                cmd = "firefox " + url; 
-                Runtime.getRuntime().exec(cmd);
-            }
+        }
+
+        if (cmd != null) {
+            Runtime.getRuntime().exec(cmd);
+        } else {
+            LOGGER.log(Level.SEVERE, "Could not find a way to open URL: " + url);
         }
     }
     
@@ -83,7 +118,6 @@ public class Browser {
      * @return true if it is, false if it's not.
      */
     public static boolean isWindows() {
-        if (System.getProperty("os.name").indexOf("Windows") != -1) {
-            return true; } else { return false; }
+        return System.getProperty("os.name").toLowerCase().contains("win");
     }
 }
