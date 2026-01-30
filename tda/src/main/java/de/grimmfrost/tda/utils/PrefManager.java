@@ -215,6 +215,17 @@ public class PrefManager {
         }
     }
     
+    public void setRecentFiles(String[] files) {
+        StringBuffer recentFiles = new StringBuffer();
+        for (int i = 0; i < files.length; i++) {
+            recentFiles.append(files[i]);
+            if (i + 1 < files.length) {
+                recentFiles.append(PARAM_DELIM);
+            }
+        }
+        toolPrefs.put("recentFiles", recentFiles.toString());
+    }
+
     public String[] getRecentFiles() {
         return(toolPrefs.get("recentFiles", "").split(PARAM_DELIM));
     }
@@ -238,6 +249,17 @@ public class PrefManager {
         }
     }
     
+    public void setRecentSessions(String[] files) {
+        StringBuffer recentSessions = new StringBuffer();
+        for (int i = 0; i < files.length; i++) {
+            recentSessions.append(files[i]);
+            if (i + 1 < files.length) {
+                recentSessions.append(PARAM_DELIM);
+            }
+        }
+        toolPrefs.put("recentSessions", recentSessions.toString());
+    }
+
     public String[] getRecentSessions() {
         return(toolPrefs.get("recentSessions", "").split(PARAM_DELIM));
     }

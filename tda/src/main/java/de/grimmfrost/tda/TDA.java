@@ -431,12 +431,12 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
     private String parseWelcomeURL(InputStream is) {
         BufferedReader br = null;
         String resultString = null;
-        
+
         StringBuffer result = new StringBuffer();
-        
+
         try {
             br = new BufferedReader(new InputStreamReader(is));
-            while(br.ready()) {
+            while (br.ready()) {
                 result.append(br.readLine());
                 result.append("\n");
             }
@@ -446,8 +446,34 @@ public class TDA extends JPanel implements ListSelectionListener, TreeSelectionL
             resultString = resultString.replaceFirst("./settings.png", TDA.class.getResource("doc/settings.png").toString());
             resultString = resultString.replaceFirst("./help.png", TDA.class.getResource("doc/help.png").toString());
             resultString = resultString.replaceFirst("<!-- ##tipofday## -->", TipOfDay.getTipOfDay());
-            resultString = resultString.replaceFirst("<!-- ##recentlogfiles## -->", getAsTable("openlogfile://", PrefManager.get().getRecentFiles()));
-            resultString = resultString.replaceFirst("<!-- ##recentsessions## -->", getAsTable("opensession://", PrefManager.get().getRecentSessions()));
+
+            String[] recentFiles = PrefManager.get().getRecentFiles();
+            List<String> existingFiles = new ArrayList<>();
+            for (String recentFile : recentFiles) {
+                if (recentFile.trim().length() > 0) {
+                    if (new File(recentFile).exists()) {
+                        existingFiles.add(recentFile);
+                    }
+                }
+            }
+            if (existingFiles.size() != recentFiles.length) {
+                PrefManager.get().setRecentFiles(existingFiles.toArray(new String[0]));
+            }
+            resultString = resultString.replaceFirst("<!-- ##recentlogfiles## -->", getAsTable("openlogfile://", existingFiles.toArray(new String[0])));
+
+            String[] recentSessions = PrefManager.get().getRecentSessions();
+            List<String> existingSessions = new ArrayList<>();
+            for (String recentSession : recentSessions) {
+                if (recentSession.trim().length() > 0) {
+                    if (new File(recentSession).exists()) {
+                        existingSessions.add(recentSession);
+                    }
+                }
+            }
+            if (existingSessions.size() != recentSessions.length) {
+                PrefManager.get().setRecentSessions(existingSessions.toArray(new String[0]));
+            }
+            resultString = resultString.replaceFirst("<!-- ##recentsessions## -->", getAsTable("opensession://", existingSessions.toArray(new String[0])));
         } catch (IllegalArgumentException ex) {
             // hack to prevent crashing of the app because off unparsed replacer.
             LOGGER.log(Level.SEVERE, "Failed to parse welcome page replacers", ex);
