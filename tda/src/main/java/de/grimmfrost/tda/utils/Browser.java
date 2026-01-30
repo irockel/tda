@@ -59,13 +59,19 @@ public class Browser {
                 // Try common linux browser launchers
                 String[] launchers = {"xdg-open", "gnome-open", "kfmclient", "firefox", "google-chrome"};
                 for (String launcher : launchers) {
+                    Process whichProcess = null;
                     try {
-                        if (Runtime.getRuntime().exec(new String[]{"which", launcher}).waitFor() == 0) {
+                        whichProcess = new ProcessBuilder("which", launcher).start();
+                        if (whichProcess.waitFor() == 0) {
                             cmd = launcher + " " + url;
                             break;
                         }
                     } catch (Exception e) {
                         // ignore
+                    } finally {
+                        if (whichProcess != null) {
+                            whichProcess.destroy();
+                        }
                     }
                 }
             }
