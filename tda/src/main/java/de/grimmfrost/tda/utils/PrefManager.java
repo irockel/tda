@@ -29,7 +29,7 @@ import de.grimmfrost.tda.filter.FilterChecker;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.File;
-import java.util.logging.Level;
+import java.util.List;
 import java.util.logging.Logger;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -128,21 +128,6 @@ public class PrefManager {
         toolPrefs.putInt("maxRowsForChecking", rows);
     }
     
-    public int getTopDividerPos() {
-        return(toolPrefs.getInt("top.dividerPos", 0));
-    }
-    
-    public void setTopDividerPos(int pos) {
-        toolPrefs.putInt("top.dividerPos", pos);
-    }
-
-    public int getDividerPos() {
-        return(toolPrefs.getInt("dividerPos", 0));
-    }
-    
-    public void setDividerPos(int pos) {
-        toolPrefs.putInt("dividerPos", pos);
-    }
 
     public int getStreamResetBuffer() {
         return(toolPrefs.getInt("streamResetBuffer", 16384));
@@ -230,6 +215,17 @@ public class PrefManager {
         }
     }
     
+    public void setRecentFiles(String[] files) {
+        StringBuffer recentFiles = new StringBuffer();
+        for (int i = 0; i < files.length; i++) {
+            recentFiles.append(files[i]);
+            if (i + 1 < files.length) {
+                recentFiles.append(PARAM_DELIM);
+            }
+        }
+        toolPrefs.put("recentFiles", recentFiles.toString());
+    }
+
     public String[] getRecentFiles() {
         return(toolPrefs.get("recentFiles", "").split(PARAM_DELIM));
     }
@@ -253,6 +249,17 @@ public class PrefManager {
         }
     }
     
+    public void setRecentSessions(String[] files) {
+        StringBuffer recentSessions = new StringBuffer();
+        for (int i = 0; i < files.length; i++) {
+            recentSessions.append(files[i]);
+            if (i + 1 < files.length) {
+                recentSessions.append(PARAM_DELIM);
+            }
+        }
+        toolPrefs.put("recentSessions", recentSessions.toString());
+    }
+
     public String[] getRecentSessions() {
         return(toolPrefs.get("recentSessions", "").split(PARAM_DELIM));
     }
@@ -284,7 +291,7 @@ public class PrefManager {
     /**
      * temporary storage for filters to not to have them be parsed again
      */
-    private final java.util.List cachedFilters = new ArrayList();
+    private final List cachedFilters = new ArrayList();
     
     public ListModel getFilters() {
         DefaultListModel filters = null;

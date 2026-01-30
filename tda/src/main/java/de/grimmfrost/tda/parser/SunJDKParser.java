@@ -174,6 +174,9 @@ public class SunJDKParser extends AbstractDumpParser {
 
                 while (getBis().ready() && !finished) {
                     line = getNextLine();
+                    if (line == null) {
+                        break;
+                    }
                     lineCounter++;
                     singleLineCounter++;
                     if (locked) {
@@ -597,7 +600,11 @@ public class SunJDKParser extends AbstractDumpParser {
         boolean isNormalBis = bis == getBis();
 
         while (bis.ready() && !finished) {
-            String line = (isNormalBis) ? getNextLine().trim() : bis.readLine().trim();
+            String line = (isNormalBis) ? getNextLine() : bis.readLine();
+            if (line == null) {
+                break;
+            }
+            line = line.trim();
             if (!found && !line.equals("")) {
                 if (line.startsWith("num   #instances    #bytes  class name")) {
                     found = true;
@@ -661,6 +668,9 @@ public class SunJDKParser extends AbstractDumpParser {
 
         while (getBis().ready() && !finished) {
             String line = getNextLine();
+            if (line == null) {
+                break;
+            }
             if (!found && !line.isEmpty()) {
                 if (line.trim().startsWith("Heap")) {
                     found = true;
@@ -702,6 +712,9 @@ public class SunJDKParser extends AbstractDumpParser {
 
         while (getBis().ready() && !finished) {
             String line = getNextLine();
+            if (line == null) {
+                break;
+            }
 
             if (!found && !line.equals("")) {
                 if (line.trim().startsWith("Found one Java-level deadlock")) {
@@ -828,11 +841,11 @@ public class SunJDKParser extends AbstractDumpParser {
             }
             mi.setChildCount(monitorNode.getChildCount());
 
-            ((Category) catMonitors.getUserObject()).addToCatNodes(new DefaultMutableTreeNode(mi));
+            ((Category) catMonitors.getUserObject()).addToCatNodes(copyNode(monitorNode));
             if (locks == 0) {
                 monitorsWithoutLocksCount++;
                 overallThreadsWaiting += waits;
-                ((Category) catMonitorsLocks.getUserObject()).addToCatNodes(new DefaultMutableTreeNode(mi));
+                ((Category) catMonitorsLocks.getUserObject()).addToCatNodes(copyNode(monitorNode));
             }
         }
         return new int[]{monitorsWithoutLocksCount, overallThreadsWaiting};

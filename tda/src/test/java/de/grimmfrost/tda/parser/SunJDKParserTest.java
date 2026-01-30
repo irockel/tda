@@ -349,8 +349,9 @@ public class SunJDKParserTest {
             assertNotNull(vtCat, "Virtual Threads category should exist");
             
             boolean foundWarning = false;
-            for (int i = 0; i < vtCat.getChildCount(); i++) {
-                DefaultMutableTreeNode threadNode = (DefaultMutableTreeNode) vtCat.getChildAt(i);
+            Category cat = (Category) vtCat.getUserObject();
+            for (int i = 0; i < cat.getNodeCount(); i++) {
+                DefaultMutableTreeNode threadNode = cat.getNodeAt(i);
                 Object userObject = threadNode.getUserObject();
                 String threadInfo = userObject.toString();
                 if (userObject instanceof ThreadInfo) {
@@ -492,7 +493,8 @@ public class SunJDKParserTest {
             DefaultMutableTreeNode resultNode = (DefaultMutableTreeNode) root.getChildAt(0);
             
             // We expect at least 2 long running threads ("C2 CompilerThread0" and "VM Periodic Task Thread")
-            assertTrue(resultNode.getChildCount() > 0, "Should find at least one long running thread, found: " + resultNode.getChildCount());
+            Category cat = (Category) resultNode.getUserObject();
+            assertTrue(cat.getNodeCount() > 0, "Should find at least one long running thread, found: " + cat.getNodeCount());
             
         } finally {
             if(instance != null) {
@@ -521,5 +523,40 @@ public class SunJDKParserTest {
         assertEquals(String.valueOf(Long.parseLong("1ac7", 16)), tokens[4], "NID");
         assertEquals("runnable", tokens[5].trim(), "State");
         assertEquals("[0x00007f8b234f5000]", tokens[6], "Address Range");
+    }
+
+    @Test
+    public void testMonitorNodesHaveChildren() throws Exception {
+        String dump = "2026-01-30 10:00:00\n" +
+                "Full thread dump OpenJDK 64-Bit Server VM (21.0.9+10-LTS mixed mode, sharing):\n" +
+                "\n" +
+                "\"Thread-1\" #1 prio=5 os_prio=31 tid=0x000000010328e320 nid=0x100 waiting on condition [0x000000016e7c2000]\n" +
+                "   java.lang.Thread.State: WAITING (on object monitor)\n" +
+                "   at java.lang.Object.wait(Native Method)\n" +
+                "   - waiting on <0x0000000711666830> (a java.lang.Object)\n" +
+                "\n" +
+                "\"Thread-2\" #2 prio=5 os_prio=31 tid=0x000000010328e330 nid=0x200 runnable [0x000000016e7c3000]\n" +
+                "   java.lang.Thread.State: RUNNABLE\n" +
+                "   at com.example.App.main(App.java:10)\n" +
+                "   - locked <0x0000000711666830> (a java.lang.Object)\n" +
+                "\n" +
+                "\"VM Periodic Task Thread\" #3 prio=5 tid=0x000000010328e340 nid=0x300 runnable\n";
+
+        Map<String, Map<String, String>> threadStore = new HashMap<>();
+        SunJDKParser parser = new SunJDKParser(new BufferedReader(new StringReader(dump)), threadStore, 0, false, 0, new DateMatcher());
+
+        DefaultMutableTreeNode dumpNode = (DefaultMutableTreeNode) parser.parseNext();
+        assertNotNull(dumpNode);
+
+        ThreadDumpInfo tdi = (ThreadDumpInfo) dumpNode.getUserObject();
+        Category monitorsCat = tdi.getMonitors();
+        assertNotNull(monitorsCat, "Monitors category should not be null");
+        assertTrue(monitorsCat.getNodeCount() > 0, "Should have at least one monitor");
+
+        DefaultMutableTreeNode monitorNode = monitorsCat.getNodeAt(0);
+        assertNotNull(monitorNode);
+
+        // Verify that the monitor node has children (the threads)
+        assertTrue(monitorNode.getChildCount() > 0, "Monitor node in category should have children");
     }
 }
