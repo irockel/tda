@@ -73,7 +73,7 @@ public class MCPServer {
 
     private static void handleInitialize(JsonObject request) {
         JsonObject result = new JsonObject();
-        result.addProperty("protocolVersion", "2025-11-25");
+        result.addProperty("protocolVersion", "2024-11-05");
         JsonObject capabilities = new JsonObject();
         capabilities.add("tools", new JsonObject());
         result.add("capabilities", capabilities);
