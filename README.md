@@ -37,7 +37,7 @@ TDA supports Java 1.4.x through Java 21+, including specialized support for **Vi
 - [🏗 Building from Source](#-building-from-source)
 - [🛠️ Troubleshooting](#-troubleshooting)
 - [📜 Changelog](CHANGELOG.md)
-- [📜 License](#-license)
+- [📜 License](LICENSE)
 
 ## 🚀 Key Features
 
