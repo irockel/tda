@@ -35,7 +35,7 @@ TDA supports Java 1.4.x through Java 21+, including specialized support for **Vi
   - [4. JSON-based Thread Dumps (Experimental)](#4-json-based-thread-dumps-experimental)
   - [5. MCP Server (Headless Analysis)](#5-mcp-server-headless-analysis)
 - [🏗 Building from Source](#-building-from-source)
-- [🛠️ Troubleshooting](#️-troubleshooting)
+- [🛠️ Troubleshooting](#-troubleshooting)
 - [📜 Changelog](CHANGELOG.md)
 - [📜 License](#-license)
 
@@ -79,6 +79,8 @@ Since the DMG is currently unsigned, macOS will block it by default with a warni
 4.  A dialog will appear asking if you are sure you want to open it. Click **Open**. 
 5.  After this first launch, you can open TDA normally from Launchpad or Spotlight.
 
+If this fails, you might need to confirm the installation from the system settings. For this just follow the instructions after clicking on the '?' Icon on the upper right corner of the error dialog.
+
 ---
 
 ## 🛠 Usage Modes
@@ -106,7 +108,7 @@ have several or big log files, you might need to adjust the memory allocation by
 
 ### 2. JConsole Plugin
 Analyze a running application directly within JConsole. This is particularly useful for production environments where 
-you need to quickly inspect the state of a live system.
+you need to quickly inspect the state of a live system. The plugin is part of the standalone jar, which needs to be downloaded for this.
 
 **How to use:**
 Start JConsole with the TDA plugin:
@@ -133,7 +135,7 @@ TDA can parse these files, but please note that the information provided in the 
 ### 5. MCP Server (Headless Analysis)
 For integration with AI tools (like Cursor, Junie, or Claude Desktop) or automated pipelines, 
 TDA can run as a **Model Context Protocol (MCP)** server. This allows for headless analysis of thread dumps using 
-AI assistance.
+AI assistance. You need to download the standalone jar for this.
 
 There's also an [articel on dev.to](https://dev.to/irockel/stop-reading-raw-stacktraces-ai-powered-java-thread-dump-analysis-with-mcp-4673) about how to use TDA as an MCP server.
 

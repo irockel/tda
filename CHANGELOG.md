@@ -2,7 +2,7 @@
 
 All notable changes to TDA (Thread Dump Analyzer) will be documented in this file.
 
-## [2.7]
+## [3.0]
 ### Features
 - Introduced logging for easier debugging in MCP mode, added red dot in UI mode if error occurred with tooltip to check logfile.
 - Experimental support for JSON based jmap thread dumps.
