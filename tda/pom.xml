@@ -33,12 +33,12 @@
     <dependency>
       <groupId>com.formdev</groupId>
       <artifactId>flatlaf</artifactId>
-      <version>3.7</version>
+      <version>3.7.1</version>
     </dependency>
     <dependency>
       <groupId>com.formdev</groupId>
       <artifactId>flatlaf-extras</artifactId>
-      <version>3.7</version>
+      <version>3.7.1</version>
     </dependency>
     <dependency>
       <groupId>com.google.code.gson</groupId>
@@ -87,7 +87,7 @@
                 <artifactItem>
                   <groupId>com.formdev</groupId>
                   <artifactId>flatlaf</artifactId>
-                  <version>3.7</version>
+                  <version>3.7.1</version>
                   <type>jar</type>
                   <includes>META-INF/LICENSE</includes>
                   <outputDirectory>${project.build.directory}/licenses/flatlaf</outputDirectory>
@@ -95,7 +95,7 @@
                 <artifactItem>
                   <groupId>com.formdev</groupId>
                   <artifactId>flatlaf-extras</artifactId>
-                  <version>3.7</version>
+                  <version>3.7.1</version>
                   <type>jar</type>
                   <includes>META-INF/LICENSE</includes>
                   <outputDirectory>${project.build.directory}/licenses/flatlaf-extras</outputDirectory>
