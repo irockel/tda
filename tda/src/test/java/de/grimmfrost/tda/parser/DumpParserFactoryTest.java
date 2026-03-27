@@ -82,4 +82,19 @@ public class DumpParserFactoryTest {
 
         assertInstanceOf(JCmdJSONParser.class, result);
     }
+
+    /**
+     * Test of getDumpParserForVersion method, of class de.grimmfrost.tda.DumpParserFactory.
+     */
+    @Test
+    public void testGetDumpParserForUTF16Logfile() throws FileNotFoundException {
+        InputStream dumpFileStream = new FileInputStream("src/test/resources/java21dump_utf16.log");
+        Map<String, Map<String, String>> threadStore = new HashMap<>();
+        DumpParserFactory instance = DumpParserFactory.get();
+
+        DumpParser result = instance.getDumpParserForLogfile(dumpFileStream, threadStore, false, 0);
+        assertNotNull(result);
+
+        assertInstanceOf(SunJDKParser.class, result);
+    }
 }

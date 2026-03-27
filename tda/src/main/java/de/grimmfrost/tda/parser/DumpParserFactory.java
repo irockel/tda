@@ -24,10 +24,13 @@ package de.grimmfrost.tda.parser;
 import de.grimmfrost.tda.utils.DateMatcher;
 import de.grimmfrost.tda.utils.LogManager;
 import de.grimmfrost.tda.utils.PrefManager;
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -74,10 +77,12 @@ public class DumpParserFactory {
         int readAheadLimit = PrefManager.get().getStreamResetBuffer();
         int lineCounter = 0;
         DumpParser currentDumpParser = null;
-            
+
         try {
-            bis = new BufferedReader(new InputStreamReader(dumpFileStream));
-            
+            BufferedInputStream bufferedStream = new BufferedInputStream(dumpFileStream);
+            Charset charset = detectCharset(bufferedStream);
+            bis = new BufferedReader(new InputStreamReader(bufferedStream, charset));
+
             // reset current dump parser
             DateMatcher dm = new DateMatcher();
             while (bis.ready() && (currentDumpParser == null)) {
@@ -121,5 +126,32 @@ public class DumpParserFactory {
             LOGGER.log(Level.SEVERE, "IO error detecting parser for logfile", ex);
         }
         return currentDumpParser;
-    }    
+    }
+
+    private Charset detectCharset(BufferedInputStream bis) throws IOException {
+        bis.mark(4);
+        byte[] bom = new byte[4];
+        int read = bis.read(bom);
+        bis.reset();
+
+        if (read >= 2) {
+            if (bom[0] == (byte) 0xFF && bom[1] == (byte) 0xFE) {
+                return StandardCharsets.UTF_16LE;
+            } else if (bom[0] == (byte) 0xFE && bom[1] == (byte) 0xFF) {
+                return StandardCharsets.UTF_16BE;
+            }
+        }
+
+        // if no BOM, check for UTF-16LE/BE by looking for null bytes
+        // IBM VMs often don't have BOM but use UTF-16LE
+        if (read >= 4) {
+            if (bom[1] == 0 && bom[3] == 0) {
+                return StandardCharsets.UTF_16LE;
+            } else if (bom[0] == 0 && bom[2] == 0) {
+                return StandardCharsets.UTF_16BE;
+            }
+        }
+
+        return Charset.defaultCharset();
+    }
 }
