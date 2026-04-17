@@ -88,6 +88,8 @@
                 <extensions>true</extensions>
                 <configuration>
                     <codeNameBase>net.java.dev.tda/2</codeNameBase>
+                    <licenseName>LGPL 2.1</licenseName>
+                    <licenseFile>../LICENSE</licenseFile>
                     <verifyRuntime>false</verifyRuntime>
                     <useOSGiDependencies>false</useOSGiDependencies>
                     <moduleType>autoload</moduleType>

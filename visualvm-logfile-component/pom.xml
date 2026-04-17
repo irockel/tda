@@ -72,6 +72,8 @@
                 <artifactId>nbm-maven-plugin</artifactId>
                 <configuration>
                     <codeNameBase>net.java.dev.tda.visualvm.logfile/2</codeNameBase>
+                    <licenseName>LGPL 2.1</licenseName>
+                    <licenseFile>../LICENSE</licenseFile>
                     <verifyRuntime>false</verifyRuntime>
                 </configuration>
             </plugin>
