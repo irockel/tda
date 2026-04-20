@@ -4,6 +4,7 @@
     <folder name="Actions">
         <folder name="Other">
             <file name="net-java-dev-tda-visualvm-logfile-AddLogfileAction-alwaysEnabled.instance">
+                <attr name="instanceClass" stringvalue="net.java.dev.tda.visualvm.logfile.AddLogfileAction"/>
                 <attr name="instanceCreate" methodvalue="net.java.dev.tda.visualvm.logfile.AddLogfileAction.alwaysEnabled"/>
             </file>
         </folder>        
@@ -27,6 +28,7 @@
     <folder name="VisualVM">
         <folder name="ExplorerPopupSelection">
             <file name="net-java-dev-tda-visualvm-logfile-AddLogfileAction-selectionAware.instance">
+                <attr name="instanceClass" stringvalue="net.java.dev.tda.visualvm.logfile.AddLogfileAction"/>
                 <attr name="instanceCreate" methodvalue="net.java.dev.tda.visualvm.logfile.AddLogfileAction.selectionAware"/>
                 <attr name="position" intvalue="0"/>
                 <attr name="default" boolvalue="true"/>
