@@ -22,13 +22,13 @@ import javax.swing.ImageIcon;
 import org.netbeans.spi.options.OptionsCategory;
 import org.netbeans.spi.options.OptionsPanelController;
 import org.openide.util.NbBundle;
-import org.openide.util.Utilities;
+import org.openide.util.ImageUtilities;
 
 public final class VisualvmOptionsCategory extends OptionsCategory {
 
     @Override
     public Icon getIcon() {
-        return new ImageIcon(Utilities.loadImage("net/java/dev/tda/visualvm/resources/options.png"));
+        return new ImageIcon(ImageUtilities.loadImage("net/java/dev/tda/visualvm/resources/options.png"));
     }
 
     @Override

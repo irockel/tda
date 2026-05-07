@@ -47,7 +47,7 @@ public class TDAView extends DataSourceView {
     private TDA tdaPanel = null;
     
     public TDAView(DataSource logContent) {
-        super(logContent, "Thread Dump Analyzer", new ImageIcon(Utilities.loadImage(IMAGE_PATH, true)).getImage(), 60, false);
+        super(logContent, "Thread Dump Analyzer", new ImageIcon(ImageUtilities.loadImage(IMAGE_PATH, true)).getImage(), 60, false);
 
         this.logContent = (Snapshot) logContent;
     }

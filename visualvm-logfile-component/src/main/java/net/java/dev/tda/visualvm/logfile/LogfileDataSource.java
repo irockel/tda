@@ -25,7 +25,7 @@ import org.graalvm.visualvm.core.datasource.descriptor.DataSourceDescriptor;
 import org.graalvm.visualvm.core.datasource.descriptor.DataSourceDescriptorFactory;
 import org.graalvm.visualvm.core.model.AbstractModelProvider;
 import org.openide.util.NbBundle;
-import org.openide.util.Utilities;
+import org.openide.util.ImageUtilities;
 
 /**
  * Logfile node in explorer view.
@@ -52,7 +52,7 @@ public class LogfileDataSource extends DataSource {
     
     
     private static class LogfileDataSourceDescriptor extends DataSourceDescriptor {
-        private static final Image NODE_ICON = Utilities.loadImage("net/java/dev/tda/visualvm/logfile/resources/logfiles.png", true);    // NOI18N
+        private static final Image NODE_ICON = ImageUtilities.loadImage("net/java/dev/tda/visualvm/logfile/resources/logfiles.png", true);    // NOI18N
 
         LogfileDataSourceDescriptor() {
             super(LogfileDataSource.sharedInstance(), NbBundle.getMessage(LogfileDumpView.class, "ExplorerNode_Name_Logfiles"), null, NODE_ICON, 20, EXPAND_ON_EACH_NEW_CHILD);   // NOI18N

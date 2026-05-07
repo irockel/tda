@@ -29,7 +29,7 @@ import org.openide.util.*;
  */
 public class LogfileDescriptor extends SnapshotDescriptor<Logfile> {
 
-    private static final Image ICON = Utilities.loadImage("net/java/dev/tda/visualvm/logfile/resources/logfile.png", true);  // NOI18N
+    private static final Image ICON = ImageUtilities.loadImage("net/java/dev/tda/visualvm/logfile/resources/logfile.png", true);  // NOI18N
 
     public LogfileDescriptor(Logfile logFile) {
         super(logFile, ICON);
