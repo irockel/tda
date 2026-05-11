@@ -28,7 +28,7 @@ import org.graalvm.visualvm.core.ui.DataSourceView;
 import org.graalvm.visualvm.core.ui.components.DataViewComponent;
 import org.openide.util.Exceptions;
 import org.openide.util.NbBundle;
-import org.openide.util.Utilities;
+import org.openide.util.ImageUtilities;
 
 /**
  *
@@ -41,7 +41,7 @@ public class LogfileDumpView extends DataSourceView {
     private LogPanel logPanel = null;
     
     public LogfileDumpView(Logfile logfile) {
-        super(logfile, NbBundle.getMessage(LogfileDumpView.class, "LBL_DumpView"), new ImageIcon(Utilities.loadImage(IMAGE_PATH, true)).getImage(), 0, false);    // NOI18N
+        super(logfile, NbBundle.getMessage(LogfileDumpView.class, "LBL_DumpView"), new ImageIcon(ImageUtilities.loadImage(IMAGE_PATH, true)).getImage(), 0, false);    // NOI18N
         this.logfile = logfile;
     }
 
