@@ -17,7 +17,7 @@ OpenIDE-Module-Java-Dependencies: Java > 11
 AutoUpdate-Show-In-Client: true
 OpenIDE-Module: net.java.dev.tda.visualvm/2
 OpenIDE-Module-Localizing-Bundle: net/java/dev/tda/visualvm/Bundle.properties
-OpenIDE-Module-Specification-Version: 3.1
+OpenIDE-Module-Specification-Version: 3.2
 OpenIDE-Module-Install: net/java/dev/tda/visualvm/Install.class
 OpenIDE-Module-Layer: net/java/dev/tda/visualvm/layer.xml
 OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1

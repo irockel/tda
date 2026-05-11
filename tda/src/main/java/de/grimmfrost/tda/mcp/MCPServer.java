@@ -79,7 +79,7 @@ public class MCPServer {
         result.add("capabilities", capabilities);
         JsonObject serverInfo = new JsonObject();
         serverInfo.addProperty("name", "tda-mcp-server");
-        serverInfo.addProperty("version", "3.1.0");
+        serverInfo.addProperty("version", "3.2.0");
         result.add("serverInfo", serverInfo);
         
         sendResponse(request.get("id").getAsInt(), result);

@@ -6,8 +6,12 @@
 # TDA - Thread Dump Analyzer
 
 > [!IMPORTANT]
-> 
-> **2026-18-04 - TDA 3.1 available.**
+>
+> **2026-05-11 - TDA 3.2 available.**
+> *   **VisualVM Plugin**: proper integration in VisualVM working again.
+> *   **UI**: Updated jsvg version to 2.1.0.
+
+> **2026-04-18 - TDA 3.1 available.**
 > *   **VisualVM Plugin**: proper integration in VisualVM working again.
 > *   **Logfile Parsing**: Support for UTF16 files.
 > *   **UI**: some small fixes.

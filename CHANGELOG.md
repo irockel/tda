@@ -2,6 +2,11 @@
 
 All notable changes to TDA (Thread Dump Analyzer) will be documented in this file.
 
+## [3.2]
+### Bugfixes
+- Fixed VisualVM plugin configuration for proper integration in VisualVM.
+- Updated jsvg to version 2.1.0.
+
 ## [3.1]
 ### Features
  - Support for UTF16 Logfiles.
