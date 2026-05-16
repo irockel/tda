@@ -5,5 +5,6 @@ OpenIDE-Module: net.java.dev.tda/2
 OpenIDE-Module-Localizing-Bundle: net/java/dev/tda/Bundle.properties
 OpenIDE-Module-Specification-Version: 3.2
 OpenIDE-Module-Requires: org.openide.modules.ModuleFormat1
+AutoUpdate-Show-In-Client: false
 Class-Path: ext/tda.jar ext/swingx.jar ext/gson.jar ext/filters.jar
 
