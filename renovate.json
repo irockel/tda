@@ -22,6 +22,17 @@
       "description": "Major Updates in isolated PRs",
       "matchUpdateTypes": ["major"],
       "labels": ["major-update", "manual-review"]
+    },
+    {
+      "description": "Keep NetBeans at RELEASE220 as newer versions require JDK 21",
+      "matchPackageNames": ["org.netbeans.api:*", "org.netbeans.modules:*", "org.netbeans.external:*"],
+      "matchPackagePrefixes": ["org.netbeans"],
+      "allowedVersions": "< RELEASE230"
+    },
+    {
+      "description": "Restrict netbeans.version property",
+      "matchDepNames": ["netbeans.version"],
+      "allowedVersions": "< RELEASE230"
     }
   ],
   "vulnerabilityAlerts": {
