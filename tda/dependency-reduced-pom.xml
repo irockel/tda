@@ -3,7 +3,7 @@
   <parent>
     <artifactId>tda-parent</artifactId>
     <groupId>de.grimmfrost.tda</groupId>
-    <version>3.2</version>
+    <version>3.3</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>tda</artifactId>
@@ -28,7 +28,7 @@
     <plugins>
       <plugin>
         <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.10.0</version>
+        <version>3.11.0</version>
         <executions>
           <execution>
             <id>unpack-licenses</id>
@@ -41,7 +41,7 @@
                 <artifactItem>
                   <groupId>com.formdev</groupId>
                   <artifactId>flatlaf</artifactId>
-                  <version>3.7.1</version>
+                  <version>3.7.2</version>
                   <type>jar</type>
                   <includes>META-INF/LICENSE</includes>
                   <outputDirectory>${project.build.directory}/licenses/flatlaf</outputDirectory>
@@ -49,7 +49,7 @@
                 <artifactItem>
                   <groupId>com.formdev</groupId>
                   <artifactId>flatlaf-extras</artifactId>
-                  <version>3.7.1</version>
+                  <version>3.7.2</version>
                   <type>jar</type>
                   <includes>META-INF/LICENSE</includes>
                   <outputDirectory>${project.build.directory}/licenses/flatlaf-extras</outputDirectory>
@@ -100,7 +100,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.5.5</version>
+        <version>3.5.6</version>
         <configuration>
           <systemPropertyVariables>
             <java.awt.headless>true</java.awt.headless>
@@ -109,7 +109,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
-        <version>3.5.0</version>
+        <version>3.5.1</version>
         <configuration>
           <archive>
             <manifest>
@@ -161,7 +161,7 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
-      <version>6.0.3</version>
+      <version>6.1.3</version>
       <scope>test</scope>
       <exclusions>
         <exclusion>

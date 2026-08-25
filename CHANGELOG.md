@@ -2,6 +2,10 @@
 
 All notable changes to TDA (Thread Dump Analyzer) will be documented in this file.
 
+## [3.3]
+### Bugfixes
+- Fixed issue #83: resolved UI hang after closing the Categories dialog.
+
 ## [3.2]
 ### Bugfixes
 - Fixed VisualVM plugin configuration for proper integration in VisualVM.
