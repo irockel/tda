@@ -47,7 +47,6 @@ public class EditFilterDialog extends JDialog {
     private JPanel buttonPanel;
     private JButton okButton;
     private JButton cancelButton;
-    private Frame frame;
     private JList filterList;
     private boolean isAdd = false;
     
@@ -64,7 +63,6 @@ public class EditFilterDialog extends JDialog {
         
         this.isAdd = isAdd;
         this.filterList = filterList;
-        frame = owner;
         getContentPane().setLayout(new BorderLayout());
         initPanel();
     }
@@ -81,9 +79,6 @@ public class EditFilterDialog extends JDialog {
         
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(frame != null) {
-                    frame.setEnabled(true);
-                }
                 if(!isAdd) {
                     Filter filter = (Filter) filterList.getModel().getElementAt(filterList.getSelectedIndex());
                     applyFilter(filter);
@@ -101,9 +96,6 @@ public class EditFilterDialog extends JDialog {
         
         cancelButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if(frame != null) {
-                    frame.setEnabled(true);
-                }
                 dispose();
             }
         });

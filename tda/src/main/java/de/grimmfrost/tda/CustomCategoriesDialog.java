@@ -49,20 +49,18 @@ public class CustomCategoriesDialog extends JDialog {
     private CategoriesPanel categoriesPanel;
     private JPanel buttonPanel;
     private JButton closeButton;
-    private Frame frame;
     
     /**
      * Creates a new instance of PreferencesDialog
      */
     public CustomCategoriesDialog(Frame owner) {
-        super(owner, "Custom Categories");
+        super(owner, "Custom Categories", true);
         try {
             setIconImage(TDA.createImageIcon("CustomCat.png").getImage());
         } catch (NoSuchMethodError nsme) {
         // ignore, for 1.4 backward compatibility
         }
 
-        frame = owner;
         getContentPane().setLayout(new BorderLayout());
         initPanel();  
     }
@@ -167,11 +165,7 @@ public class CustomCategoriesDialog extends JDialog {
         private void createCategoryDialog(String title, boolean isAdd, int selectedIndex) {
             EditCustomCategoryDialog fDiag = new EditCustomCategoryDialog(owner, title, categoriesList, isAdd);
             fDiag.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-            
-            if(owner != null) {
-                owner.setEnabled(false);
-            }
-            
+
             //Display the window.
             fDiag.reset();
             fDiag.pack();
