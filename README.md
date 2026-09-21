@@ -44,6 +44,7 @@ TDA supports Java 1.4.x through Java 21+, including specialized support for **Vi
   - [3. VisualVM Plugin](#3-visualvm-plugin-1)
   - [4. JSON-based Thread Dumps (Experimental)](#4-json-based-thread-dumps-experimental)
   - [5. MCP Server (Headless Analysis)](#5-mcp-server-headless-analysis)
+  - [6. Agent Skill (Multi-Agent Support)](#6-agent-skill-multi-agent-support)
 - [🏗 Building from Source](#-building-from-source)
 - [🛠️ Troubleshooting](#-troubleshooting)
 - [📜 Changelog](CHANGELOG.md)
@@ -207,6 +208,48 @@ When you encounter a log file that appears to contain Java thread dumps:
 5. Provide your insights based on the structured data returned by these tools rather than the raw log text.
 ```
 This configuration makes the analysis much faster and significantly reduces token usage.
+
+### 6. Agent Skill (Multi-Agent Support)
+
+TDA provides a standardized **Agent Skill** (`tda-thread-dump-analysis`) conforming to the open [agentskills.io](https://agentskills.io) specification, enabling modern AI agents to systematically diagnose thread dumps without blowing context limits.
+
+#### ✨ Why Use the Skill?
+- **🛑 Strict Context Guardrails**: Instructs agents never to `cat` or read massive raw log files into context.
+- **📋 Structured Diagnostic Protocol**: Automatically sequences the investigation: `parse_log` ➔ `get_summary` ➔ `check_deadlocks` ➔ `analyze_virtual_threads` ➔ `find_long_running` ➔ `drill_down`.
+- **🔄 Dual-Mode Compatibility**: Supports agents with native MCP (Junie, Claude Code, OpenCode, Codex) as well as minimal/bash-centric agents like **Pi Agent** via a bundled CLI bridge (`scripts/tda_client.py`).
+
+#### 📦 Skill Installation
+
+##### Option A: Open Agent Skills Package Manager
+```bash
+npx skills add https://github.com/irockel/tda
+```
+
+##### Option B: Repository / Symlink Discovery
+The skill is stored canonically in `.agents/skills/tda-thread-dump-analysis/` and exposed via `skills/tda-thread-dump-analysis/`:
+- **Junie**: `.junie/skills/` or `.agents/skills/`
+- **OpenCode**: `.agents/skills/` or `.opencode/skills/`
+- **Claude Code**: `.claude/skills/` or `.agents/skills/`
+- **Codex**: `.agents/skills/`
+- **Herdr**: Shared workspace `.agents/skills/`
+
+#### 🛠️ Standalone CLI Bridge for Pi Agent & Terminal Agents
+For agents without native MCP support (such as **Pi Agent** or custom subagents):
+```bash
+# Full end-to-end automated analysis report:
+python3 .agents/skills/tda-thread-dump-analysis/scripts/tda_client.py analyze /path/to/dump.log
+
+# Structured JSON output for agents:
+python3 .agents/skills/tda-thread-dump-analysis/scripts/tda_client.py analyze /path/to/dump.log --json
+
+# Specific diagnostic queries:
+python3 .agents/skills/tda-thread-dump-analysis/scripts/tda_client.py deadlocks /path/to/dump.log
+python3 .agents/skills/tda-thread-dump-analysis/scripts/tda_client.py virtual-threads /path/to/dump.log
+python3 .agents/skills/tda-thread-dump-analysis/scripts/tda_client.py long-running /path/to/dump.log
+```
+
+👉 **For complete configuration recipes across Junie, OpenCode, Claude Code, Codex, Pi, and Herdr, see the [Multi-Agent Integration Guide](docs/agent-integration.md).**  
+👉 **For JVM thread states, monitor locking graphs, and virtual thread pinning theory, see the [Diagnostics Reference Guide](.agents/skills/tda-thread-dump-analysis/references/diagnostics.md).**
 
 ---
 
