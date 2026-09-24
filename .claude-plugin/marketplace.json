@@ -1,0 +1,19 @@
+{
+  "name": "tda-marketplace",
+  "owner": {
+    "name": "TDA Maintainers"
+  },
+  "metadata": {
+    "description": "Official marketplace catalog for TDA Java thread dump analysis plugins and agent skills"
+  },
+  "plugins": [
+    {
+      "name": "tda-thread-dump-analysis",
+      "source": {
+        "source": "github",
+        "repo": "irockel/tda"
+      },
+      "description": "Automated Java thread dump diagnostics powered by TDA headless MCP engine."
+    }
+  ]
+}

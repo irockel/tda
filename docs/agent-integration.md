@@ -10,11 +10,9 @@ This document provides setup instructions, configuration recipes, file locations
 | :--- | :--- | :--- | :--- |
 | **Junie** (JetBrains) | Native MCP + Skills | `.junie/skills/` or `.agents/skills/` | MCP tool calls (`parse_log`, `get_summary`, ...) |
 | **OpenCode** | Native MCP + Skills | `.agents/skills/` or `.opencode/skills/` | MCP tool calls |
-| **Claude Code** (Anthropic) | Native MCP + Skills | `.claude/skills/` or `.agents/skills/` | MCP tool calls via `claude mcp` |
-| **OpenAI Codex CLI** | Native MCP + Skills | `.agents/skills/` or `~/.agents/skills/` | MCP tool calls via `AGENTS.md` |
-| **Pi Agent** (OpenClaw) | Minimalist (No MCP) | `.agent/skills/` or `AGENTS.md` | CLI bridge script (`scripts/tda_client.py`) via `bash` |
-| **Herdr** | Multi-Agent Orchestrator | Workspace `.agents/skills/` | Coordinated execution across worker panes |
-| **Cursor / Windsurf** | Native MCP | Root `.cursorrules` / `.windsurfrules` | MCP tool calls |
+| **Claude Code** (Anthropic) | Native MCP + Skills | `.claude-plugin/` or `.agents/skills/` | MCP tool calls via plugin / marketplace |
+| **OpenAI Codex CLI** | Native MCP + Skills | `.codex-plugin/` or `.agents/skills/` | MCP tool calls via plugin / `AGENTS.md` |
+| **Cursor / Windsurf** | Native MCP | `.cursor/mcp.json` / workspace skills | MCP tool calls |
 
 ---
 
@@ -156,104 +154,22 @@ Add the skill to your project's `AGENTS.md`:
 
 ---
 
-## 5. Pi Agent (OpenClaw / Minimal Agents)
-
-**Pi Agent** intentionally omits native MCP server support to conserve context budget and eliminate protocol overhead. Instead, Pi relies on its native `bash` tool.
-
-The skill bundles a zero-dependency CLI bridge script (`scripts/tda_client.py`) specifically for Pi and other bash-centric agents.
-
-### Setup
-Ensure Python 3 and Java 11+ are installed on the host. Set the environment variable if `tda.jar` is located outside standard search paths:
-
-```bash
-export TDA_JAR_PATH="/path/to/tda.jar"
-```
-
-### How Pi Executes TDA
-Instruct Pi (or configure its system instructions in `AGENTS.md` / `.pi/instructions`) to invoke the CLI bridge:
-
-```markdown
-### Thread Dump Diagnostics for Pi Agent
-When asked to analyze Java thread dumps or investigate hung JVM processes:
-1. DO NOT open or read log files directly using bash (cat/less/head).
-2. Run the TDA automated diagnostic suite:
-   ```bash
-   python3 .agents/skills/tda-thread-dump-analysis/scripts/tda_client.py analyze <path-to-logfile>
-   ```
-3. To obtain structured machine-readable output:
-   ```bash
-   python3 .agents/skills/tda-thread-dump-analysis/scripts/tda_client.py analyze <path-to-logfile> --json
-   ```
-4. For specific targeted checks:
-   - Deadlocks: `python3 .../tda_client.py deadlocks <path-to-logfile>`
-   - Virtual Threads: `python3 .../tda_client.py virtual-threads <path-to-logfile>`
-   - Long-Running Threads: `python3 .../tda_client.py long-running <path-to-logfile>`
-```
-
----
-
-## 6. Herdr (Multi-Agent Orchestrator)
-
-**Herdr** orchestrates teams of agents running in parallel panes (e.g. tmux or terminal multiplexers) connected through `herdr-link`.
-
-### Architecture Pattern in Herdr
-
-```
-                ┌──────────────────────────────────┐
-                │   Herdr Orchestrator / Lead      │
-                │   (Task coordination & triage)   │
-                └─────────────────┬────────────────┘
-                                  │
-                 Delegates thread dump investigation
-                                  │
-                ┌─────────────────▼────────────────┐
-                │        Investigator Worker       │
-                │ (Claude Code, Pi, Junie, OpenCode)│
-                └─────────────────┬────────────────┘
-                                  │
-                   Accesses shared .agents/skills/
-                                  │
-               ┌──────────────────┴──────────────────┐
-               ▼                                     ▼
-      [Native MCP Mode]                      [CLI Bridge Mode]
-      `parse_log`, `check_deadlocks`         `tda_client.py analyze`
-```
-
-### Shared Skill Setup
-In a Herdr multi-agent workspace, place the skill in the workspace root under `.agents/skills/tda-thread-dump-analysis/`. All agent panes share access to this directory.
-
-### Orchestration Recipe: Delegating Analysis
-When the primary Herdr orchestrator detects a performance issue or receives an incident ticket with a thread dump:
-
-1. **Lead Pane Prompt**:
-   ```
-   pane-2: Investigate the thread dump at /var/log/app/incident-dump.log using skill 'tda-thread-dump-analysis'.
-   Report: (1) Deadlock status, (2) Virtual thread carrier pinning, (3) Blocked thread count.
-   ```
-2. **Worker Pane Execution**:
-   - If the worker is MCP-enabled: Runs `parse_log`, `get_summary`, `check_deadlocks`, `analyze_virtual_threads`.
-   - If the worker is Pi or a bash agent: Runs `python3 .agents/skills/tda-thread-dump-analysis/scripts/tda_client.py analyze /var/log/app/incident-dump.log`.
-3. **Worker Pane Response**:
-   Returns an executive summary back to the orchestrator pane without leaking megabytes of raw stack traces into the Herdr orchestrator's context window.
-
----
-
-## 7. Cursor & Windsurf
+## 5. Cursor & Windsurf
 
 ### Cursor Configuration
-Add to `.cursor/mcp.json` in your workspace root:
+Add to `.cursor/mcp.json` in your workspace root (or use `scripts/tda_launcher.py` for automated bootstrap):
 
 ```json
 {
   "mcpServers": {
     "tda": {
-      "command": "java",
+      "command": "python3",
       "args": [
-        "-Djava.awt.headless=true",
-        "-jar",
-        "/absolute/path/to/tda.jar",
-        "--mcp"
-      ]
+        "scripts/tda_launcher.py"
+      ],
+      "env": {
+        "JAVA_OPTS": "-Djava.awt.headless=true"
+      }
     }
   }
 }
@@ -284,6 +200,50 @@ Add to `~/.codeium/windsurf/mcp_config.json`:
   }
 }
 ```
+
+---
+
+## 6. Herdr (Multi-Agent Orchestrator)
+
+**Herdr** orchestrates teams of agents running in parallel panes connected through `herdr-link`.
+
+### Architecture Pattern in Herdr
+
+```
+                ┌──────────────────────────────────┐
+                │   Herdr Orchestrator / Lead      │
+                │   (Task coordination & triage)   │
+                └─────────────────┬────────────────┘
+                                  │
+                 Delegates thread dump investigation
+                                  │
+                ┌─────────────────▼────────────────┐
+                │        Investigator Worker       │
+                │ (Claude Code, Junie, OpenCode)   │
+                └─────────────────┬────────────────┘
+                                  │
+                   Accesses shared .agents/skills/
+                                  │
+                                  ▼
+                         [Native MCP Mode]
+                   `parse_log`, `check_deadlocks`
+```
+
+### Shared Skill Setup
+In a Herdr multi-agent workspace, place the skill in the workspace root under `.agents/skills/tda-thread-dump-analysis/`. All agent panes share access to this directory.
+
+### Orchestration Recipe: Delegating Analysis
+When the primary Herdr orchestrator detects a performance issue or receives an incident ticket with a thread dump:
+
+1. **Lead Pane Prompt**:
+   ```
+   pane-2: Investigate the thread dump at /var/log/app/incident-dump.log using skill 'tda-thread-dump-analysis'.
+   Report: (1) Deadlock status, (2) Virtual thread carrier pinning, (3) Blocked thread count.
+   ```
+2. **Worker Pane Execution**:
+   The worker agent activates the MCP tools (`parse_log`, `get_summary`, `check_deadlocks`, `analyze_virtual_threads`).
+3. **Worker Pane Response**:
+   Returns an executive summary back to the orchestrator pane without leaking megabytes of raw stack traces into the Herdr orchestrator's context window.
 
 ---
 

@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "tda": {
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/tda_launcher.py"
+      ],
+      "env": {
+        "JAVA_OPTS": "-Djava.awt.headless=true"
+      }
+    }
+  }
+}
