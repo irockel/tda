@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
@@ -56,6 +55,17 @@ public class DistributionVerificationTest {
         try (BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
             return JsonParser.parseReader(reader).getAsJsonObject();
         }
+    }
+
+    private static String getPython3Executable() {
+        try {
+            Process process = new ProcessBuilder("python3", "-c", "import sys; print(sys.executable)").start();
+            if (process.waitFor(5, TimeUnit.SECONDS) && process.exitValue() == 0) {
+                return new String(process.getInputStream().readAllBytes(), StandardCharsets.UTF_8).trim();
+            }
+        } catch (Exception ignored) {
+        }
+        return "python3";
     }
 
     private static boolean isPython3Available() {
@@ -295,19 +305,25 @@ public class DistributionVerificationTest {
     public void testMissingJavaActionableError() throws Exception {
         assumeTrue(isPython3Available(), "python3 is not available in test environment");
 
-        ProcessBuilder pb = new ProcessBuilder("python3", launcherPath.toString(), "--check");
-        Map<String, String> env = pb.environment();
-        env.put("PATH", "/usr/bin:/bin");
-        env.put("HOME", Files.createTempDirectory("empty_home").toString());
-        pb.redirectErrorStream(true);
+        Path emptyDir = Files.createTempDirectory("empty_path");
+        try {
+            String pythonBin = getPython3Executable();
+            ProcessBuilder pb = new ProcessBuilder(pythonBin, launcherPath.toString(), "--check");
+            Map<String, String> env = pb.environment();
+            env.put("PATH", emptyDir.toString());
+            env.put("HOME", Files.createTempDirectory("empty_home").toString());
+            pb.redirectErrorStream(true);
 
-        Process proc = pb.start();
-        String output = new String(proc.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
-        assertTrue(proc.waitFor(10, TimeUnit.SECONDS));
+            Process proc = pb.start();
+            String output = new String(proc.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+            assertTrue(proc.waitFor(10, TimeUnit.SECONDS));
 
-        assertNotEquals(0, proc.exitValue());
-        assertTrue(output.contains("Java runtime ('java') was not found in PATH"));
-        assertTrue(output.contains("TDA requires Java 11 or higher"));
+            assertNotEquals(0, proc.exitValue());
+            assertTrue(output.contains("Java runtime ('java') was not found in PATH"));
+            assertTrue(output.contains("TDA requires Java 11 or higher"));
+        } finally {
+            deleteRecursively(emptyDir);
+        }
     }
 
     @Test
@@ -342,8 +358,12 @@ public class DistributionVerificationTest {
         if (Files.exists(path)) {
             try (Stream<Path> walk = Files.walk(path)) {
                 walk.sorted(Comparator.reverseOrder())
-                        .map(Path::toFile)
-                        .forEach(File::delete);
+                        .forEach(p -> {
+                            try {
+                                Files.deleteIfExists(p);
+                            } catch (Exception ignored) {
+                            }
+                        });
             } catch (Exception ignored) {
             }
         }
