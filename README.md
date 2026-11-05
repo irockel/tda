@@ -144,60 +144,55 @@ TDA can parse these files, but please note that the information provided in the 
 **Recommendation:** For in-depth analysis of deadlocks, monitor contention, or specific thread states, the **textual thread dump format is still preferred**.
 
 ### 5. AI Agent & MCP Integration (Headless Analysis)
-For integration with AI assistants (such as Junie, Claude Code, OpenCode, Codex, and Pi Agent) or automated pipelines, 
+For integration with AI assistants (such as Junie, Claude Code, OpenCode, Codex, and Cursor) or automated pipelines, 
 TDA can run headlessly via the **Model Context Protocol (MCP)** or as a standardized **Agent Skill**. This offloads computation 
 and parsing to TDA, preventing agents from consuming token budgets and degrading context by ingesting raw multi-megabyte log files.
 
 There are two primary ways to integrate TDA into your AI workflow:
 
-#### Option 1: Agent Skill Configuration (Recommended)
+#### Option 1: Marketplace / Agent Skill Packaging (Recommended)
 
-TDA provides a standardized **Agent Skill** (`tda-thread-dump-analysis`) conforming to the open [agentskills.io](https://agentskills.io) specification.
+TDA provides native packaging for Claude Code plugins and marketplaces, Codex extensions, and standardized **Agent Skills** (`tda-thread-dump-analysis`) conforming to the open [agentskills.io](https://agentskills.io) specification.
 
 ##### ✨ Benefits
 - **🛑 Strict Context Guardrails**: Instructs agents never to `cat` or read massive raw log files into context.
 - **📋 Structured Diagnostic Protocol**: Automatically sequences the investigation: `parse_log` ➔ `get_summary` ➔ `check_deadlocks` ➔ `analyze_virtual_threads` ➔ `find_long_running` ➔ `drill_down`.
-- **🔄 Dual-Mode Compatibility**: Supports agents with native MCP (Junie, Claude Code, OpenCode, Codex) as well as minimal/bash-centric agents like **Pi Agent** via a bundled CLI bridge (`scripts/tda_client.py`).
+- **⚡ Native MCP Integration**: Directly invokes headless MCP tools (`parse_log`, `get_summary`, `check_deadlocks`, etc.) with zero manual classpath management.
 
-##### Skill Installation & Discovery
+##### Installation & Discovery
+
+- **Via Claude Code Marketplace**:
+  ```bash
+  /plugin marketplace add irockel/tda
+  /plugin install tda-thread-dump-analysis
+  ```
 
 - **Via Agent Skills Package Manager**:
   ```bash
   npx skills add https://github.com/irockel/tda
   ```
 
-- **Via Repository Symlink**:
+- **Via Repository Structure / Automatic Agent Detection**:
   The skill is located canonically in `.agents/skills/tda-thread-dump-analysis/` and exposed via `skills/tda-thread-dump-analysis/`:
-  - **Junie**: `.junie/skills/` or `.agents/skills/`
+  - **Claude Code**: `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, or `.agents/skills/`
+  - **OpenAI Codex**: `.codex-plugin/plugin.json` or `.agents/skills/`
+  - **JetBrains Junie**: `.junie/skills/` or `.agents/skills/`
   - **OpenCode**: `.agents/skills/` or `.opencode/skills/`
-  - **Claude Code**: `.claude/skills/` or `.agents/skills/`
-  - **Codex**: `.agents/skills/`
-  - **Herdr**: Shared workspace `.agents/skills/`
-
-##### Standalone CLI Bridge for Pi Agent & Terminal Agents
-For agents without native MCP support (such as **Pi Agent** or CLI subagents):
-```bash
-# Full end-to-end automated analysis report:
-python3 .agents/skills/tda-thread-dump-analysis/scripts/tda_client.py analyze /path/to/dump.log
-
-# Structured JSON output for agents:
-python3 .agents/skills/tda-thread-dump-analysis/scripts/tda_client.py analyze /path/to/dump.log --json
-
-# Specific diagnostic queries:
-python3 .agents/skills/tda-thread-dump-analysis/scripts/tda_client.py deadlocks /path/to/dump.log
-python3 .agents/skills/tda-thread-dump-analysis/scripts/tda_client.py virtual-threads /path/to/dump.log
-python3 .agents/skills/tda-thread-dump-analysis/scripts/tda_client.py long-running /path/to/dump.log
-```
+  - **Cursor / Windsurf**: `.cursor/mcp.json`
 
 ---
 
 #### Option 2: Direct MCP Server Integration
 
-If you prefer to configure TDA directly as a native MCP server in your agent or MCP client (e.g. Junie, Claude Desktop):
+If you prefer to configure TDA directly as a native MCP server in your agent or MCP client (e.g. Junie, Claude Desktop, Cursor):
 
 ##### How to Run:
 ```bash
+# Direct Java invocation:
 java -Djava.awt.headless=true -jar tda.jar --mcp
+
+# Or via autonomous zero-config launcher (auto-downloads release jar if missing):
+python3 scripts/tda_launcher.py
 ```
 
 ##### Integration Example (e.g. Junie `mcp.json` or standard MCP client):
@@ -205,8 +200,11 @@ java -Djava.awt.headless=true -jar tda.jar --mcp
 {
   "mcpServers": {
     "tda": {
-      "command": "java",
-      "args": ["-Djava.awt.headless=true", "-jar", "path/to/tda.jar", "--mcp"]
+      "command": "python3",
+      "args": ["scripts/tda_launcher.py"],
+      "env": {
+        "JAVA_OPTS": "-Djava.awt.headless=true"
+      }
     }
   }
 }
@@ -228,7 +226,7 @@ When you encounter a log file that appears to contain Java thread dumps:
 
 #### Available MCP Tools
 
-The MCP server exposes the following tools (available both via direct MCP calls and via the CLI bridge):
+The MCP server exposes the following tools:
 
 | Tool                | Arguments                 | Description                                                                                    |
 |:--------------------|:--------------------------|:-----------------------------------------------------------------------------------------------|
@@ -243,7 +241,7 @@ The MCP server exposes the following tools (available both via direct MCP calls 
 
 There is also an [article on dev.to](https://dev.to/irockel/stop-reading-raw-stacktraces-ai-powered-java-thread-dump-analysis-with-mcp-4673) about how to use TDA as an MCP server.
 
-👉 **For complete configuration recipes across Junie, OpenCode, Claude Code, Codex, Pi, and Herdr, see the [Multi-Agent Integration Guide](docs/agent-integration.md).**  
+👉 **For complete configuration recipes across Junie, OpenCode, Claude Code, Codex, and Cursor, see the [Multi-Agent Integration Guide](docs/agent-integration.md).**
 👉 **For JVM thread states, monitor locking graphs, and virtual thread pinning theory, see the [Diagnostics Reference Guide](.agents/skills/tda-thread-dump-analysis/references/diagnostics.md).**
 
 ---

@@ -1,0 +1,33 @@
+{
+  "name": "tda-thread-dump-analysis",
+  "version": "3.3.0",
+  "description": "Java thread dump analyzer for identifying deadlocks, virtual thread pinning, and resource starvation.",
+  "author": {
+    "name": "TDA Open Source Community",
+    "url": "https://github.com/irockel/tda"
+  },
+  "homepage": "https://github.com/irockel/tda",
+  "repository": "https://github.com/irockel/tda",
+  "license": "LGPL-2.1",
+  "keywords": [
+    "java",
+    "jvm",
+    "thread-dump",
+    "diagnostics",
+    "performance",
+    "loom",
+    "deadlock"
+  ],
+  "skills": "./skills/",
+  "mcpServers": {
+    "tda": {
+      "command": "python3",
+      "args": [
+        "scripts/tda_launcher.py"
+      ],
+      "env": {
+        "JAVA_OPTS": "-Djava.awt.headless=true"
+      }
+    }
+  }
+}

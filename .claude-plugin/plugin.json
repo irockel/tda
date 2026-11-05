@@ -1,0 +1,23 @@
+{
+  "name": "tda-thread-dump-analysis",
+  "version": "3.3.0",
+  "description": "Automated Java thread dump diagnostics for deadlocks, CPU spikes, carrier thread pinning, and leaks.",
+  "author": {
+    "name": "TDA Open Source Community"
+  },
+  "homepage": "https://github.com/irockel/tda",
+  "repository": "https://github.com/irockel/tda",
+  "license": "LGPL-2.1",
+  "keywords": [
+    "java",
+    "jvm",
+    "thread-dump",
+    "diagnostics",
+    "performance",
+    "loom",
+    "deadlock"
+  ],
+  "skills": [
+    "skills/tda-thread-dump-analysis"
+  ]
+}
