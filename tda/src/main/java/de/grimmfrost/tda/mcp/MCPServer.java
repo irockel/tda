@@ -1,6 +1,9 @@
 package de.grimmfrost.tda.mcp;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import de.grimmfrost.tda.utils.LogManager;
@@ -15,7 +18,10 @@ import java.util.logging.Logger;
 public class MCPServer {
     private static final Logger LOGGER = LogManager.getLogger(MCPServer.class);
     private static final Gson gson = new Gson();
+    // error replies must keep "id": null (e.g. for parse errors)
+    private static final Gson errorGson = new GsonBuilder().serializeNulls().create();
     private static final HeadlessAnalysisProvider provider = new HeadlessAnalysisProvider();
+    private static PrintStream out = System.out;
 
     public static void main(String[] args) {
         LogManager.init();
@@ -26,49 +32,63 @@ public class MCPServer {
         
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            if (line.trim().isEmpty()) continue;
-            try {
-                JsonObject request = JsonParser.parseString(line).getAsJsonObject();
-                if (request.has("method")) {
-                    String method = request.get("method").getAsString();
-                    
-                    // Handle MCP Lifecycle methods
-                    if ("initialize".equals(method)) {
-                        handleInitialize(request);
-                        continue;
-                    }
-                    if ("tools/list".equals(method)) {
-                        handleListTools(request);
-                        continue;
-                    }
-                    if ("tools/call".equals(method)) {
-                        handleCallTool(request);
-                        continue;
-                    }
+            handleLine(scanner.nextLine());
+        }
+    }
 
-                    // Fallback to old generic JSON-RPC for backward compatibility if needed
-                    JsonObject params = request.getAsJsonObject("params");
-                    Object result = handleGenericRequest(method, params);
-                    sendResponse(request.get("id").getAsInt(), result);
-                }
-            } catch (Exception e) {
-                LOGGER.log(Level.SEVERE, "Error processing MCP request", e);
-                sendError(requestHasId(line) ? getId(line) : -1, e.getMessage());
+    /**
+     * Process a single JSON-RPC message and write the reply (if any) to stdout.
+     */
+    static void handleLine(String line) {
+        if (line.trim().isEmpty()) return;
+        JsonObject request;
+        try {
+            request = JsonParser.parseString(line).getAsJsonObject();
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Error parsing MCP request", e);
+            sendError(JsonNull.INSTANCE, -32700, "Parse error");
+            return;
+        }
+        if (!request.has("method")) return;
+        // requests without an id are notifications and must not be answered
+        boolean isNotification = !request.has("id");
+        try {
+            String method = request.get("method").getAsString();
+
+            // Handle MCP Lifecycle methods
+            if ("initialize".equals(method)) {
+                handleInitialize(request);
+                return;
+            }
+            if ("tools/list".equals(method)) {
+                handleListTools(request);
+                return;
+            }
+            if ("tools/call".equals(method)) {
+                handleCallTool(request);
+                return;
+            }
+            if ("ping".equals(method)) {
+                sendResponse(request.get("id"), new JsonObject());
+                return;
+            }
+            if (isNotification) return;
+
+            // Fallback to old generic JSON-RPC for backward compatibility if needed
+            JsonObject params = request.getAsJsonObject("params");
+            Object result = handleGenericRequest(method, params);
+            sendResponse(request.get("id"), result);
+        } catch (Exception e) {
+            LOGGER.log(Level.SEVERE, "Error processing MCP request", e);
+            if (!isNotification) {
+                int code = e instanceof UnsupportedOperationException ? -32601 : -32000;
+                sendError(request.get("id"), code, e.getMessage());
             }
         }
     }
 
-    private static boolean requestHasId(String line) {
-        try {
-            return JsonParser.parseString(line).getAsJsonObject().has("id");
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    private static int getId(String line) {
-        return JsonParser.parseString(line).getAsJsonObject().get("id").getAsInt();
+    static void setOutput(PrintStream output) {
+        out = output;
     }
 
     private static void handleInitialize(JsonObject request) {
@@ -82,7 +102,7 @@ public class MCPServer {
         serverInfo.addProperty("version", "3.2.0");
         result.add("serverInfo", serverInfo);
         
-        sendResponse(request.get("id").getAsInt(), result);
+        sendResponse(request.get("id"), result);
     }
 
     private static void handleListTools(JsonObject request) {
@@ -106,7 +126,7 @@ public class MCPServer {
         tools.add(createTool("get_zombie_threads", "Returns a list of zombie threads (SMR addresses that could not be resolved to any thread).", new JsonObject()));
 
         result.add("tools", gson.toJsonTree(tools));
-        sendResponse(request.get("id").getAsInt(), result);
+        sendResponse(request.get("id"), result);
     }
 
     private static JsonObject createTool(String name, String description, JsonObject inputSchema) {
@@ -144,7 +164,7 @@ public class MCPServer {
         content.add(textContent);
         result.add("content", gson.toJsonTree(content));
         
-        sendResponse(request.get("id").getAsInt(), result);
+        sendResponse(request.get("id"), result);
     }
 
     private static Object handleGenericRequest(String method, JsonObject params) throws IOException {
@@ -175,22 +195,23 @@ public class MCPServer {
         }
     }
 
-    private static void sendResponse(int id, Object result) {
+    private static void sendResponse(JsonElement id, Object result) {
+        if (id == null) return;
         JsonObject response = new JsonObject();
         response.addProperty("jsonrpc", "2.0");
-        response.addProperty("id", id);
+        response.add("id", id);
         response.add("result", gson.toJsonTree(result));
-        System.out.println(gson.toJson(response));
+        out.println(gson.toJson(response));
     }
 
-    private static void sendError(int id, String message) {
+    private static void sendError(JsonElement id, int code, String message) {
         JsonObject response = new JsonObject();
         response.addProperty("jsonrpc", "2.0");
-        response.addProperty("id", id);
+        response.add("id", id);
         JsonObject error = new JsonObject();
-        error.addProperty("code", -32000);
+        error.addProperty("code", code);
         error.addProperty("message", message);
         response.add("error", error);
-        System.err.println(gson.toJson(response));
+        out.println(errorGson.toJson(response));
     }
 }
